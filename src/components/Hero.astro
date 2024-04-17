@@ -1,0 +1,24 @@
+---
+import Cellphone from "../assets/images/MiHuellaCelular.png";
+import GoogleBtn from "../assets/images/GooglePlay Button.png";
+---
+
+<main class="py-11 bg-huella-green h-[calc(100vh-102px)]">
+  <article class="flex items-center justify-center gap-32 h-full px-[150px] mx-auto my-auto max-w-[1440px]">
+    <div class="flex flex-col gap-11 items-center w-[500px]">
+      <h1 class="text-center text-6xl font-bold text-pretty animate-fade-up">
+        ¡Calcula tu <span class="text-huella-text-green"
+          >huella de carbono!</span
+        >
+      </h1>
+      <p class="text-2xl text-huella-text-gray max-w-[410px] text-pretty animate-fade-up animate-delay-100">
+        Mi huella es una <strong>herramienta</strong> para <strong
+          >calcular y seguir tu impacto ambiental</strong
+        >
+        a través del consumo de energía, transporte y alimentación.
+      </p>
+      <img src={GoogleBtn.src} alt="Google play button" class="rounded-md drop-shadow-lg animate-fade-up animate-delay-200">
+    </div>
+    <img src={Cellphone.src} alt="Imagen celular" class="h-full w-auto animate-fade-up"/>
+  </article>
+</main>
