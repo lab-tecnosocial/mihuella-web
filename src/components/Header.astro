@@ -1,24 +1,29 @@
 ---
+import { Image } from "astro:assets";
 import HuellaIcon from "../assets/icons/HuellaIcon.png";
 ---
 
 <header>
-  <ul class="flex items-center justify-between px-[150px] py-6 mx-auto max-w-[1440px]">
-    <li>
+  <ul class="flex items-center justify-center md:justify-between px-4  py-4 md:py-6 mx-auto max-w-[1440px]">
+    <li class="hidden md:block">
       <a href="#">¿Cómo calculamos?</a>
     </li>
-    <li>
+    <li class="hidden md:block">
       <a href="#">Sobre nosotros</a>
     </li>
     <li>
       <a href="#">
-        <img src={HuellaIcon.src} alt="Mi Huella ícono" />
+        <Image
+         src={HuellaIcon} 
+         alt="Mi Huella ícono"
+         class="h-7 w-auto md:h-auto"
+         />
       </a>
     </li>
-    <li>
+    <li class="hidden md:block">
       <a href="#">Descarga</a>
     </li>
-    <li>
+    <li class="hidden md:block">
       <a href="#">Redes Sociales</a>
     </li>
   </ul>

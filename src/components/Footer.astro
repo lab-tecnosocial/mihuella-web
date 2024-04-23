@@ -1,0 +1,24 @@
+---
+import { Image } from "astro:assets";
+import Facebook from "../assets/icons/facebook.png";
+import Instagram from "../assets/icons/instagram.png";
+import Mail from "../assets/icons/mail.png";
+---
+
+<section
+  class="flex flex-col items-center gap-10 py-4 md:py-11 bg-huella-green h-auto"
+>
+  <h1
+    class="text-center text-xl md:text-3xl font-bold text-pretty animate-fade-up"
+  >
+    ¡Síguenos <span class="text-huella-text-green">en redes sociales</span>!
+  </h1>
+  <div class="flex items-center justify-center gap-10">
+    <a href="#"><Image src={Facebook} alt="Facebook logo" class="size-16" /></a>
+    <a href="#"
+      ><Image src={Instagram} alt="Instagram logo" class="size-[76px]" /></a
+    >
+    <a href="#"><Image src={Mail} alt="Mail logo" class="size-16" /></a>
+  </div>
+  <p class="text-xs sm:text-xl">Desarrollado por el <a href="#" class="text-huella-text-green underline">LabTecnoSocial</a></p>
+</section>
