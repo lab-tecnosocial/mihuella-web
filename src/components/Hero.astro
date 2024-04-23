@@ -1,7 +1,6 @@
 ---
 import Cellphone from "../assets/images/MiHuellaCelular.png";
 import GoogleBtn from "../assets/images/GooglePlay Button.png";
-import { Image } from "astro:assets";
 ---
 
 <main class="py-4 md:py-11 bg-huella-green md:h-[calc(100dvh-102px)]">
@@ -25,8 +24,8 @@ import { Image } from "astro:assets";
         a través del consumo de energía, transporte y alimentación.
       </p>
       <a href="#">
-        <Image
-          src={GoogleBtn}
+        <img
+          src={GoogleBtn.src}
           alt="Google play button"
           class="w-44 h-auto md:w-auto rounded-md drop-shadow-lg animate-fade-up animate-delay-200"
           width={280}
@@ -35,8 +34,8 @@ import { Image } from "astro:assets";
         />
       </a>
     </div>
-    <Image
-      src={Cellphone}
+    <img
+      src={Cellphone.src}
       alt="Imagen celular"
       class="max-h-60 md:max-h-[710px] h-auto md:h-full w-auto animate-fade-up"
       width={346}

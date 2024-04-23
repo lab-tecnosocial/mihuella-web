@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import ConsumoElectrico from "../assets/images/howTo/electrico.png";
 import Transporte from "../assets/images/howTo/transporte.png";
 import Dieta from "../assets/images/howTo/dieta.png";
@@ -15,8 +14,8 @@ import Rig from "../assets/images/howTo/rig-feliz.png";
   </h2>
   <div class="flex flex-col md:flex-row gap-4 md:justify-between w-full">
     <div class="flex flex-col items-center gap-4">
-      <Image
-        src={ConsumoElectrico}
+      <img
+        src={ConsumoElectrico.src}
         alt="Imagen Consumo electrico"
         width={118}
         height={118}
@@ -25,8 +24,8 @@ import Rig from "../assets/images/howTo/rig-feliz.png";
       <span class="text-center text-base md:text-2xl">Consumo eléctrico</span>
     </div>
     <div class="flex flex-col items-center gap-4">
-      <Image
-        src={Transporte}
+      <img
+        src={Transporte.src}
         alt="Imagen Transporte"
         width={118}
         height={118}
@@ -35,8 +34,8 @@ import Rig from "../assets/images/howTo/rig-feliz.png";
       <span class="text-center text-base md:text-2xl">Transporte</span>
     </div>
     <div class="flex flex-col items-center gap-4">
-      <Image
-        src={Dieta}
+      <img
+        src={Dieta.src}
         alt="Imagen Dieta"
         width={118}
         height={118}
@@ -51,13 +50,13 @@ import Rig from "../assets/images/howTo/rig-feliz.png";
     >!.
   </p>
   <div class="flex flex-col md:flex-row items-center gap-4 md:gap-32">
-    <Image
-      src={Resultado}
+    <img
+      src={Resultado.src}
       alt="Imagen Resultado"
       width={270}
       height={100}
       class="h-24 md:h-36 w-auto"
     />
-    <Image src={Rig} alt="Imagen Rig" width={240} height={240} class="h-36 w-auto"/>
+    <img src={Rig.src} alt="Imagen Rig" width={240} height={240} class="h-36 w-auto"/>
   </div>
 </section>

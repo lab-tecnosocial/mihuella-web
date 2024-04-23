@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import Mundo from "../assets/images/Medio_mundo.png";
 import GoogleBtn from "../assets/images/GooglePlay Button.png";
 import Qr from "../assets/images/Qr.png";
@@ -17,8 +16,8 @@ import Qr from "../assets/images/Qr.png";
     <div
       class="flex flex-col md::flex-row md:justify-start justify-center items-center gap-14"
     >
-      <Image
-        src={Qr}
+      <img
+        src={Qr.src}
         alt="Qr imagen"
         class="w-44 h-auto md:w-auto rounded-md drop-shadow-lg animate-fade-up animate-delay-200"
         width={226}
@@ -26,8 +25,8 @@ import Qr from "../assets/images/Qr.png";
         loading="lazy"
       />
       <a href="#">
-        <Image
-          src={GoogleBtn}
+        <img
+          src={GoogleBtn.src}
           alt="Google play button"
           class="w-44 h-auto md:w-auto rounded-md drop-shadow-lg animate-fade-up animate-delay-200"
           width={280}
@@ -44,8 +43,8 @@ import Qr from "../assets/images/Qr.png";
     </p>
   </article>
   <div class="flex items-center justify-center h-auto w-auto">
-    <Image
-      src={Mundo}
+    <img
+      src={Mundo.src}
       alt="Imagen Huella"
       class="w-auto h-auto max-w-80]"
       width={399}
