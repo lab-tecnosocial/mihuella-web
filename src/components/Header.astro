@@ -1,31 +1,49 @@
 ---
 import HuellaIcon from "../assets/icons/HuellaIcon.png";
 ---
-
+<head>
+  <style>
+    input[type="button"]:hover {
+      background-color: rgb(180,216,185);
+      padding:10px;
+      margin:0;
+    }
+    body.loaded{
+      opacity:1;
+    }
+    
+  </style>
+</head>
 <header>
-  <ul class="flex items-center justify-center md:justify-between px-4  py-4 md:py-6 mx-auto max-w-[1440px]">
+  <ul class="flex items-center justify-center md:justify-between px-4 py-4 md:py-6 mx-auto max-w-[1440px]">
     <li class="hidden md:block">
-      <a href="/#calcular">¿Cómo calculamos?</a>
+      <input type="button" value="¿Cómo calculamos?" onclick="location.href='/#calcular'">
     </li>
     <li class="hidden md:block">
-      <a href="/#nosotros">Sobre nosotros</a>
+      <input type="button" value="Sobre nosotros" onclick="location.href='/#nosotros'">
     </li>
     <li>
       <a href="/">
-        <img
-         src={HuellaIcon.src} 
-         alt="Mi Huella icono"
-         class="h-7 w-auto md:h-auto"
-         width={44}
-         height={44}
-         />
+        <img 
+        src={HuellaIcon.src} 
+        alt="Mi Huella icono" 
+        class="h-7 w-auto md:h-auto" 
+        width={44} 
+        height={44} />
       </a>
     </li>
     <li class="hidden md:block">
-      <a href="/blog/emisiones-co2-bolivia">Blog</a>
+      <input type="button" value="Blog" onclick="location.href='/blog/emisiones-co2-bolivia'">
     </li>
     <li class="hidden md:block">
-      <a href="/#redes">Redes Sociales</a>
+      <input type="button" value="Redes Sociales" onclick="location.href='/#redes'">
     </li>
   </ul>
 </header>
+<body>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.body.classList.add('loaded');
+    });
+  </script>
+</body>
