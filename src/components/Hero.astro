@@ -2,42 +2,35 @@
 import Cellphone from "../assets/images/MiHuellaCelular.png";
 import GoogleBtn from "../assets/images/GooglePlay Button.png";
 ---
-<style>
-   a:hover{
-    background-color: transparent;
-    transform: scale(1.1);
-    transition: transform 0.3s ease-in-out;
-    }
-</style>
-<main class="py-4 md:py-11 bg-huella-green md:h-[calc(100dvh-102px)]">
+<main>
   <article
-    class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-32 h-full px-4 md:px-[150px] mx-auto my-auto max-w-[1440px]"
+    class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-32 h-full px-4 md:px-[100px] mx-auto my-auto max-w-[2440px]"
   >
     <div class="flex flex-col gap-7 md:gap-11 items-center md:w-[500px]">
       <h1
-        class="text-center text-3xl md:text-6xl font-bold text-pretty animate-fade-up"
+        class="text-center text-4xl md:text-6xl font-bold text-pretty animate-fade-up"
       >
         ¡Calcula tu <span class="text-huella-text-green"
           >huella de carbono!</span
         >
       </h1>
       <p
-        class="text-base md:text-2xl text-center md:text-start text-huella-text-gray max-w-[410px] text-pretty animate-fade-up animate-delay-100"
+        class="text-base md:text-2xl text-center md:text-start text-huella-text-gray max-w-[500px] text-pretty animate-fade-up animate-delay-100"
+        style="text-align: center;"
       >
-        Mi huella es una <strong>herramienta</strong> para <strong
-          >calcular y seguir tu impacto ambiental</strong
-        >
-        a través del consumo de energía, transporte y alimentación.
+        Mi huella es una <span class="text-[rgb(0,110,79)]">herramienta</span> para
+        calcular y seguir tu impacto ambiental a través del consumo de energía, transporte
+        y alimentación.
       </p>
       <a
         href="https://play.google.com/store/apps/details?id=org.labtecnosocial.mihuella"
+        class="transition-transform transform hover:scale-110 hover:bg-transparent ease-in-out duration-300"
       >
         <img
           src={GoogleBtn.src}
           alt="Google play button"
-          class="w-44 h-auto md:w-auto rounded-md drop-shadow-lg animate-fade-up animate-delay-200"
-          width={280}
-          height={68}
+          width={250}
+          height={20}
           loading="lazy"
         />
       </a>
@@ -45,9 +38,7 @@ import GoogleBtn from "../assets/images/GooglePlay Button.png";
     <img
       src={Cellphone.src}
       alt="Imagen celular"
-      class="max-h-60 md:max-h-[710px] h-auto md:h-full w-auto animate-fade-up"
-      width={346}
-      height={710}
+      class="md:max-h-[600px] md:h-auto w-auto animate-fade-up "
       loading="lazy"
     />
   </article>

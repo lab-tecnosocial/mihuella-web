@@ -1,43 +1,45 @@
 ---
-import HuellaIcon from "../assets/icons/HuellaIcon.png";
+import LogoNuevoMiHuella2 from "../assets/images/mihuella_logo2.png"
+import Facebook from "../assets/icons/facebook.png";
+import Instagram from "../assets/icons/instagram.png";
+import Mail from "../assets/icons/mail.png";
 ---
-<head>
-  <style>
-    input[type="button"]:hover {
-      background-color: rgb(180,216,185);
-      padding:10px;
-      margin:0;
-    }
-    
-    body.loaded{
-      opacity:1;
-    }
-    
-  </style>
-</head>
-<header>
-  <ul class="flex items-center justify-center md:justify-between px-4 py-4 md:py-6 mx-auto max-w-[1440px]">
-    <li class="hidden md:block">
-      <input type="button" value="¿Cómo calculamos?" onclick="location.href='/#calcular'">
-    </li>
-    <li class="hidden md:block">
-      <input type="button" value="Sobre nosotros" onclick="location.href='/#nosotros'">
-    </li>
+<header class="loaded:opacity-100  p-6 shadow-md" >
+  <ul class="flex items-center justify-center md:justify-between px-4 py-4 md:py-6 mx-auto max-w-[1440px] text-[rgb(0,110,79)]">
     <li>
       <a href="/">
         <img 
-        src={HuellaIcon.src} 
+        src={LogoNuevoMiHuella2.src} 
         alt="Mi Huella icono" 
-        class="h-7 w-auto md:h-auto" 
-        width={44} 
-        height={44} />
+        width={140}
+        height={20}      
+       />
       </a>
     </li>
     <li class="hidden md:block">
-      <input type="button" value="Blog" onclick="location.href='/blog/emisiones-co2-bolivia'">
+      <a href='/#calcular' style="font-size: 25px">¿Cómo calculamos?</a>
     </li>
-    <li class="hidden md:block">
-      <input type="button" value="Redes Sociales" onclick="location.href='/#redes'">
+    <li class="hidden md:block text-lg hover:m-0">
+      <a href='/#nosotros' style="font-size: 25px">Sobre nosotros</a>
+    </li>
+    
+    <li class="hidden md:block text-lg hover:m-0">
+      <a href='/blog/emisiones-co2-bolivia' style="font-size: 25px">Blog</a>
+    </li>
+    <li class="hidden md:block hover:m-0">
+      <a href="mailto:appmihuella@gmail.com"
+      ><img src={Mail.src} alt="Mail logo" class="size-16" /></a
+    >
+    </li>
+    <li class="hidden md:block hover:m-0">
+      <a href="https://www.instagram.com/mi_huella_app/"
+      ><img src={Instagram.src} alt="Instagram logo" class="size-[76px]" /></a
+    >
+    </li>
+    <li class="hidden md:block hover:m-0">
+      <a href="https://www.facebook.com/AppMiHuella"
+      ><img src={Facebook.src} alt="Facebook logo" class="size-16" /></a
+    >
     </li>
   </ul>
 </header>

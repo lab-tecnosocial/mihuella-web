@@ -2,9 +2,11 @@
 import LogoLab from "../assets/images/LabTecno.png";
 import LogoCiac from "../assets/images/Ciac.png";
 import Huella from "../assets/images/huella.svg";
+import LogoNuevoMiHuella from "../assets/images/miHuellaNuevo.png";
+import GoogleBtn from "../assets/images/GooglePlay Button.png";
 ---
 
-<section id="nosotros" class="relative bg-huella-green overflow-hidden scroll-m-10">
+<section id="nosotros">
   <img
     src={Huella.src}
     alt="Imagen Huella"
@@ -18,22 +20,35 @@ import Huella from "../assets/images/huella.svg";
   <article
     class="flex flex-col items-center justify-center gap-8 py-4 sm:h-full px-4 md:px-[150px] mx-auto my-auto max-w-[1440px]"
   >
-    <h2 class="text-center text-xl md:text-3xl font-bold">Sobre Nosotros</h2>
-    <div class="p-9 bg-[#FFFFFF] rounded-xl max-w-[740px]">
+    <h2 class="text-center text-xl md:text-6xl font-bold mt-10">
+      Sobre nosotros
+    </h2>
+    <div class="p-9 bg-[transparent] rounded-xl max-w-[1050px]">
       <p
-        class="text-huella-text-gray text-center text-base md:text-2xl text-pretty"
+        class="text-huella-text-gray text-center text-base md:text-3xl text-pretty"
       >
-        Creemos en el poder de las <strong
-          >pequeñas acciones para generar un gran impacto</strong
+        Creemos en el poder de las <span style="color: rgb(0,110,79);"
+          >pequeñas acciones para generar un gran impacto</span
         >. Nuestro equipo está formado por apasionados por el medio ambiente y
-        la tecnología, comprometidos con la <strong
-          >misión de hacer del mundo un lugar más sostenible</strong
+        la tecnología, comprometidos con la <span style="color: rgb(0,110,79);"
+          >misión de hacer del mundo un lugar más sostenible</span
         >.
       </p>
     </div>
-    <span class="text-center text-base md:text-xl text-huella-text-gray"
-      >Esta app es producto de la colaboración entre:</span
+    <a
+      href="https://play.google.com/store/apps/details?id=org.labtecnosocial.mihuella"
+      class="transition-transform transform hover:scale-110 hover:bg-transparent ease-in-out duration-300"
     >
+      <img
+        src={GoogleBtn.src}
+        alt="Google play button"
+        width={250}
+        height={40}
+        loading="lazy"
+      />
+    </a>
+
+    <img src={LogoNuevoMiHuella.src} alt="Nuevo Logo MiHuella" width='250px"' />
     <div class="flex gap-20">
       <img src={LogoCiac.src} alt="Imagen logo Ciac" class="max-w-28 h-auto" />
       <img

@@ -5,77 +5,64 @@ import Dieta from "../assets/images/howTo/dieta.png";
 import Resultado from "../assets/images/howTo/grafico.png";
 import Rig from "../assets/images/howTo/rig-feliz.png";
 ---
-<head>
-  <style>
-    img{
-      /* background-color: transparent; */
-      transition: background-color 0.5s ease-in-out, transform 0.5s ease-in-out;
-    }
-    img:hover{
-      background-color: transparent;
-      transform: scale(1.1);
-    }
-  </style>
-</head>
+
 <section
   id="calcular"
   class="flex flex-col items-center gap-6 justify-between py-4 md:py-16 px-4 md:px-[150px] mx-auto my-auto max-w-[1440px] scroll-m-10"
 >
-  <h2 class="text-center text-xl md:text-3xl font-bold">
+  <h1 class="text-center text-xl md:text-6xl font-bold my-20">
     ¿Cómo <span class="text-huella-text-green">calcular tu huella</span>?
-  </h2>
-  <div class="flex flex-col md:flex-row gap-4 md:justify-between w-full">
+  </h1>
+  <div class="flex flex-col md:flex-row mb-20 gap-2 md:justify-between w-full">
     <div class="flex flex-col items-center gap-4">
       <img
         src={ConsumoElectrico.src}
-        alt="Imagen Consumo electrico"
-        width={118}
-        height={118}
-        class="h-20 w-auto md:h-auto"
-        background-color="transparent"
+        alt="Imagen Consumo eléctrico"
+        width="200px"
+        class="md:h-auto transition ease-in-out duration-500 transform hover:scale-110 hover:bg-transparent"
       />
-      <span class="text-center text-base md:text-2xl">Consumo eléctrico</span>
+      <strong class="text-center text-base md:text-4xl"
+        >Consumo eléctrico</strong
+      >
     </div>
     <div class="flex flex-col items-center gap-4">
       <img
         src={Transporte.src}
         alt="Imagen Transporte"
-        width={118}
-        height={118}
-        class="h-20 w-auto md:h-auto"
+        width="250px"
+        class="md:h-auto mt-5 transition ease-in-out duration-500 transform hover:scale-110 hover:bg-transparent mb-30"
       />
-      <span class="text-center text-base md:text-2xl">Transporte</span>
+      <strong class="text-center text-base md:text-4xl">Transporte</strong>
     </div>
     <div class="flex flex-col items-center gap-4">
       <img
         src={Dieta.src}
         alt="Imagen Dieta"
-        width={118}
-        height={118}
-        class="h-20 w-auto md:h-auto"
+        width="180px"
+        class="md:h-auto transition ease-in-out duration-500 transform hover:scale-110 hover:bg-transparent"
       />
-      <span class="text-center text-base md:text-2xl">Dieta</span>
+      <strong class="text-center text-base md:text-4xl">Dieta</strong>
     </div>
   </div>
-  <p class="text-center text-base md:text-2xl max-w-[460px]">
-    Llenando un <strong>formulario</strong>, la app <strong
-      >calculará tu huella en kg de CO2</strong
+  <strong class="text-center text-base md:text-4xl max-w-[700px]">
+    Llenando un <span class="text-[rgb(0,110,79)]">formulario</span>, la app <span
+      class="text-[rgb(0,110,79)]">calculará tu huella en kg de CO2</span
     >!.
-  </p>
-  <div class="flex flex-col md:flex-row items-center gap-4 md:gap-32">
+  </strong>
+  <!-- <div class="flex flex-col md:flex-row items-center gap-4 md:gap-32">
     <img
       src={Resultado.src}
       alt="Imagen Resultado"
       width={270}
-      height={100}
-      class="h-24 md:h-36 w-auto"
+      height={50}
+      class="h-24 md:h-36 w-30"
     />
     <img
       src={Rig.src}
       alt="Imagen Rig"
       width={240}
       height={240}
-      class="h-36 w-auto"
+      class="h-36 w-30"
     />
-  </div>
+  </div> -->
 </section>
