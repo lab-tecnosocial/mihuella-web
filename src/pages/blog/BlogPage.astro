@@ -1,0 +1,60 @@
+---
+import BlogCard from "../../components/BlogCard.astro";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Blog | Mi Huella">
+  <section class="max-w-[1400px] mx-auto flex justify-center mt-10">
+    <main class="flex flex-col gap-20">
+      <div>
+        <BlogCard
+          img="https://unilimpio.com/static/1792bd5b8c5d9af15c71547047d56156/d00ff/huella-de-carbono-dentro-de-las-empresas.jpg"
+          title="titulo1"
+          description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. "
+          author="Patricia"
+          altImg="alt de la imagen"
+          stylesComponent="flex flex-row-reverse gap-10"
+          styleContent="flex flex-col w-[600px] gap-3 "
+          isNew="Nuevo"
+          styleTitle="text-2xl font-bold "
+          withImg="500px"
+        />
+      </div>
+
+      <div class="flex gap-12 items-center justify-center w-full flex-wrap">
+        <BlogCard
+          img="https://www.anahuac.mx/mexico/sites/default/files/inline-images/Vivir-fuera-del-planeta-Tierra-basura-que-generamos-2.jpg"
+          title="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+          altImg="alt de la imagen"
+          stylesComponent="flex flex-col gap-4 w-fit"
+          styleContent="flex flex-col w-[300px] gap-1 "
+          withImg="300px"
+          styleTitle="text-lg"
+        />
+
+        <BlogCard
+          img="https://i.pinimg.com/736x/d6/fc/d1/d6fcd1f3fd5a567064e5e21003f4a820.jpg"
+          title="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+          altImg="alt de la imagen"
+          stylesComponent="flex flex-col gap-4 w-fit"
+          styleContent="flex flex-col w-[300px] gap-1 "
+          withImg="300px"
+          styleTitle="text-lg"
+        />
+
+        <BlogCard
+          img="https://blog.oxfamintermon.org/wp-content/uploads/2018/05/medio-ambiente-hogar.jpg"
+          title="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+          altImg="alt de la imagen"
+          stylesComponent="flex flex-col gap-4 w-fit"
+          styleContent="flex flex-col w-[300px] gap-1 "
+          withImg="300px"
+          styleTitle="text-lg"
+        />
+
+
+        
+      </div>
+    </main>
+  </section>
+</Layout>
