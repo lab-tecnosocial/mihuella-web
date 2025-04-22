@@ -1,13 +1,12 @@
-// Cargar librerías desde CDN si no usás NPM
-import "https://unpkg.com/scrollama";
-import { gsap } from "https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js";
-import { ScrollTrigger } from "https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js";
-import SplitType from "https://unpkg.com/split-type";
+import gsap from "https://cdn.skypack.dev/gsap@3.12.5";
+import { ScrollTrigger } from "https://cdn.skypack.dev/gsap@3.12.5/ScrollTrigger";
 
-// Registrar plugin de GSAP
+import scrollama from "https://cdn.skypack.dev/scrollama@2.2.2";
+
+import SplitType from "https://cdn.skypack.dev/split-type@0.3.3";
+
 gsap.registerPlugin(ScrollTrigger);
 
-// Ocultar indicador (si existe)
 const indicator = document.querySelector(".indicator");
 if (indicator) {
   setTimeout(() => {
@@ -15,7 +14,6 @@ if (indicator) {
   }, 10000);
 }
 
-// Scrollama
 const scroller = scrollama();
 
 function handleStepEnter(response) {
@@ -156,5 +154,9 @@ function initAnimations() {
   initAnimatedText();
 }
 
-// Esperar que cargue el DOM antes de ejecutar
-window.addEventListener("DOMContentLoaded", initAnimations);
+if (typeof window !== "undefined") {
+  window.addEventListener("DOMContentLoaded", function () {
+    console.log("DOM completamente cargado");
+    initAnimations();
+  });
+}
