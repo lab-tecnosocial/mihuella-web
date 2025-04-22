@@ -1,6 +1,6 @@
 ---
-import BlogCard from "../../components/BlogCard.astro";
-import Layout from "../../layouts/Layout.astro";
+import BlogCard from "../components/BlogCard.astro";
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Blog | Mi Huella">
@@ -8,15 +8,16 @@ import Layout from "../../layouts/Layout.astro";
     <main class="flex flex-col gap-20">
       <div>
         <BlogCard
-          img="https://unilimpio.com/static/1792bd5b8c5d9af15c71547047d56156/d00ff/huella-de-carbono-dentro-de-las-empresas.jpg"
-          title="titulo1"
-          description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. "
+          img="https://cdn.bolivia.com/sdi/2020/11/24/co2-atmosfera-aumenta-4-anos-antes-tardaba-200-anos-873325.jpg"
+          title="Emisiones CO2 en Bolivia"
+          description="Bolivia emite 12 toneladas de dióxido de carbono (CO2) per cápita cada año, casi el doble que emite la Unión Europea (siete toneladas por persona), indicó el investigador Amos Batto con base en datos del Gobierno. Él expuso estas cifras en un evento organizado por Reacción Climática, rumbo a la Conferencia de las Naciones Unidas sobre el Cambio Climático (COP-27). Ante situación, el Gobierno “no propone planes concretos” que representen a todos los bolivianos, acotó"
           author="Patricia"
           altImg="alt de la imagen"
+          link="blogs/emisiones-co2-bolivia"
           stylesComponent="flex flex-row-reverse gap-10"
-          styleContent="flex flex-col w-[600px] gap-3 "
+          styleContent="flex flex-col w-[600px] gap-3"
           isNew="Nuevo"
-          styleTitle="text-2xl font-bold "
+          styleTitle="text-2xl font-bold"
           withImg="500px"
         />
       </div>
@@ -28,6 +29,7 @@ import Layout from "../../layouts/Layout.astro";
           altImg="alt de la imagen"
           stylesComponent="flex flex-col gap-4 w-fit"
           styleContent="flex flex-col w-[300px] gap-1 "
+          link="blogs/blog-2"
           withImg="300px"
           styleTitle="text-lg"
         />
@@ -39,6 +41,7 @@ import Layout from "../../layouts/Layout.astro";
           stylesComponent="flex flex-col gap-4 w-fit"
           styleContent="flex flex-col w-[300px] gap-1 "
           withImg="300px"
+          link="blogs/blog-3"
           styleTitle="text-lg"
         />
 
@@ -49,10 +52,9 @@ import Layout from "../../layouts/Layout.astro";
           stylesComponent="flex flex-col gap-4 w-fit"
           styleContent="flex flex-col w-[300px] gap-1 "
           withImg="300px"
+          link="blogs/blog-4"
           styleTitle="text-lg"
         />
-
-
         
       </div>
     </main>
