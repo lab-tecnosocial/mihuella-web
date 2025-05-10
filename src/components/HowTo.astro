@@ -4,6 +4,7 @@ import Transporte from "../assets/images/howTo/transporte.png";
 import Dieta from "../assets/images/howTo/dieta.png";
 import Resultado from "../assets/images/howTo/grafico.png";
 import Rig from "../assets/images/howTo/rig-feliz.png";
+import Semaforo from "../assets/images/Rango-5-colores.png";
 ---
 
 <section
@@ -13,7 +14,7 @@ import Rig from "../assets/images/howTo/rig-feliz.png";
   <h1 class="text-center text-xl md:text-6xl font-bold my-20">
     ¿Cómo <span class="text-huella-text-green">calcular tu huella</span>?
   </h1>
-  <div class="flex flex-col md:flex-row mb-20 gap-2 md:justify-between w-full">
+  <div class="flex flex-col md:flex-row mb-20 gap-2 md:justify-between w-full m-0">
     <div class="flex flex-col items-center gap-4">
       <img
         src={ConsumoElectrico.src}
@@ -44,11 +45,17 @@ import Rig from "../assets/images/howTo/rig-feliz.png";
       <strong class="text-center text-base md:text-4xl">Dieta</strong>
     </div>
   </div>
-  <strong class="text-center text-base md:text-4xl max-w-[700px]">
-    Llenando un <span class="text-[rgb(0,110,79)]">formulario</span>, la app <span
-      class="text-[rgb(0,110,79)]">calculará tu huella en kg de CO2</span
-    >!.
-  </strong>
+  <img  
+        src={Semaforo.src}
+        alt="Imagen Transporte"
+        width="30%"
+        class="m-0 transition ease-in-out duration-500 transform hover:scale-110 hover:bg-transparent"
+      />
+    <strong class="text-center text-base md:text-4xl max-w-[700px]">
+      Llenando un <span class="text-[rgb(0,110,79)]">formulario</span>, la app <span
+        class="text-[rgb(0,110,79)]">calculará tu huella en kg de CO2</span
+      >!.
+    </strong>
   <!-- <div class="flex flex-col md:flex-row items-center gap-4 md:gap-32">
     <img
       src={Resultado.src}
@@ -65,4 +72,5 @@ import Rig from "../assets/images/howTo/rig-feliz.png";
       class="h-36 w-30"
     />
   </div> -->
+ 
 </section>
