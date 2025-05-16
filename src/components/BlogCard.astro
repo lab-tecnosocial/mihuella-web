@@ -1,0 +1,30 @@
+---
+const {
+  img,
+  title,
+  description,
+  author,
+  altImg,
+  withImg,
+  stylesComponent,
+  styleContent,
+  isNew,
+  styleTitle,
+  link,
+} = Astro.props;
+---
+
+<div class={stylesComponent}>
+  <img src={img} alt={altImg} width={withImg} class="rounded-lg" />
+  <div class={styleContent}>
+    <span class="bg-huella-text-green font-bold text-white w-fit px-2.5 py-0.5 rounded-2xl">
+      {isNew}
+    </span>
+    <h1 class={styleTitle}>{title}</h1>
+    <p>{description}</p>
+    <p>{author ? "Autor: " : ""} {author}</p>
+    <a href={link} class="bg-huella-text-green font-bold w-[25%] text-white px-4 py-3 rounded-md text-center">
+      Leer
+    </a>
+  </div>
+</div>
