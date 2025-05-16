@@ -1,0 +1,8 @@
+---
+const { img, text, altImg, withImg, stylesComponent } = Astro.props;
+---
+
+<div class="flex flex-col items-center gap-4">
+  <img src={img} alt={altImg} width={withImg} class={stylesComponent} />
+  <strong class="text-center text-base md:text-4xl">{text}</strong>
+</div>
