@@ -1,0 +1,62 @@
+---
+import LogoNuevoMiHuella2 from "../assets/images/mihuella_logo2.png";
+import Facebook from "../assets/icons/facebook.png";
+import Instagram from "../assets/icons/instagram.png";
+import Mail from "../assets/icons/mail.png";
+---
+
+<header class="loaded:opacity-100 shadow-md">
+  <ul
+    class="flex items-center justify-center md:justify-between md:py-6 mx-auto max-w-[1440px] text-[rgb(0,110,79)]"
+  >
+    <li>
+      <a href="/">
+        <img
+          src={LogoNuevoMiHuella2.src}
+          alt="Mi Huella icono"
+          width={100}
+          height={20}
+        />
+      </a>
+    </li>
+    <li class="hidden md:block">
+      <a href="/#calcular" class="text-xl">¿Cómo calculamos?</a>
+    </li>
+    <li class="hidden md:block text-lg hover:m-0">
+      <a href="/#nosotros" class="text-xl">Sobre nosotros</a>
+    </li>
+
+    <li class="hidden md:block text-lg hover:m-0">
+      <a href="blogs/emisiones-co2-bolivia" class="text-xl">Blog</a>
+    </li>
+
+    <!-- <li class="hidden md:block text-lg hover:m-0">
+      <a href="/blogs" class="text-xl">Blog Prueba</a>
+    </li> -->
+
+    <div class="flex gap-5 items-center">
+      <li class="hidden md:block hover:m-0">
+        <a href="mailto:appmihuella@gmail.com"
+          ><img src={Mail.src} alt="Mail logo" class="size-14" /></a
+        >
+      </li>
+      <li class="hidden md:block hover:m-0">
+        <a href="https://www.instagram.com/mi_huella_app/"
+          ><img src={Instagram.src} alt="Instagram logo" class="size-11" /></a
+        >
+      </li>
+      <li class="hidden md:block hover:m-0">
+        <a href="https://www.facebook.com/AppMiHuella"
+          ><img src={Facebook.src} alt="Facebook logo" class="size-11" /></a
+        >
+      </li>
+    </div>
+  </ul>
+</header>
+<body>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.body.classList.add("loaded");
+    });
+  </script>
+</body>

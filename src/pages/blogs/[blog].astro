@@ -1,0 +1,18 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+export function getStaticPaths() {
+  return [
+    { params: { blog: "emisiones-co2-bolivia" } },
+    { params: { blog: "blog-2" } },
+    { params: { blog: "blog-3" } },
+    { params: { blog: "blog-4" } },
+  ];
+}
+
+const { blog } = Astro.params;
+---
+
+<Layout title="blogs">
+  <div>¡Este es el, {blog}!</div>
+</Layout>

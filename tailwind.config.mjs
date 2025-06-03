@@ -5,14 +5,14 @@ export default {
 		fontFamily: {
 			sans: ['Roboto', 'Helvetica', 'sans-serif'],
 		},
-		colors: {
-			'huella-green': 'rgba(234,253,238,0.9)',
-			'huella-text-green': '#1E7B5C',
-			'huella-text-gray': '#575757',
+		extend: {
+			colors: {
+				'huella-green': 'rgba(234,253,238,0.9)',
+				'huella-text-green': '#1E7B5C',
+				'huella-text-gray': '#575757',
+				'huella-text-gray-ligth': '#f9f9f9',
+			},
 		},
-		extend: {},
 	},
-	plugins: [
-		require('tailwindcss-animated')
-	],
-}
+	plugins: [require('tailwindcss-animated')],
+};
