@@ -5,9 +5,9 @@ import Instagram from "../assets/icons/instagram.png";
 import Mail from "../assets/icons/mail.png";
 ---
 
-<header class="loaded:opacity-100 shadow-md">
+<header class="loaded:opacity-100 shadow-md z-50 fixed top-0 left-0 right-0 bg-white" >
   <ul
-    class="flex items-center justify-center md:justify-between md:py-6 mx-auto max-w-[1440px] text-[rgb(0,110,79)]"
+    class="flex items-center justify-center md:justify-between md:py-6 mx-auto max-w-[1440px] text-[rgb(0,110,79)]" 
   >
     <li>
       <a href="/">
@@ -37,23 +37,23 @@ import Mail from "../assets/icons/mail.png";
     <div class="flex gap-5 items-center">
       <li class="hidden md:block hover:m-0">
         <a href="mailto:appmihuella@gmail.com"
-          ><img src={Mail.src} alt="Mail logo" class="size-14" /></a
+          ><img src={Mail.src} alt="icon mail de mi huella de carbono app" class="size-10" /></a
         >
       </li>
       <li class="hidden md:block hover:m-0">
         <a href="https://www.instagram.com/mi_huella_app/"
-          ><img src={Instagram.src} alt="Instagram logo" class="size-11" /></a
+          ><img src={Instagram.src} alt="Instagram logo" class="size-7,5" /></a
         >
       </li>
       <li class="hidden md:block hover:m-0">
         <a href="https://www.facebook.com/AppMiHuella"
-          ><img src={Facebook.src} alt="Facebook logo" class="size-11" /></a
+          ><img src={Facebook.src} alt="Facebook logo" class="size-8" /></a
         >
       </li>
     </div>
   </ul>
 </header>
-<body>
+<body style="margin-top: 30px;">
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       document.body.classList.add("loaded");
