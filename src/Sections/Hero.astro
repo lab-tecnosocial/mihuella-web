@@ -2,10 +2,11 @@
 import Cellphone from "../assets/images/cellphone.png";
 import GoogleBtn from "../assets/images/GooglePlay Button.png";
 import HuellaHidricaBtn from "../assets/images/huella-hidrica.png";
+import AppStoreBtn from "../assets/images/AppStore Button.png";
 ---
 
 <main
-  style="margin-top: 200px;"
+  style="margin-top: 140px;"
   class="min-h-[75vh] min-w-[100%] bg-huella-text-gray-ligth"
 >
   <article
@@ -27,31 +28,41 @@ import HuellaHidricaBtn from "../assets/images/huella-hidrica.png";
         calcular y seguir tu impacto ambiental a través del consumo de energía, transporte
         y alimentación.
       </p>
-      <a
-        href="https://play.google.com/store/apps/details?id=org.labtecnosocial.mihuella"
-        class="transition-transform transform hover:scale-110 hover:bg-transparent ease-in-out duration-300"
-      >
+      <div class="flex flex-row justify-between">
+        <a
+          href="https://play.google.com/store/apps/details?id=org.labtecnosocial.mihuella"
+          class="transition-transform transform hover:scale-110 hover:bg-transparent ease-in-out duration-300"
+        ></a>
+
         <img
           src={GoogleBtn.src}
           alt="Google play button"
           width={250}
           height={20}
           loading="lazy"
+          class="md:gap-3"
         />
-      </a>
+        <img
+          src={AppStoreBtn.src}
+          alt="Apple Store button"
+          width={250}
+          height={20}
+          loading="lazy"
+        />
+      </div>
     </div>
     <img
       src={Cellphone.src}
       alt="Imagen celular"
       class="md:max-h-[600px] md:h-auto w-auto animate-fade-up"
       loading="lazy"
-    />    
-  </article>
-  <img 
-      src={HuellaHidricaBtn.src}
-      alt="Botón de la Huella Hídrica"
-      width="15%"
-      class="absolute opacity-80 hover:opacity-100 bottom-0 right-20"
-      loading="lazy"
     />
+  </article>
+  <img
+    src={HuellaHidricaBtn.src}
+    alt="Botón de la Huella Hídrica"
+    width="15%"
+    class="absolute opacity-80 hover:opacity-100 bottom-5 right-20"
+    loading="lazy"
+  />
 </main>
