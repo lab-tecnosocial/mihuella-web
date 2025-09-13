@@ -4,9 +4,14 @@ import LogoCiac from "../assets/images/Ciac.png";
 import Huella from "../assets/images/huella.svg";
 import LogoNuevoMiHuella from "../assets/images/miHuellaNuevo.png";
 import GoogleBtn from "../assets/images/GooglePlay Button.png";
+import HuellaHidricaBtn from "../assets/images/huella-hidrica.png";
+import AppStoreBtn from "../assets/images/AppStore Button.png";
 ---
 
-<section id="nosotros" class="min-h-[75vh] min-w-[100%] bg-huella-text-gray-ligth" >
+<section
+  id="nosotros"
+  class="min-h-[75vh] min-w-[100%] bg-huella-text-gray-ligth"
+>
   <img
     src={Huella.src}
     alt="Imagen Huella"
@@ -35,18 +40,32 @@ import GoogleBtn from "../assets/images/GooglePlay Button.png";
         >.
       </p>
     </div>
-    <a
-      href="https://play.google.com/store/apps/details?id=org.labtecnosocial.mihuella"
-      class="transition-transform transform hover:scale-110 hover:bg-transparent ease-in-out duration-300"
-    >
-      <img
-        src={GoogleBtn.src}
-        alt="Google play button"
-        width={250}
-        height={40}
-        loading="lazy"
-      />
-    </a>
+    <div class="flex flex-row md:gap-10">
+      <a
+        href="https://play.google.com/store/apps/details?id=org.labtecnosocial.mihuella"
+        class="transition-transform transform hover:scale-110 hover:bg-transparent ease-in-out duration-300"
+      >
+        <img
+          src={GoogleBtn.src}
+          alt="Google play button"
+          width={250}
+          height={40}
+          loading="lazy"
+        />
+      </a>
+      <a
+        href="https://apps.apple.com/us/app/mi-huella-en-el-planeta/id6748420106"
+        class="transition-transform transform hover:scale-110 hover:bg-transparent ease-in-out duration-300"
+      >
+        <img
+          src={AppStoreBtn.src}
+          alt="Apple Store button"
+          width={225}
+          height={20}
+          loading="lazy"
+        />
+      </a>
+    </div>
 
     <img src={LogoNuevoMiHuella.src} alt="Nuevo Logo MiHuella" width='250px"' />
     <div class="flex gap-20">
@@ -58,4 +77,11 @@ import GoogleBtn from "../assets/images/GooglePlay Button.png";
       />
     </div>
   </article>
+  <img
+    src={HuellaHidricaBtn.src}
+    alt="Botón de la Huella Hídrica"
+    width="15%"
+    class="absolute opacity-80 hover:opacity-100 bottom-5 right-20"
+    loading="lazy"
+  />
 </section>

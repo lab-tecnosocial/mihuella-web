@@ -1,12 +1,18 @@
 ---
 import Cellphone from "../assets/images/cellphone.png";
 import GoogleBtn from "../assets/images/GooglePlay Button.png";
+import HuellaHidricaBtn from "../assets/images/huella-hidrica.png";
+import AppStoreBtn from "../assets/images/AppStore Button.png";
 ---
-<main   style="margin-top: 200px;"class="min-h-[75vh] min-w-[100%] bg-huella-text-gray-ligth">
+
+<main
+  style="margin-top: 140px;"
+  class="min-h-[75vh] min-w-[100%] bg-huella-text-gray-ligth"
+>
   <article
     class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-32 h-full px-4 md:px-[100px] mx-auto my-auto max-w-[2440px]"
   >
-    <div class="flex flex-col gap-7 md:gap-11 items-center md:w-[500px] ">
+    <div class="flex flex-col gap-7 md:gap-11 items-center md:w-[500px]">
       <h1
         class="text-center text-4xl md:text-6xl font-bold text-pretty animate-fade-up"
       >
@@ -22,24 +28,48 @@ import GoogleBtn from "../assets/images/GooglePlay Button.png";
         calcular y seguir tu impacto ambiental a través del consumo de energía, transporte
         y alimentación.
       </p>
-      <a
-        href="https://play.google.com/store/apps/details?id=org.labtecnosocial.mihuella"
-        class="transition-transform transform hover:scale-110 hover:bg-transparent ease-in-out duration-300"
-      >
-        <img
-          src={GoogleBtn.src}
-          alt="Google play button"
-          width={250}
-          height={20}
-          loading="lazy"
-        />
-      </a>
+      <div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-10 h-full px-4 mx-auto my-auto max-w-[2440px]">
+        <a
+          href="https://play.google.com/store/apps/details?id=org.labtecnosocial.mihuella"
+          class="transition-transform transform hover:scale-110 hover:bg-transparent ease-in-out duration-300"
+        >
+          <img
+            src={GoogleBtn.src}
+            alt="Google play button"
+            width={250}
+            height={20}
+            loading="lazy"
+            class="md:gap-3"
+          />
+        </a>
+        
+        <a
+          href="https://apps.apple.com/us/app/mi-huella-en-el-planeta/id6748420106"
+          class="transition-transform transform hover:scale-110 hover:bg-transparent ease-in-out duration-300">
+          <img
+            src={AppStoreBtn.src}
+            alt="Apple Store button"
+            width={225}
+            height={20}
+            loading="lazy"
+          />
+        </a>
+      </div>
     </div>
     <img
       src={Cellphone.src}
       alt="Imagen celular"
-      class="md:max-h-[600px] md:h-auto w-auto animate-fade-up "
+      class="md:max-h-[600px] md:h-auto w-auto animate-fade-up"
       loading="lazy"
     />
   </article>
+  <a href="#">
+    <img
+      src={HuellaHidricaBtn.src}
+      alt="Botón de la Huella Hídrica"
+      width="15%"
+      class="absolute opacity-80 hover:opacity-100 bottom-5 right-20"
+      loading="lazy"
+    />
+  </a>
 </main>
