@@ -28,11 +28,12 @@ import './styles.css';
     <img src="/public/img/huella-hidrica-icon.png" alt="gota de agua-calculadora dehuella hidrica"
      class="centered-image" />
     </div>
-    <p>Cada acción diaria, desde beber un vaso de agua hasta elegir qué comer, necesita agua. Pero no siempre vemos cuánta.
+    <p> <b>Cada acción diaria,</b> desde beber un vaso de agua hasta elegir qué comer, <b>necesita agua.</b> Pero no siempre vemos cuánta.
     </p>
     <p> La huella hídrica es un indicador que mide la cantidad de agua que usas de forma directa e indirecta, ayudándote a entender
-       mejor tu impacto y a encontrar maneras sencillas de reducirlo. Esta huella hídrica se basa en 4 categorías: higiene, limpieza,
-       bienes, alimentos y bebidas, repartidas en 22 preguntas</p>
+       mejor tu impacto y a encontrar maneras sencillas de reducirlo. </p>
+       <p> <b>Esta huella hídrica se basa en 4 categorías: higiene, limpieza,
+       bienes, alimentos y bebidas, repartidas en 22 preguntas </b></p>
 
     <button class="start-button" onclick="scrollToOrigin()">Comienza a calcular</button>
   </header>
@@ -40,16 +41,16 @@ import './styles.css';
 
   <main class="main-content">
     <!-- Origen -->
-    <section class="section">
+    <section class="section" id="origin-slide">
       <h2>0. Origen</h2>
        <div class="icon-origen">
         <img src="/public/img/huella-hidrica-origen.png" alt="icon-de-origen-calculadora dehuella hidrica"
      class="centered-image" />
           </div>
       <div class="form-group">
-        <label for="water-source">¿Cuál es la fuente de agua potable de tu hogar?</label>
+        <label for="water-source">  ¿Cuál es la fuente de agua potable de tu hogar?</label>
        
-        <!--codigo nuevo igual al diseño
+        <!--codigo nuevo igual al diseño probar 
         <div class="options">
             <label class="option">
               <input type="checkbox" name="water-source" value="red-agua" />
@@ -72,7 +73,7 @@ import './styles.css';
               <span>Ventas en bloque</span>
             </label>
           </div> -->
-      <select id="water-source" name="water-source">
+<select id="water-source" name="water-source">
           <option value="red-agua">Red de Agua (SEMAPA, EPSAS, SAGUAPAC)</option>
           <option value="pozos">Pozos (Gobierno municipal)</option>
           <option value="ventas-bloque">Ventas en bloque</option>
@@ -90,10 +91,12 @@ import './styles.css';
 
     <!-- Higiene -->
     <section class="section">
-      <h2>1. Uso doméstico directo</h2>
+      <h2>1. Higiene</h2>
       <div class="sub-section">
-        <h3>HIGIENE (5)</h3>
-        
+         <div class="icon-origen">
+        <img src="/public/img/higiene.png" alt="icon-de-higiene-calculadora dehuella hidrica"
+     class="centered-image" />
+          </div>
         <div class="form-group">
           <label for="shower-frequency">¿Cuántas veces te duchas a la semana?</label>
           <input type="number" id="shower-frequency" name="shower-frequency" min="0" max="7" />
@@ -136,6 +139,8 @@ import './styles.css';
       </div>
     </section>
 
+
+
     <!-- Results -->
     <section class="results-section">
       <h2>Resultados</h2>
@@ -148,6 +153,7 @@ import './styles.css';
     </section>
   </main>
 
+  
   <footer class="footer">
     <div class="footer-links">
       <a href="#">¿Cómo calculamos?</a>
@@ -240,12 +246,14 @@ import './styles.css';
     calculateWaterFootprint();
   });
 
+  // para redireccionar al siguiente bloque
   function scrollToOrigin() {
-        const originSection = document.getElementById('origin');
+        const originSection = document.getElementById('origin-slide');
         if (originSection) {
           originSection.scrollIntoView({ behavior: 'smooth' });
         }
       }
+
 </script>
 </div>
 

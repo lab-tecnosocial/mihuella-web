@@ -1,20 +1,22 @@
 
   .container {
     font-family: 'Roboto', sans-serif;
-    max-width: 800px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 30px;
     background-color: #f9f9f9;
+    width: 90%;
     color: #333;
   }
 
   .header  {
   text-align: center;
   margin-bottom: 30px;
-  padding: 20px;
+
   background-color: #e8f5e8;
   border-radius: 8px;
   position: relative;
+  width: 100%;
+  font-size: 20px;
 }
 
 .header-content {
@@ -55,7 +57,7 @@
   .header h1 {
     color: #2178BD;
     margin-top: 0;
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     font-weight: 800;
   }
 
@@ -88,6 +90,11 @@
     margin-left: 20px;
   }
 
+  .h3{
+    font-size: 30px;
+    text-align: center;
+  }
+
   .sub-section h3 {
     color: #333;
     margin-top: 0;
@@ -103,6 +110,8 @@
     margin-bottom: 5px;
     font-weight: bold;
     color: #333;
+    font-size: 22px;
+    text-align: center;
   }
 
   .form-group input[type="number"],
