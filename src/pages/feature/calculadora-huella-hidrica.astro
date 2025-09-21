@@ -1,0 +1,252 @@
+---
+import './styles.css';  
+
+---
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Calculadora de Huella Hídrica</title>
+  </head>
+  <body>
+     <!-- ...<div class="container">
+      <h1>Calcula tu huella hídrica</h1>
+      <p>Cada acción diaria necesita agua, desde beber un vaso de agua hasta elegir qué comer. La huella hídrica es un indicador que mide la cantidad de agua que usas de forma directa e indirecta.</p>
+       ... resto del contenido ... -->
+    </div>
+  </body>
+</html>
+
+<div class="container">
+  <header class="header">
+    <h1>Calcula tu huella hídrica</h1>
+    <div class="header-content"> 
+    <img src="/public/img/huella-hidrica-icon.png" alt="gota de agua-calculadora dehuella hidrica"
+     class="centered-image" />
+    </div>
+    <p>Cada acción diaria, desde beber un vaso de agua hasta elegir qué comer, necesita agua. Pero no siempre vemos cuánta.
+    </p>
+    <p> La huella hídrica es un indicador que mide la cantidad de agua que usas de forma directa e indirecta, ayudándote a entender
+       mejor tu impacto y a encontrar maneras sencillas de reducirlo. Esta huella hídrica se basa en 4 categorías: higiene, limpieza,
+       bienes, alimentos y bebidas, repartidas en 22 preguntas</p>
+
+    <button class="start-button" onclick="scrollToOrigin()">Comienza a calcular</button>
+  </header>
+
+
+  <main class="main-content">
+    <!-- Origen -->
+    <section class="section">
+      <h2>0. Origen</h2>
+       <div class="icon-origen">
+        <img src="/public/img/huella-hidrica-origen.png" alt="icon-de-origen-calculadora dehuella hidrica"
+     class="centered-image" />
+          </div>
+      <div class="form-group">
+        <label for="water-source">¿Cuál es la fuente de agua potable de tu hogar?</label>
+       
+        <!--codigo nuevo igual al diseño
+        <div class="options">
+            <label class="option">
+              <input type="checkbox" name="water-source" value="red-agua" />
+              <span>Red de agua (SEMAPA, EPSAS, SAGUAPAC)</span>
+            </label>
+            <label class="option">
+              <input type="checkbox" name="water-source" value="cooperativas" />
+              <span>Cooperativas</span>
+            </label>
+            <label class="option">
+              <input type="checkbox" name="water-source" value="cisternas" />
+              <span>Cisternas</span>
+            </label>
+            <label class="option">
+              <input type="checkbox" name="water-source" value="pozos" />
+              <span>Pozos (Gobierno municipal)</span>
+            </label>
+            <label class="option">
+              <input type="checkbox" name="water-source" value="ventas-bloque" />
+              <span>Ventas en bloque</span>
+            </label>
+          </div> -->
+      <select id="water-source" name="water-source">
+          <option value="red-agua">Red de Agua (SEMAPA, EPSAS, SAGUAPAC)</option>
+          <option value="pozos">Pozos (Gobierno municipal)</option>
+          <option value="ventas-bloque">Ventas en bloque</option>
+          <option value="cooperativas">Cooperativas</option>
+          <option value="cisternas">Cisternas</option>
+        </select>
+      </div>
+
+
+      <div class="form-group">
+        <label for="water-cost">¿Cuánto pagas al mes por tu consumo de agua potable? (en Bs)</label>
+        <input type="number" id="water-cost" name="water-cost" placeholder="Ingrese un número" />
+      </div>
+    </section>
+
+    <!-- Higiene -->
+    <section class="section">
+      <h2>1. Uso doméstico directo</h2>
+      <div class="sub-section">
+        <h3>HIGIENE (5)</h3>
+        
+        <div class="form-group">
+          <label for="shower-frequency">¿Cuántas veces te duchas a la semana?</label>
+          <input type="number" id="shower-frequency" name="shower-frequency" min="0" max="7" />
+        </div>
+
+        <div class="form-group">
+          <label for="shower-duration">¿De cuánto tiempo son tus duchas? (en minutos)</label>
+          <select id="shower-duration" name="shower-duration">
+            <option value="less-10">menos de 10 minutos</option>
+            <option value="10-20">10 a 20 minutos</option>
+            <option value="30-60">30 minutos a 1 hora</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="brush-teeth">¿Cuántas veces al día te lavas los dientes?</label>
+          <select id="brush-teeth" name="brush-teeth">
+            <option value="once">1 vez</option>
+            <option value="twice">2 veces</option>
+            <option value="thrice">3 veces o más</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="wash-hands">¿Cuántas veces al día te lavas las manos?</label>
+          <select id="wash-hands" name="wash-hands">
+            <option value="2-3">2 a 3 veces</option>
+            <option value="3-5">3 a 5 veces</option>
+            <option value="more-5">más de 5 veces</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="toilet-type">¿Tienes inodoro ahorrador o tradicional?</label>
+          <select id="toilet-type" name="toilet-type">
+            <option value="saver">Ahorrador</option>
+            <option value="traditional">Tradicional</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results -->
+    <section class="results-section">
+      <h2>Resultados</h2>
+      <div class="results-container">
+        <div class="result-item">
+          <span class="result-label">Consumo total de agua (litros/mes):</span>
+          <span id="total-water-consumption" class="result-value">0</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="#">¿Cómo calculamos?</a>
+      <a href="#">Sobre nosotros</a>
+      <a href="#">¿Ya Conoces tu huella de Carbono?</a>
+    </div>
+    <p>© 2025 Calculadora de Huella Hídrica</p>
+  </footer>
+
+<script>
+  // Función para calcular la huella hídrica
+  function calculateWaterFootprint() {
+    // Obtener elementos del formulario con tipos correctos
+    const showerFrequencyInput = document.getElementById('shower-frequency') as HTMLInputElement;
+    const showerDurationSelect = document.getElementById('shower-duration') as HTMLSelectElement;
+    const brushTeethSelect = document.getElementById('brush-teeth') as HTMLSelectElement;
+    const washHandsSelect = document.getElementById('wash-hands') as HTMLSelectElement;
+    const toiletTypeSelect = document.getElementById('toilet-type') as HTMLSelectElement;
+
+    // Verificar que los elementos existan
+    if (!showerFrequencyInput || !showerDurationSelect || !brushTeethSelect || !washHandsSelect || !toiletTypeSelect) {
+      console.error("Uno o más elementos del formulario no fueron encontrados.");
+      return;
+    }
+
+    // Obtener valores seguros
+    const showerFrequency = parseInt(showerFrequencyInput.value) || 0;
+    const showerDuration = showerDurationSelect.value;
+    const brushTeeth = brushTeethSelect.value;
+    const washHands = washHandsSelect.value;
+    const toiletType = toiletTypeSelect.value;
+
+    // Calcular el consumo de agua
+    let totalConsumption = 0;
+
+    // Cálculo de duchas
+    if (showerFrequency > 0) {
+      if (showerDuration === 'less-10') {
+        totalConsumption += showerFrequency * 20 * 10; // 20 litros/min * 10 min
+      } else if (showerDuration === '10-20') {
+        totalConsumption += showerFrequency * 20 * 15; // 20 litros/min * 15 min (promedio)
+      } else if (showerDuration === '30-60') {
+        totalConsumption += showerFrequency * 20 * 45; // 20 litros/min * 45 min (promedio)
+      }
+    }
+
+    // Cálculo de cepillado de dientes
+    if (brushTeeth === 'once') {
+      totalConsumption += 5 * 60; // 5 litros/min * 60 segundos (1 minuto promedio)
+    } else if (brushTeeth === 'twice') {
+      totalConsumption += 5 * 60 * 2; // 5 litros/min * 60 segundos * 2 veces
+    } else if (brushTeeth === 'thrice') {
+      totalConsumption += 5 * 60 * 3; // 5 litros/min * 60 segundos * 3 veces
+    }
+
+    // Cálculo de lavado de manos
+    if (washHands === '2-3') {
+      totalConsumption += 1.5 * 2.5; // 1.5 litros/lavado * 2.5 lavados promedio
+    } else if (washHands === '3-5') {
+      totalConsumption += 1.5 * 4; // 1.5 litros/lavado * 4 lavados promedio
+    } else if (washHands === 'more-5') {
+      totalConsumption += 1.5 * 6; // 1.5 litros/lavado * 6 lavados promedio
+    }
+
+    // Cálculo de inodoro
+    if (toiletType === 'traditional') {
+      totalConsumption += 10 * 10; // 10 litros por tanque * 10 descargas promedio al día * 30 días
+    } else if (toiletType === 'saver') {
+      totalConsumption += 5 * 10; // 5 litros por tanque * 10 descargas promedio al día * 30 días
+    }
+
+    // Mostrar resultados
+    const resultElement = document.getElementById('total-water-consumption');
+    if (resultElement) {
+      resultElement.textContent = Math.round(totalConsumption).toString();
+    }
+  }
+
+  // Event listener para el cálculo cuando se cambia cualquier valor
+  document.addEventListener('DOMContentLoaded', function () {
+    // Seleccionar todos los elementos del formulario
+    const formElements = document.querySelectorAll('input, select');
+    
+    // Agregar evento de cambio a cada elemento
+    formElements.forEach(element => {
+      element.addEventListener('change', calculateWaterFootprint);
+    });
+    
+    // Inicializar cálculo
+    calculateWaterFootprint();
+  });
+
+  function scrollToOrigin() {
+        const originSection = document.getElementById('origin');
+        if (originSection) {
+          originSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+</script>
+</div>
+
+
