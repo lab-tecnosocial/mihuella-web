@@ -13,145 +13,113 @@ import './styles.css';
     <title>Calculadora de Huella Hídrica</title>
   </head>
   <body>
-     <!-- ...<div class="container">
-      <h1>Calcula tu huella hídrica</h1>
-      <p>Cada acción diaria necesita agua, desde beber un vaso de agua hasta elegir qué comer. La huella hídrica es un indicador que mide la cantidad de agua que usas de forma directa e indirecta.</p>
-       ... resto del contenido ... -->
-    </div>
-  </body>
-</html>
-
-<div class="container">
-  <header class="header">
-    <h1>Calcula tu huella hídrica</h1>
-    <div class="header-content"> 
-    <img src="/public/img/huella-hidrica-icon.png" alt="gota de agua-calculadora dehuella hidrica"
+  <div class="water-calculator">
+   
+ <!-- Paso 0: Introducción -->
+     <div id="step0" class="question">
+      <h1>¡Calcula tu Huella Hídrica!</h1>
+        <img src="/public/img/huella-hidrica-icon.png" alt="gota de agua-calculadora dehuella hidrica"
      class="centered-image" />
-    </div>
-    <p> <b>Cada acción diaria,</b> desde beber un vaso de agua hasta elegir qué comer, <b>necesita agua.</b> Pero no siempre vemos cuánta.
+      
+    <b>Cada acción diaria,</b> desde beber un vaso de agua hasta elegir qué comer, <b>necesita agua.</b> Pero no siempre vemos cuánta.
     </p>
     <p> La huella hídrica es un indicador que mide la cantidad de agua que usas de forma directa e indirecta, ayudándote a entender
        mejor tu impacto y a encontrar maneras sencillas de reducirlo. </p>
        <p> <b>Esta huella hídrica se basa en 4 categorías: higiene, limpieza,
        bienes, alimentos y bebidas, repartidas en 22 preguntas </b></p>
-
-    <button class="start-button" onclick="scrollToOrigin()">Comienza a calcular</button>
-  </header>
-
-
-  <main class="main-content">
-    <!-- Origen -->
-    <section class="section" id="origin-slide">
-      <h2>0. Origen</h2>
-       <div class="icon-origen">
-        <img src="/public/img/huella-hidrica-origen.png" alt="icon-de-origen-calculadora dehuella hidrica"
+   
+      <button id="nextToStep1" class="next-btn" enabled>Comienza a calcular</button>
+    </div>
+  
+ 
+<!-- Pregunta 1: Origen-->
+    <div id="step1" class="question" style="display: none;"> 
+        <h2>Origen</h2>
+       <img src="/public/img/huella-hidrica-origen.png" alt="gota de agua-calculadora dehuella hidrica"
      class="centered-image" />
+    
+      <h3>¿Cuál es la fuente de agua potable en tu hogar?</h3>
+     <div class="checkbox-group">
+          <div class="checkbox-item">
+            <input type="checkbox" id="redAgua" />
+            <label for="redAgua">Red de agua (SEMAPA, EPSAS, SAGUAPAC)</label>
           </div>
-      <div class="form-group">
-        <label for="water-source">  ¿Cuál es la fuente de agua potable de tu hogar?</label>
-       
-        <!--codigo nuevo igual al diseño probar 
-        <div class="options">
-            <label class="option">
-              <input type="checkbox" name="water-source" value="red-agua" />
-              <span>Red de agua (SEMAPA, EPSAS, SAGUAPAC)</span>
-            </label>
-            <label class="option">
-              <input type="checkbox" name="water-source" value="cooperativas" />
-              <span>Cooperativas</span>
-            </label>
-            <label class="option">
-              <input type="checkbox" name="water-source" value="cisternas" />
-              <span>Cisternas</span>
-            </label>
-            <label class="option">
-              <input type="checkbox" name="water-source" value="pozos" />
-              <span>Pozos (Gobierno municipal)</span>
-            </label>
-            <label class="option">
-              <input type="checkbox" name="water-source" value="ventas-bloque" />
-              <span>Ventas en bloque</span>
-            </label>
-          </div> -->
-<select id="water-source" name="water-source">
-          <option value="red-agua">Red de Agua (SEMAPA, EPSAS, SAGUAPAC)</option>
-          <option value="pozos">Pozos (Gobierno municipal)</option>
-          <option value="ventas-bloque">Ventas en bloque</option>
-          <option value="cooperativas">Cooperativas</option>
-          <option value="cisternas">Cisternas</option>
-        </select>
-      </div>
+          <div class="checkbox-item">
+            <input type="checkbox" id="cooperativas" />
+            <label for="cooperativas">Cooperativas</label>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" id="ventasBloque" />
+            <label for="ventasBloque">Ventas en bloque</label>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" id="cisternas" />
+            <label for="cisternas">Cisternas</label>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" id="pozos" />
+            <label for="pozos">Pozos (Gobierno municipal)</label>
+          </div> 
+     </div> 
 
+      <h3>¿Cuántas personas viven en su hogar?</h3>
+     <div class="input-number">
+          <input type="number" placeholder="Ingresa un número" min="1" max="20" />
+     </div>
+      <button id="nextToStep2" class="next-btn" enabled>Siguiente pregunta</button>
+    
+  <!-- Flechas de navegación -->
+    <div class="nav-arrows">
+      <div class="arrow" id="prevArrow"><</div>
+      <div class="arrow" id="nextArrow">> </div>
+    </div>
+    </div>
+   
 
-      <div class="form-group">
-        <label for="water-cost">¿Cuánto pagas al mes por tu consumo de agua potable? (en Bs)</label>
-        <input type="number" id="water-cost" name="water-cost" placeholder="Ingrese un número" />
-      </div>
-    </section>
-
-    <!-- Higiene -->
-    <section class="section">
-      <h2>1. Higiene</h2>
-      <div class="sub-section">
-         <div class="icon-origen">
-        <img src="/public/img/higiene.png" alt="icon-de-higiene-calculadora dehuella hidrica"
+<!-- Pregunta 2: Higiene duchas a la semana -->
+    <div id="step2" class="question" style="display: none;">
+      <h2>Higiene</h2>
+      <h3>¿Cuántas veces te duchas a la semana?</h3>
+        <img src="/public/img/higiene.png" alt="duchas a las semana"
      class="centered-image" />
-          </div>
-        <div class="form-group">
-          <label for="shower-frequency">¿Cuántas veces te duchas a la semana?</label>
-          <input type="number" id="shower-frequency" name="shower-frequency" min="0" max="7" />
-        </div>
+      
+    <div id=shower-frequency" class="input-number">
+          <input type="number" placeholder="Ingresa un número" min="1" max="20" />
+     </div>
+      <button id="nextToStep3" class="next-btn" enabled>Siguiente pregunta</button>
+    
+    <!-- Flechas de navegación aunque no sirven -->
+    <div class="nav-arrows">
+      <div class="arrow" id="prevArrow"><</div>
+      <div class="arrow" id="nextArrow">></div>
+    </div>
+     </div>
+    
 
-        <div class="form-group">
-          <label for="shower-duration">¿De cuánto tiempo son tus duchas? (en minutos)</label>
-          <select id="shower-duration" name="shower-duration">
-            <option value="less-10">menos de 10 minutos</option>
-            <option value="10-20">10 a 20 minutos</option>
-            <option value="30-60">30 minutos a 1 hora</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="brush-teeth">¿Cuántas veces al día te lavas los dientes?</label>
-          <select id="brush-teeth" name="brush-teeth">
-            <option value="once">1 vez</option>
-            <option value="twice">2 veces</option>
-            <option value="thrice">3 veces o más</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="wash-hands">¿Cuántas veces al día te lavas las manos?</label>
-          <select id="wash-hands" name="wash-hands">
-            <option value="2-3">2 a 3 veces</option>
-            <option value="3-5">3 a 5 veces</option>
-            <option value="more-5">más de 5 veces</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="toilet-type">¿Tienes inodoro ahorrador o tradicional?</label>
-          <select id="toilet-type" name="toilet-type">
-            <option value="saver">Ahorrador</option>
-            <option value="traditional">Tradicional</option>
-          </select>
-        </div>
-      </div>
-    </section>
+<!-- Pregunta 3: Higiene tiempo de las duchas -->
+    <div id="step3" class="question" style="display: none;">
+      <p>¿De cuánto tiempo son tus duchas?</p>
+  <!-- Botones de opción -->
+    <div id="showerDuration" class="options-container">
+      <button class="option-btn" data-value="menos10">Menos de 10 minutos</button>
+      <button class="option-btn" data-value="10a20">10 a 20 minutos</button>
+      <button class="option-btn" data-value="30a60">3 min a 1 hora</button>
+    </div>
+      <button id="nextToStep4" class="next-btn" enabled>Siguiente pregunta</button>
+    </div>
 
 
 
-    <!-- Results -->
-    <section class="results-section">
-      <h2>Resultados</h2>
-      <div class="results-container">
-        <div class="result-item">
-          <span class="result-label">Consumo total de agua (litros/mes):</span>
-          <span id="total-water-consumption" class="result-value">0</span>
-        </div>
-      </div>
-    </section>
-  </main>
+    <!--Resultados ponerlo en un div step final-->
+    <div id="result" class="result">
+      Su huella hídrica estimada es: <span id="waterFootprintResult">0</span> litros por día.
+    </div>
+  </div>
+  </div>
+
+
+  </body>
+</html>
 
   
   <footer class="footer">
@@ -163,33 +131,50 @@ import './styles.css';
     <p>© 2025 Calculadora de Huella Hídrica</p>
   </footer>
 
+
+
 <script>
-  // Función para calcular la huella hídrica
-  function calculateWaterFootprint() {
-    // Obtener elementos del formulario con tipos correctos
-    const showerFrequencyInput = document.getElementById('shower-frequency') as HTMLInputElement;
-    const showerDurationSelect = document.getElementById('shower-duration') as HTMLSelectElement;
-    const brushTeethSelect = document.getElementById('brush-teeth') as HTMLSelectElement;
-    const washHandsSelect = document.getElementById('wash-hands') as HTMLSelectElement;
-    const toiletTypeSelect = document.getElementById('toilet-type') as HTMLSelectElement;
 
-    // Verificar que los elementos existan
-    if (!showerFrequencyInput || !showerDurationSelect || !brushTeethSelect || !washHandsSelect || !toiletTypeSelect) {
-      console.error("Uno o más elementos del formulario no fueron encontrados.");
-      return;
-    }
+  // Simulación de cambio de pantalla al hacer clic en las flechas
+    document.getElementById('prevArrow').addEventListener('click', function() {
+      alert("← Ir a la pantalla anterior (no implementada)");
+      // Aquí podrías cambiar el contenido o redirigir
+    });
 
-    // Obtener valores seguros
-    const showerFrequency = parseInt(showerFrequencyInput.value) || 0;
-    const showerDuration = showerDurationSelect.value;
-    const brushTeeth = brushTeethSelect.value;
-    const washHands = washHandsSelect.value;
-    const toiletType = toiletTypeSelect.value;
+    document.getElementById('nextArrow').addEventListener('click', function() {
+      alert("→ Ir a la siguiente pantalla (no implementada)");
+      // Aquí podrías cambiar el contenido o redirigir
+    });
 
-    // Calcular el consumo de agua
-    let totalConsumption = 0;
 
-    // Cálculo de duchas
+// Validación y lógica para el Paso 0 introduccion
+  document.getElementById('nextToStep1').addEventListener('click', function() {
+  document.getElementById('step0').style.display = 'none';
+  document.getElementById('step1').style.display = 'block';
+});
+
+    // lógica para el Paso 1 fuente de agua potable
+   
+    const nextToStep2Btn = document.getElementById('nextToStep2');
+    nextToStep2Btn.addEventListener('click', function() {
+      document.getElementById('step1').style.display = 'none';
+      document.getElementById('step2').style.display = 'block';
+    });
+
+    
+    // lógica para el Paso 2- cuantas veces te duchas a la semana
+    const nextToStep3Btn = document.getElementById('nextToStep3');
+    nextToStep3Btn.addEventListener('click', function() {
+      document.getElementById('step2').style.display = 'none';
+      document.getElementById('step3').style.display = 'block';
+    });
+// lógica para el Paso 3 - tiempo de duchas
+// Cálculo de duchas
+const showerFrequencyInput = document.getElementById('shower-frequency') as HTMLInputElement;
+const showerDurationSelect = document.getElementById('shower-duration') as HTMLSelectElement;   
+
+const showerFrequency = parseInt(showerFrequencyInput.value) || 0;
+   const showerDuration = showerDurationSelect.value;
     if (showerFrequency > 0) {
       if (showerDuration === 'less-10') {
         totalConsumption += showerFrequency * 20 * 10; // 20 litros/min * 10 min
@@ -200,61 +185,18 @@ import './styles.css';
       }
     }
 
-    // Cálculo de cepillado de dientes
-    if (brushTeeth === 'once') {
-      totalConsumption += 5 * 60; // 5 litros/min * 60 segundos (1 minuto promedio)
-    } else if (brushTeeth === 'twice') {
-      totalConsumption += 5 * 60 * 2; // 5 litros/min * 60 segundos * 2 veces
-    } else if (brushTeeth === 'thrice') {
-      totalConsumption += 5 * 60 * 3; // 5 litros/min * 60 segundos * 3 veces
-    }
 
-    // Cálculo de lavado de manos
-    if (washHands === '2-3') {
-      totalConsumption += 1.5 * 2.5; // 1.5 litros/lavado * 2.5 lavados promedio
-    } else if (washHands === '3-5') {
-      totalConsumption += 1.5 * 4; // 1.5 litros/lavado * 4 lavados promedio
-    } else if (washHands === 'more-5') {
-      totalConsumption += 1.5 * 6; // 1.5 litros/lavado * 6 lavados promedio
-    }
-
-    // Cálculo de inodoro
-    if (toiletType === 'traditional') {
-      totalConsumption += 10 * 10; // 10 litros por tanque * 10 descargas promedio al día * 30 días
-    } else if (toiletType === 'saver') {
-      totalConsumption += 5 * 10; // 5 litros por tanque * 10 descargas promedio al día * 30 días
-    }
-
-    // Mostrar resultados
-    const resultElement = document.getElementById('total-water-consumption');
-    if (resultElement) {
-      resultElement.textContent = Math.round(totalConsumption).toString();
-    }
-  }
-
-  // Event listener para el cálculo cuando se cambia cualquier valor
-  document.addEventListener('DOMContentLoaded', function () {
-    // Seleccionar todos los elementos del formulario
-    const formElements = document.querySelectorAll('input, select');
-    
-    // Agregar evento de cambio a cada elemento
-    formElements.forEach(element => {
-      element.addEventListener('change', calculateWaterFootprint);
+    const nextToStep4Btn = document.getElementById('nextToStep4');
+    nextToStep4Btn.addEventListener('click', function() {
+      document.getElementById('step3').style.display = 'none';
+      document.getElementById('step4').style.display = 'block';
     });
     
-    // Inicializar cálculo
-    calculateWaterFootprint();
-  });
 
-  // para redireccionar al siguiente bloque
-  function scrollToOrigin() {
-        const originSection = document.getElementById('origin-slide');
-        if (originSection) {
-          originSection.scrollIntoView({ behavior: 'smooth' });
-        }
-      }
 
-</script>
+  
+
+  </script>
 </div>
 
 
