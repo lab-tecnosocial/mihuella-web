@@ -16,24 +16,23 @@ import './styles.css';
   <div class="water-calculator">
    
  <!-- Paso 0: Introducción -->
-     <div id="step0" class="question">
+     <div id="step0" >
       <h1>¡Calcula tu Huella Hídrica!</h1>
         <img src="/public/img/huella-hidrica-icon.png" alt="gota de agua-calculadora dehuella hidrica"
      class="centered-image" />
       
-    <b>Cada acción diaria,</b> desde beber un vaso de agua hasta elegir qué comer, <b>necesita agua.</b> Pero no siempre vemos cuánta.
-    </p>
+    <p><b>Cada acción diaria,</b> desde beber un vaso de agua hasta elegir qué comer, <b>necesita agua.</b> Pero no siempre vemos cuánta.</p>
     <p> La huella hídrica es un indicador que mide la cantidad de agua que usas de forma directa e indirecta, ayudándote a entender
        mejor tu impacto y a encontrar maneras sencillas de reducirlo. </p>
        <p> <b>Esta huella hídrica se basa en 4 categorías: higiene, limpieza,
        bienes, alimentos y bebidas, repartidas en 22 preguntas </b></p>
    
-      <button id="nextToStep1" class="next-btn" enabled>Comienza a calcular</button>
+      <button id="nextToStep1" class="next-btn">Comienza a calcular</button>
     </div>
   
  
 <!-- Pregunta 1: Origen-->
-    <div id="step1" class="question" style="display: none;"> 
+    <div id="step1"  style="display: none;"> 
         <h2>Origen</h2>
        <img src="/public/img/huella-hidrica-origen.png" alt="gota de agua-calculadora dehuella hidrica"
      class="centered-image" />
@@ -64,40 +63,30 @@ import './styles.css';
 
       <h3>¿Cuántas personas viven en su hogar?</h3>
      <div class="input-number">
-          <input type="number" placeholder="Ingresa un número" min="1" max="20" />
+          <input type="number" id="numPeople" placeholder="Ingresa un número" min="1" max="20" />
      </div>
-      <button id="nextToStep2" class="next-btn" enabled>Siguiente pregunta</button>
+      <button id="nextToStep2" class="next-btn">Siguiente pregunta</button>
     
-  <!-- Flechas de navegación -->
-    <div class="nav-arrows">
-      <div class="arrow" id="prevArrow"><</div>
-      <div class="arrow" id="nextArrow">> </div>
-    </div>
-    </div>
+   </div>
    
 
 <!-- Pregunta 2: Higiene duchas a la semana -->
-    <div id="step2" class="question" style="display: none;">
+    <div id="step2"  style="display: none;">
       <h2>Higiene</h2>
       <h3>¿Cuántas veces te duchas a la semana?</h3>
         <img src="/public/img/higiene.png" alt="duchas a las semana"
      class="centered-image" />
       
-    <div id=shower-frequency" class="input-number">
-          <input type="number" placeholder="Ingresa un número" min="1" max="20" />
+    <div id="shower-frequency" class="input-number">
+          <input type="number" id="showerFrequencyInput" placeholder="Ingresa un número" min="1" max="20" />
      </div>
-      <button id="nextToStep3" class="next-btn" enabled>Siguiente pregunta</button>
+      <button id="nextToStep3" class="next-btn">Siguiente pregunta</button>
     
-    <!-- Flechas de navegación aunque no sirven -->
-    <div class="nav-arrows">
-      <div class="arrow" id="prevArrow"><</div>
-      <div class="arrow" id="nextArrow">></div>
-    </div>
      </div>
     
 
 <!-- Pregunta 3: Higiene tiempo de las duchas -->
-    <div id="step3" class="question" style="display: none;">
+    <div id="step3" style="display: none;">
       <p>¿De cuánto tiempo son tus duchas?</p>
   <!-- Botones de opción -->
     <div id="showerDuration" class="options-container">
@@ -105,9 +94,89 @@ import './styles.css';
       <button class="option-btn" data-value="10a20">10 a 20 minutos</button>
       <button class="option-btn" data-value="30a60">3 min a 1 hora</button>
     </div>
-      <button id="nextToStep4" class="next-btn" enabled>Siguiente pregunta</button>
+      <button id="nextToStep4" class="next-btn">Siguiente pregunta</button>
     </div>
 
+<!-- Pregunta 2: Higiene duchas a la semana -->
+    <div id="step2"  style="display: none;">
+      <h2>Higiene</h2>
+      <h3>¿Cuántas veces te duchas a la semana?</h3>
+        <img src="/public/img/higiene.png" alt="duchas a las semana"
+     class="centered-image" />
+      
+    <div id="shower-frequency" class="input-number">
+          <input type="number" id="showerFrequencyInput" placeholder="Ingresa un número" min="1" max="20" />
+     </div>
+      <button id="nextToStep3" class="next-btn">Siguiente pregunta</button>
+     </div>
+
+<!-- Seccion bienes y servicios pregunta 22-->
+    <div id="step22" style="display: none;">
+      <h2>Bienes y Servicios</h2>
+ 
+        <img src="/public/img/bienes-y-servicios.png" alt="bienes y servicios en la huella hidrica"
+     class="centered-image" />
+          <h3>¿Cuántas veces compras ropa o calzado <b> nuevo</b> al año?</h3>
+      
+     <div id="purchaseFrequency" class="frequency-options">
+      <button class="freq-btn" data-value="1">1 vez al año</button>
+      <button class="freq-btn" data-value="6+">Más de 6 veces</button>
+      <button class="freq-btn" data-value="2-5">Entre 2 a 5 veces</button>
+    </div>
+
+    <!-- Pregunta 23: Cantidad por producto -->
+      <h3> ¿Cuántos de estos productos compras al año?</h3>
+    <div id="productCounters" class="products-container">
+      <!-- Tenis -->
+      <div class="product-item" data-product="tenis">
+        <img src="/public/img/tenis-HH.png" alt="tenis-icon" />
+        <p>Tenis</p>
+        <div class="counter-controls">
+          <button class="counter-btn" data-action="decrement">-</button>
+          <span class="counter-value" id="tenisCount">0</span>
+          <button class="counter-btn" data-action="increment">+</button>
+        </div>
+      </div>
+
+      <!-- Camiseta -->
+      <div class="product-item" data-product="camiseta">
+         <img src="/public/img/camiseta-HH.png" alt="camiseta-icon"/>
+        <p>Camiseta (algodón)</p>
+        <div class="counter-controls">
+          <button class="counter-btn" data-action="decrement">-</button>
+          <span class="counter-value" id="camisetaCount">0</span>
+          <button class="counter-btn" data-action="increment">+</button>
+        </div>
+      </div>
+
+      <!-- Jeans -->
+      <div class="product-item" data-product="jeans">
+        <img src="/public/img/jeans-HH.png" alt="camiseta-icon"/>
+        <p>Jeans</p>
+        <div class="counter-controls">
+          <button class="counter-btn" data-action="decrement">-</button>
+          <span class="counter-value" id="jeansCount">0</span>
+          <button class="counter-btn" data-action="increment">+</button>
+        </div>
+      </div>
+      </div>
+      
+      <button id="nextToStep22" class="next-btn">Siguiente pregunta</button>
+     </div>
+ 
+<!-- Seccion bienes y servicios pregunta 24-->
+ <div id="step23"  style="display: none;">
+      <h2>Bienes y servicios</h2>
+        <img src="/public/img/bienes-y-servicios2.png" alt="duchas a las semana"
+     class="centered-image" />
+         <h3>¿Cuántos celulares has tenido durante los últimos 5 años?</h3>
+    <!-- Contador -->
+    <div class="counter-controls">
+      <button class="counter-btn" id="decrementBtn">-</button>
+      <span class="counter-value" id="cellphoneCount">0</span>
+      <button class="counter-btn" id="incrementBtn">+</button>
+    </div>
+     
 
 
     <!--Resultados ponerlo en un div step final-->
@@ -115,13 +184,7 @@ import './styles.css';
       Su huella hídrica estimada es: <span id="waterFootprintResult">0</span> litros por día.
     </div>
   </div>
-  </div>
 
-
-  </body>
-</html>
-
-  
   <footer class="footer">
     <div class="footer-links">
       <a href="#">¿Cómo calculamos?</a>
@@ -131,72 +194,136 @@ import './styles.css';
     <p>© 2025 Calculadora de Huella Hídrica</p>
   </footer>
 
+</body>
+</html>
+
 
 
 <script>
 
-  // Simulación de cambio de pantalla al hacer clic en las flechas
-    document.getElementById('prevArrow').addEventListener('click', function() {
-      alert("← Ir a la pantalla anterior (no implementada)");
-      // Aquí podrías cambiar el contenido o redirigir
-    });
+let totalConsumption = 0;
+let selectedDuration = '';
+let numPeople = 1;
 
-    document.getElementById('nextArrow').addEventListener('click', function() {
-      alert("→ Ir a la siguiente pantalla (no implementada)");
-      // Aquí podrías cambiar el contenido o redirigir
-    });
-
-
-// Validación y lógica para el Paso 0 introduccion
-  document.getElementById('nextToStep1').addEventListener('click', function() {
-  document.getElementById('step0').style.display = 'none';
-  document.getElementById('step1').style.display = 'block';
+// Step 0 to 1
+document.getElementById('nextToStep1')!.addEventListener('click', function() {
+  document.getElementById('step0')!.style.display = 'none';
+  document.getElementById('step1')!.style.display = 'block';
 });
 
-    // lógica para el Paso 1 fuente de agua potable
-   
-    const nextToStep2Btn = document.getElementById('nextToStep2');
-    nextToStep2Btn.addEventListener('click', function() {
-      document.getElementById('step1').style.display = 'none';
-      document.getElementById('step2').style.display = 'block';
-    });
+// Step 1 to 2
+const nextToStep2Btn = document.getElementById('nextToStep2')!;
+nextToStep2Btn.addEventListener('click', function() {
+  numPeople = parseInt((document.getElementById('numPeople') as HTMLInputElement).value) || 1;
+  document.getElementById('step1')!.style.display = 'none';
+  document.getElementById('step2')!.style.display = 'block';
+});
 
-    
-    // lógica para el Paso 2- cuantas veces te duchas a la semana
-    const nextToStep3Btn = document.getElementById('nextToStep3');
-    nextToStep3Btn.addEventListener('click', function() {
-      document.getElementById('step2').style.display = 'none';
-      document.getElementById('step3').style.display = 'block';
-    });
-// lógica para el Paso 3 - tiempo de duchas
-// Cálculo de duchas
-const showerFrequencyInput = document.getElementById('shower-frequency') as HTMLInputElement;
-const showerDurationSelect = document.getElementById('shower-duration') as HTMLSelectElement;   
+// Step 2 to 3
+const nextToStep3Btn = document.getElementById('nextToStep3')!;
+nextToStep3Btn.addEventListener('click', function() {
+  document.getElementById('step2')!.style.display = 'none';
+  document.getElementById('step3')!.style.display = 'block';
+});
 
-const showerFrequency = parseInt(showerFrequencyInput.value) || 0;
-   const showerDuration = showerDurationSelect.value;
-    if (showerFrequency > 0) {
-      if (showerDuration === 'less-10') {
-        totalConsumption += showerFrequency * 20 * 10; // 20 litros/min * 10 min
-      } else if (showerDuration === '10-20') {
-        totalConsumption += showerFrequency * 20 * 15; // 20 litros/min * 15 min (promedio)
-      } else if (showerDuration === '30-60') {
-        totalConsumption += showerFrequency * 20 * 45; // 20 litros/min * 45 min (promedio)
-      }
+
+
+
+// For step 3 buttons
+const optionBtns = document.querySelectorAll('.option-btn');
+optionBtns.forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    selectedDuration = (e.target as HTMLElement).dataset.value || '';
+    // Optional: highlight selected
+    optionBtns.forEach(b => b.classList.remove('selected'));
+    (e.target as HTMLElement).classList.add('selected');
+  });
+});
+
+// Step 3 codigo para el cálculo 
+const nextToStep4Btn = document.getElementById('nextToStep4')!;
+nextToStep4Btn.addEventListener('click', function() {
+  const showerFrequency = parseInt((document.getElementById('showerFrequencyInput') as HTMLInputElement).value) || 0;
+  if (showerFrequency > 0 && selectedDuration) {
+    let litersPerShower = 0;
+    if (selectedDuration === 'menos10') {
+      litersPerShower = 20 * 10;
+    } else if (selectedDuration === '10a20') {
+      litersPerShower = 20 * 15;
+    } else if (selectedDuration === '30a60') {
+      litersPerShower = 20 * 45;
     }
+    totalConsumption = showerFrequency * litersPerShower * numPeople;
+    // Assume weekly, convert to daily
+    totalConsumption = Math.round(totalConsumption / 7);
+  }
+  document.getElementById('waterFootprintResult')!.textContent = totalConsumption.toString();
+  document.getElementById('step3')!.style.display = 'none';
+  document.getElementById('result')!.style.display = 'block';
+});
 
+// Step 3 to 22
+const nextToStepBtn = document.getElementById('nextToStep3')!;
+nextToStep3Btn.addEventListener('click', function() {
+  document.getElementById('step2')!.style.display = 'none';
+  document.getElementById('step22')!.style.display = 'block';
+});
 
-    const nextToStep4Btn = document.getElementById('nextToStep4');
-    nextToStep4Btn.addEventListener('click', function() {
-      document.getElementById('step3').style.display = 'none';
-      document.getElementById('step4').style.display = 'block';
+//pregunta 22 - 23
+const nextToStepBtn1 = document.getElementById('nextToStep3')!;
+nextToStep3Btn.addEventListener('click', function() {
+  document.getElementById('step2')!.style.display = 'none';
+  document.getElementById('step23')!.style.display = 'blo';
+});
+
+ document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.counter-btn').forEach(button => {
+        button.addEventListener('click', function() {
+          const action = this.getAttribute('data-action');
+          const productItem = this.closest('.product-item');
+          if (!productItem) return;
+
+          const product = productItem.getAttribute('data-product');
+          const countElement = document.getElementById(`${product}Count`);
+          if (!countElement) return;
+
+          let count = parseInt(countElement.textContent, 10) || 0;
+
+          if (action === 'increment') {
+            count++;
+          } else if (action === 'decrement' && count > 0) {
+            count--;
+          }
+
+          countElement.textContent = count;
+        });
+      });
     });
-    
+
+ // boton de mas y menos de pregunta 23
+ let cellphoneCount = 0;
+ const display = document.getElementById('cellphoneCount') as HTMLSpanElement;
+
+ if (!display) {
+   console.error('Display element not found');
+ } else {
+   const decrementBtn = document.getElementById('decrementBtn') as HTMLButtonElement;
+   const incrementBtn = document.getElementById('incrementBtn') as HTMLButtonElement;
+
+   if (decrementBtn) {
+     decrementBtn.addEventListener('click', () => {
+       if (cellphoneCount > 0) display.textContent = (--cellphoneCount).toString();
+     });
+   }
+
+   if (incrementBtn) {
+     incrementBtn.addEventListener('click', () => {
+       display.textContent = (++cellphoneCount).toString();
+     });
+   }
+ }
 
 
-  
-
-  </script>
-</div>
+</script>
 
 

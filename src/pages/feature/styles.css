@@ -44,15 +44,7 @@ h3 {
     font-weight: 500;
     text-align: center;
   }
-  .question {
-    font-family: "roboto";
-      margin-bottom: 25px;
-      padding:25px;
-      border-radius: 5px;
-    text-align: center;
-    font-size: 1.1rem;
-    line-height: 1.2;
-    }
+ 
 /* pregunta 1*/
 .checkbox-group {
       display: grid;
@@ -110,13 +102,85 @@ h3 {
       font-size: 1rem;
       text-align: center;
       transition: background 0.2s;
+
     }
 
     .option-btn:hover {
       background: #023e8a;
     }   
 
-/* flechas de carrusel*/
+
+/*Area de bienes y servicios*/
+.frequency-options {
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+      flex-wrap: wrap;
+      margin: 5px 0;
+    }
+
+    .freq-btn {
+      background: #0077b6;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+
+    .freq-btn:hover {
+      background: #023e8a;
+    }
+
+    .products-container {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 5px;
+      flex-wrap: wrap;
+      gap: 20px;
+      width: 100%;
+      overflow: hidden;
+      align-items: flex-start;
+    }
+
+    .product-item {
+      text-align: center;
+      width: 70px;
+      height: 70px;
+    }
+
+
+    .counter-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .counter-btn {
+      background: #e0f0ff;
+      border: 1px solid #0077b6;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: #0077b6;
+    }
+
+    .counter-value {
+      font-weight: bold;
+      min-width: 20px;
+      text-align: center;
+    } 
+
+    
+/* flechas de carrusel - luego las implementamos*/
 .nav-arrows {
       position: absolute;
       top: 50%;
@@ -212,6 +276,17 @@ h3 {
    /* Estilo para el botón de "Siguiente pregunta" */
     .next-btn {
       background-color: #00b4d8;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      display: block;
+      margin: 30px auto 0;
+      transition: background 0.2s;
+      text-align: center;
+      position: relative;
+      z-index: 1; 
     }
 
     .next-btn:hover {
