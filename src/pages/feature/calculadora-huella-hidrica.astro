@@ -274,7 +274,155 @@ import "./styles.css";
         </div>
         <button id="nextToStep10" class="next-btn">Siguiente pregunta</button>
   </div>
+      <!-- Pregunta 10: Consumo de Alimentos -->
+      <div id="step10" style="display: none;">
+        <h2>Consumo de Alimentos</h2>
+        <img
+          src="/public/img/lunch_dining.png"
+          alt="Imagen de hamburguesa"
+          class="centered-image"
+        />
+        <h3>¿Cúantos kilos de carne de res consumes a la semana?</h3>
+        <div id="shower-frequency" class="input-number">
+          <input
+            type="number"
+            id="showerFrequencyInput"
+            placeholder="Ingresa un número (0.5 = 1/2 kg)"
+            min="1"
+            max="20"
+          />
+        </div>
+        <h3>¿Cúantos kilos de carne de pollo consumes a la semana?</h3>
+        <div id="shower-frequency" class="input-number">
+          <input
+            type="number"
+            id="showerFrequencyInput"
+            placeholder="Ingresa un número (0.5 = 1/2 kg)"
+            min="1"
+            max="20"
+          />
+        </div>
+        <button id="nextToStep11" class="next-btn">Siguiente pregunta</button>
+      </div>
 
+      <!-- Pregunta 11: Consumo de Alimentos -->
+      <div id="step11" style="display: none;">
+        <h2>Consumo de Alimentos</h2>
+        <img
+          src="/public/img/coffee.png"
+          alt="Imagen de café"
+          class="centered-image"
+        />
+        <h3>¿Cúantas tazas de café consumes a la semana?</h3>
+        <div id="shower-frequency" class="input-number">
+          <input
+            type="number"
+            id="showerFrequencyInput"
+            placeholder="Ingresa un número"
+            min="0"
+            max="20"
+          />
+        </div>
+        <h3>¿Cúantas tazas de té consumes a la semana?</h3>
+        <div id="shower-frequency" class="input-number">
+          <input
+            type="number"
+            id="showerFrequencyInput"
+            placeholder="Ingresa un número (0.5 = 1/2 kg)"
+            min="0"
+            max="20"
+          />
+        </div>
+        <button id="nextToStep12" class="next-btn">Siguiente pregunta</button>
+      </div>
+
+      <!-- Pregunta 12: Consumo de Alimentos -->
+      <div id="step12" style="display: none;">
+        <h2>Consumo de Alimentos</h2>
+        <div style="display:flex; justify-content:center;">
+          <img
+            src="/public/img/egg.png"
+            alt="Imagen de huevo"
+            class="centered-image"
+          />
+          <img
+            src="/public/img/washoku.png"
+            alt="Imagen de arroz"
+            class="centered-image"
+          />
+        </div>
+        <h3>¿Cuántas veces a la semana comes arroz?</h3>
+        <!-- Botones de opción -->
+        <div id="showerDuration">
+          <button class="option-btn" data-value="menos10">No consumo</button>
+          <br>
+          <button class="option-btn" data-value="10a20">de 5 a 10 veces</button>
+          <br>
+          <button class="option-btn" data-value="30a60">más de 10 veces</button>
+        </div>
+
+        <h3>¿Cúantas tazas de té consumes a la semana?</h3>
+        <!-- Botones de opción -->
+        <div id="showerDuration" >
+          <button class="option-btn" data-value="menos10">No consumo</button>
+          <br>
+          <button class="option-btn" data-value="10a20">de 5 a 10 veces</button>
+          <br>
+          <button class="option-btn" data-value="30a60">más de 10 veces</button>
+        </div>
+        <div style="display:flex;">
+          <img
+            src="/public/img/bakery_dining.png"
+            alt="Croissant"
+            class="centered-image"
+          />
+          <h3>¿Cuántas piezas de pan consumes al día?</h3>
+          <!-- Contador -->
+          <div class="counter-controls">
+            <button class="counter-btn" id="decrementBtn">-</button>
+            <span class="counter-value" id="cellphoneCount">0</span>
+            <button class="counter-btn" id="incrementBtn">+</button>
+          </div>
+        </div>
+        <button id="nextToStep13" class="next-btn">Siguiente pregunta</button>
+      </div>
+
+      <!-- Pregunta 13: Consumo de Alimentos -->
+      <div id="step13" style="display: none;">
+        <h2>Consumo de Alimentos</h2>
+        <div style="display:flex; justify-content: center;" class="products-container">
+          <img
+            src="/public/img/orange.png"
+            alt="Imagen de naranja"
+            class="centered-image"
+          />
+          <img
+            src="/public/img/banana.png"
+            alt="Imagen de platano"
+            class="centered-image"
+          />
+        </div>
+        <h3>¿Cuántos plátanos consumes a la semana?</h3>
+        <!-- Botones de opción -->
+        <div id="showerDuration"  >
+          <button class="option-btn" data-value="menos10">No consumo</button>
+          <br>
+          <button class="option-btn" data-value="10a20">de 5 a 10 veces</button>
+          <br>
+          <button class="option-btn" data-value="30a60">más de 10 veces</button>
+        </div>
+
+        <h3>¿Cuántas naranjas consumes a la semana?</h3>
+        <!-- Botones de opción -->
+        <div id="showerDuration">
+          <button class="option-btn" data-value="menos10">No consumo</button>
+          <br>
+          <button class="option-btn" data-value="10a20">de 5 a 10 veces</button>
+          <br>
+          <button class="option-btn" data-value="30a60">más de 10 veces</button>
+        </div>
+        <button id="nextToStep22" class="next-btn">Siguiente pregunta</button>
+      </div>
       <!-- Seccion bienes y servicios pregunta 22-->
       <div id="step22" style="display: none;">
         <h2>Bienes y Servicios</h2>
@@ -585,15 +733,41 @@ handBtns.forEach((btn) => {
         document.getElementById("step9")!.style.display = "block";
       });    
       
+// Step 9 al 10
+      const nextToStep10Btn = document.getElementById("nextToStep10")!;
+      nextToStep10Btn.addEventListener("click", function () {
+        document.getElementById("step9")!.style.display = "none";
+        document.getElementById("step10")!.style.display = "block";
+      });  
       
+    // Step 10 al 11
+    const nextToStepBtn11 = document.getElementById("nextToStep11")!;
+    nextToStepBtn11.addEventListener("click", function () {
+      document.getElementById("step10")!.style.display = "none";
+      document.getElementById("step11")!.style.display = "block";
+    });
 
- //  Cambiar el número por los Steps de Camila 21 al 22
-      const nextToStepBtn22 = document.getElementById("nextToStep22")!;
-      nextToStepBtn22.addEventListener("click", function () {
-        document.getElementById("step4")!.style.display = "none";
-        document.getElementById("step22")!.style.display = "block";
-      });
+    // Step 11 al 12
+    const nextToStepBtn12 = document.getElementById("nextToStep12")!;
+    nextToStepBtn12.addEventListener("click", function () {
+      document.getElementById("step11")!.style.display = "none";
+      document.getElementById("step12")!.style.display = "block";
+    });
 
+    // Step 12 al 13
+    const nextToStepBtn13 = document.getElementById("nextToStep13")!;
+    nextToStepBtn13.addEventListener("click", function () {
+      document.getElementById("step12")!.style.display = "none";
+      document.getElementById("step13")!.style.display = "block";
+    });
+
+    // Step 13 al 22 (bienes y servicios)
+    const nextToStepBtn22 = document.getElementById("nextToStep22")!;
+    nextToStepBtn22.addEventListener("click", function () {
+      document.getElementById("step13")!.style.display = "none";
+      document.getElementById("step22")!.style.display = "block";
+    });
+ 
    //pregunta 22 - 23
       const nextToStepBtn23 = document.getElementById("nextToStep23")!;
       nextToStepBtn23.addEventListener("click", function () {
