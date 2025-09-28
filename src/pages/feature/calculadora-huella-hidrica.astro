@@ -93,35 +93,12 @@ import "./styles.css";
             max="20"
           />
         </div>
-        <button id="nextToStep2" class="next-btn">Siguiente pregunta</button>
+        <button id="nextToStep3" class="next-btn">Siguiente pregunta</button>
         <div class="nav-arrows">
           <button class="nav-arrow prev" onclick="goToPrevStep()">‹</button>
           <button class="nav-arrow next" onclick="goToNextStep()">›</button>
         </div>
       </div>
-
-      <!-- Pregunta 2: Higiene duchas a la semana -->
-      <div id="step2" style="display: none;">
-        <h2>Higiene</h2>
-        <h3>¿Cuántas veces te duchas a la semana?</h3>
-        <img
-          src="/public/img/higiene.png"
-          alt="duchas a las semana"
-          class="centered-image"
-        />
-
-        <div id="shower-frequency" class="input-number">
-          <input
-            type="number"
-            id="showerFrequencyInput"
-            placeholder="Ingresa un número"
-            min="1"
-            max="20"
-          />
-        </div>
-        <button id="nextToStep3" class="next-btn">Siguiente pregunta</button>
-      </div>
-
       <!-- Pregunta 3: Higiene tiempo de las duchas -->
       <div id="step3" style="display: none;">
         <img
@@ -131,8 +108,10 @@ import "./styles.css";
         />
         <h3>¿De cuánto tiempo son tus duchas?</h3>
         <!-- Botones de opción -->
-        <div id="showerDuration" class="options-container">
-          <button class="option-btn" data-value="menos10">Menos de 10 minutos</button>
+        <div class="options-container">
+          <button class="option-btn" data-value="menos10"
+            >Menos de 10 minutos</button
+          >
           <button class="option-btn" data-value="10a20">10 a 20 minutos</button>
           <button class="option-btn" data-value="30a60">3 min a 1 hora</button>
         </div>
@@ -149,10 +128,10 @@ import "./styles.css";
           class="centered-image"
         />
 
-        <div id="shower-frequency" class="input-number">
+        <div class="input-number">
           <input
             type="number"
-            id="showerFrequencyInput"
+            id="showerTimesPerWeek"
             placeholder="Ingresa un número"
             min="1"
             max="20"
@@ -170,15 +149,21 @@ import "./styles.css";
           class="centered-image"
         />
         <div id="brushDuration" class="options-container">
-          <button class="option-btn-brush" data-value="menos10">1 vez al día</button>
-          <button class="option-btn-brush" data-value="10a20">2 veces al día</button>
-          <button class="option-btn-brush" data-value="30a60">3 veces al día o más</button>
+          <button class="option-btn-brush" data-value="menos10"
+            >1 vez al día</button
+          >
+          <button class="option-btn-brush" data-value="10a20"
+            >2 veces al día</button
+          >
+          <button class="option-btn-brush" data-value="30a60"
+            >3 veces al día o más</button
+          >
         </div>
-       
+
         <button id="nextToStep6" class="next-btn">Siguiente pregunta</button>
       </div>
-  <!-- Pregunta 6: Higiene lavado de manos -->    
-     <div id="step6" style="display: none;">
+      <!-- Pregunta 6: Higiene lavado de manos -->
+      <div id="step6" style="display: none;">
         <h2>Higiene</h2>
         <h3>¿Cuántas veces al día te lavas las manos?</h3>
         <img
@@ -187,16 +172,21 @@ import "./styles.css";
           class="centered-image"
         />
         <div id="handDuration" class="options-container">
-          <button class="option-btn-hand" data-value="menos10">2 a 3 veces</button>
-          <button class="option-btn-hand" data-value="10a20">3 a 5 veces</button>
-          <button class="option-btn-hand" data-value="30a60">Más de 5 veces</button>
+          <button class="option-btn-hand" data-value="menos10"
+            >2 a 3 veces</button
+          >
+          <button class="option-btn-hand" data-value="10a20">3 a 5 veces</button
+          >
+          <button class="option-btn-hand" data-value="30a60"
+            >Más de 5 veces</button
+          >
         </div>
-       
+
         <button id="nextToStep7" class="next-btn">Siguiente pregunta</button>
       </div>
 
-  <!-- Pregunta 7: Uso de inodoro -->        
- <div id="step7" style="display: none;">
+      <!-- Pregunta 7: Uso de inodoro -->
+      <div id="step7" style="display: none;">
         <h2>Higiene</h2>
         <h3>¿Tienes inodoro ahorrador o tradicional?</h3>
         <img
@@ -204,16 +194,20 @@ import "./styles.css";
           alt="inodoro icon HH"
           class="centered-image"
         />
-         <div class="options2">
-            <label><input type="radio" name="rainwater" value="si" /> ahorrador</label>
-            <label><input type="radio" name="rainwater" value="no" /> Tradicional</label>
-          </div>
-       
-        <button id="nextToStep8" class="next-btn">Siguiente pregunta</button>
-  </div>
+        <div class="options2">
+          <label
+            ><input type="radio" name="rainwater" value="si" /> ahorrador</label
+          >
+          <label
+            ><input type="radio" name="rainwater" value="no" /> Tradicional</label
+          >
+        </div>
 
-    <!-- Pregunta 8: Limpieza ropa -->        
- <div id="step8" style="display: none;">
+        <button id="nextToStep8" class="next-btn">Siguiente pregunta</button>
+      </div>
+
+      <!-- Pregunta 8: Limpieza ropa -->
+      <div id="step8" style="display: none;">
         <h2>Limpieza</h2>
         <h3>¿Cómo lavas tu ropa?</h3>
         <img
@@ -222,35 +216,42 @@ import "./styles.css";
           class="centered-image"
         />
         <div class="options-ropa">
-    <label class="option-ropa">
-      <input type="checkbox" name="washingMethod" value="aMano" />
-      <span>A mano</span>
-    </label>
-    <label class="option-ropa">
-      <input type="checkbox" name="washingMethod" value="lavadoraEstandar" />
-      <span>Lavadora estándar (Carga superior)</span>
-    </label>
-    <label class="option-ropa">
-      <input type="checkbox" name="washingMethod" value="lavadoraEficiente" />
-      <span>Lavadora eficiente (Carga frontal horizontal)</span>
-    </label>
-  </div>
-          <h3> ¿Cuántas veces a la semana lavas ropa?</h3>
-       <div id="clothes-frequency" class="input-number">
+          <label class="option-ropa">
+            <input type="checkbox" name="washingMethod" value="aMano" />
+            <span>A mano</span>
+          </label>
+          <label class="option-ropa">
+            <input
+              type="checkbox"
+              name="washingMethod"
+              value="lavadoraEstandar"
+            />
+            <span>Lavadora estándar (Carga superior)</span>
+          </label>
+          <label class="option-ropa">
+            <input
+              type="checkbox"
+              name="washingMethod"
+              value="lavadoraEficiente"
+            />
+            <span>Lavadora eficiente (Carga frontal horizontal)</span>
+          </label>
+        </div>
+        <h3>¿Cuántas veces a la semana lavas ropa?</h3>
+        <div class="input-number">
           <input
             type="number"
-            id="showerFrequencyInput"
+            id="clothesWashPerWeek"
             placeholder="Ingresa un número"
             min="1"
             max="20"
           />
         </div>
         <button id="nextToStep9" class="next-btn">Siguiente pregunta</button>
-  </div>
+      </div>
 
-
-   <!-- Pregunta 9: Limpieza lavado de trastes-->        
- <div id="step9" style="display: none;">
+      <!-- Pregunta 9: Limpieza lavado de trastes-->
+      <div id="step9" style="display: none;">
         <h2>Limpieza</h2>
         <h3>¿Cómo lavas los platos y trastes de tu cocina?</h3>
         <img
@@ -258,22 +259,26 @@ import "./styles.css";
           alt="ropa calculadora hidrica"
           class="centered-image"
         />
-          <div class="options2">
-            <label><input type="radio" name="rainwater" value="si" /> A mano</label>
-            <label><input type="radio" name="rainwater" value="no" /> lavajillas</label>
-          </div>
-        <h3> ¿Cuántas veces al día lavas los platos?</h3>
-       <div id="dishes-frequency" class="input-number">
+        <div class="options2">
+          <label
+            ><input type="radio" name="rainwater" value="si" /> A mano</label
+          >
+          <label
+            ><input type="radio" name="rainwater" value="no" /> lavajillas</label
+          >
+        </div>
+        <h3>¿Cuántas veces al día lavas los platos?</h3>
+        <div class="input-number">
           <input
             type="number"
-            id="showerFrequencyInput"
+            id="dishesWashPerDay"
             placeholder="Ingresa un número"
             min="1"
             max="20"
           />
         </div>
         <button id="nextToStep10" class="next-btn">Siguiente pregunta</button>
-  </div>
+      </div>
       <!-- Pregunta 10: Consumo de Alimentos -->
       <div id="step10" style="display: none;">
         <h2>Consumo de Alimentos</h2>
@@ -283,22 +288,22 @@ import "./styles.css";
           class="centered-image"
         />
         <h3>¿Cúantos kilos de carne de res consumes a la semana?</h3>
-        <div id="shower-frequency" class="input-number">
+        <div class="input-number">
           <input
             type="number"
-            id="showerFrequencyInput"
+            id="beefKgPerWeek"
             placeholder="Ingresa un número (0.5 = 1/2 kg)"
-            min="1"
+            min="0"
             max="20"
           />
         </div>
         <h3>¿Cúantos kilos de carne de pollo consumes a la semana?</h3>
-        <div id="shower-frequency" class="input-number">
+        <div class="input-number">
           <input
             type="number"
-            id="showerFrequencyInput"
+            id="chickenKgPerWeek"
             placeholder="Ingresa un número (0.5 = 1/2 kg)"
-            min="1"
+            min="0"
             max="20"
           />
         </div>
@@ -314,21 +319,21 @@ import "./styles.css";
           class="centered-image"
         />
         <h3>¿Cúantas tazas de café consumes a la semana?</h3>
-        <div id="shower-frequency" class="input-number">
+        <div class="input-number">
           <input
             type="number"
-            id="showerFrequencyInput"
+            id="coffeeCupsPerWeek"
             placeholder="Ingresa un número"
             min="0"
             max="20"
           />
         </div>
         <h3>¿Cúantas tazas de té consumes a la semana?</h3>
-        <div id="shower-frequency" class="input-number">
+        <div class="input-number">
           <input
             type="number"
-            id="showerFrequencyInput"
-            placeholder="Ingresa un número (0.5 = 1/2 kg)"
+            id="teaCupsPerWeek"
+            placeholder="Ingresa un número"
             min="0"
             max="20"
           />
@@ -352,22 +357,16 @@ import "./styles.css";
           />
         </div>
         <h3>¿Cuántas veces a la semana comes arroz?</h3>
-        <!-- Botones de opción -->
-        <div id="showerDuration">
+        <div id="arrozOptions" class="options-container">
           <button class="option-btn" data-value="menos10">No consumo</button>
-          <br>
           <button class="option-btn" data-value="10a20">de 5 a 10 veces</button>
-          <br>
           <button class="option-btn" data-value="30a60">más de 10 veces</button>
         </div>
 
-        <h3>¿Cúantas tazas de té consumes a la semana?</h3>
-        <!-- Botones de opción -->
-        <div id="showerDuration" >
+        <h3>¿Cuántas veces consumes huevo?</h3>
+        <div id="huevoOptions" class="options-container">
           <button class="option-btn" data-value="menos10">No consumo</button>
-          <br>
           <button class="option-btn" data-value="10a20">de 5 a 10 veces</button>
-          <br>
           <button class="option-btn" data-value="30a60">más de 10 veces</button>
         </div>
         <div style="display:flex;">
@@ -390,7 +389,10 @@ import "./styles.css";
       <!-- Pregunta 13: Consumo de Alimentos -->
       <div id="step13" style="display: none;">
         <h2>Consumo de Alimentos</h2>
-        <div style="display:flex; justify-content: center;" class="products-container">
+        <div
+          style="display:flex; justify-content: center;"
+          class="products-container"
+        >
           <img
             src="/public/img/orange.png"
             alt="Imagen de naranja"
@@ -402,25 +404,19 @@ import "./styles.css";
             class="centered-image"
           />
         </div>
-        <h3>¿Cuántos plátanos consumes a la semana?</h3>
-        <!-- Botones de opción -->
-        <div id="showerDuration"  >
-          <button class="option-btn" data-value="menos10">No consumo</button>
-          <br>
-          <button class="option-btn" data-value="10a20">de 5 a 10 veces</button>
-          <br>
-          <button class="option-btn" data-value="30a60">más de 10 veces</button>
-        </div>
+<h3>¿Cuántos plátanos consumes a la semana?</h3>
+<div id="platanoOptions" class="options-container">
+  <button class="option-btn" data-value="menos10">No consumo</button>
+  <button class="option-btn" data-value="10a20">de 5 a 10 veces</button>
+  <button class="option-btn" data-value="30a60">más de 10 veces</button>
+</div>
 
-        <h3>¿Cuántas naranjas consumes a la semana?</h3>
-        <!-- Botones de opción -->
-        <div id="showerDuration">
-          <button class="option-btn" data-value="menos10">No consumo</button>
-          <br>
-          <button class="option-btn" data-value="10a20">de 5 a 10 veces</button>
-          <br>
-          <button class="option-btn" data-value="30a60">más de 10 veces</button>
-        </div>
+<h3>¿Cuántas naranjas consumes a la semana?</h3>
+<div id="naranjaOptions" class="options-container">
+  <button class="option-btn" data-value="menos10">No consumo</button>
+  <button class="option-btn" data-value="10a20">de 5 a 10 veces</button>
+  <button class="option-btn" data-value="30a60">más de 10 veces</button>
+</div>
         <button id="nextToStep22" class="next-btn">Siguiente pregunta</button>
       </div>
       <!-- Seccion bienes y servicios pregunta 22-->
@@ -515,33 +511,33 @@ import "./styles.css";
             <label><input type="radio" name="rainwater" value="si" /> Sí</label>
             <label><input type="radio" name="rainwater" value="no" /> No</label>
           </div>
-          </div>
-
-          <div class="question24">
-            <h3>¿Reciclas papel?</h3>
-            <div class="options2">
-              <label
-                ><input type="radio" name="recyclePaper" value="si" /> Sí</label
-              >
-              <label
-                ><input type="radio" name="recyclePaper" value="no" /> No</label
-              >
-            </div>
-          </div>
-          <div class="question24">
-            <h3>¿Cuántos kilos de papel reciclas al año aproximadamente?</h3>
-            <input
-              type="number"
-              placeholder="Ingresa un número (0.5 = 1/2 kg)"
-              min="0"
-              step="0.5"
-            />
-          </div>
-          <button id="nextToStep25" class="next-btn">Ver resultados</button>
         </div>
-        
 
-  <!--Resultados -->
+        <div class="question24">
+          <h3>¿Reciclas papel?</h3>
+          <div class="options2">
+            <label
+              ><input type="radio" name="recyclePaper" value="si" /> Sí</label
+            >
+            <label
+              ><input type="radio" name="recyclePaper" value="no" /> No</label
+            >
+          </div>
+        </div>
+        <div class="question24">
+          <h3>¿Cuántos kilos de papel reciclas al año aproximadamente?</h3>
+          <input
+            type="number"
+            id="recycledPaperKg"
+            placeholder="Ingresa un número (0.5 = 1/2 kg)"
+            min="0"
+            step="0.5"
+          />
+        </div>
+        <button id="nextToStep25" class="next-btn">Ver resultados</button>
+      </div>
+
+      <!--Resultados -->
       <div id="step25" style="display: none;">
         <!-- Fila de resultados -->
         <div class="result-card">
@@ -556,7 +552,9 @@ import "./styles.css";
             <p>Tu huella hídrica es:</p>
             <h2>1022 <span>Litros/año</span></h2>
             <p>
-              Una persona consume una media de <strong>49640 litros por día</strong>.
+              Una persona consume una media de <strong
+                >49640 litros por día</strong
+              >.
             </p>
           </div>
           <!-- Comparaciones -->
@@ -579,7 +577,9 @@ import "./styles.css";
                 class="icon"
               />
               <p>
-                En un año, tu huella hídrica equivale al agua contenida en <strong>X camiones cisterna</strong>.
+                En un año, tu huella hídrica equivale al agua contenida en <strong
+                  >X camiones cisterna</strong
+                >.
               </p>
             </div>
           </div>
@@ -595,9 +595,14 @@ import "./styles.css";
         <!-- Botones -->
         <div class="buttons-container">
           <button class="category-btn" data-category="higiene">Higiene</button>
-          <button class="category-btn" data-category="limpieza">Limpieza</button>
-          <button class="category-btn" data-category="alimentos">Alimentos y bebidas</button>
-          <button class="category-btn" data-category="bienes">Bienes y servicios</button>
+          <button class="category-btn" data-category="limpieza">Limpieza</button
+          >
+          <button class="category-btn" data-category="alimentos"
+            >Alimentos y bebidas</button
+          >
+          <button class="category-btn" data-category="bienes"
+            >Bienes y servicios</button
+          >
         </div>
 
         <!-- Botón Volver a calcular -->
@@ -610,7 +615,10 @@ import "./styles.css";
             <h2 id="modal-title">Consejos Higiene</h2>
             <div id="modal-body">
               <ol>
-                <li>Dúchate el menor tiempo posible y apaga el agua al enjabonarte.</li>
+                <li>
+                  Dúchate el menor tiempo posible y apaga el agua al
+                  enjabonarte.
+                </li>
                 <li>Repara grifos o fugas en casa.</li>
                 <li>Cierra el grifo al cepillarte los dientes.</li>
               </ol>
@@ -618,128 +626,120 @@ import "./styles.css";
           </div>
         </div>
       </div>
- </div> 
+    </div>
 
-      <footer class="footer">
-        <div class="footer-links">
-          <a href="#">¿Cómo calculamos?</a>
-          <a href="#">Sobre nosotros</a>
-          <a href="#">¿Ya Conoces tu huella de Carbono?</a>
-        </div>
-        <p>© 2025 Calculadora de Huella Hídrica</p>
-      </footer>
-   
+    <footer class="footer">
+      <div class="footer-links">
+        <a href="#">¿Cómo calculamos?</a>
+        <a href="#">Sobre nosotros</a>
+        <a href="#">¿Ya Conoces tu huella de Carbono?</a>
+      </div>
+      <p>© 2025 Calculadora de Huella Hídrica</p>
+    </footer>
   </body>
 
-    <script>
-      // Step 0 to 1
-      document
-        .getElementById("nextToStep1")!
-        .addEventListener("click", function () {
-          document.getElementById("step0")!.style.display = "none";
-          document.getElementById("step1")!.style.display = "block";
-        });
-
-      // Step 1 to 2
-      const nextToStep2Btn = document.getElementById("nextToStep2")!;
-      nextToStep2Btn.addEventListener("click", function () {
-        const numPeople =parseInt((document.getElementById("numPeople") as HTMLInputElement).value) || 1;
-        document.getElementById("step1")!.style.display = "none";
-        document.getElementById("step2")!.style.display = "block";
+  <script>
+    // Step 0 to 1
+    document
+      .getElementById("nextToStep1")!
+      .addEventListener("click", function () {
+        document.getElementById("step0")!.style.display = "none";
+        document.getElementById("step1")!.style.display = "block";
       });
 
-      // Step 2 to 3
-      const nextToStep3Btn = document.getElementById("nextToStep3")!;
-      nextToStep3Btn.addEventListener("click", function () {
-        document.getElementById("step2")!.style.display = "none";
-        document.getElementById("step3")!.style.display = "block";
-      });
+    // Step 1 to 3
+    const nextToStep3Btn = document.getElementById("nextToStep3")!;
+    nextToStep3Btn.addEventListener("click", function () {
+      document.getElementById("step1")!.style.display = "none";
+      document.getElementById("step3")!.style.display = "block";
+    });
 
-      // For step 3 buttons
-      const optionBtns = document.querySelectorAll(".option-btn");
-      optionBtns.forEach((btn) => {
-        btn.addEventListener("click", (e) => {
-          selectedDuration = (e.target as HTMLElement).dataset.value || "";
-          // Optional: highlight selected
-          optionBtns.forEach((b) => b.classList.remove("selected"));
-          (e.target as HTMLElement).classList.add("selected");
-        });
+    // For step 3 buttons
+    const optionBtns = document.querySelectorAll(".option-btn");
+    optionBtns.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        selectedDuration = (e.target as HTMLElement).dataset.value || "";
+        // Optional: highlight selected
+        optionBtns.forEach((b) => b.classList.remove("selected"));
+        (e.target as HTMLElement).classList.add("selected");
       });
+    });
 
-      // Step 3 al 4
-      const nextToStep4Btn = document.getElementById("nextToStep4")!;
-      nextToStep4Btn.addEventListener("click", function () {
-        document.getElementById("step3")!.style.display = "none";
-        document.getElementById("step4")!.style.display = "block";
-      });
-      // Step 4 al 5
-      const nextToStep5Btn = document.getElementById("nextToStep5")!;
-      nextToStep5Btn.addEventListener("click", function () {
-        document.getElementById("step4")!.style.display = "none";
-        document.getElementById("step5")!.style.display = "block";
-      });
+    // Step 3 al 4
+    const nextToStep4Btn = document.getElementById("nextToStep4")!;
+    nextToStep4Btn.addEventListener("click", function () {
+      document.getElementById("step3")!.style.display = "none";
+      document.getElementById("step4")!.style.display = "block";
+    });
+    // Step 4 al 5
+    const nextToStep5Btn = document.getElementById("nextToStep5")!;
+    nextToStep5Btn.addEventListener("click", function () {
+      document.getElementById("step4")!.style.display = "none";
+      document.getElementById("step5")!.style.display = "block";
+    });
     const brushBtns = document.querySelectorAll(".option-btn-brush");
     let selectedBrush = "";
-    brushBtns.forEach((btn) => {btn.addEventListener("click", (e) => {
-    // Obtenemos el valor del botón clicado
-    selected = e.target.dataset.value || "";
-    brushBtns.forEach((b) => b.classList.remove("selected"));
-    e.target.classList.add("selected");
-    console.log("Respuesta seleccionada:", selectedBrush);
-  });
-});
-// Step 5 al 6
-      const nextToStep6Btn = document.getElementById("nextToStep6")!;
-      nextToStep6Btn.addEventListener("click", function () {
-        document.getElementById("step5")!.style.display = "none";
-        document.getElementById("step6")!.style.display = "block";
+    brushBtns.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        // Obtenemos el valor del botón clicado
+        selected = e.target.dataset.value || "";
+        brushBtns.forEach((b) => b.classList.remove("selected"));
+        e.target.classList.add("selected");
+        console.log("Respuesta seleccionada:", selectedBrush);
       });
+    });
+    // Step 5 al 6
+    const nextToStep6Btn = document.getElementById("nextToStep6")!;
+    nextToStep6Btn.addEventListener("click", function () {
+      document.getElementById("step5")!.style.display = "none";
+      document.getElementById("step6")!.style.display = "block";
+    });
 
-const handBtns = document.querySelectorAll(".option-btn-hand");
-let selectedHand = "";
-handBtns.forEach((btn) => {
-  btn.addEventListener("click", (e) => {
-    // Obtenemos el valor del botón clicado
-    selectedHand = e.target.dataset.value || "";
+    const handBtns = document.querySelectorAll(".option-btn-hand");
+    let selectedHand = "";
+    handBtns.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        // Obtenemos el valor del botón clicado
+        selectedHand = e.target.dataset.value || "";
 
-    // Quitamos la clase "selected" de todos los botones
-    handBtns.forEach((b) => b.classList.remove("selected"));
+        // Quitamos la clase "selected" de todos los botones
+        handBtns.forEach((b) => b.classList.remove("selected"));
 
-    // Agregamos la clase "selected" al botón clicado
-    e.target.classList.add("selected");
+        // Agregamos la clase "selected" al botón clicado
+        e.target.classList.add("selected");
 
-    console.log("Respuesta seleccionada (lavado de manos):", selectedHand);
-  });
-});
-
-// Step 6 al 7
-      const nextToStep7Btn = document.getElementById("nextToStep7")!;
-      nextToStep7Btn.addEventListener("click", function () {
-        document.getElementById("step6")!.style.display = "none";
-        document.getElementById("step7")!.style.display = "block";
+        console.log("Respuesta seleccionada (lavado de manos):", selectedHand);
       });
+    });
 
-// Step 7 al 8
-      const nextToStep8Btn = document.getElementById("nextToStep8")!;
-      nextToStep8Btn.addEventListener("click", function () {
-        document.getElementById("step7")!.style.display = "none";
-        document.getElementById("step8")!.style.display = "block";
-      });
+    // Step 6 al 7
+    const nextToStep7Btn = document.getElementById("nextToStep7")!;
+    nextToStep7Btn.addEventListener("click", function () {
+      document.getElementById("step6")!.style.display = "none";
+      document.getElementById("step7")!.style.display = "block";
+    });
 
-// Step 8 al 9
-      const nextToStep9Btn = document.getElementById("nextToStep9")!;
-      nextToStep9Btn.addEventListener("click", function () {
-        document.getElementById("step8")!.style.display = "none";
-        document.getElementById("step9")!.style.display = "block";
-      });    
-      
-// Step 9 al 10
-      const nextToStep10Btn = document.getElementById("nextToStep10")!;
-      nextToStep10Btn.addEventListener("click", function () {
-        document.getElementById("step9")!.style.display = "none";
-        document.getElementById("step10")!.style.display = "block";
-      });  
-      
+    // Step 7 al 8
+    const nextToStep8Btn = document.getElementById("nextToStep8")!;
+    nextToStep8Btn.addEventListener("click", function () {
+      document.getElementById("step7")!.style.display = "none";
+      document.getElementById("step8")!.style.display = "block";
+    });
+
+    // Step 8 al 9
+    const nextToStep9Btn = document.getElementById("nextToStep9")!;
+    nextToStep9Btn.addEventListener("click", function () {
+      document.getElementById("step8")!.style.display = "none";
+      document.getElementById("step9")!.style.display = "block";
+    });
+
+    // Step 9 al 10
+    const nextToStep10Btn = document.getElementById("nextToStep10")!;
+    nextToStep10Btn.addEventListener("click", function () {
+      document.getElementById("step9")!.style.display = "none";
+      document.getElementById("step10")!.style.display = "block";
+    });
+
     // Step 10 al 11
     const nextToStepBtn11 = document.getElementById("nextToStep11")!;
     nextToStepBtn11.addEventListener("click", function () {
@@ -767,139 +767,259 @@ handBtns.forEach((btn) => {
       document.getElementById("step13")!.style.display = "none";
       document.getElementById("step22")!.style.display = "block";
     });
- 
-   //pregunta 22 - 23
-      const nextToStepBtn23 = document.getElementById("nextToStep23")!;
-      nextToStepBtn23.addEventListener("click", function () {
-        document.getElementById("step22")!.style.display = "none";
-        document.getElementById("step23")!.style.display = "block";
-      });
 
-      document.addEventListener("DOMContentLoaded", () => {
-        document.querySelectorAll(".counter-btn").forEach((button) => {
-          button.addEventListener("click", function () {
-            const action = this.getAttribute("data-action");
-            const productItem = this.closest(".product-item");
-            if (!productItem) return;
+    //pregunta 22 - 23
+    const nextToStepBtn23 = document.getElementById("nextToStep23")!;
+    nextToStepBtn23.addEventListener("click", function () {
+      document.getElementById("step22")!.style.display = "none";
+      document.getElementById("step23")!.style.display = "block";
+    });
 
-            const product = productItem.getAttribute("data-product");
-            const countElement = document.getElementById(`${product}Count`);
-            if (!countElement) return;
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll(".counter-btn").forEach((button) => {
+        button.addEventListener("click", function () {
+          const action = this.getAttribute("data-action");
+          const productItem = this.closest(".product-item");
+          if (!productItem) return;
 
-            let count = parseInt(countElement.textContent, 10) || 0;
+          const product = productItem.getAttribute("data-product");
+          const countElement = document.getElementById(`${product}Count`);
+          if (!countElement) return;
 
-            if (action === "increment") {
-              count++;
-            } else if (action === "decrement" && count > 0) {
-              count--;
-            }
+          let count = parseInt(countElement.textContent, 10) || 0;
 
-            countElement.textContent = count.toString();
-          });
+          if (action === "increment") {
+            count++;
+          } else if (action === "decrement" && count > 0) {
+            count--;
+          }
+
+          countElement.textContent = count.toString();
         });
       });
+    });
 
-      // boton de mas y menos de pregunta 23
-      let cellphoneCount = 0;
-      const display = document.getElementById(
-        "cellphoneCount",
-      ) as HTMLSpanElement;
+    // boton de mas y menos de pregunta 23
+    let cellphoneCount = 0;
+    const display = document.getElementById(
+      "cellphoneCount",
+    ) as HTMLSpanElement;
 
-      if (!display) {
-        console.error("Display element not found");
-      } else {
-        const decrementBtn = document.getElementById(
-          "decrementBtn",
-        ) as HTMLButtonElement;
-        const incrementBtn = document.getElementById(
-          "incrementBtn",
-        ) as HTMLButtonElement;
+    if (!display) {
+      console.error("Display element not found");
+    } else {
+      const decrementBtn = document.getElementById(
+        "decrementBtn",
+      ) as HTMLButtonElement;
+      const incrementBtn = document.getElementById(
+        "incrementBtn",
+      ) as HTMLButtonElement;
 
-        if (decrementBtn) {
-          decrementBtn.addEventListener("click", () => {
-            if (cellphoneCount > 0)
-              display.textContent = (--cellphoneCount).toString();
-          });
-        }
-
-        if (incrementBtn) {
-          incrementBtn.addEventListener("click", () => {
-            display.textContent = (++cellphoneCount).toString();
-          });
-        }
+      if (decrementBtn) {
+        decrementBtn.addEventListener("click", () => {
+          if (cellphoneCount > 0)
+            display.textContent = (--cellphoneCount).toString();
+        });
       }
 
-//pregunta 23 - 24
-      const nextToStepBtn24 = document.getElementById("nextToStep24")!;
-      nextToStepBtn24.addEventListener("click", function () {
-        document.getElementById("step23")!.style.display = "none";
-        document.getElementById("step24")!.style.display = "block";
+      if (incrementBtn) {
+        incrementBtn.addEventListener("click", () => {
+          display.textContent = (++cellphoneCount).toString();
+        });
+      }
+    }
+
+    //pregunta 23 - 24
+    const nextToStepBtn24 = document.getElementById("nextToStep24")!;
+    nextToStepBtn24.addEventListener("click", function () {
+      document.getElementById("step23")!.style.display = "none";
+      document.getElementById("step24")!.style.display = "block";
+    });
+
+    //step 24 - 25 Resultados
+    const nextToStepBtn25 = document.getElementById("nextToStep25")!;
+    nextToStepBtn25.addEventListener("click", function () {
+      document.getElementById("step24")!.style.display = "none";
+      document.getElementById("step25")!.style.display = "block";
+      logAllFormValues();
+    });
+    //step 24 - 25 Resultados
+    const nextToStepBtn26 = document.getElementById("nextToStep26")!;
+
+    nextToStepBtn26.addEventListener("click", function () {
+      document.getElementById("step25")!.style.display = "none";
+      document.getElementById("step26")!.style.display = "block";
+    });
+    const tips = {
+      higiene: [
+        "Dúchate el menor tiempo posible y apaga el agua al enjabonarte.",
+        "Repara grifos o fugas en casa.",
+        "Cierra el grifo al cepillarte los dientes.",
+      ],
+      limpieza: [
+        "Usa cubetas en lugar de manguera para lavar el auto.",
+        "Lava la ropa solo cuando tengas cargas completas.",
+        "Recicla el agua de la lluvia para regar plantas.",
+      ],
+      alimentos: [
+        "Evita desperdiciar comida, ya que cada alimento requiere agua para producirse.",
+        "Elige productos locales y de temporada para reducir la huella hídrica del transporte.",
+        "Reduce el consumo de carne, especialmente de res, que requiere mucha agua.",
+      ],
+      bienes: [
+        "Compra ropa de segunda mano o reciclada.",
+        "Repara tus productos en lugar de reemplazarlos.",
+        "Elige productos duraderos y de calidad para reducir el consumo.",
+      ],
+    };
+
+    // Referencias a elementos
+    const modal = document.getElementById("modal");
+    const modalTitle = document.getElementById("modal-title");
+    const modalBody = document.getElementById("modal-body");
+    const closeModal = document.querySelector(".close");
+
+    // Event listener para los botones de categoría
+    document.querySelectorAll(".category-btn").forEach((button) => {
+      button.addEventListener("click", function () {
+        const category = this.getAttribute("data-category");
+        showTips(category);
+      });
+    });
+
+    // Función para mostrar los consejos
+    function showTips(category) {
+      // Actualizar título
+      modalTitle.textContent = `Consejos ${category.charAt(0).toUpperCase() + category.slice(1)}`;
+
+      // Generar lista de consejos
+      const tipList = tips[category]
+        .map((tip, index) => `<li>${index + 1}. ${tip}</li>`)
+        .join("");
+
+      // Insertar en el modal
+      modalBody.innerHTML = `<ol>${tipList}</ol>`;
+
+      // Mostrar el modal
+      modal.style.display = "flex";
+    }
+
+    // cálculo HH
+    function logAllFormValues() {
+      const values = {};
+
+      // 1. Inputs de número
+      document.querySelectorAll('input[type="number"]').forEach((input) => {
+        const id = input.id || input.name || "unnamed_number";
+        values[id] = parseFloat(input.value) || 0;
       });
 
-//step 24 - 25 Resultados
-      const nextToStepBtn25 = document.getElementById("nextToStep25")!;
-      nextToStepBtn25.addEventListener("click", function () {
-        document.getElementById("step24")!.style.display = "none";
-        document.getElementById("step25")!.style.display = "block";
+      // 2. Checkboxes - Origen
+      const origenCheckboxes = [
+        "redAgua",
+        "cooperativas",
+        "ventasBloque",
+        "cisternas",
+        "pozos",
+      ];
+      values.origen = origenCheckboxes.filter(
+        (id) => document.getElementById(id)?.checked,
+      );
+
+      // Lavado de ropa
+      const washingMethods = [];
+      document
+        .querySelectorAll('input[name="washingMethod"]:checked')
+        .forEach((cb) => {
+          washingMethods.push(cb.value);
+        });
+      values.washingMethod = washingMethods;
+
+      // 3. Radios
+      const radioGroups = ["rainwater", "recyclePaper"];
+      radioGroups.forEach((name) => {
+        const checked = document.querySelector(`input[name="${name}"]:checked`);
+        values[name] = checked ? checked.value : null;
       });
-//step 24 - 25 Resultados
-      const nextToStepBtn26 = document.getElementById("nextToStep26")!;
-      nextToStepBtn26.addEventListener("click", function () {
-        document.getElementById("step25")!.style.display = "none";
-        document.getElementById("step26")!.style.display = "block";
+
+      // 4. Botones con data-value
+      const selectedShowerBtn = document.querySelector(
+        "#showerDuration .option-btn.selected",
+      );
+      values.showerDuration = selectedShowerBtn
+        ? selectedShowerBtn.dataset.value
+        : null;
+
+      const selectedBrushBtn = document.querySelector(
+        ".option-btn-brush.selected",
+      );
+      values.brushFrequency = selectedBrushBtn
+        ? selectedBrushBtn.dataset.value
+        : null;
+
+      const selectedHandBtn = document.querySelector(
+        ".option-btn-hand.selected",
+      );
+      values.handWashFrequency = selectedHandBtn
+        ? selectedHandBtn.dataset.value
+        : null;
+
+      // Alimentos (step12 y step13)
+      const arrozBtn = document.querySelector(
+        "#step12 button.option-btn.selected:nth-of-type(1)",
+      );
+      const teBtn = document.querySelector(
+        "#step12 button.option-btn.selected:nth-of-type(2)",
+      );
+      const platanoBtn = document.querySelector(
+        "#step13 button.option-btn.selected:nth-of-type(1)",
+      );
+      const naranjaBtn = document.querySelector(
+        "#step13 button.option-btn.selected:nth-of-type(2)",
+      );
+
+      values.arrozFrequency = arrozBtn ? arrozBtn.dataset.value : null;
+      values.teFrequency = teBtn ? teBtn.dataset.value : null;
+      values.platanoFrequency = platanoBtn ? platanoBtn.dataset.value : null;
+      values.naranjaFrequency = naranjaBtn ? naranjaBtn.dataset.value : null;
+
+      // Frecuencia de compra (step22)
+      const purchaseFreqBtn = document.querySelector(
+        "#purchaseFrequency .freq-btn.selected",
+      );
+      values.purchaseFrequency = purchaseFreqBtn
+        ? purchaseFreqBtn.dataset.value
+        : null;
+
+      // 5. Contadores personalizados
+      const counterIds = [
+        "tenisCount",
+        "camisetaCount",
+        "jeansCount",
+        "cellphoneCount",
+      ];
+      counterIds.forEach((id) => {
+        const el = document.getElementById(id);
+        values[id] = el ? parseInt(el.textContent, 10) || 0 : 0;
       });
-const tips = {
-  higiene: [
-    "Dúchate el menor tiempo posible y apaga el agua al enjabonarte.",
-    "Repara grifos o fugas en casa.",
-    "Cierra el grifo al cepillarte los dientes."
-  ],
-  limpieza: [
-    "Usa cubetas en lugar de manguera para lavar el auto.",
-    "Lava la ropa solo cuando tengas cargas completas.",
-    "Recicla el agua de la lluvia para regar plantas."
-  ],
-  alimentos: [
-    "Evita desperdiciar comida, ya que cada alimento requiere agua para producirse.",
-    "Elige productos locales y de temporada para reducir la huella hídrica del transporte.",
-    "Reduce el consumo de carne, especialmente de res, que requiere mucha agua."
-  ],
-  bienes: [
-    "Compra ropa de segunda mano o reciclada.",
-    "Repara tus productos en lugar de reemplazarlos.",
-    "Elige productos duraderos y de calidad para reducir el consumo."
-  ]
-};
 
-// Referencias a elementos
-const modal = document.getElementById('modal');
-const modalTitle = document.getElementById('modal-title');
-const modalBody = document.getElementById('modal-body');
-const closeModal = document.querySelector('.close');
+      // 6. Papel reciclado
+      const recycledPaperInput = document.querySelector(
+        '#step24 input[type="number"]',
+      );
+      values.recycledPaperKg = recycledPaperInput
+        ? parseFloat(recycledPaperInput.value) || 0
+        : 0;
 
-// Event listener para los botones de categoría
-document.querySelectorAll('.category-btn').forEach(button => {
-  button.addEventListener('click', function() {
-    const category = this.getAttribute('data-category');
-    showTips(category);
-  });
-});
-
-// Función para mostrar los consejos
-function showTips(category) {
-  // Actualizar título
-  modalTitle.textContent = `Consejos ${category.charAt(0).toUpperCase() + category.slice(1)}`;
-
-  // Generar lista de consejos
-  const tipList = tips[category].map((tip, index) => `<li>${index + 1}. ${tip}</li>`).join('');
-  
-  // Insertar en el modal
-  modalBody.innerHTML = `<ol>${tipList}</ol>`;
-
-  // Mostrar el modal
-  modal.style.display = 'flex';
-}
-
-    </script>
-  </body>
+      // 🔥 Imprimir todos los valores en la consola
+      console.log("=== Valores del formulario ===");
+      for (const key in values) {
+        if (values.hasOwnProperty(key)) {
+          console.log(`${key}:`, values[key]);
+        }
+      }
+      console.log("=== Fin de los valores ===");
+    }
+    logAllFormValues();
+  </script>
 </html>
