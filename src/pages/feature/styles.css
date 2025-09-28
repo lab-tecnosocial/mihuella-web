@@ -135,87 +135,228 @@ h3 {
     }
 
     .products-container {
-      display: flex;
-      justify-content: space-around;
-      margin-top: 5px;
-      flex-wrap: wrap;
-      gap: 20px;
-      width: 100%;
-      overflow: hidden;
-      align-items: flex-start;
+     display: flex;
+    justify-content: space-around;
+    margin-top: 5px;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+    overflow: hidden;
+    align-items: flex-start;
     }
-
     .product-item {
-      text-align: center;
-      width: 70px;
-      height: 70px;
-    }
+  text-align: center;
+  width: 100px; /* Aumentado para dar más espacio */
+  padding: 5px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.product-item img {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 5px;
+}
+
+.product-item p {
+  font-size: 18px;
+  margin: 3px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.counter-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 5px;
+}
+
+.counter-btn {
+  background: #e0f0ff;
+  border: 1px solid #0077b6;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #0077b6;
+}
+
+.counter-value {
+  font-weight: bold;
+  min-width: 20px;
+  text-align: center;
+}
+ 
+
+/*Habitos Sostenibles*/
+.questions24 {
+  text-align: left;
+  margin: 20px 0;
+}
 
 
-    .counter-controls {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
+.question24 label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
 
-    .counter-btn {
-      background: #e0f0ff;
-      border: 1px solid #0077b6;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 0.9rem;
-      color: #0077b6;
-    }
+.optionssusthabit {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
 
-    .counter-value {
-      font-weight: bold;
-      min-width: 20px;
-      text-align: center;
-    } 
+.optionssusthabit label {
+ display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 15px; /* Aumenta el tamaño del botón */
+  background-color: #f5f5f5; /* Fondo claro */
+  border: 2px solid #ddd; /* Borde sutil */
+  border-radius: 12px; /* Redondeado (cuadrado circular) */
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+/* Hover para dar feedback visual */
+.optionssusthabit label:hover {
+  background-color: #e8f5e8;
+  border-color: #2e5d7d;
+}
 
-    
-/* flechas de carrusel - luego las implementamos*/
-.nav-arrows {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      padding: 0 20px;
-      pointer-events: none; /* Para que no interfiera con los elementos del contenido */
-    }
+/* Cuando está seleccionado */
+.optionssusthabit input[type="radio"]:checked + label {
+  background-color: #4977aa;
+  color: white;
+  border-color: #657cc9;
+}
 
-    .arrow {
-      background: #fff;
-      border: 2px solid #0077b6;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      pointer-events: auto; /* Habilitar clic */
-      transition: background 0.2s;
-      color: #0077b6;
-      font-weight: bold;
-      font-size: 1.2rem;
-    }
+.optionssusthabit input[type="radio"] {
+  margin-right: 5px;
+}
 
-    .arrow:hover {
-      background: #0077b6;
-      color: white;
-    }
+.question24 input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
 
+/*REsultados*/ 
+
+/* Botón Volver a calcular */
+.back-button {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: #e0e0e0;
+  color: #2178BD;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #1b69a8;
+  color: #2178BD;
+}
+
+.drop-icon {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 20px;
+  margin-top: 15px;
+}
+.result-card {
   
+  width: 100%;
+  text-align: center;
+}
 
+/* Texto del resultado */
+.result-text p {
+  font-size: 22px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.result-text h2 {
+  font-size: 42px;
+  color: #2178BD;
+  margin: 10px 0;
+  font-weight: 800;
+}
+
+.result-text h2 span {
+  font-size: 18px;
+  color: #666;
+}
+
+/* Comparaciones */
+.comparisons {
+  text-align: left;
+  margin-top: 30px;
+}
+
+.comparison {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #e8f5e8;
+  border-radius: 8px;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  margin-top: 4px;
+}
+
+.comparison p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.comparison p strong {
+  color: #2e7d32;
+}
+
+
+
+/* Botón ¿Cómo ahorrar? */
+.save-button {
+  width: 100%;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+.save-button:hover {
+  background-color: #1976D2;
+}
+    
+  
     label {
       display: block;
       margin: 10px 0 5px;
@@ -292,10 +433,6 @@ h3 {
     .next-btn:hover {
       background-color: #0096c7;
     } 
-
-
-
-
 
   .footer {
     margin-top: 40px;

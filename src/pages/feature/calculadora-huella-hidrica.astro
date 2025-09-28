@@ -10,7 +10,8 @@ import './styles.css';
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <title>Calculadora de Huella Hídrica</title>
+    
+<title>Calculadora de Huella Hídrica</title>
   </head>
   <body>
   <div class="water-calculator">
@@ -87,7 +88,7 @@ import './styles.css';
 
 <!-- Pregunta 3: Higiene tiempo de las duchas -->
     <div id="step3" style="display: none;">
-      <p>¿De cuánto tiempo son tus duchas?</p>
+      <h3>¿De cuánto tiempo son tus duchas?</h3>
   <!-- Botones de opción -->
     <div id="showerDuration" class="options-container">
       <button class="option-btn" data-value="menos10">Menos de 10 minutos</button>
@@ -98,7 +99,7 @@ import './styles.css';
     </div>
 
 <!-- Pregunta 2: Higiene duchas a la semana -->
-    <div id="step2"  style="display: none;">
+    <div id="step4"  style="display: none;">
       <h2>Higiene</h2>
       <h3>¿Cuántas veces te duchas a la semana?</h3>
         <img src="/public/img/higiene.png" alt="duchas a las semana"
@@ -107,7 +108,7 @@ import './styles.css';
     <div id="shower-frequency" class="input-number">
           <input type="number" id="showerFrequencyInput" placeholder="Ingresa un número" min="1" max="20" />
      </div>
-      <button id="nextToStep3" class="next-btn">Siguiente pregunta</button>
+      <button id="nextToStep22" class="next-btn">Siguiente pregunta</button>
      </div>
 
 <!-- Seccion bienes y servicios pregunta 22-->
@@ -161,7 +162,7 @@ import './styles.css';
       </div>
       </div>
       
-      <button id="nextToStep22" class="next-btn">Siguiente pregunta</button>
+      <button id="nextToStep23" class="next-btn">Siguiente pregunta</button>
      </div>
  
 <!-- Seccion bienes y servicios pregunta 24-->
@@ -176,14 +177,97 @@ import './styles.css';
       <span class="counter-value" id="cellphoneCount">0</span>
       <button class="counter-btn" id="incrementBtn">+</button>
     </div>
-     
+    <button id="nextToStep24" class="next-btn">Siguiente pregunta</button>
+     </div>
+  
+<!-- Seccion bienes y servicios pregunta 22-->
+    <div id="step24" style="display: none;">
+      <h2>Hábitos Sostenibles</h2>
+ 
+        <img src="/public/img/habitos-sostenibles.png" alt="hábitos sostenibles en la huella hidrica"
+     class="centered-image" />
+        <div class="question24"> 
+        <h3>¿Tienes un sistema de recolección de agua de lluvia en tu hogar?</h3>
+            <div class="optionssusthabit">
+            <label><input type="radio" name="rainwater" value="si" /> Sí</label>
+            <label><input type="radio" name="rainwater" value="no" /> No</label>
+          </div>
+         
+        <div class="question24">
+          <h3>¿Reciclas papel?</h3>
+          <div class="optionssusthabit">
+            <label><input type="radio" name="recyclePaper" value="si" /> Sí</label>
+            <label><input type="radio" name="recyclePaper" value="no" /> No</label>
+          </div>
+        </div>  
+        <div class="question24">
+          <h3>¿Cuántos kilos de papel reciclas al año aproximadamente?</h3>
+          <input type="number" placeholder="Ingresa un número (0.5 = 1/2 kg)" min="0" step="0.5" />
+        </div>   
+      <button id="nextToStep25" class="next-btn">Ver resultados</button>
+     </div>     
 
 
-    <!--Resultados ponerlo en un div step final-->
-    <div id="result" class="result">
-      Su huella hídrica estimada es: <span id="waterFootprintResult">0</span> litros por día.
+    <!--Resultados -->
+  <div id="step25" style="display: none;">
+    <!-- Fila de resultados -->
+  <div class="result-card">
+    <!-- Gota de agua -->
+    <img src="/public/img/huella-hidrica-icon.png" alt="Gota de agua" class="drop-icon" />
+    <!-- Texto del resultado -->
+    <div class="result-text">
+      <p>Tu huella hídrica es:</p>
+      <h2>1022 <span>Litros/año</span></h2>
+      <p>Una persona consume una media de <strong>49640 litros por día</strong>.</p>
+    </div>
+    <!-- Comparaciones -->
+    <div class="comparisons">
+      <div class="comparison">
+        <img src="/public/img/botella-icon.png" alt="Botella" class="icon" />
+        <p><strong>Tu consumo de agua</strong> en un mes se podría llenar <strong>X botellas de 2 litros</strong>.</p>
+      </div>
+      <div class="comparison">
+        <img src="/public/img/camion-icon.png" alt="Camión cisterna" class="icon" />
+        <p>En un año, tu huella hídrica equivale al agua contenida en <strong>X camiones cisterna</strong>.</p>
+      </div>
     </div>
   </div>
+      <button id="nextToStep26" class="next-btn">¿Cómo ahorrar?</button>
+  </div> 
+<!-- Consejos-->
+<div id="step25" style="display: none;">
+<h1 class="title">Consejos para ahorrar agua</h1>
+  <p class="subtitle">¡Mejora tu HUELLA HÍDRICA!</p>
+
+  <!-- Botones -->
+  <div class="buttons-container">
+    <button class="category-btn" data-category="higiene">Higiene</button>
+    <button class="category-btn" data-category="limpieza">Limpieza</button>
+    <button class="category-btn" data-category="alimentos">Alimentos y bebidas</button>
+    <button class="category-btn" data-category="bienes">Bienes y servicios</button>
+  </div>
+
+  <!-- Botón Volver a calcular -->
+  <button class="back-button">Volver a calcular</button>
+
+  <!-- Modal flotante -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 id="modal-title">Consejos Higiene</h2>
+      <div id="modal-body">
+        <ol>
+          <li>Dúchate el menor tiempo posible y apaga el agua al enjabonarte.</li>
+          <li>Repara grifos o fugas en casa.</li>
+          <li>Cierra el grifo al cepillarte los dientes.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
 
   <footer class="footer">
     <div class="footer-links">
@@ -197,9 +281,17 @@ import './styles.css';
 </body>
 </html>
 
-
-
 <script>
+
+function goToStep(step) {
+  const steps = ['step0', 'step1', 'step2', 'step3', 'step4', 'step22', 'step23', 'step24', 'step25'];
+  steps.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.style.display = 'none';
+  });
+  const target = document.getElementById('step' + step);
+  if (target) target.style.display = 'block';
+}
 
 let totalConsumption = 0;
 let selectedDuration = '';
@@ -227,8 +319,6 @@ nextToStep3Btn.addEventListener('click', function() {
 });
 
 
-
-
 // For step 3 buttons
 const optionBtns = document.querySelectorAll('.option-btn');
 optionBtns.forEach(btn => {
@@ -240,42 +330,28 @@ optionBtns.forEach(btn => {
   });
 });
 
-// Step 3 codigo para el cálculo 
+// Step 3 al 4
 const nextToStep4Btn = document.getElementById('nextToStep4')!;
-nextToStep4Btn.addEventListener('click', function() {
-  const showerFrequency = parseInt((document.getElementById('showerFrequencyInput') as HTMLInputElement).value) || 0;
-  if (showerFrequency > 0 && selectedDuration) {
-    let litersPerShower = 0;
-    if (selectedDuration === 'menos10') {
-      litersPerShower = 20 * 10;
-    } else if (selectedDuration === '10a20') {
-      litersPerShower = 20 * 15;
-    } else if (selectedDuration === '30a60') {
-      litersPerShower = 20 * 45;
-    }
-    totalConsumption = showerFrequency * litersPerShower * numPeople;
-    // Assume weekly, convert to daily
-    totalConsumption = Math.round(totalConsumption / 7);
-  }
-  document.getElementById('waterFootprintResult')!.textContent = totalConsumption.toString();
+nextToStep4Btn.addEventListener('click', function(){
   document.getElementById('step3')!.style.display = 'none';
-  document.getElementById('result')!.style.display = 'block';
+   document.getElementById('step4')!.style.display = 'block';
+ 
 });
 
-// Step 3 to 22
-const nextToStepBtn = document.getElementById('nextToStep3')!;
-nextToStep3Btn.addEventListener('click', function() {
-  document.getElementById('step2')!.style.display = 'none';
+// Step 4 al 22
+const nextToStepBtn22 = document.getElementById('nextToStep22')!;
+nextToStepBtn22.addEventListener('click', function() {
+  document.getElementById('step4')!.style.display = 'none';
   document.getElementById('step22')!.style.display = 'block';
 });
 
 //pregunta 22 - 23
-const nextToStepBtn1 = document.getElementById('nextToStep3')!;
-nextToStep3Btn.addEventListener('click', function() {
-  document.getElementById('step2')!.style.display = 'none';
-  document.getElementById('step23')!.style.display = 'blo';
+const nextToStepBtn23 = document.getElementById('nextToStep23')!;
+nextToStepBtn23.addEventListener('click', function() {
+  document.getElementById('step22')!.style.display = 'none';
+  document.getElementById('step23')!.style.display = 'block';
 });
-
+  
  document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('.counter-btn').forEach(button => {
         button.addEventListener('click', function() {
@@ -295,7 +371,7 @@ nextToStep3Btn.addEventListener('click', function() {
             count--;
           }
 
-          countElement.textContent = count;
+          countElement.textContent = count.toString();
         });
       });
     });
@@ -322,6 +398,24 @@ nextToStep3Btn.addEventListener('click', function() {
      });
    }
  }
+
+//pregunta 23 - 24
+const nextToStepBtn24 = document.getElementById('nextToStep24')!;
+nextToStepBtn24.addEventListener('click', function() {
+  document.getElementById('step23')!.style.display = 'none';
+  document.getElementById('step24')!.style.display = 'block';
+});
+
+//step 24 - 25 Resultados
+const nextToStepBtn25 = document.getElementById('nextToStep25')!;
+nextToStepBtn25.addEventListener('click', function() {
+  document.getElementById('step24')!.style.display = 'none';
+  document.getElementById('step25')!.style.display = 'block';
+});
+
+
+
+
 
 
 </script>
