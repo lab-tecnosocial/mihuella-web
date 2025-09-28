@@ -93,7 +93,7 @@ h3 {
       margin: 0 auto;
     }
  .option-btn {
-      background: #0077b6;
+      background: #00b4d8;
       color: white;
       padding: 12px 20px;
       border: none;
@@ -108,6 +108,33 @@ h3 {
     .option-btn:hover {
       background: #023e8a;
     }   
+
+/* lavado de ropa*/
+.options-ropa {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  max-width: 400px;
+  width: 100%;
+}
+
+.options-ropa {
+  display: flex;
+  
+  cursor: pointer;
+}
+
+.options-ropa input[type="checkbox"] {
+  align-items: left;
+  margin-right: 5px;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #2178BD;
+  border-radius: 4px;
+  accent-color:#2178BD  ;
+}
 
 
 /*Area de bienes y servicios*/
