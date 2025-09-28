@@ -236,14 +236,14 @@ h3 {
   font-weight: bold;
 }
 
-.optionssusthabit {
+.options2 {
   display: flex;
   gap: 10px;
   justify-content: center;
   margin-bottom: 20px;
 }
 
-.optionssusthabit label {
+.label {
  display: flex;
   align-items: center;
   justify-content: center;
@@ -256,19 +256,19 @@ h3 {
   transition: all 0.2s ease;
 }
 /* Hover para dar feedback visual */
-.optionssusthabit label:hover {
+.options2 label:hover {
   background-color: #e8f5e8;
   border-color: #2e5d7d;
 }
 
 /* Cuando está seleccionado */
-.optionssusthabit input[type="radio"]:checked + label {
+.options2 input[type="radio"]:checked + label {
   background-color: #4977aa;
   color: white;
   border-color: #657cc9;
 }
 
-.optionssusthabit input[type="radio"] {
+.options2 input[type="radio"] {
   margin-right: 5px;
 }
 
