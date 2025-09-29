@@ -294,75 +294,83 @@ h3 {
   color: #2178BD;
 }
 
-.drop-icon {
-  width: 200px;
-  height: 200px;
-  margin-bottom: 5px;
-}
+/* --- Estilos generales del contenedor de resultados --- */
 .result-card {
-  width: 100%;
-  text-align: left;      /* Cambiado de 'center' a 'left' para controlar alineación */
-  padding: 20px;         /* Añadimos un padding interno para separar del borde */
-  box-sizing: border-box;
-  display: flex;         /* Usamos flex para alinear icono + texto horizontalmente */
-  align-items: center;   /* Centra verticalmente el contenido dentro del card */
-  gap: 10px;             /* Espacio entre el icono y el texto (opcional, puedes ajustar) */
+  padding: 20px;
+  display: flex;
+  align-items: flex-start; /* Alinea el contenido desde arriba */
+  gap: 20px; /* Espacio entre el icono y el texto */
+  max-width: 600px;
+  margin: 20px auto;
 }
 
-/* Texto del resultado */
+/* --- Icono de gota --- */
+.drop-icon {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0; /* Evita que se reduzca */
+}
+
+/* --- Texto principal del resultado --- */
 .result-text {
-  display: inline-block; 
-  max-width: 60%;       
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 8px;
 }
 
 .result-text p {
-  font-size: 18px;      
+  font-size: 16px;
   color: #666;
-  margin: 0 0 5px 0;     
-  line-height: 1.4;      
+  margin: 0;
+  line-height: 1.4;
 }
+
 .result-text h2 {
-  font-size: 42px;
+  font-size: 36px;
   color: #2178BD;
-  margin: 10px 0;
+  margin: 0;
   font-weight: 800;
+  line-height: 1.2;
 }
 
 .result-text h2 span {
-  font-size: 18px;
+  font-size: 16px;
   color: #666;
+  margin-left: 5px;
 }
 
-/* Comparaciones */
+/* --- Comparaciones (botellas y camiones) --- */
 .comparisons {
-  text-align: left;
-  margin-top: 30px;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.4;
 }
 
 .comparison {
   display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  margin-bottom: 15px;
-  padding: 10px;
-  background-color: #e8f5e8;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background-color: #e8f7f5;
   border-radius: 8px;
-}
-
-.icon {
-  width: 24px;
-  height: 24px;
-  margin-top: 4px;
-}
-
-.comparison p {
   font-size: 14px;
-  line-height: 1.5;
-  color: #333;
 }
 
-.comparison p strong {
-  color: #2e7d32;
+.comparison .icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.comparison strong {
+  color: #2178BD;
+  font-weight: 600;
 }
 
 
