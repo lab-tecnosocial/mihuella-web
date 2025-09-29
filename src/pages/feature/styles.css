@@ -84,14 +84,7 @@ h3 {
       outline: none;
     }
 
- /*pregunta 3*/ 
-  .options-container {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      max-width: 300px;
-      margin: 0 auto;
-    }
+  
  .option-btn {
       background: #00b4d8;
       color: white;
@@ -302,24 +295,32 @@ h3 {
 }
 
 .drop-icon {
-  width: 150px;
-  height: 150px;
-  margin-bottom: 20px;
-  margin-top: 15px;
+  width: 200px;
+  height: 200px;
+  margin-bottom: 5px;
 }
 .result-card {
-  
   width: 100%;
-  text-align: center;
+  text-align: left;      /* Cambiado de 'center' a 'left' para controlar alineación */
+  padding: 20px;         /* Añadimos un padding interno para separar del borde */
+  box-sizing: border-box;
+  display: flex;         /* Usamos flex para alinear icono + texto horizontalmente */
+  align-items: center;   /* Centra verticalmente el contenido dentro del card */
+  gap: 10px;             /* Espacio entre el icono y el texto (opcional, puedes ajustar) */
 }
 
 /* Texto del resultado */
-.result-text p {
-  font-size: 22px;
-  color: #666;
-  margin-bottom: 5px;
+.result-text {
+  display: inline-block; 
+  max-width: 60%;       
 }
 
+.result-text p {
+  font-size: 18px;      
+  color: #666;
+  margin: 0 0 5px 0;     
+  line-height: 1.4;      
+}
 .result-text h2 {
   font-size: 42px;
   color: #2178BD;
