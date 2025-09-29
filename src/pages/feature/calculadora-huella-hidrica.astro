@@ -404,19 +404,19 @@ import "./styles.css";
             class="centered-image"
           />
         </div>
-<h3>¿Cuántos plátanos consumes a la semana?</h3>
-<div id="platanoOptions" class="options-container">
-  <button class="option-btn" data-value="menos10">No consumo</button>
-  <button class="option-btn" data-value="10a20">de 5 a 10 veces</button>
-  <button class="option-btn" data-value="30a60">más de 10 veces</button>
-</div>
+        <h3>¿Cuántos plátanos consumes a la semana?</h3>
+        <div id="platanoOptions" class="options-container">
+          <button class="option-btn" data-value="menos10">No consumo</button>
+          <button class="option-btn" data-value="10a20">de 5 a 10 veces</button>
+          <button class="option-btn" data-value="30a60">más de 10 veces</button>
+        </div>
 
-<h3>¿Cuántas naranjas consumes a la semana?</h3>
-<div id="naranjaOptions" class="options-container">
-  <button class="option-btn" data-value="menos10">No consumo</button>
-  <button class="option-btn" data-value="10a20">de 5 a 10 veces</button>
-  <button class="option-btn" data-value="30a60">más de 10 veces</button>
-</div>
+        <h3>¿Cuántas naranjas consumes a la semana?</h3>
+        <div id="naranjaOptions" class="options-container">
+          <button class="option-btn" data-value="menos10">No consumo</button>
+          <button class="option-btn" data-value="10a20">de 5 a 10 veces</button>
+          <button class="option-btn" data-value="30a60">más de 10 veces</button>
+        </div>
         <button id="nextToStep22" class="next-btn">Siguiente pregunta</button>
       </div>
       <!-- Seccion bienes y servicios pregunta 22-->
@@ -550,7 +550,7 @@ import "./styles.css";
           <!-- Texto del resultado -->
           <div class="result-text">
             <p>Tu huella hídrica es:</p>
-            <h2>1022 <span>Litros/año</span></h2>
+            <h2 id="resultado">1022<span>Litros/año</span></h2>
             <p>
               Una persona consume una media de <strong
                 >49640 litros por día</strong
@@ -933,13 +933,13 @@ import "./styles.css";
         .forEach((cb) => {
           washingMethods.push(cb.value);
         });
-      values.washingMethod = washingMethods;
+      values.washingMethod = washingMethods ? washingMethods[0] : "aMano";
 
       // 3. Radios
       const radioGroups = ["rainwater", "recyclePaper"];
       radioGroups.forEach((name) => {
         const checked = document.querySelector(`input[name="${name}"]:checked`);
-        values[name] = checked ? checked.value : null;
+        values[name] = checked ? checked.value : "no";
       });
 
       // 4. Botones con data-value
@@ -948,21 +948,21 @@ import "./styles.css";
       );
       values.showerDuration = selectedShowerBtn
         ? selectedShowerBtn.dataset.value
-        : null;
+        : 0;
 
       const selectedBrushBtn = document.querySelector(
         ".option-btn-brush.selected",
       );
       values.brushFrequency = selectedBrushBtn
         ? selectedBrushBtn.dataset.value
-        : null;
+        : "menos10";
 
       const selectedHandBtn = document.querySelector(
         ".option-btn-hand.selected",
       );
       values.handWashFrequency = selectedHandBtn
         ? selectedHandBtn.dataset.value
-        : null;
+        : "0";
 
       // Alimentos (step12 y step13)
       const arrozBtn = document.querySelector(
@@ -978,10 +978,10 @@ import "./styles.css";
         "#step13 button.option-btn.selected:nth-of-type(2)",
       );
 
-      values.arrozFrequency = arrozBtn ? arrozBtn.dataset.value : null;
-      values.teFrequency = teBtn ? teBtn.dataset.value : null;
-      values.platanoFrequency = platanoBtn ? platanoBtn.dataset.value : null;
-      values.naranjaFrequency = naranjaBtn ? naranjaBtn.dataset.value : null;
+      values.arrozFrequency = arrozBtn ? arrozBtn.dataset.value : "0";
+      values.teFrequency = teBtn ? teBtn.dataset.value : "0";
+      values.platanoFrequency = platanoBtn ? platanoBtn.dataset.value : "0";
+      values.naranjaFrequency = naranjaBtn ? naranjaBtn.dataset.value : "";
 
       // Frecuencia de compra (step22)
       const purchaseFreqBtn = document.querySelector(
@@ -989,7 +989,7 @@ import "./styles.css";
       );
       values.purchaseFrequency = purchaseFreqBtn
         ? purchaseFreqBtn.dataset.value
-        : null;
+        : "1";
 
       // 5. Contadores personalizados
       const counterIds = [
@@ -1018,8 +1018,145 @@ import "./styles.css";
           console.log(`${key}:`, values[key]);
         }
       }
+      // cálculo de hh
+      let origen = 0.0;
+      let higiene = 0.0;
+      let limpieza = 0.0;
+      let alimentos = 0.0;
+      let bienes_servicios = 0.0;
+      let habitos_sostenibles = 0.0;
+      // 1. Cálculo higiene:
+      console.log("Higiene prueba");
+      console.log("Veces que te bañas x semana", values["showerTimesPerWeek"]);
+      let duracion_duchas = 0;
+      let cantVecesDuchas = values["showerTimesPerWeek"];
+      if (values["showerDuration"][0] === "menos10") {
+        duracion_duchas = 4000;
+      } else {
+        if (values["showerDuration"][0] === "10a20") {
+          duracion_duchas = 8000;
+        } else {
+          if (values["showerDuration"][0] === "30a60") {
+            duracion_duchas = 18000;
+          }
+        }
+      }
+      let lavado_dientes = 0;
+      if (values["brushFrequency"] === "menos10") {
+        lavado_dientes = 300;
+      } else {
+        if (values["brushFrequency"] === "10a20") {
+          lavado_dientes = 600;
+        } else {
+          if (values["brushFrequency"] === "30a60") {
+            lavado_dientes = 900;
+          }
+        }
+      }
+      let cantLavadoManos = 0;
+      if (values["handWashFrequency"] === "menos10") {
+        cantLavadoManos = 135; //3
+      } else {
+        if (values["handWashFrequency"] === "10a20") {
+          cantLavadoManos = 225; //5
+        } else {
+          if (values["handWashFrequency"] === "30a60") {
+            cantLavadoManos = 450;
+          }
+        }
+      }
+      let cantInodoro = 0;
+      if (values["rainwater"] == "no") {
+        cantInodoro = 210;
+      }
+      higiene =
+        duracion_duchas * cantVecesDuchas +
+        lavado_dientes +
+        cantLavadoManos +
+        cantInodoro;
+
+      // Limpieza
+      let metodo_lavado = 0;
+      if (values["washingMethod"][0] === "aMano") {
+        metodo_lavado = 840;
+      } else {
+        if (values["washingMethod"][0] === "lavadoraEstandar") {
+          metodo_lavado = 960;
+        } else {
+          if (values["washingMethod"][0] === "lavadoraEficiente") {
+            metodo_lavado = 400;
+          }
+        }
+      }
+      let cantVecesTrastesLavada = 0;
+      let cantVecesRopaLavada = values["clothesWashPerWeek"];
+      if (values["dishesWashPerDay"] === "si") {
+        cantVecesTrastesLavada = 60;
+      }
+      limpieza = cantVecesRopaLavada * metodo_lavado + cantVecesTrastesLavada;
+      // consumo de alimentos
+      let consumoCarneRes = values["beefKgPerWeek"] * 15415;
+      let consumoCarnePollo = values["chickenKgPerWeek"] * 4300;
+      let consumoCafe = values["coffeeCupsPerWeek"] * 132;
+      let consumoTe = values["teaCupsPerWeek"] * 56;
+      let consumoArroz = values["arrozFrequency"] * 2497;
+      let consumoPlatano = values["platanoFrequency"] * 160;
+      let consumoNaranja = values["arrozFrequency"] * 80;
+      alimentos =
+        consumoCarneRes +
+        consumoCarnePollo +
+        consumoCafe +
+        consumoTe +
+        consumoArroz +
+        consumoPlatano +
+        consumoNaranja;
+
+      //bienes y servicios
+      let productoQueSeCompraMas = 0;
+      if (values["tenisCount"] > values["camisetaCount"]) {
+        if (values["tenisCount"] > values["jeansCount"]) {
+          productoQueSeCompraMas = 8000;
+        } else {
+          if (values["jeansCount"] > values["camisetaCount"]) {
+            productoQueSeCompraMas = 6500;
+          } else {
+            productoQueSeCompraMas = 2700;
+          }
+        }
+      }
+      bienes_servicios =
+        (productoQueSeCompraMas + values["cellphoneCount"]) / 12;
+      //hábitos sostenibles
+      let recoleccionAgua = 0;
+      if (values["rainwater"] === "si") {
+        recoleccionAgua = 159;
+      }
+      let kgPapelReciclado = 0;
+      if (values["recyclePaper"] === "si") {
+        kgPapelReciclado = values["recycledPaperKg"] * 26.5;
+      }
+
+      habitos_sostenibles = kgPapelReciclado + kgPapelReciclado;
+
+      let total =
+        origen +
+        limpieza +
+        higiene +
+        alimentos +
+        bienes_servicios +
+        habitos_sostenibles;
+      console.log("Total: ", total);
+      console.log("Higiene: ", higiene);
+      console.log("Limpieza: ", limpieza);
+      console.log("Consumo de Alimentos: ", alimentos);
+      console.log("Bienes y Servicios: ", bienes_servicios);
+      console.log("Hábitos Sostenibles: ", habitos_sostenibles);
+
+      let resultadoElement = document.getElementById("resultado");
+      resultadoElement.innerHTML = `${total} <span>Litros/año</span>`;
       console.log("=== Fin de los valores ===");
     }
+
     logAllFormValues();
   </script>
 </html>
