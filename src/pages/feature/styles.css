@@ -641,3 +641,52 @@ h3 {
     height: 80px;
   }
 }
+@media (max-width: 768px) {
+  .result-text {
+    align-items: center; /* Centra todo el bloque */
+    text-align: center;
+    gap: 12px;
+  }
+
+  .result-text p {
+    font-size: 14px; /* Texto más pequeño */
+  }
+
+  .result-text h2 {
+    font-size: 28px; /* Reducir tamaño para que quepa */
+  }
+
+  .result-text h2 span {
+    display: block; /* Coloca "Litros/año" debajo del número */
+    font-size: 14px;
+    margin-left: 0;
+    margin-top: 4px;
+  }
+ 
+.comparisons {
+  width: 100%; /* Ocupa todo el ancho disponible */
+  margin-top: 15px; /* Espacio entre los bloques de resultados y comparaciones */
+}
+
+/* Estilos para cada elemento de comparación */
+.comparison {
+  display: flex;
+  align-items: left;
+  gap: 8px;
+  padding: 8px 12px;
+  background-color: #e8f7f5;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.comparison .icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0; /* Evita que el icono se encoja */
+}
+
+.comparison strong {
+  color: #2178BD;
+  font-weight: 600;
+}
+}
