@@ -343,13 +343,7 @@ h3 {
 
 /* --- Comparaciones (botellas y camiones) --- */
 .comparisons {
-  margin-top: 15px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  font-size: 14px;
-  color: #666;
-  line-height: 1.4;
+        
 }
 
 .comparison {
@@ -554,10 +548,14 @@ h3 {
 }
 
 #step12 .centered-image {
-  width: 80px;
+  width: 70px;
   /* antes era demasiado grande */
   height: auto;
   margin: 0 8px;
+   display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   /* menos separación lateral */
 }
 
@@ -599,7 +597,7 @@ h3 {
   flex-direction: column;
   align-items: center;  /* centra los botones */
   gap: 6px;             /* espacio entre botones */
-  margin: 8px 0 16px 0;
+  margin: 8px 0 14px 0;
 }
 
 /* Botones */
@@ -636,8 +634,21 @@ h3 {
 }
 
   @media (max-width: 600px) {
-  .centered-image {
-    width: 80px;
-    height: 80px;
+  img.centered-image {
+  width: 100px;
+  height: 100px;
   }
+}
+@media (max-width: 768px) {
+  .result-text {
+    align-items: center; /* Centra todo el bloque */
+    text-align: center;
+    gap: 12px;
+  }
+.result-card {
+ display: flex;
+  flex-direction: column; /* Asegura que los elementos se apilen verticalmente */
+  align-items: center; /* Centra los elementos horizontalmente */
+}
+
 }
