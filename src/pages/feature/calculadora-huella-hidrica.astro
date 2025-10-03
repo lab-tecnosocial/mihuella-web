@@ -161,13 +161,13 @@ import HowTo from "../Sections/HowTo.astro";
           class="centered-image"
         />
         <div id="brushDuration" class="options-container">
-          <button class="option-btn-brush" data-value="menos10"
+          <button class="option-btn-brush option-btn" data-value="menos10"
             >1 vez al día</button
           >
-          <button class="option-btn-brush" data-value="10a20"
+          <button class="option-btn-brush option-btn" data-value="10a20"
             >2 veces al día</button
           >
-          <button class="option-btn-brush" data-value="30a60"
+          <button class="option-btn-brush option-btn" data-value="30a60"
             >3 veces al día o más</button
           >
         </div>
@@ -188,10 +188,10 @@ import HowTo from "../Sections/HowTo.astro";
           class="centered-image"
         />
         <div id="handDuration" class="options-container">
-          <button class="option-btn-hand" data-value="menos10"
+          <button class="option-btn-hand option-btn" data-value="menos10"
             >2 a 3 veces</button>
-          <button class="option-btn-hand" data-value="10a20">3 a 5 veces</button>
-          <button class="option-btn-hand" data-value="30a60">Más de 5 veces</button>
+          <button class="option-btn-hand option-btn" data-value="10a20">3 a 5 veces</button>
+          <button class="option-btn-hand option-btn" data-value="30a60">Más de 5 veces</button>
         </div>
         <button id="nextToStep7" class="next-btn">Siguiente pregunta</button>
         <!--<div class="nav-arrows">
@@ -468,10 +468,10 @@ import HowTo from "../Sections/HowTo.astro";
         />
         <h3>¿Cuántas veces compras ropa o calzado <b> nuevo</b> al año?</h3>
 
-        <div id="purchaseFrequency" class="frequency-options">
-          <button class="freq-btn" data-value="1">1 vez al año</button>
-          <button class="freq-btn" data-value="6+">Más de 6 veces</button>
-          <button class="freq-btn" data-value="2-5">Entre 2 a 5 veces</button>
+        <div id="purchaseFrequency" class="frequency-options options-container">
+          <button class="freq-btn option-btn" data-value="1">1 vez al año</button>
+          <button class="freq-btn option-btn" data-value="6+">Más de 6 veces</button>
+          <button class="freq-btn option-btn" data-value="2-5">Entre 2 a 5 veces</button>
         </div>
 
         <!-- Pregunta 23: Cantidad por producto -->
@@ -904,6 +904,18 @@ import HowTo from "../Sections/HowTo.astro";
     // 7. Contador de celulares (¡CORREGIDO!)
     const cellEl = document.getElementById("cellphoneCountValue");
     values.cellphoneCount = cellEl ? parseInt(cellEl.textContent, 10) || 0 : 0;
+
+    // evento onclick en campos de selección múltiple
+    
+    buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Quitar la clase 'selected' de todos los botones
+      buttons.forEach(btn => btn.classList.remove('selected'));
+
+      // Agregar la clase 'selected' solo al botón clickeado
+      button.classList.add('selected');
+    });
+  });
 
     // --- CÁLCULO ---
     let higiene = 0, limpieza = 0, alimentos = 0, bienes_servicios = 0, habitos_sostenibles = 0;

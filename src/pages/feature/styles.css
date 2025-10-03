@@ -632,6 +632,32 @@ h3 {
   padding: 8px 16px;
   font-size: 15px;
 }
+.options-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; 
+  flex-wrap: wrap; 
+  margin-top: 20px; 
+}
+
+.option-btn {
+  padding: 10px 20px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  background-color:#0096c7;
+  color: black;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.option-btn.selected {
+  background-color: #007BFF;
+  color: white;
+  border-color: #007BFF;
+}
 
   @media (max-width: 600px) {
   img.centered-image {
