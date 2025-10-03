@@ -689,7 +689,7 @@ import HowTo from "../Sections/HowTo.astro";
   const totalSteps = 27; // step0 a step26
 
   // --- FUNCIONES DE NAVEGACIÓN ---
-  function goToStep(stepIndex) {
+  function goToStep(stepIndex: number) {
     if (stepIndex < 0 || stepIndex >= totalSteps) return;
 
     // Ocultar todos los pasos
@@ -753,7 +753,7 @@ import HowTo from "../Sections/HowTo.astro";
     }
 
     // === 3. Selección de botones con data-value ===
-    const setupSelection = (containerId, buttonClass) => {
+    const setupSelection = (containerId: string, buttonClass: string) => {
       const container = document.getElementById(containerId);
       if (!container) return;
       const buttons = container.querySelectorAll(buttonClass);
@@ -775,40 +775,40 @@ import HowTo from "../Sections/HowTo.astro";
     setupSelection("purchaseFrequency", ".freq-btn");
 
     // === 4. Contador de PAN (step12) ===
-    let panCount = 0;
-    const panDisplay = document.getElementById("PanCount");
-    const decPan = document.getElementById("decrementBtn");
-    const incPan = document.getElementById("incrementBtn");
-    if (panDisplay && decPan && incPan) {
-      decPan.addEventListener("click", () => { if (panCount > 0) panCount--; panDisplay.textContent = panCount; });
-      incPan.addEventListener("click", () => { panCount++; panDisplay.textContent = panCount; });
-    }
+    // let panCount = 0;
+    // let panDisplay = document.getElementById("PanCount");
+    // const decPan = document.getElementById("decrementBtn");
+    // const incPan = document.getElementById("incrementBtn");
+    // if (panDisplay && decPan && incPan) {
+    //   decPan.addEventListener("click", () => { if (panCount > 0) panCount--; panDisplay.textContent= panCount; });
+    //   incPan.addEventListener("click", () => { panCount++; panDisplay.textContent = panCount; });
+    // }
 
-    // === 5. Contador de CELULARES (step23) ===
-    let cellphoneCount = 0;
-    const cellDisplay = document.getElementById("cellphoneCountValue");
-    const decCell = document.getElementById("decrementCellphone");
-    const incCell = document.getElementById("incrementCellphone"); // ID corregido
-    if (cellDisplay && decCell && incCell) {
-      decCell.addEventListener("click", () => { if (cellphoneCount > 0) cellphoneCount--; cellDisplay.textContent = cellphoneCount; });
-      incCell.addEventListener("click", () => { cellphoneCount++; cellDisplay.textContent = cellphoneCount; });
-    }
+    // // === 5. Contador de CELULARES (step23) ===
+    // let cellphoneCount = 0;
+    // const cellDisplay = document.getElementById("cellphoneCountValue");
+    // const decCell = document.getElementById("decrementCellphone");
+    // const incCell = document.getElementById("incrementCellphone"); // ID corregido
+    // if (cellDisplay && decCell && incCell) {
+    //   decCell.addEventListener("click", () => { if (cellphoneCount > 0) cellphoneCount--; cellDisplay.textContent = cellphoneCount; });
+    //   incCell.addEventListener("click", () => { cellphoneCount++; cellDisplay.textContent = cellphoneCount; });
+    // }
 
-    // === 6. Contadores de productos (step22) ===
-    document.querySelectorAll(".counter-btn[data-action]").forEach(btn => {
-      btn.addEventListener("click", function () {
-        const action = this.getAttribute("data-action");
-        const item = this.closest(".product-item");
-        if (!item) return;
-        const product = item.getAttribute("data-product");
-        const countEl = document.getElementById(`${product}Count`);
-        if (!countEl) return;
-        let count = parseInt(countEl.textContent, 10) || 0;
-        if (action === "increment") count++;
-        else if (action === "decrement" && count > 0) count--;
-        countEl.textContent = count;
-      });
-    });
+    // // === 6. Contadores de productos (step22) ===
+    // document.querySelectorAll(".counter-btn[data-action]").forEach(btn => {
+    //   btn.addEventListener("click", function () {
+    //     const action = this.getAttribute("data-action");
+    //     const item = this.closest(".product-item");
+    //     if (!item) return;
+    //     const product = item.getAttribute("data-product");
+    //     const countEl = document.getElementById(`${product}Count`);
+    //     if (!countEl) return;
+    //     let count = parseInt(countEl.textContent, 10) || 0;
+    //     if (action === "increment") count++;
+    //     else if (action === "decrement" && count > 0) count--;
+    //     countEl.textContent = count;
+    //   });
+    // });
 
     // === 7. Modal de consejos (step26) ===
     const tips = {
@@ -845,7 +845,7 @@ import HowTo from "../Sections/HowTo.astro";
         const cat = btn.getAttribute("data-category");
         if (!cat || !tips[cat] || !modal) return;
         document.getElementById("modal-title").textContent = `Consejos ${cat.charAt(0).toUpperCase() + cat.slice(1)}`;
-        const list = tips[cat].map((t, i) => `<li>${i + 1}. ${t}</li>`).join("");
+        const list = tips[cat].map((t: any, i: number) => `<li>${i + 1}. ${t}</li>`).join("");
         document.getElementById("modal-body").innerHTML = `<ol>${list}</ol>`;
         modal.style.display = "flex";
       });
@@ -879,7 +879,7 @@ import HowTo from "../Sections/HowTo.astro";
     });
 
     // 5. Botones seleccionados
-    const getSelectedValue = (containerId, buttonClass) => {
+    const getSelectedValue = (containerId: string, buttonClass: string) => {
       const container = document.getElementById(containerId);
       if (!container) return null;
       const selected = container.querySelector(`${buttonClass}.selected`);
@@ -946,7 +946,7 @@ import HowTo from "../Sections/HowTo.astro";
     alimentos += (values.coffeeCupsPerWeek || 0) * 132;
     alimentos += (values.teaCupsPerWeek || 0) * 56;
 
-    const freqToLiters = (freq) => {
+    const freqToLiters = (freq: string) => {
       if (freq === "menos10") return 0;
       if (freq === "10a20") return 7 * 250;
       if (freq === "30a60") return 12 * 250;
@@ -970,12 +970,16 @@ import HowTo from "../Sections/HowTo.astro";
     if (values.rainwater === "si") habitos_sostenibles -= 1000;
     if (values.recyclePaper === "si") habitos_sostenibles -= (values.recycledPaperKg || 0) * 26.5;
 
-    const total = Math.round(higiene + limpieza + alimentos + bienes_servicios + habitos_sostenibles);
-
+    // Redondeo de miles K
+    let total = Math.round(higiene + limpieza + alimentos + bienes_servicios + habitos_sostenibles);
+    let total_redondeado =0;
+    if(total>=1000){
+      total_redondeado=Math.round(total/1000);
+    }
     // --- MOSTRAR RESULTADO ---
     const resultadoElement = document.getElementById("resultado");
     if (resultadoElement) {
-      resultadoElement.innerHTML = `${total.toLocaleString()} <span>Litros/año</span>`;
+      resultadoElement.innerHTML = `${total_redondeado.toLocaleString()}K <span>Litros/año</span>`;
     }
 
     // --- Mostrar número de camiones cisterna ---
@@ -997,7 +1001,7 @@ import HowTo from "../Sections/HowTo.astro";
     if (btn25) {
       btn25.addEventListener("click", () => {
         goToStep(25);
-        logAllFormValues(); // ✅ Ahora sí se llama en el momento correcto
+        logAllFormValues(); 
       });
     }
   });
