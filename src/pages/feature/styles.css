@@ -21,6 +21,7 @@
   height: 200px; /* Tamaño cuadrado */
   object-fit: cover; /* Mantener proporciones */
   margin: 0 auto; /* Centrar horizontalmente */
+  align-items: center;
 }
 
 h1 {
@@ -129,6 +130,12 @@ h3 {
   accent-color:#2178BD  ;
 }
 
+.centered-image-pan{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80px; 
+}
 
 /*Area de bienes y servicios*/
 .frequency-options {
@@ -278,11 +285,11 @@ h3 {
 /* Botón Volver a calcular */
 .back-button {
   position: absolute;
-  top: 15px;
-  left: 15px;
+  top: 30px;
+  left: 30px;
   background: #e0e0e0;
   color: #2178BD;
-  padding: 5px 10px;
+  padding: 15px 10px;
   border-radius: 20px;
   font-size: 14px;
   cursor: pointer;
@@ -342,9 +349,7 @@ h3 {
 }
 
 /* --- Comparaciones (botellas y camiones) --- */
-.comparisons {
-        
-}
+
 
 .comparison {
   display: flex;
@@ -631,6 +636,32 @@ h3 {
   margin-top: 12px;
   padding: 8px 16px;
   font-size: 15px;
+}
+.options-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; 
+  flex-wrap: wrap; 
+  margin-top: 20px; 
+}
+
+.option-btn {
+  padding: 10px 20px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  background-color:#0096c7;
+  color: black;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.option-btn.selected {
+  background-color: #007BFF;
+  color: white;
+  border-color: #007BFF;
 }
 
   @media (max-width: 600px) {
