@@ -1,6 +1,5 @@
 ---
 import "./styles.css";
-import HowTo from "../Sections/HowTo.astro";
 ---
 
 <!doctype html>
@@ -666,8 +665,8 @@ import HowTo from "../Sections/HowTo.astro";
               Haz clic en alguna categoría
             </div>
             <!-- Botón Volver a calcular -->
-        <button class="back-button2">Volver a calcular</button>
           </div>
+           <button class="back-button2">Volver a calcular</button>
         </div>
       </div>
     </div>
@@ -794,7 +793,32 @@ import HowTo from "../Sections/HowTo.astro";
     });
 
     // Modal de consejos --no funciona
-    const tips = { /* ... igual que antes ... */ };
+    // Datos de consejos por categoría
+const tips = {
+  higiene: [
+    "Dúchate el menor tiempo posible y apaga el agua al enjabonarte.",
+    "Repara grifos o fugas en casa.",
+    "Cierra el grifo al cepillarte los dientes."
+  ],
+  limpieza: [
+    "Usa cubetas en lugar de manguera para lavar el auto.",
+    "Lava la ropa solo cuando tengas cargas completas.",
+    "Recicla el agua de la lluvia para regar plantas."
+  ],
+  alimentos: [
+    "Evita desperdiciar comida, ya que cada alimento requiere agua para producirse.",
+    "Elige productos locales y de temporada para reducir la huella hídrica del transporte.",
+    "Reduce el consumo de carne, especialmente de res, que requiere mucha agua."
+  ],
+  bienes: [
+    "Compra ropa de segunda mano o reciclada.",
+    "Repara tus productos en lugar de reemplazarlos.",
+    "Elige productos duraderos y de calidad para reducir el consumo."
+  ]
+};
+
+    
+
     const modal = document.getElementById("modal");
     const closeBtn = document.querySelector(".close");
     if (closeBtn && modal) closeBtn.addEventListener("click", () => modal.style.display = "none");
@@ -809,7 +833,7 @@ import HowTo from "../Sections/HowTo.astro";
         modal.style.display = "flex";
       });
     });
-
+    
     // Botón de resultados
     const btn25 = document.getElementById("nextToStep25");
     if (btn25) {
