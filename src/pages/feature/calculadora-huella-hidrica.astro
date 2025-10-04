@@ -657,7 +657,7 @@ import HowTo from "../Sections/HowTo.astro";
           >
         </div>
 
-        <!-- Modal flotante -->
+        <!-- Modal flotante  no funciona-->
         <div id="modal" class="modal">
           <div class="modal-content">
             <span class="close">&times;</span>
@@ -666,11 +666,10 @@ import HowTo from "../Sections/HowTo.astro";
               Haz clic en alguna categoría
             </div>
             <!-- Botón Volver a calcular -->
-        <button class="back-button2">Volver a calcular</button
+        <button class="back-button2">Volver a calcular</button>
           </div>
         </div>
       </div>
-      >
     </div>
 
 
@@ -684,11 +683,12 @@ import HowTo from "../Sections/HowTo.astro";
 </footer>
   </body>
 
-<script is:raw>
+<script>
+// @ts-nocheck
   let currentStep = 0;
   const totalSteps = 27;
 
-  function goToStep(stepIndex:number) {
+  function goToStep(stepIndex: number) {
     if (stepIndex < 0 || stepIndex >= totalSteps) return;
     for (let i = 0; i < totalSteps; i++) {
       const el = document.getElementById(`step${i}`);
@@ -736,7 +736,7 @@ import HowTo from "../Sections/HowTo.astro";
     const backBtn2 = document.querySelector(".back-button2");
     if (backBtn2) backBtn2.addEventListener("click", () => goToStep(0));
 
-    const setupSelection = (containerId:string, buttonClass:string) => {
+    const setupSelection = (containerId: string, buttonClass: string): void => {
       const container = document.getElementById(containerId);
       if (!container) return;
       const buttons = container.querySelectorAll(buttonClass);
@@ -793,7 +793,7 @@ import HowTo from "../Sections/HowTo.astro";
       });
     });
 
-    // Modal de consejos
+    // Modal de consejos --no funciona
     const tips = { /* ... igual que antes ... */ };
     const modal = document.getElementById("modal");
     const closeBtn = document.querySelector(".close");
@@ -979,3 +979,4 @@ import HowTo from "../Sections/HowTo.astro";
 </script>
 
 </html>
+
