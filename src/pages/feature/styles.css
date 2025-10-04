@@ -21,6 +21,7 @@
   height: 200px; /* Tamaño cuadrado */
   object-fit: cover; /* Mantener proporciones */
   margin: 0 auto; /* Centrar horizontalmente */
+  align-items: center;
 }
 
 h1 {
@@ -129,6 +130,12 @@ h3 {
   accent-color:#2178BD  ;
 }
 
+.centered-image-pan{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80px; 
+}
 
 /*Area de bienes y servicios*/
 .frequency-options {
@@ -278,11 +285,11 @@ h3 {
 /* Botón Volver a calcular */
 .back-button {
   position: absolute;
-  top: 15px;
-  left: 15px;
+  top: 30px;
+  left: 30px;
   background: #e0e0e0;
   color: #2178BD;
-  padding: 5px 10px;
+  padding: 15px 10px;
   border-radius: 20px;
   font-size: 14px;
   cursor: pointer;
@@ -342,9 +349,7 @@ h3 {
 }
 
 /* --- Comparaciones (botellas y camiones) --- */
-.comparisons {
-        
-}
+
 
 .comparison {
   display: flex;

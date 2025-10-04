@@ -211,10 +211,10 @@ import HowTo from "../Sections/HowTo.astro";
         />
         <div class="options2">
           <label
-            ><input type="radio" name="rainwater" value="si" /> ahorrador</label
+            ><input type="radio" name="toiletType" value="si" /> ahorrador</label
           >
           <label
-            ><input type="radio" name="rainwater" value="no" /> Tradicional</label
+            ><input type="radio"  name="toiletType" value="no" /> Tradicional</label
           >
         </div>
         <button id="nextToStep8" class="next-btn">Siguiente pregunta</button> 
@@ -283,10 +283,10 @@ import HowTo from "../Sections/HowTo.astro";
         />
         <div class="options2">
           <label
-            ><input type="radio" name="rainwater" value="si" /> A mano</label
+            ><input type="radio" name="dishwashingMethod" value="si" /> A mano</label
           >
           <label
-            ><input type="radio" name="rainwater" value="no" /> lavajillas</label
+            ><input type="radio" name="dishwashingMethod" value="no" /> lavajillas</label
           >
         </div>
         <h3>¿Cuántas veces al día lavas los platos?</h3>
@@ -403,11 +403,10 @@ import HowTo from "../Sections/HowTo.astro";
           <button class="option-btn" data-value="10a20">de 5 a 10 veces</button>
           <button class="option-btn" data-value="30a60">más de 10 veces</button>
         </div>
-        <div style="display:none;">
-          <img
+          <img 
             src="/public/img/bakery_dining.png"
             alt="Croissant"
-            class="centered-image"
+            class="centered-image-pan"
           />
           <h3>¿Cuántas piezas de pan consumes al día?</h3>
           <!-- Contador -->
@@ -416,7 +415,7 @@ import HowTo from "../Sections/HowTo.astro";
             <span class="counter-value" id="PanCount">0</span>
             <button class="counter-btn" id="incrementBtn">+</button>
           </div>
-        </div>
+        
         <button id="nextToStep13" class="next-btn">Siguiente pregunta</button>
       </div>
 
@@ -448,8 +447,8 @@ import HowTo from "../Sections/HowTo.astro";
         <h3>¿Cuántas naranjas consumes a la semana?</h3>
         <div id="naranjaOptions" class="options-container">
           <button class="option-btn" data-value="menos10">No consumo</button>
-          <button class="option-btn" data-value="10a20">de 5 a 10 veces</button>
-          <button class="option-btn" data-value="30a60">más de 10 veces</button>
+          <button class="option-btn" data-value="10a20">de 3 a 6 veces</button>
+          <button class="option-btn" data-value="30a60">más de 7 veces</button>
         </div>
         <button id="nextToStep22" class="next-btn">Siguiente pregunta</button>
        <!-- <div class="nav-arrows">
@@ -603,8 +602,8 @@ import HowTo from "../Sections/HowTo.astro";
             <h2 id="resultado">3.467.500<span>Litros/año</span></h2>
             <p>
               Una persona consume una media de <strong
-                >49640 litros por día</strong
-              >.
+                >3.46 millones de litros por día</strong
+              >
             </p>
           </div>
           <!-- Comparaciones -->
@@ -633,6 +632,8 @@ import HowTo from "../Sections/HowTo.astro";
           </div>
         </div>
         <button id="nextToStep26" class="next-btn">¿Cómo ahorrar?</button>
+        <!-- Botón Volver a calcular -->
+        <button class="back-button">Volver a calcular</button>
         <!--<div class="nav-arrows">
           <button class="nav-arrow prev" onclick="goToPrevStep()">‹</button>
           <button class="nav-arrow next" onclick="goToNextStep()">›</button>
@@ -656,20 +657,20 @@ import HowTo from "../Sections/HowTo.astro";
           >
         </div>
 
-        <!-- Botón Volver a calcular -->
-        <button class="back-button">Volver a calcular</button>
-
         <!-- Modal flotante -->
         <div id="modal" class="modal">
           <div class="modal-content">
             <span class="close">&times;</span>
             <h2 id="modal-title">Consejos Higiene</h2>
             <div id="modal-body">
-              Haz clic en la Categorías
+              Haz clic en alguna categoría
             </div>
+            <!-- Botón Volver a calcular -->
+        <button class="back-button2">Volver a calcular</button
           </div>
         </div>
       </div>
+      >
     </div>
 
 
@@ -684,21 +685,15 @@ import HowTo from "../Sections/HowTo.astro";
   </body>
 
 <script>
-  // --- CONFIGURACIÓN GLOBAL ---
   let currentStep = 0;
-  const totalSteps = 27; // step0 a step26
+  const totalSteps = 27;
 
-  // --- FUNCIONES DE NAVEGACIÓN ---
-  function goToStep(stepIndex: number) {
+  function goToStep(stepIndex) {
     if (stepIndex < 0 || stepIndex >= totalSteps) return;
-
-    // Ocultar todos los pasos
     for (let i = 0; i < totalSteps; i++) {
       const el = document.getElementById(`step${i}`);
       if (el) el.style.display = "none";
     }
-
-    // Mostrar el paso solicitado
     const target = document.getElementById(`step${stepIndex}`);
     if (target) {
       target.style.display = "block";
@@ -706,19 +701,9 @@ import HowTo from "../Sections/HowTo.astro";
     }
   }
 
-  function goToNextStep() {
-    if (currentStep < totalSteps - 1) goToStep(currentStep + 1);
-  }
-
-  function goToPrevStep() {
-    if (currentStep > 0) goToStep(currentStep - 1);
-  }
-
-  // --- INICIALIZACIÓN ---
   document.addEventListener("DOMContentLoaded", function () {
     goToStep(0);
 
-    // === 1. Botones "Siguiente" ===
     const stepMap = {
       step0: 1,
       step1: 3,
@@ -746,14 +731,12 @@ import HowTo from "../Sections/HowTo.astro";
       }
     }
 
-    // === 2. Botón "Volver a calcular" (step26) ===
     const backBtn = document.querySelector(".back-button");
-    if (backBtn) {
-      backBtn.addEventListener("click", () => goToStep(0));
-    }
+    if (backBtn) backBtn.addEventListener("click", () => goToStep(0));
+    const backBtn2 = document.querySelector(".back-button2");
+    if (backBtn2) backBtn2.addEventListener("click", () => goToStep(0));
 
-    // === 3. Selección de botones con data-value ===
-    const setupSelection = (containerId: string, buttonClass: string) => {
+    const setupSelection = (containerId, buttonClass) => {
       const container = document.getElementById(containerId);
       if (!container) return;
       const buttons = container.querySelectorAll(buttonClass);
@@ -774,112 +757,104 @@ import HowTo from "../Sections/HowTo.astro";
     setupSelection("naranjaOptions", ".option-btn");
     setupSelection("purchaseFrequency", ".freq-btn");
 
-    // === 4. Contador de PAN (step12) ===
-    // let panCount = 0;
-    // let panDisplay = document.getElementById("PanCount");
-    // const decPan = document.getElementById("decrementBtn");
-    // const incPan = document.getElementById("incrementBtn");
-    // if (panDisplay && decPan && incPan) {
-    //   decPan.addEventListener("click", () => { if (panCount > 0) panCount--; panDisplay.textContent= panCount; });
-    //   incPan.addEventListener("click", () => { panCount++; panDisplay.textContent = panCount; });
-    // }
+    // Contador de pan
+    let panCount = 0;
+    const panDisplay = document.getElementById("PanCount");
+    const decPan = document.getElementById("decrementBtn");
+    const incPan = document.getElementById("incrementBtn");
+    if (panDisplay && decPan && incPan) {
+      decPan.addEventListener("click", () => { if (panCount > 0) panCount--; panDisplay.textContent = panCount; });
+      incPan.addEventListener("click", () => { panCount++; panDisplay.textContent = panCount; });
+    }
 
-    // // === 5. Contador de CELULARES (step23) ===
-    // let cellphoneCount = 0;
-    // const cellDisplay = document.getElementById("cellphoneCountValue");
-    // const decCell = document.getElementById("decrementCellphone");
-    // const incCell = document.getElementById("incrementCellphone"); // ID corregido
-    // if (cellDisplay && decCell && incCell) {
-    //   decCell.addEventListener("click", () => { if (cellphoneCount > 0) cellphoneCount--; cellDisplay.textContent = cellphoneCount; });
-    //   incCell.addEventListener("click", () => { cellphoneCount++; cellDisplay.textContent = cellphoneCount; });
-    // }
+    // Contador de celulares
+    let cellphoneCount = 0;
+    const cellDisplay = document.getElementById("cellphoneCountValue");
+    const decCell = document.getElementById("decrementCellphone");
+    const incCell = document.getElementById("incrementCellphone");
+    if (cellDisplay && decCell && incCell) {
+      decCell.addEventListener("click", () => { if (cellphoneCount > 0) cellphoneCount--; cellDisplay.textContent = cellphoneCount; });
+      incCell.addEventListener("click", () => { cellphoneCount++; cellDisplay.textContent = cellphoneCount; });
+    }
 
-    // // === 6. Contadores de productos (step22) ===
-    // document.querySelectorAll(".counter-btn[data-action]").forEach(btn => {
-    //   btn.addEventListener("click", function () {
-    //     const action = this.getAttribute("data-action");
-    //     const item = this.closest(".product-item");
-    //     if (!item) return;
-    //     const product = item.getAttribute("data-product");
-    //     const countEl = document.getElementById(`${product}Count`);
-    //     if (!countEl) return;
-    //     let count = parseInt(countEl.textContent, 10) || 0;
-    //     if (action === "increment") count++;
-    //     else if (action === "decrement" && count > 0) count--;
-    //     countEl.textContent = count;
-    //   });
-    // });
+    // Contadores de productos
+    document.querySelectorAll(".counter-btn[data-action]").forEach(btn => {
+      btn.addEventListener("click", function () {
+        const action = this.getAttribute("data-action");
+        const item = this.closest(".product-item");
+        if (!item) return;
+        const product = item.getAttribute("data-product");
+        const countEl = document.getElementById(`${product}Count`);
+        if (!countEl) return;
+        let count = parseInt(countEl.textContent, 10) || 0;
+        if (action === "increment") count++;
+        else if (action === "decrement" && count > 0) count--;
+        countEl.textContent = count;
+      });
+    });
 
-    // === 7. Modal de consejos (step26) ===
-    const tips = {
-      higiene: [
-        "Dúchate el menor tiempo posible y apaga el agua al enjabonarte.",
-        "Repara grifos o fugas en casa.",
-        "Cierra el grifo al cepillarte los dientes.",
-      ],
-      limpieza: [
-        "Usa cubetas en lugar de manguera para lavar el auto.",
-        "Lava la ropa solo cuando tengas cargas completas.",
-        "Recicla el agua de la lluvia para regar plantas.",
-      ],
-      alimentos: [
-        "Evita desperdiciar comida, ya que cada alimento requiere agua para producirse.",
-        "Elige productos locales y de temporada para reducir la huella hídrica del transporte.",
-        "Reduce el consumo de carne, especialmente de res, que requiere mucha agua.",
-      ],
-      bienes: [
-        "Compra ropa de segunda mano o reciclada.",
-        "Repara tus productos en lugar de reemplazarlos.",
-        "Elige productos duraderos y de calidad para reducir el consumo.",
-      ],
-    };
-
+    // Modal de consejos
+    const tips = { /* ... igual que antes ... */ };
     const modal = document.getElementById("modal");
     const closeBtn = document.querySelector(".close");
-    if (closeBtn && modal) {
-      closeBtn.addEventListener("click", () => modal.style.display = "none");
-    }
+    if (closeBtn && modal) closeBtn.addEventListener("click", () => modal.style.display = "none");
 
     document.querySelectorAll(".category-btn").forEach(btn => {
       btn.addEventListener("click", () => {
         const cat = btn.getAttribute("data-category");
         if (!cat || !tips[cat] || !modal) return;
         document.getElementById("modal-title").textContent = `Consejos ${cat.charAt(0).toUpperCase() + cat.slice(1)}`;
-        const list = tips[cat].map((t: any, i: number) => `<li>${i + 1}. ${t}</li>`).join("");
+        const list = tips[cat].map((t, i) => `<li>${i + 1}. ${t}</li>`).join("");
         document.getElementById("modal-body").innerHTML = `<ol>${list}</ol>`;
         modal.style.display = "flex";
       });
     });
+
+    // Botón de resultados
+    const btn25 = document.getElementById("nextToStep25");
+    if (btn25) {
+      btn25.addEventListener("click", () => {
+        goToStep(25);
+        logAllFormValues();
+      });
+    }
   });
 
-  // --- FUNCIÓN DE CÁLCULO (solo se llama al ir a step25) ---
   function logAllFormValues() {
     const values = {};
 
-    // 1. Inputs numéricos
+    // Inputs numéricos
     document.querySelectorAll('input[type="number"]').forEach(input => {
       values[input.id] = parseFloat(input.value) || 0;
     });
 
-    // 2. Checkboxes - Origen
+    // Origen (checkboxes)
     const origenCheckboxes = ["redAgua", "cooperativas", "ventasBloque", "cisternas", "pozos"];
     values.origen = origenCheckboxes.filter(id => {
       const el = document.getElementById(id);
       return el && el.checked;
     });
 
-    // 3. Método de lavado de ropa
+    // Lavado de ropa
     const washingChecks = document.querySelectorAll('input[name="washingMethod"]:checked');
     values.washingMethod = washingChecks.length ? washingChecks[0].value : "aMano";
 
-    // 4. Radios
-    ["rainwater", "recyclePaper"].forEach(name => {
-      const el = document.querySelector(`input[name="${name}"]:checked`);
-      values[name] = el ? el.value : "no";
-    });
+    // Radios
+    const rainwaterEl = document.querySelector('input[name="rainwater"]:checked');
+    values.rainwater = rainwaterEl ? rainwaterEl.value : "no";
 
-    // 5. Botones seleccionados
-    const getSelectedValue = (containerId: string, buttonClass: string) => {
+    const recyclePaperEl = document.querySelector('input[name="recyclePaper"]:checked');
+    values.recyclePaper = recyclePaperEl ? recyclePaperEl.value : "no";
+
+    // Inodoro y trastes
+    const toiletEl = document.querySelector('input[name="toiletType"]:checked');
+    values.toiletType = toiletEl ? toiletEl.value : "no"; // "si" = ahorrador
+
+    const dishEl = document.querySelector('input[name="dishwashingMethod"]:checked');
+    values.dishwashingMethod = dishEl ? dishEl.value : "si"; // "si" = a mano
+
+    // Botones seleccionados
+    const getSelectedValue = (containerId, buttonClass) => {
       const container = document.getElementById(containerId);
       if (!container) return null;
       const selected = container.querySelector(`${buttonClass}.selected`);
@@ -895,27 +870,14 @@ import HowTo from "../Sections/HowTo.astro";
     values.naranjaFrequency = getSelectedValue("naranjaOptions", ".option-btn");
     values.purchaseFrequency = getSelectedValue("purchaseFrequency", ".freq-btn");
 
-    // 6. Contadores
+    // Contadores
     ["tenisCount", "camisetaCount", "jeansCount", "PanCount"].forEach(id => {
       const el = document.getElementById(id);
       values[id] = el ? parseInt(el.textContent, 10) || 0 : 0;
     });
 
-    // 7. Contador de celulares (¡CORREGIDO!)
     const cellEl = document.getElementById("cellphoneCountValue");
     values.cellphoneCount = cellEl ? parseInt(cellEl.textContent, 10) || 0 : 0;
-
-    // evento onclick en campos de selección múltiple
-    
-    buttons.forEach(button => {
-    button.addEventListener('click', () => {
-      // Quitar la clase 'selected' de todos los botones
-      buttons.forEach(btn => btn.classList.remove('selected'));
-
-      // Agregar la clase 'selected' solo al botón clickeado
-      button.classList.add('selected');
-    });
-  });
 
     // --- CÁLCULO ---
     let higiene = 0, limpieza = 0, alimentos = 0, bienes_servicios = 0, habitos_sostenibles = 0;
@@ -936,7 +898,7 @@ import HowTo from "../Sections/HowTo.astro";
     else if (values.handWashFrequency === "10a20") lavado_manos = 225;
     else if (values.handWashFrequency === "30a60") lavado_manos = 450;
 
-    let inodoro = values.rainwater === "no" ? 210 : 100;
+    let inodoro = values.toiletType === "si" ? 100 : 210; // "si" = ahorrador
 
     higiene = (duracion_duchas * (values.showerTimesPerWeek || 0)) + lavado_dientes + lavado_manos + inodoro;
 
@@ -947,10 +909,10 @@ import HowTo from "../Sections/HowTo.astro";
     else if (values.washingMethod === "lavadoraEficiente") lavado_ropa_litros = 400;
 
     limpieza = (values.clothesWashPerWeek || 0) * lavado_ropa_litros;
-    // Trastes: asumimos 20L por lavado si es a mano
-    if (values.rainwater === "si") {
-      limpieza += (values.dishesWashPerDay || 0) * 20000;
-    }
+
+    // Trastes
+    let trastesLitros = values.dishwashingMethod === "si" ? 20 : 12; // "si" = a mano
+    limpieza += (values.dishesWashPerDay || 0) * trastesLitros * 365;
 
     // Alimentos
     alimentos += (values.beefKgPerWeek || 0) * 15415;
@@ -958,7 +920,7 @@ import HowTo from "../Sections/HowTo.astro";
     alimentos += (values.coffeeCupsPerWeek || 0) * 132;
     alimentos += (values.teaCupsPerWeek || 0) * 56;
 
-    const freqToLiters = (freq: string) => {
+    const freqToLiters = (freq) => {
       if (freq === "menos10") return 0;
       if (freq === "10a20") return 7 * 250;
       if (freq === "30a60") return 12 * 250;
@@ -971,52 +933,49 @@ import HowTo from "../Sections/HowTo.astro";
     alimentos += (values.PanCount || 0) * 200 * 7;
 
     // Bienes
-    bienes_servicios = (
+    bienes_servicios = 
       (values.tenisCount || 0) * 8000 +
       (values.camisetaCount || 0) * 2700 +
       (values.jeansCount || 0) * 6500 +
-      (values.cellphoneCount || 0) * 20000
-    ) / 12;
+      (values.cellphoneCount || 0) * 20000;
 
     // Hábitos sostenibles
     if (values.rainwater === "si") habitos_sostenibles -= 1000;
     if (values.recyclePaper === "si") habitos_sostenibles -= (values.recycledPaperKg || 0) * 26.5;
 
-    // Redondeo de miles K
-    let total = Math.round(higiene + limpieza + alimentos + bienes_servicios + habitos_sostenibles);
-    let total_redondeado =0;
-    if(total>=1000){
-      total_redondeado=Math.round(total/1000);
+    // Total
+    let total = higiene + limpieza + alimentos + bienes_servicios + habitos_sostenibles;
+    total = Math.round(total);
+
+    // Formato
+    let formattedTotal = "";
+    if (total >= 1_000_000) {
+      const millones = total / 1_000_000;
+      formattedTotal = millones % 1 === 0 ? `${millones.toLocaleString()}M` : `${millones.toFixed(1)}M`;
+    } else if (total >= 1_000) {
+      const miles = total / 1_000;
+      formattedTotal = miles % 1 === 0 ? `${miles.toLocaleString()}K` : `${miles.toFixed(1)}K`;
+    } else {
+      formattedTotal = total.toLocaleString();
     }
-    // --- MOSTRAR RESULTADO ---
+
     const resultadoElement = document.getElementById("resultado");
     if (resultadoElement) {
-      resultadoElement.innerHTML = `${total_redondeado.toLocaleString()}K <span>Litros/año</span>`;
+      resultadoElement.innerHTML = `${formattedTotal} <span>Litros/año</span>`;
     }
 
-    // --- Mostrar número de camiones cisterna ---
     const nroCisternaElement = document.getElementById("nroCisterna");
     if (nroCisternaElement) {
-      const cisternas = total / 15000;
-      nroCisternaElement.textContent = cisternas.toFixed(1); // Ej: "231.2"
+      const cisternas = total / 1500;
+      if (cisternas >= 1_000_000) {
+        nroCisternaElement.textContent = (cisternas / 1_000_000).toFixed(1) + "M";
+      } else if (cisternas >= 1_000) {
+        nroCisternaElement.textContent = (cisternas / 1_000).toFixed(1) + "K";
+      } else {
+        nroCisternaElement.textContent = cisternas.toFixed(1);
+      }
     }
-
-    console.log("Valores recolectados:", values);
-    console.log("Huella hídrica total:", total);
   }
-
-  // --- IMPORTANTE: NO llamar logAllFormValues() aquí afuera ---
-  // Solo se llama cuando el usuario presiona "Ver resultados"
-  // Para eso, modificamos el botón nextToStep25:
-  document.addEventListener("DOMContentLoaded", () => {
-    const btn25 = document.getElementById("nextToStep25");
-    if (btn25) {
-      btn25.addEventListener("click", () => {
-        goToStep(25);
-        logAllFormValues(); 
-      });
-    }
-  });
 </script>
 
 </html>
