@@ -684,11 +684,11 @@ import HowTo from "../Sections/HowTo.astro";
 </footer>
   </body>
 
-<script>
+<script is:raw>
   let currentStep = 0;
   const totalSteps = 27;
 
-  function goToStep(stepIndex) {
+  function goToStep(stepIndex:number) {
     if (stepIndex < 0 || stepIndex >= totalSteps) return;
     for (let i = 0; i < totalSteps; i++) {
       const el = document.getElementById(`step${i}`);
@@ -736,7 +736,7 @@ import HowTo from "../Sections/HowTo.astro";
     const backBtn2 = document.querySelector(".back-button2");
     if (backBtn2) backBtn2.addEventListener("click", () => goToStep(0));
 
-    const setupSelection = (containerId, buttonClass) => {
+    const setupSelection = (containerId:string, buttonClass:string) => {
       const container = document.getElementById(containerId);
       if (!container) return;
       const buttons = container.querySelectorAll(buttonClass);
