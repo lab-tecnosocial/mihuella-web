@@ -372,6 +372,48 @@ h3 {
   font-weight: 600;
 }
 
+#nroCisterna {
+  font-size: 1.3rem;
+  font-weight:700 ;
+}
+
+
+/* Mensaje de felicitación/rango */
+.congrats-message {
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.congrats-message.bajo {
+  background: #f0fff4;
+  border-left: 4px solid #28a745;
+  color: #155724;
+}
+
+.congrats-message.medio {
+  background: #fff8e1;
+  border-left: 4px solid #ffc107;
+  color: #856404;
+}
+
+.congrats-message.alto {
+  background: #f8d7da;
+  border-left: 4px solid #dc3545;
+  color: #721c24;
+}
+
+.congrats-message .checkmark,
+.congrats-message .info-icon,
+.congrats-message .alert-icon {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
 
 
 /* Botón ¿Cómo ahorrar? */
@@ -452,11 +494,11 @@ h3 {
    /* Estilo para el botón de "Siguiente pregunta" */
     .next-btn {
       background-color: #00b4d8;
-      padding: 12px 24px;
+      padding: 13px 25px;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       cursor: pointer;
-      font-size: 1rem;
+      font-size: 1.3rem;
       display: block;
       margin: 30px auto 0;
       transition: background 0.2s;
@@ -514,8 +556,8 @@ h3 {
   }
 
   .footer-links a {
-    margin: 0 10px;
-    color: #2e7d32;
+    margin: 0 12px;
+    color: #00b4d8;
     text-decoration: none;
   }
 
@@ -607,21 +649,17 @@ h3 {
 
 /* Botones */
 #step13 .option-btn {
-  width: 60%;           /* los hace más anchos y uniformes */
-  max-width: 300px;     /* evita que se hagan demasiado grandes */
-  margin: 0 auto;       /* centrado horizontal */
+  width: 60%;           
   padding: 8px 12px;
-  font-size: 14px;
+  font-size: 1.3rem;
   border-radius: 6px;
   text-align: center;
 }
 
 #step12 .option-btn {
-  width: 60%;           /* los hace más anchos y uniformes */
-  max-width: 300px;     /* evita que se hagan demasiado grandes */
-  margin: 0 auto;       /* centrado horizontal */
+  width: 60%;           
   padding: 8px 12px;
-  font-size: 14px;
+  font-size:1.3rem;
   border-radius: 6px;
   text-align: center;
 }
@@ -629,13 +667,13 @@ h3 {
 #step13 .next-btn {
   margin-top: 12px;
   padding: 8px 16px;
-  font-size: 15px;
+  font-size:1.3rem;
 }
 
 #step12 .next-btn {
   margin-top: 12px;
   padding: 8px 16px;
-  font-size: 15px;
+  font-size: 1.3rem;
 }
 .options-container {
   display: flex;

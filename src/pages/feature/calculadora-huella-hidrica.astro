@@ -115,7 +115,7 @@ import "./styles.css";
             >Menos de 10 minutos</button
           >
           <button class="option-btn" data-value="10a20">10 a 20 minutos</button>
-          <button class="option-btn" data-value="30a60">3 min a 1 hora</button>
+          <button class="option-btn" data-value="30a60">30 min a 1 hora</button>
         </div>
         <button id="nextToStep4" class="next-btn">Siguiente pregunta</button>
          <!--<div class="nav-arrows">
@@ -600,10 +600,9 @@ import "./styles.css";
             <p>Tu huella hídrica es:</p>
             <h2 id="resultado">3.467.500<span>Litros/año</span></h2>
             <p>
-              Una persona consume una media de <strong
-                >136 litros por día</strong
-              >
+              Una persona consume una media de 3.468.000 litros por año en Bolivia
             </p>
+
           </div>
           <!-- Comparaciones -->
           <div class="comparisons">
@@ -630,6 +629,7 @@ import "./styles.css";
             </div>
           </div>
         </div>
+         <div id="congrats-message" class="congrats-message"></div> 
         <button id="nextToStep26" class="next-btn">¿Cómo ahorrar?</button>
         <!-- Botón Volver a calcular -->
         <button class="back-button">Volver a calcular</button>
@@ -903,6 +903,7 @@ const tips = {
     const cellEl = document.getElementById("cellphoneCountValue");
     values.cellphoneCount = cellEl ? parseInt(cellEl.textContent, 10) || 0 : 0;
 
+
     // --- CÁLCULO ---
     let higiene = 0, limpieza = 0, alimentos = 0, bienes_servicios = 0, habitos_sostenibles = 0;
 
@@ -910,21 +911,26 @@ const tips = {
     let duracion_duchas = 0;
     if (values.showerDuration === "menos10") duracion_duchas = 4000;
     else if (values.showerDuration === "10a20") duracion_duchas = 8000;
-    else if (values.showerDuration === "30a60") duracion_duchas = 18000;
+    else if (values.showerDuration === "30a60") duracion_duchas = 18000;   // tiene la multiplicacion la frecuencia de ducha?
+    // Duchas: veces por semana × litros por ducha × 52 semanas
+const duchas_anual = duracion_duchas * (values.showerTimesPerWeek || 0) * 52;
 
     let lavado_dientes = 0;
     if (values.brushFrequency === "menos10") lavado_dientes = 300;
     else if (values.brushFrequency === "10a20") lavado_dientes = 600;
-    else if (values.brushFrequency === "30a60") lavado_dientes = 900;
+    else if (values.brushFrequency === "30a60") lavado_dientes = 900;  // donde esta el imput de las veces por día? 
+const lavado_dientes_anual = lavado_dientes * (values.brushTimesPerDay || 0) * 365; 
 
     let lavado_manos = 0;
     if (values.handWashFrequency === "menos10") lavado_manos = 135;
     else if (values.handWashFrequency === "10a20") lavado_manos = 225;
     else if (values.handWashFrequency === "30a60") lavado_manos = 450;
+const lavado_manos_anual = lavado_manos * (values.handWashTimesPerDay || 0) * 365;
 
     let inodoro = values.toiletType === "si" ? 100 : 210; // "si" = ahorrador
+    const inodoro_anual = inodoro * 365;
 
-    higiene = (duracion_duchas * (values.showerTimesPerWeek || 0)) + lavado_dientes + lavado_manos + inodoro;
+    higiene = duchas_anual + lavado_dientes_anual + lavado_manos_anual + inodoro;
 
     // Limpieza
     let lavado_ropa_litros = 0;
@@ -932,29 +938,30 @@ const tips = {
     else if (values.washingMethod === "lavadoraEstandar") lavado_ropa_litros = 960;
     else if (values.washingMethod === "lavadoraEficiente") lavado_ropa_litros = 400;
 
-    limpieza = (values.clothesWashPerWeek || 0) * lavado_ropa_litros;
+    // Ropa: lavados por semana × litros por lavado × 52 semanas
+limpieza += (values.clothesWashPerWeek || 0) * lavado_ropa_litros * 52;
 
     // Trastes
-    let trastesLitros = values.dishwashingMethod === "si" ? 20 : 12; // "si" = a mano
+    let trastesLitros = values.dishwashingMethod === "si" ? 20 : 12;
     limpieza += (values.dishesWashPerDay || 0) * trastesLitros * 365;
 
     // Alimentos
-    alimentos += (values.beefKgPerWeek || 0) * 15415;
-    alimentos += (values.chickenKgPerWeek || 0) * 4300;
-    alimentos += (values.coffeeCupsPerWeek || 0) * 132;
-    alimentos += (values.teaCupsPerWeek || 0) * 56;
+    alimentos += (values.beefKgPerWeek || 0) * 15415 * 52;
+    alimentos += (values.chickenKgPerWeek || 0) * 4300 * 52;
+    alimentos += (values.coffeeCupsPerWeek || 0) * 132 * 52;
+    alimentos += (values.teaCupsPerWeek || 0) * 56 * 52;
 
-    const freqToLiters = (freq) => {
-      if (freq === "menos10") return 0;
-      if (freq === "10a20") return 7 * 250;
-      if (freq === "30a60") return 12 * 250;
-      return 0;
-    };
-    alimentos += freqToLiters(values.arrozFrequency);
-    alimentos += freqToLiters(values.huevoFrequency);
-    alimentos += freqToLiters(values.platanoFrequency);
-    alimentos += freqToLiters(values.naranjaFrequency);
-    alimentos += (values.PanCount || 0) * 200 * 7;
+ const freqToLitersAnual = (freq) => {
+  if (freq === "menos10") return 0;
+  if (freq === "10a20") return 7 * 250 * 52;   // 7 unidades/semana × 52 semanas
+  if (freq === "30a60") return 12 * 250 * 52;  // 12 unidades/semana × 52 semanas
+  return 0;
+};
+   alimentos += freqToLitersAnual(values.arrozFrequency);
+alimentos += freqToLitersAnual(values.huevoFrequency);
+alimentos += freqToLitersAnual(values.platanoFrequency);
+alimentos += freqToLitersAnual(values.naranjaFrequency);
+    alimentos += (values.PanCount || 0) * 200 * 365;
 
     // Bienes
     bienes_servicios = 
@@ -988,17 +995,58 @@ const tips = {
       resultadoElement.innerHTML = `${formattedTotal} <span>Litros/año</span>`;
     }
 
-    const nroCisternaElement = document.getElementById("nroCisterna");
-    if (nroCisternaElement) {
-      const cisternas = total / 1500;
-      if (cisternas >= 1_000_000) {
-        nroCisternaElement.textContent = (cisternas / 1_000_000).toFixed(1) + "M";
-      } else if (cisternas >= 1_000) {
-        nroCisternaElement.textContent = (cisternas / 1_000).toFixed(1) + "K";
-      } else {
-        nroCisternaElement.textContent = cisternas.toFixed(1);
-      }
-    }
+    
+// --- CÁLCULO DE CAMIONES CISTERNA ---
+const LITROS_POR_CISTERNA = 15_000; // 
+const camionesCisterna = Math.max(1, Math.round(total / LITROS_POR_CISTERNA));
+
+// --- Actualizar número de cisternas en pantalla ---
+const nroCisternaElement = document.getElementById("nroCisterna");
+if (nroCisternaElement) {
+  nroCisternaElement.textContent = camionesCisterna; // 
+}
+
+
+
+    // --- Determinar mensaje según rango ---
+let mensaje = "";
+let tipoMensaje = "";
+
+if (total < 2_000_000) {
+  mensaje = `
+    <div class="checkmark">✅</div>
+    <p>
+      <strong>¡Felicidades!</strong> Tu huella hídrica anual está por debajo del promedio estimado en Bolivia.
+      Esto indica que ya estás tomando decisiones más conscientes. Continúa así y considera seguir reduciendo con pequeñas acciones que suman cada día.
+    </p>
+  `;
+  tipoMensaje = "bajo";
+} else if (total >= 2_000_000 && total <= 4_000_000) {
+  mensaje = `
+    <div class="info-icon">ℹ️</div>
+    <p>
+      <strong>Tu huella hídrica anual se encuentra en el rango promedio estimado para Bolivia.</strong>
+      No es mala, pero sí significa que tienes buena oportunidad para mejorar. Aplica los consejos de la app/web y conviértete en referente entre tus amigos o comunidad.
+    </p>
+  `;
+  tipoMensaje = "medio";
+} else {
+  mensaje = `
+    <div class="alert-icon">⚠️</div>
+    <p>
+      <strong>Tu huella hídrica anual está por encima del promedio estimado en Bolivia.</strong>
+      Esto muestra que tus hábitos tienen un impacto importante sobre el recurso agua. Te animamos a revisar los consejos que te brinda la herramienta y adoptar cambios hoy mismo: cada litro que reduces cuenta hacia un futuro más sostenible.
+    </p>
+  `;
+  tipoMensaje = "alto";
+}
+
+// --- Insertar mensaje en el DOM ---
+const congratsContainer = document.getElementById("congrats-message");
+if (congratsContainer) {
+  congratsContainer.className = `congrats-message ${tipoMensaje}`;
+  congratsContainer.innerHTML = mensaje;
+}
   }
 </script>
 
