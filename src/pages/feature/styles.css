@@ -1,107 +1,112 @@
+body {
+  font-family: "Roboto", sans-serif;
+  line-height: 1.6;
+  color: #333;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
 
-  body {
-      font-family: "Roboto", sans-serif;
-      line-height: 1.6;
-      color: #333;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-      background-color: #f9f9f9;
-    }
-
- .water-calculator {
-      background-color: #fff;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
+.water-calculator {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
 
 .centered-image {
-  width: 200px; /* Tamaño cuadrado */
-  height: 200px; /* Tamaño cuadrado */
-  object-fit: cover; /* Mantener proporciones */
-  margin: 0 auto; /* Centrar horizontalmente */
+  width: 200px;
+  /* Tamaño cuadrado */
+  height: 200px;
+  /* Tamaño cuadrado */
+  object-fit: cover;
+  /* Mantener proporciones */
+  margin: 0 auto;
+  /* Centrar horizontalmente */
   align-items: center;
 }
 
 h1 {
-    color: #2178BD;
-    margin-top: 0;
-    font-size: 2.8rem;
-    font-weight: 800;
-    text-align: center;
-  }
+  color: #2178BD;
+  margin-top: 0;
+  font-size: 2.8rem;
+  font-weight: 800;
+  text-align: center;
+}
+
 h2 {
-    color: #2178BD;
-    margin-top: 0;
-    font-size: 2.6rem;
-    font-weight: 500;
-    text-align: center;
-  }
+  color: #2178BD;
+  margin-top: 0;
+  font-size: 2.6rem;
+  font-weight: 500;
+  text-align: center;
+}
+
 h3 {
-    color: #2178BD;
-    margin-top: 0;
-    font-size: 1.3rem;
-    font-weight: 500;
-    text-align: center;
-  }
- 
+  color: #2178BD;
+  margin-top: 0;
+  font-size: 1.3rem;
+  font-weight: 500;
+  text-align: center;
+}
+
 /* pregunta 1*/
 .checkbox-group {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-      margin: 10px 0;
-    }
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin: 10px 0;
+}
 
-    .checkbox-item {
-      display: flex;
-      align-items: left;
-      text-align: left;
-      gap: 8px;
-    }
+.checkbox-item {
+  display: flex;
+  align-items: left;
+  text-align: left;
+  gap: 8px;
+}
 
-    input[type="checkbox"] {
-      accent-color: #0077b6;
-    }
+input[type="checkbox"] {
+  accent-color: #0077b6;
+}
 
-    label {
-      font-size: 0.95rem;
-      color: #555;
-    }
+label {
+  font-size: 0.95rem;
+  color: #555;
+}
 
-    .input-number {
-      margin: 15px 0;
-      text-align: center;
-    }
+.input-number {
+  margin: 15px 0;
+  text-align: center;
+}
 
-    .input-number input {
-      width: 120px;
-      padding: 8px;
-      text-align: center;
-      border: 2px solid #0077b6;
-      border-radius: 6px;
-      font-size: 1rem;
-      outline: none;
-    }
+.input-number input {
+  width: 120px;
+  padding: 8px;
+  text-align: center;
+  border: 2px solid #0077b6;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+}
 
-  
- .option-btn {
-      background: #00b4d8;
-      color: white;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 1rem;
-      text-align: center;
-      transition: background 0.2s;
 
-    }
+.option-btn {
+  background: #00b4d8;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: center;
+  transition: background 0.2s;
 
-    .option-btn:hover {
-      background: #023e8a;
-    }   
+}
+
+.option-btn:hover {
+  background: #023e8a;
+}
 
 /* lavado de ropa*/
 .options-ropa {
@@ -116,7 +121,7 @@ h3 {
 
 .options-ropa {
   display: flex;
-  
+
   cursor: pointer;
 }
 
@@ -127,53 +132,55 @@ h3 {
   height: 16px;
   border: 2px solid #2178BD;
   border-radius: 4px;
-  accent-color:#2178BD  ;
+  accent-color: #2178BD;
 }
 
-.centered-image-pan{
+.centered-image-pan {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 80px; 
+  width: 80px;
 }
 
 /*Area de bienes y servicios*/
 .frequency-options {
-      display: flex;
-      justify-content: center;
-      gap: 5px;
-      flex-wrap: wrap;
-      margin: 5px 0;
-    }
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  flex-wrap: wrap;
+  margin: 5px 0;
+}
 
-    .freq-btn {
-      background: #0077b6;
-      color: white;
-      padding: 8px 16px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      transition: background 0.2s;
-    }
+.freq-btn {
+  background: #0077b6;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
 
-    .freq-btn:hover {
-      background: #023e8a;
-    }
+.freq-btn:hover {
+  background: #023e8a;
+}
 
-    .products-container {
-     display: flex;
-    justify-content: space-around;
-    margin-top: 5px;
-    flex-wrap: wrap;
-    gap: 10px;
-    width: 100%;
-    overflow: hidden;
-    align-items: flex-start;
-    }
-    .product-item {
+.products-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 5px;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+  overflow: hidden;
+  align-items: flex-start;
+}
+
+.product-item {
   text-align: center;
-  width: 100px; /* Aumentado para dar más espacio */
+  width: 100px;
+  /* Aumentado para dar más espacio */
   padding: 5px;
   border-radius: 8px;
   background-color: #f9f9f9;
@@ -221,7 +228,7 @@ h3 {
   min-width: 20px;
   text-align: center;
 }
- 
+
 
 /*Habitos Sostenibles*/
 .questions24 {
@@ -244,17 +251,22 @@ h3 {
 }
 
 .label {
- display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 15px; /* Aumenta el tamaño del botón */
-  background-color: #f5f5f5; /* Fondo claro */
-  border: 2px solid #ddd; /* Borde sutil */
-  border-radius: 12px; /* Redondeado (cuadrado circular) */
+  padding: 10px 15px;
+  /* Aumenta el tamaño del botón */
+  background-color: #f5f5f5;
+  /* Fondo claro */
+  border: 2px solid #ddd;
+  /* Borde sutil */
+  border-radius: 12px;
+  /* Redondeado (cuadrado circular) */
   cursor: pointer;
   font-weight: bold;
   transition: all 0.2s ease;
 }
+
 /* Hover para dar feedback visual */
 .options2 label:hover {
   background-color: #e8f5e8;
@@ -262,7 +274,7 @@ h3 {
 }
 
 /* Cuando está seleccionado */
-.options2 input[type="radio"]:checked + label {
+.options2 input[type="radio"]:checked+label {
   background-color: #4977aa;
   color: white;
   border-color: #657cc9;
@@ -280,7 +292,7 @@ h3 {
   font-size: 14px;
 }
 
-/*REsultados*/ 
+/*REsultados*/
 
 /* Botón Volver a calcular */
 .back-button {
@@ -305,8 +317,10 @@ h3 {
 .result-card {
   padding: 20px;
   display: flex;
-  align-items: flex-start; /* Alinea el contenido desde arriba */
-  gap: 20px; /* Espacio entre el icono y el texto */
+  align-items: flex-start;
+  /* Alinea el contenido desde arriba */
+  gap: 20px;
+  /* Espacio entre el icono y el texto */
   max-width: 600px;
   margin: 20px auto;
 }
@@ -315,7 +329,8 @@ h3 {
 .drop-icon {
   width: 80px;
   height: 80px;
-  flex-shrink: 0; /* Evita que se reduzca */
+  flex-shrink: 0;
+  /* Evita que se reduzca */
 }
 
 /* --- Texto principal del resultado --- */
@@ -374,7 +389,7 @@ h3 {
 
 #nroCisterna {
   font-size: 1.3rem;
-  font-weight:700 ;
+  font-weight: 700;
 }
 
 
@@ -432,57 +447,57 @@ h3 {
 .save-button:hover {
   background-color: #1976D2;
 }
-    
-  
-    label {
-      display: block;
-      margin: 10px 0 5px;
-      font-weight: bold;
-    }
 
-    input[type="number"],
-    input[type="text"],
-    select {
-      width: 100%;
-      padding: 10px;
-      margin: 5px 0 15px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 1rem;
-      box-sizing: border-box;
-    }
 
-    input[type="radio"] {
-      margin-right: 10px;
-    }
+label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
 
-    .radio-group label {
-      font-weight: normal;
-      display: inline;
-      margin-right: 20px;
-    }
+input[type="number"],
+input[type="text"],
+select {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
 
-    button {
-      background-color: #0077b6;
-      color: white;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 1rem;
-      display: block;
-      margin: 20px auto;
-      transition: background-color 0.3s;
-    }
+input[type="radio"] {
+  margin-right: 10px;
+}
 
-    button:hover {
-      background-color: #023e8a;
-    }
+.radio-group label {
+  font-weight: normal;
+  display: inline;
+  margin-right: 20px;
+}
 
-    button:disabled {
-      background-color: #cccccc;
-      cursor: not-allowed;
-    }
+button {
+  background-color: #0077b6;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  display: block;
+  margin: 20px auto;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #023e8a;
+}
+
+button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
 
 .icon-origen {
   margin: 20px auto;
@@ -491,27 +506,27 @@ h3 {
 }
 
 
-   /* Estilo para el botón de "Siguiente pregunta" */
-    .next-btn {
-      background-color: #00b4d8;
-      padding: 13px 25px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1.3rem;
-      display: block;
-      margin: 30px auto 0;
-      transition: background 0.2s;
-      text-align: center;
-      position: relative;
-      z-index: 1; 
-    }
+/* Estilo para el botón de "Siguiente pregunta" */
+.next-btn {
+  background-color: #00b4d8;
+  padding: 13px 25px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.3rem;
+  display: block;
+  margin: 30px auto 0;
+  transition: background 0.2s;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
 
-    .next-btn:hover {
-      background-color: #0096c7;
-    } 
+.next-btn:hover {
+  background-color: #0096c7;
+}
 
-  /* Flechas de navegación */
+/* Flechas de navegación */
 .nav-arrows {
   display: flex;
   justify-content: space-between;
@@ -541,46 +556,47 @@ h3 {
   color: white;
 }
 
-  
 
-  .footer {
-    margin-top: 40px;
-    text-align: center;
-    padding: 20px;
-    color: #666;
-    font-size: 0.9em;
+
+.footer {
+  margin-top: 40px;
+  text-align: center;
+  padding: 20px;
+  color: #666;
+  font-size: 0.9em;
+}
+
+.footer-links {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  margin: 0 12px;
+  color: #00b4d8;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 10px;
   }
 
-  .footer-links {
+  .main-content {
+    padding: 10px;
+  }
+
+  .form-group {
     margin-bottom: 10px;
   }
+}
 
-  .footer-links a {
-    margin: 0 12px;
-    color: #00b4d8;
-    text-decoration: none;
-  }
-
-  .footer-links a:hover {
-    text-decoration: underline;
-  }
-
-  @media (max-width: 600px) {
-    .container {
-      padding: 10px;
-    }
-    
-    .main-content {
-      padding: 10px;
-    }
-    
-    .form-group {
-      margin-bottom: 10px;
-    }
-  }
-
-  /* Contenedor general */
-#step13, #step12{
+/* Contenedor general */
+#step13,
+#step12 {
   text-align: center;
   padding: 10px 0;
 }
@@ -599,10 +615,10 @@ h3 {
   /* antes era demasiado grande */
   height: auto;
   margin: 0 8px;
-   display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   /* menos separación lateral */
 }
 
@@ -634,22 +650,26 @@ h3 {
 #step13 .options-container {
   display: flex;
   flex-direction: column;
-  align-items: center;  /* centra los botones */
-  gap: 6px;             /* espacio entre botones */
+  align-items: center;
+  /* centra los botones */
+  gap: 6px;
+  /* espacio entre botones */
   margin: 8px 0 16px 0;
 }
 
 #step12 .options-container {
   display: flex;
   flex-direction: column;
-  align-items: center;  /* centra los botones */
-  gap: 6px;             /* espacio entre botones */
+  align-items: center;
+  /* centra los botones */
+  gap: 6px;
+  /* espacio entre botones */
   margin: 8px 0 14px 0;
 }
 
 /* Botones */
 #step13 .option-btn {
-  width: 60%;           
+  width: 60%;
   padding: 8px 12px;
   font-size: 1.3rem;
   border-radius: 6px;
@@ -657,9 +677,9 @@ h3 {
 }
 
 #step12 .option-btn {
-  width: 60%;           
+  width: 60%;
   padding: 8px 12px;
-  font-size:1.3rem;
+  font-size: 1.3rem;
   border-radius: 6px;
   text-align: center;
 }
@@ -667,7 +687,7 @@ h3 {
 #step13 .next-btn {
   margin-top: 12px;
   padding: 8px 16px;
-  font-size:1.3rem;
+  font-size: 1.3rem;
 }
 
 #step12 .next-btn {
@@ -675,21 +695,22 @@ h3 {
   padding: 8px 16px;
   font-size: 1.3rem;
 }
+
 .options-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px; 
-  flex-wrap: wrap; 
-  margin-top: 20px; 
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 20px;
 }
 
 .option-btn {
   padding: 10px 20px;
   margin: 5px;
   border: 1px solid #ccc;
-  background-color:#0096c7;
+  background-color: #0096c7;
   color: black;
   border-radius: 4px;
   cursor: pointer;
@@ -702,22 +723,47 @@ h3 {
   border-color: #007BFF;
 }
 
-  @media (max-width: 600px) {
+@media (max-width: 600px) {
   img.centered-image {
-  width: 100px;
-  height: 100px;
+    width: 100px;
+    height: 100px;
   }
 }
+
+.barra {
+  position: relative;
+  display: flex;
+  height: 22px;
+  background-color: #e5e7eb;
+  border-radius: 4px;
+  overflow: hidden;
+  width: 60%;
+}
+
+/* Este texto aparecerá encima de las barritas */
+.porcentaje {
+  position: absolute;
+  top: -22px;            /* altura encima de la barra */
+  right: 0;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
 @media (max-width: 768px) {
   .result-text {
-    align-items: center; /* Centra todo el bloque */
+    align-items: center;
+    /* Centra todo el bloque */
     text-align: center;
     gap: 12px;
   }
-.result-card {
- display: flex;
-  flex-direction: column; /* Asegura que los elementos se apilen verticalmente */
-  align-items: center; /* Centra los elementos horizontalmente */
-}
+
+  .result-card {
+    display: flex;
+    flex-direction: column;
+    /* Asegura que los elementos se apilen verticalmente */
+    align-items: center;
+    /* Centra los elementos horizontalmente */
+  }
 
 }
