@@ -692,7 +692,7 @@ import "./styles.css";
       <div id="step27" style="display: none;">
         <h1>Estadísticas</h1>
         <div class="categoria">
-          <label id="label_higiene">Higiene</label>
+          <label>Higiene</label>
           <div class="barra">
             <div class="porcentaje" id="pct_higiene"></div>
             <span id="span_higiene"></span>
@@ -700,7 +700,7 @@ import "./styles.css";
         </div>
 
         <div class="categoria">
-          <label id="label_limpieza">Limpieza</label>
+          <label>Limpieza</label>
           <div class="barra">
             <div class="porcentaje" id="pct_limpieza"></div>
             <span id="span_limpieza"></span>
@@ -708,7 +708,7 @@ import "./styles.css";
         </div>
 
         <div class="categoria">
-          <label id="label_alimentos">Alimentos</label>
+          <label>Alimentos</label>
           <div class="barra">
             <div class="porcentaje" id="pct_alimentos"></div>
             <span id="span_alimentos"></span>
@@ -716,7 +716,7 @@ import "./styles.css";
         </div>
 
         <div class="categoria">
-          <label id="label_bienes">Bienes y Servicios</label>
+          <label>Bienes y servicios</label>
           <div class="barra">
             <div class="porcentaje" id="pct_bienes_servicios"></div>
             <span id="span_bienes_servicios"></span>
@@ -724,13 +724,12 @@ import "./styles.css";
         </div>
 
         <div class="categoria">
-          <label id="label_habitos">Hábitos Sostenibles</label>
+          <label>Hábitos sostenibles</label>
           <div class="barra">
             <div class="porcentaje" id="pct_habitos_sostenibles"></div>
             <span id="span_habitos_sostenibles"></span>
           </div>
         </div>
-        <div id="porcentajes_cate"></div>
       </div>
     </div>
   </body>
@@ -1178,13 +1177,10 @@ import "./styles.css";
   `;
       tipoMensaje = "alto";
     }
-    //Estadísticas
-    function generarBarraCategoriaHH(
-      categoria: number,
-      nombreContenedor: string,
-    ) {
+    // Estadísticas
+    function generarBarraCategoriaHH(categoria, nombreContenedor) {
       for (let i = 0; i < categoria; i++) {
-        const span = document.createElement("span"); // Crear un nuevo span
+        const span = document.createElement("span");
         span.style.padding = "3px";
         span.style.backgroundColor = "#657cc9";
         let container = document.getElementById(nombreContenedor);
@@ -1193,49 +1189,27 @@ import "./styles.css";
         }
       }
     }
-    generarBarraCategoriaHH(
-      Math.round((higiene / total) * 100),
-      "span_higiene",
-    );
-    generarBarraCategoriaHH(
-      Math.round((limpieza / total) * 100),
-      "span_limpieza",
-    );
-    generarBarraCategoriaHH(
-      Math.round((alimentos / total) * 100),
-      "span_alimentos",
-    );
-    generarBarraCategoriaHH(
-      Math.round((bienes_servicios / total) * 100),
-      "span_bienes_servicios",
-    );
-    generarBarraCategoriaHH(
-      Math.round((habitos_sostenibles / total) * 100),
-      "span_habitos_sostenibles",
-    );
 
-    // Mostrar porcentaje de consumo por categorías
-    let categorias_container = document.getElementById("porcentajes_cate");
-    if (categorias_container) {
-      categorias_container.innerHTML = `
-  Higiene: ${((higiene / total) * 100).toFixed(2)}% <br>
-  Limpieza: ${((limpieza / total) * 100).toFixed(2)}% <br>
-  Alimentos: ${((alimentos / total) * 100).toFixed(2)}% <br>
-  Bienes y Servicios: ${((bienes_servicios / total) * 100).toFixed(2)}% <br>
-  Hábitos Sostenibles: ${((habitos_sostenibles / total) * 100).toFixed(2)}%
-// `;
-}
-    // function mostrarPorcentajeCategoria(contenedor, nombre_categoria, calculo){
-    //   let categoria_container = document.getElementById(contenedor);
-    //   if(categorias_container){
-    //     categorias_container.innerHTML = `<strong>${nombre_categoria}:  ${((calculo / total) * 100).toFixed(2)}% </strong>`
-    //   }
-    // }
-    // mostrarPorcentajeCategoria("label_higiene", "Higiene", higiene);
-    // mostrarPorcentajeCategoria("label_limpieza", "Limpieza", limpieza);
-    // mostrarPorcentajeCategoria("label_alimentos", "Alimentos", alimentos);
-    // mostrarPorcentajeCategoria("label_bienes", "Bienes y Servicios", bienes_servicios);
-    // mostrarPorcentajeCategoria("label_habitos", "Hábitos Sostenibles", habitos_sostenibles);
+    const pctHigiene = Math.round((higiene / total) * 100);
+    const pctLimpieza = Math.round((limpieza / total) * 100);
+    const pctAlimentos = Math.round((alimentos / total) * 100);
+    const pctBienesServicios = Math.round((bienes_servicios / total) * 100);
+    const pctHabitos = Math.round((habitos_sostenibles / total) * 100);
+
+    generarBarraCategoriaHH(pctHigiene, "span_higiene");
+    generarBarraCategoriaHH(pctLimpieza, "span_limpieza");
+    generarBarraCategoriaHH(pctAlimentos, "span_alimentos");
+    generarBarraCategoriaHH(pctBienesServicios, "span_bienes_servicios");
+    generarBarraCategoriaHH(pctHabitos, "span_habitos_sostenibles");
+
+    // 🔵 Insertar los porcentajes dentro de cada barra
+    document.getElementById("pct_higiene").innerText = pctHigiene + "%";
+    document.getElementById("pct_limpieza").innerText = pctLimpieza + "%";
+    document.getElementById("pct_alimentos").innerText = pctAlimentos + "%";
+    document.getElementById("pct_bienes_servicios").innerText =
+      pctBienesServicios + "%";
+    document.getElementById("pct_habitos_sostenibles").innerText =
+      pctHabitos + "%";
 
     // --- Insertar mensaje en el DOM ---
     const congratsContainer = document.getElementById("congrats-message");

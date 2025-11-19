@@ -309,7 +309,7 @@ label {
 }
 
 .back-button:hover {
-  background-color: #1b69a8;
+  background-color: grey;
   color: #2178BD;
 }
 
@@ -739,16 +739,34 @@ button:disabled {
   overflow: hidden;
   width: 60%;
 }
+#step27 {
+  display: flex;
+  flex-direction: column;   /* organiza en columna */
+  justify-content: center;  /* alinea verticalmente */
+  align-items: center;      /* centra horizontalmente */
+}
 
-/* Este texto aparecerá encima de las barritas */
+
+/* Cada span sigue representando parte de la barra */
+.barra span {
+  flex-grow: 1;
+  margin-right: 0;
+
+}
+
+/* El porcentaje va centrado dentro de la barra */
 .porcentaje {
   position: absolute;
-  top: -22px;            /* altura encima de la barra */
-  right: 0;
-  font-size: 14px;
+  width: 100%;
+  text-align: center;
+  font-size: 13px;
   font-weight: bold;
-  color: #333;
+  color:black;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none; /* evita que el texto bloquee clics */
 }
+
 
 @media (max-width: 768px) {
   .result-text {
