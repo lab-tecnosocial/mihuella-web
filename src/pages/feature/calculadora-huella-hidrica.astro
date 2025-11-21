@@ -99,7 +99,6 @@ import "./styles.css";
         <button class="nav-arrow prev" onclick="goToPrevStep()">‹</button>
         <button class="nav-arrow next" onclick="goToNextStep()">›</button>
           </div>-->
-
       </div>
       <!-- Pregunta 3: Higiene tiempo de las duchas -->
       <div id="step3" style="display: none;">
@@ -118,7 +117,7 @@ import "./styles.css";
           <button class="option-btn" data-value="30a60">30 min a 1 hora</button>
         </div>
         <button id="nextToStep4" class="next-btn">Siguiente pregunta</button>
-         <!--<div class="nav-arrows">
+        <!--<div class="nav-arrows">
         <button class="nav-arrow prev" onclick="goToPrevStep()">‹</button>
         <button class="nav-arrow next" onclick="goToNextStep()">›</button>
           </div>-->
@@ -144,7 +143,7 @@ import "./styles.css";
           />
         </div>
         <button id="nextToStep5" class="next-btn">Siguiente pregunta</button>
-         <!--<div class="nav-arrows">
+        <!--<div class="nav-arrows">
         <button class="nav-arrow prev" onclick="goToPrevStep()">‹</button>
         <button class="nav-arrow next" onclick="goToNextStep()">›</button>
           </div>-->
@@ -171,7 +170,7 @@ import "./styles.css";
           >
         </div>
         <button id="nextToStep6" class="next-btn">Siguiente pregunta</button>
-         <!--<div class="nav-arrows">
+        <!--<div class="nav-arrows">
         <button class="nav-arrow prev" onclick="goToPrevStep()">‹</button>
         <button class="nav-arrow next" onclick="goToNextStep()">›</button>
           </div>-->
@@ -188,9 +187,14 @@ import "./styles.css";
         />
         <div id="handDuration" class="options-container">
           <button class="option-btn-hand option-btn" data-value="menos10"
-            >2 a 3 veces</button>
-          <button class="option-btn-hand option-btn" data-value="10a20">3 a 5 veces</button>
-          <button class="option-btn-hand option-btn" data-value="30a60">Más de 5 veces</button>
+            >2 a 3 veces</button
+          >
+          <button class="option-btn-hand option-btn" data-value="10a20"
+            >3 a 5 veces</button
+          >
+          <button class="option-btn-hand option-btn" data-value="30a60"
+            >Más de 5 veces</button
+          >
         </div>
         <button id="nextToStep7" class="next-btn">Siguiente pregunta</button>
         <!--<div class="nav-arrows">
@@ -213,10 +217,10 @@ import "./styles.css";
             ><input type="radio" name="toiletType" value="si" /> ahorrador</label
           >
           <label
-            ><input type="radio"  name="toiletType" value="no" /> Tradicional</label
+            ><input type="radio" name="toiletType" value="no" /> Tradicional</label
           >
         </div>
-        <button id="nextToStep8" class="next-btn">Siguiente pregunta</button> 
+        <button id="nextToStep8" class="next-btn">Siguiente pregunta</button>
         <!--<div class="nav-arrows">
           <button class="nav-arrow prev" onclick="goToPrevStep()">‹</button>
           <button class="nav-arrow next" onclick="goToNextStep()">›</button>
@@ -265,7 +269,7 @@ import "./styles.css";
           />
         </div>
         <button id="nextToStep9" class="next-btn">Siguiente pregunta</button>
-       <!-- <div class="nav-arrows">
+        <!-- <div class="nav-arrows">
           <button class="nav-arrow prev" onclick="goToPrevStep()">‹</button>
           <button class="nav-arrow next" onclick="goToNextStep()">›</button>
         </div>-->
@@ -402,19 +406,19 @@ import "./styles.css";
           <button class="option-btn" data-value="10a20">de 5 a 10 veces</button>
           <button class="option-btn" data-value="30a60">más de 10 veces</button>
         </div>
-          <img 
-            src="/img/bakery_dining.png"
-            alt="Croissant"
-            class="centered-image-pan"
-          />
-          <h3>¿Cuántas piezas de pan consumes al día?</h3>
-          <!-- Contador -->
-          <div class="counter-controls">
-            <button class="counter-btn" id="decrementBtn">-</button>
-            <span class="counter-value" id="PanCount">0</span>
-            <button class="counter-btn" id="incrementBtn">+</button>
-          </div>
-        
+        <img
+          src="/img/bakery_dining.png"
+          alt="Croissant"
+          class="centered-image-pan"
+        />
+        <h3>¿Cuántas piezas de pan consumes al día?</h3>
+        <!-- Contador -->
+        <div class="counter-controls">
+          <button class="counter-btn" id="decrementBtn">-</button>
+          <span class="counter-value" id="PanCount">0</span>
+          <button class="counter-btn" id="incrementBtn">+</button>
+        </div>
+
         <button id="nextToStep13" class="next-btn">Siguiente pregunta</button>
       </div>
 
@@ -450,7 +454,7 @@ import "./styles.css";
           <button class="option-btn" data-value="30a60">más de 7 veces</button>
         </div>
         <button id="nextToStep22" class="next-btn">Siguiente pregunta</button>
-       <!-- <div class="nav-arrows">
+        <!-- <div class="nav-arrows">
           <button class="nav-arrow prev" onclick="goToPrevStep()">‹</button>
           <button class="nav-arrow next" onclick="goToNextStep()">›</button>
         </div>-->
@@ -467,9 +471,15 @@ import "./styles.css";
         <h3>¿Cuántas veces compras ropa o calzado <b> nuevo</b> al año?</h3>
 
         <div id="purchaseFrequency" class="frequency-options options-container">
-          <button class="freq-btn option-btn" data-value="1">1 vez al año</button>
-          <button class="freq-btn option-btn" data-value="6+">Más de 6 veces</button>
-          <button class="freq-btn option-btn" data-value="2-5">Entre 2 a 5 veces</button>
+          <button class="freq-btn option-btn" data-value="1"
+            >1 vez al año</button
+          >
+          <button class="freq-btn option-btn" data-value="6+"
+            >Más de 6 veces</button
+          >
+          <button class="freq-btn option-btn" data-value="2-5"
+            >Entre 2 a 5 veces</button
+          >
         </div>
 
         <!-- Pregunta 23: Cantidad por producto -->
@@ -600,9 +610,9 @@ import "./styles.css";
             <p>Tu huella hídrica es:</p>
             <h2 id="resultado">3.467.500<span>Litros/año</span></h2>
             <p>
-              Una persona consume una media de 3.468.000 litros por año en Bolivia
+              Una persona consume una media de 3.468.000 litros por año en
+              Bolivia
             </p>
-
           </div>
           <!-- Comparaciones -->
           <div class="comparisons">
@@ -624,13 +634,23 @@ import "./styles.css";
                 class="icon"
               />
               <p>
-               <strong>  En un año, tu huella hídrica equivale al agua contenida en <div id="nroCisterna">  0</div>  camiones cisterna </strong>
+                <strong>
+                  En un año, tu huella hídrica equivale al agua contenida en <div
+                    id="nroCisterna"
+                  >
+                    0
+                  </div> camiones cisterna
+                </strong>
               </p>
             </div>
           </div>
         </div>
-         <div id="congrats-message" class="congrats-message"></div> 
-        <button id="nextToStep26" class="next-btn">¿Cómo ahorrar?</button>
+        <div id="congrats-message" class="congrats-message"></div>
+        <div style="display:flex">
+          <button id="nextToStep27" class="next-btn">Estadísticas</button>
+          <button id="nextToStep26" class="next-btn">¿Cómo ahorrar?</button>
+        </div>
+
         <!-- Botón Volver a calcular -->
         <button class="back-button">Volver a calcular</button>
         <!--<div class="nav-arrows">
@@ -647,7 +667,8 @@ import "./styles.css";
         <!-- Botones -->
         <div class="buttons-container">
           <button class="category-btn" data-category="higiene">Higiene</button>
-          <button class="category-btn" data-category="limpieza">Limpieza</button>
+          <button class="category-btn" data-category="limpieza">Limpieza</button
+          >
           <button class="category-btn" data-category="alimentos"
             >Alimentos y bebidas</button
           >
@@ -661,16 +682,30 @@ import "./styles.css";
           <div class="modal-content">
             <span class="close">&times;</span>
             <h2 id="modal-title">Consejos Higiene</h2>
-            <div id="modal-body">
-              Haz clic en alguna categoría
-            </div>
+            <div id="modal-body">Haz clic en alguna categoría</div>
             <!-- Botón Volver a calcular -->
           </div>
-           <button class="back-button2">Volver a calcular</button>
+          <button class="back-button2">Volver a calcular</button>
         </div>
       </div>
-    </div>
+      <!-- Estadísticas -->
+      <div id="step27" style="display: none;">
+        <h1>Estadísticas</h1>
+        <div class="categoria">
+          <label>Higiene</label>
+          <div class="barra">
+            <div class="porcentaje" id="pct_higiene"></div>
+            <span id="span_higiene"></span>
+          </div>
+        </div>
 
+        <div class="categoria">
+          <label>Limpieza</label>
+          <div class="barra">
+            <div class="porcentaje" id="pct_limpieza"></div>
+            <span id="span_limpieza"></span>
+          </div>
+        </div>
 
   <footer class="footer">
   <div class="footer-links">
@@ -682,10 +717,25 @@ import "./styles.css";
 </footer>
   </body>
 
+  <footer class="footer">
+    <div class="footer-links">
+      <a
+        href="https://drive.google.com/file/d/1zH7R_ZTEsQGDwQYEDLS5SjtYsIV-ErBu/view?usp=sharing"
+        target="_blank"
+        rel="noopener noreferrer">¿Cómo calculamos?</a
+      >
+      <a href="https://labtecnosocial.org/category/tecnologias/app-movil/"
+        >Más de nuestros proyectos</a
+      >
+      <a href="https://mihuella.app/">🏠 Ir al inicio</a>
+    </div>
+    <p>© 2025 Calculadora de Huella Hídrica</p>
+  </footer>
+</html>
 <script>
-// @ts-nocheck
+  // @ts-nocheck
   let currentStep = 0;
-  const totalSteps = 27;
+  const totalSteps = 28;
 
   function goToStep(stepIndex: number) {
     if (stepIndex < 0 || stepIndex >= totalSteps) return;
@@ -721,10 +771,13 @@ import "./styles.css";
       step23: 24,
       step24: 25,
       step25: 26,
+      step26: 27,
     };
 
     for (const [from, to] of Object.entries(stepMap)) {
-      const btn = document.getElementById(`nextTo${from === 'step0' ? 'Step1' : `Step${to}`}`);
+      const btn = document.getElementById(
+        `nextTo${from === "step0" ? "Step1" : `Step${to}`}`,
+      );
       if (btn) {
         btn.addEventListener("click", () => goToStep(to));
       }
@@ -739,9 +792,9 @@ import "./styles.css";
       const container = document.getElementById(containerId);
       if (!container) return;
       const buttons = container.querySelectorAll(buttonClass);
-      buttons.forEach(btn => {
+      buttons.forEach((btn) => {
         btn.addEventListener("click", () => {
-          buttons.forEach(b => b.classList.remove("selected"));
+          buttons.forEach((b) => b.classList.remove("selected"));
           btn.classList.add("selected");
         });
       });
@@ -762,8 +815,14 @@ import "./styles.css";
     const decPan = document.getElementById("decrementBtn");
     const incPan = document.getElementById("incrementBtn");
     if (panDisplay && decPan && incPan) {
-      decPan.addEventListener("click", () => { if (panCount > 0) panCount--; panDisplay.textContent = panCount; });
-      incPan.addEventListener("click", () => { panCount++; panDisplay.textContent = panCount; });
+      decPan.addEventListener("click", () => {
+        if (panCount > 0) panCount--;
+        panDisplay.textContent = panCount;
+      });
+      incPan.addEventListener("click", () => {
+        panCount++;
+        panDisplay.textContent = panCount;
+      });
     }
 
     // Contador de celulares
@@ -772,12 +831,18 @@ import "./styles.css";
     const decCell = document.getElementById("decrementCellphone");
     const incCell = document.getElementById("incrementCellphone");
     if (cellDisplay && decCell && incCell) {
-      decCell.addEventListener("click", () => { if (cellphoneCount > 0) cellphoneCount--; cellDisplay.textContent = cellphoneCount; });
-      incCell.addEventListener("click", () => { cellphoneCount++; cellDisplay.textContent = cellphoneCount; });
+      decCell.addEventListener("click", () => {
+        if (cellphoneCount > 0) cellphoneCount--;
+        cellDisplay.textContent = cellphoneCount;
+      });
+      incCell.addEventListener("click", () => {
+        cellphoneCount++;
+        cellDisplay.textContent = cellphoneCount;
+      });
     }
 
     // Contadores de productos
-    document.querySelectorAll(".counter-btn[data-action]").forEach(btn => {
+    document.querySelectorAll(".counter-btn[data-action]").forEach((btn) => {
       btn.addEventListener("click", function () {
         const action = this.getAttribute("data-action");
         const item = this.closest(".product-item");
@@ -794,46 +859,48 @@ import "./styles.css";
 
     // Modal de consejos --no funciona
     // Datos de consejos por categoría
-const tips = {
-  higiene: [
-    "Dúchate el menor tiempo posible y apaga el agua al enjabonarte.",
-    "Repara grifos o fugas en casa.",
-    "Cierra el grifo al cepillarte los dientes."
-  ],
-  limpieza: [
-    "Usa cubetas en lugar de manguera para lavar el auto.",
-    "Lava la ropa solo cuando tengas cargas completas.",
-    "Recicla el agua de la lluvia para regar plantas."
-  ],
-  alimentos: [
-    "Evita desperdiciar comida, ya que cada alimento requiere agua para producirse.",
-    "Elige productos locales y de temporada para reducir la huella hídrica del transporte.",
-    "Reduce el consumo de carne, especialmente de res, que requiere mucha agua."
-  ],
-  bienes: [
-    "Compra ropa de segunda mano o reciclada.",
-    "Repara tus productos en lugar de reemplazarlos.",
-    "Elige productos duraderos y de calidad para reducir el consumo."
-  ]
-};
-
-    
+    const tips = {
+      higiene: [
+        "Dúchate el menor tiempo posible y apaga el agua al enjabonarte.",
+        "Repara grifos o fugas en casa.",
+        "Cierra el grifo al cepillarte los dientes.",
+      ],
+      limpieza: [
+        "Usa cubetas en lugar de manguera para lavar el auto.",
+        "Lava la ropa solo cuando tengas cargas completas.",
+        "Recicla el agua de la lluvia para regar plantas.",
+      ],
+      alimentos: [
+        "Evita desperdiciar comida, ya que cada alimento requiere agua para producirse.",
+        "Elige productos locales y de temporada para reducir la huella hídrica del transporte.",
+        "Reduce el consumo de carne, especialmente de res, que requiere mucha agua.",
+      ],
+      bienes: [
+        "Compra ropa de segunda mano o reciclada.",
+        "Repara tus productos en lugar de reemplazarlos.",
+        "Elige productos duraderos y de calidad para reducir el consumo.",
+      ],
+    };
 
     const modal = document.getElementById("modal");
     const closeBtn = document.querySelector(".close");
-    if (closeBtn && modal) closeBtn.addEventListener("click", () => modal.style.display = "none");
+    if (closeBtn && modal)
+      closeBtn.addEventListener("click", () => (modal.style.display = "none"));
 
-    document.querySelectorAll(".category-btn").forEach(btn => {
+    document.querySelectorAll(".category-btn").forEach((btn) => {
       btn.addEventListener("click", () => {
         const cat = btn.getAttribute("data-category");
         if (!cat || !tips[cat] || !modal) return;
-        document.getElementById("modal-title").textContent = `Consejos ${cat.charAt(0).toUpperCase() + cat.slice(1)}`;
-        const list = tips[cat].map((t, i) => `<li>${i + 1}. ${t}</li>`).join("");
+        document.getElementById("modal-title").textContent =
+          `Consejos ${cat.charAt(0).toUpperCase() + cat.slice(1)}`;
+        const list = tips[cat]
+          .map((t, i) => `<li>${i + 1}. ${t}</li>`)
+          .join("");
         document.getElementById("modal-body").innerHTML = `<ol>${list}</ol>`;
         modal.style.display = "flex";
       });
     });
-    
+
     // Botón de resultados
     const btn25 = document.getElementById("nextToStep25");
     if (btn25) {
@@ -848,33 +915,49 @@ const tips = {
     const values = {};
 
     // Inputs numéricos
-    document.querySelectorAll('input[type="number"]').forEach(input => {
+    document.querySelectorAll('input[type="number"]').forEach((input) => {
       values[input.id] = parseFloat(input.value) || 0;
     });
 
     // Origen (checkboxes)
-    const origenCheckboxes = ["redAgua", "cooperativas", "ventasBloque", "cisternas", "pozos"];
-    values.origen = origenCheckboxes.filter(id => {
+    const origenCheckboxes = [
+      "redAgua",
+      "cooperativas",
+      "ventasBloque",
+      "cisternas",
+      "pozos",
+    ];
+    values.origen = origenCheckboxes.filter((id) => {
       const el = document.getElementById(id);
       return el && el.checked;
     });
 
     // Lavado de ropa
-    const washingChecks = document.querySelectorAll('input[name="washingMethod"]:checked');
-    values.washingMethod = washingChecks.length ? washingChecks[0].value : "aMano";
+    const washingChecks = document.querySelectorAll(
+      'input[name="washingMethod"]:checked',
+    );
+    values.washingMethod = washingChecks.length
+      ? washingChecks[0].value
+      : "aMano";
 
     // Radios
-    const rainwaterEl = document.querySelector('input[name="rainwater"]:checked');
+    const rainwaterEl = document.querySelector(
+      'input[name="rainwater"]:checked',
+    );
     values.rainwater = rainwaterEl ? rainwaterEl.value : "no";
 
-    const recyclePaperEl = document.querySelector('input[name="recyclePaper"]:checked');
+    const recyclePaperEl = document.querySelector(
+      'input[name="recyclePaper"]:checked',
+    );
     values.recyclePaper = recyclePaperEl ? recyclePaperEl.value : "no";
 
     // Inodoro y trastes
     const toiletEl = document.querySelector('input[name="toiletType"]:checked');
     values.toiletType = toiletEl ? toiletEl.value : "no"; // "si" = ahorrador
 
-    const dishEl = document.querySelector('input[name="dishwashingMethod"]:checked');
+    const dishEl = document.querySelector(
+      'input[name="dishwashingMethod"]:checked',
+    );
     values.dishwashingMethod = dishEl ? dishEl.value : "si"; // "si" = a mano
 
     // Botones seleccionados
@@ -886,16 +969,25 @@ const tips = {
     };
 
     values.showerDuration = getSelectedValue("step3", ".option-btn");
-    values.brushFrequency = getSelectedValue("brushDuration", ".option-btn-brush");
-    values.handWashFrequency = getSelectedValue("handDuration", ".option-btn-hand");
+    values.brushFrequency = getSelectedValue(
+      "brushDuration",
+      ".option-btn-brush",
+    );
+    values.handWashFrequency = getSelectedValue(
+      "handDuration",
+      ".option-btn-hand",
+    );
     values.arrozFrequency = getSelectedValue("arrozOptions", ".option-btn");
     values.huevoFrequency = getSelectedValue("huevoOptions", ".option-btn");
     values.platanoFrequency = getSelectedValue("platanoOptions", ".option-btn");
     values.naranjaFrequency = getSelectedValue("naranjaOptions", ".option-btn");
-    values.purchaseFrequency = getSelectedValue("purchaseFrequency", ".freq-btn");
+    values.purchaseFrequency = getSelectedValue(
+      "purchaseFrequency",
+      ".freq-btn",
+    );
 
     // Contadores
-    ["tenisCount", "camisetaCount", "jeansCount", "PanCount"].forEach(id => {
+    ["tenisCount", "camisetaCount", "jeansCount", "PanCount"].forEach((id) => {
       const el = document.getElementById(id);
       values[id] = el ? parseInt(el.textContent, 10) || 0 : 0;
     });
@@ -903,43 +995,52 @@ const tips = {
     const cellEl = document.getElementById("cellphoneCountValue");
     values.cellphoneCount = cellEl ? parseInt(cellEl.textContent, 10) || 0 : 0;
 
-
     // --- CÁLCULO ---
-    let higiene = 0, limpieza = 0, alimentos = 0, bienes_servicios = 0, habitos_sostenibles = 0;
+    let higiene = 0,
+      limpieza = 0,
+      alimentos = 0,
+      bienes_servicios = 0,
+      habitos_sostenibles = 0;
 
     // Higiene
     let duracion_duchas = 0;
     if (values.showerDuration === "menos10") duracion_duchas = 4000;
     else if (values.showerDuration === "10a20") duracion_duchas = 8000;
-    else if (values.showerDuration === "30a60") duracion_duchas = 18000;   // tiene la multiplicacion la frecuencia de ducha?
+    else if (values.showerDuration === "30a60") duracion_duchas = 18000; // tiene la multiplicacion la frecuencia de ducha?
     // Duchas: veces por semana × litros por ducha × 52 semanas
-const duchas_anual = duracion_duchas * (values.showerTimesPerWeek || 0) * 52;
+    const duchas_anual =
+      duracion_duchas * (values.showerTimesPerWeek || 0) * 52;
 
     let lavado_dientes = 0;
     if (values.brushFrequency === "menos10") lavado_dientes = 300;
     else if (values.brushFrequency === "10a20") lavado_dientes = 600;
-    else if (values.brushFrequency === "30a60") lavado_dientes = 900;  // donde esta el imput de las veces por día? 
-const lavado_dientes_anual = lavado_dientes * (values.brushTimesPerDay || 0) * 365; 
+    else if (values.brushFrequency === "30a60") lavado_dientes = 900; // donde esta el imput de las veces por día?
+    const lavado_dientes_anual =
+      lavado_dientes * (values.brushTimesPerDay || 0) * 365;
 
     let lavado_manos = 0;
     if (values.handWashFrequency === "menos10") lavado_manos = 135;
     else if (values.handWashFrequency === "10a20") lavado_manos = 225;
     else if (values.handWashFrequency === "30a60") lavado_manos = 450;
-const lavado_manos_anual = lavado_manos * (values.handWashTimesPerDay || 0) * 365;
+    const lavado_manos_anual =
+      lavado_manos * (values.handWashTimesPerDay || 0) * 365;
 
     let inodoro = values.toiletType === "si" ? 100 : 210; // "si" = ahorrador
     const inodoro_anual = inodoro * 365;
 
-    higiene = duchas_anual + lavado_dientes_anual + lavado_manos_anual + inodoro;
+    higiene =
+      duchas_anual + lavado_dientes_anual + lavado_manos_anual + inodoro;
 
     // Limpieza
     let lavado_ropa_litros = 0;
     if (values.washingMethod === "aMano") lavado_ropa_litros = 840;
-    else if (values.washingMethod === "lavadoraEstandar") lavado_ropa_litros = 960;
-    else if (values.washingMethod === "lavadoraEficiente") lavado_ropa_litros = 400;
+    else if (values.washingMethod === "lavadoraEstandar")
+      lavado_ropa_litros = 960;
+    else if (values.washingMethod === "lavadoraEficiente")
+      lavado_ropa_litros = 400;
 
     // Ropa: lavados por semana × litros por lavado × 52 semanas
-limpieza += (values.clothesWashPerWeek || 0) * lavado_ropa_litros * 52;
+    limpieza += (values.clothesWashPerWeek || 0) * lavado_ropa_litros * 52;
 
     // Trastes
     let trastesLitros = values.dishwashingMethod === "si" ? 20 : 12;
@@ -951,20 +1052,20 @@ limpieza += (values.clothesWashPerWeek || 0) * lavado_ropa_litros * 52;
     alimentos += (values.coffeeCupsPerWeek || 0) * 132 * 52;
     alimentos += (values.teaCupsPerWeek || 0) * 56 * 52;
 
- const freqToLitersAnual = (freq) => {
-  if (freq === "menos10") return 0;
-  if (freq === "10a20") return 7 * 250 * 52;   // 7 unidades/semana × 52 semanas
-  if (freq === "30a60") return 12 * 250 * 52;  // 12 unidades/semana × 52 semanas
-  return 0;
-};
-   alimentos += freqToLitersAnual(values.arrozFrequency);
-alimentos += freqToLitersAnual(values.huevoFrequency);
-alimentos += freqToLitersAnual(values.platanoFrequency);
-alimentos += freqToLitersAnual(values.naranjaFrequency);
+    const freqToLitersAnual = (freq) => {
+      if (freq === "menos10") return 0;
+      if (freq === "10a20") return 7 * 250 * 52; // 7 unidades/semana × 52 semanas
+      if (freq === "30a60") return 12 * 250 * 52; // 12 unidades/semana × 52 semanas
+      return 0;
+    };
+    alimentos += freqToLitersAnual(values.arrozFrequency);
+    alimentos += freqToLitersAnual(values.huevoFrequency);
+    alimentos += freqToLitersAnual(values.platanoFrequency);
+    alimentos += freqToLitersAnual(values.naranjaFrequency);
     alimentos += (values.PanCount || 0) * 200 * 365;
 
     // Bienes
-    bienes_servicios = 
+    bienes_servicios =
       (values.tenisCount || 0) * 8000 +
       (values.camisetaCount || 0) * 2700 +
       (values.jeansCount || 0) * 6500 +
@@ -972,20 +1073,39 @@ alimentos += freqToLitersAnual(values.naranjaFrequency);
 
     // Hábitos sostenibles
     if (values.rainwater === "si") habitos_sostenibles -= 1000;
-    if (values.recyclePaper === "si") habitos_sostenibles -= (values.recycledPaperKg || 0) * 26.5;
+    if (values.recyclePaper === "si")
+      habitos_sostenibles -= (values.recycledPaperKg || 0) * 26.5;
 
+    console.log("Tipos de dato de cada categoría");
+    console.log(typeof higiene);
+    console.log(typeof limpieza);
+    console.log(typeof alimentos);
+    console.log(typeof bienes_servicios);
+    console.log(typeof habitos_sostenibles);
+
+    // imprimir en consola cada categoría
+    console.log("Higiene ", higiene);
+    console.log("Limpieza ", limpieza);
+    console.log("Alimentos ", alimentos);
+    console.log("Bienes y servicios ", bienes_servicios);
+    console.log("Hábitos sostenibles", habitos_sostenibles);
     // Total
-    let total = higiene + limpieza + alimentos + bienes_servicios + habitos_sostenibles;
+    let total =
+      higiene + limpieza + alimentos + bienes_servicios + habitos_sostenibles;
     total = Math.round(total);
 
     // Formato
     let formattedTotal = "";
     if (total >= 1_000_000) {
       const millones = total / 1_000_000;
-      formattedTotal = millones % 1 === 0 ? `${millones.toLocaleString()}M` : `${millones.toFixed(1)}M`;
+      formattedTotal =
+        millones % 1 === 0
+          ? `${millones.toLocaleString()}M`
+          : `${millones.toFixed(1)}M`;
     } else if (total >= 1_000) {
       const miles = total / 1_000;
-      formattedTotal = miles % 1 === 0 ? `${miles.toLocaleString()}K` : `${miles.toFixed(1)}K`;
+      formattedTotal =
+        miles % 1 === 0 ? `${miles.toLocaleString()}K` : `${miles.toFixed(1)}K`;
     } else {
       formattedTotal = total.toLocaleString();
     }
@@ -995,60 +1115,95 @@ alimentos += freqToLitersAnual(values.naranjaFrequency);
       resultadoElement.innerHTML = `${formattedTotal} <span>Litros/año</span>`;
     }
 
-    
-// --- CÁLCULO DE CAMIONES CISTERNA ---
-const LITROS_POR_CISTERNA = 15_000; // 
-const camionesCisterna = Math.max(1, Math.round(total / LITROS_POR_CISTERNA));
+    // --- CÁLCULO DE CAMIONES CISTERNA ---
+    const LITROS_POR_CISTERNA = 15_000; //
+    const camionesCisterna = Math.max(
+      1,
+      Math.round(total / LITROS_POR_CISTERNA),
+    );
 
-// --- Actualizar número de cisternas en pantalla ---
-const nroCisternaElement = document.getElementById("nroCisterna");
-if (nroCisternaElement) {
-  nroCisternaElement.textContent = camionesCisterna; // 
-}
-
-
+    // --- Actualizar número de cisternas en pantalla ---
+    const nroCisternaElement = document.getElementById("nroCisterna");
+    if (nroCisternaElement) {
+      nroCisternaElement.textContent = camionesCisterna; //
+    }
 
     // --- Determinar mensaje según rango ---
-let mensaje = "";
-let tipoMensaje = "";
+    let mensaje = "";
+    let tipoMensaje = "";
 
-if (total < 2_000_000) {
-  mensaje = `
+    if (total < 2_000_000) {
+      mensaje = `
     <div class="checkmark">✅</div>
     <p>
       <strong>¡Felicidades!</strong> Tu huella hídrica anual está por debajo del promedio estimado en Bolivia.
       Esto indica que ya estás tomando decisiones más conscientes. Continúa así y considera seguir reduciendo con pequeñas acciones que suman cada día.
     </p>
   `;
-  tipoMensaje = "bajo";
-} else if (total >= 2_000_000 && total <= 4_000_000) {
-  mensaje = `
+      tipoMensaje = "bajo";
+    } else if (total >= 2_000_000 && total <= 4_000_000) {
+      mensaje = `
     <div class="info-icon">ℹ️</div>
     <p>
       <strong>Tu huella hídrica anual se encuentra en el rango promedio estimado para Bolivia.</strong>
       No es mala, pero sí significa que tienes buena oportunidad para mejorar. Aplica los consejos de la app/web y conviértete en referente entre tus amigos o comunidad.
     </p>
   `;
-  tipoMensaje = "medio";
-} else {
-  mensaje = `
+      tipoMensaje = "medio";
+    } else {
+      mensaje = `
     <div class="alert-icon">⚠️</div>
     <p>
       <strong>Tu huella hídrica anual está por encima del promedio estimado en Bolivia.</strong>
       Esto muestra que tus hábitos tienen un impacto importante sobre el recurso agua. Te animamos a revisar los consejos que te brinda la herramienta y adoptar cambios hoy mismo: cada litro que reduces cuenta hacia un futuro más sostenible.
     </p>
   `;
-  tipoMensaje = "alto";
-}
+      tipoMensaje = "alto";
+    }
+    // Estadísticas
+    function generarBarraCategoriaHH(categoria, nombreContenedor) {
+      for (let i = 0; i < categoria; i++) {
+        const span = document.createElement("span");
+        span.style.padding = "3px";
+        span.style.backgroundColor = "#657cc9";
+        let container = document.getElementById(nombreContenedor);
+        if (container) {
+          container.appendChild(span);
+        }
+      }
+    }
 
-// --- Insertar mensaje en el DOM ---
-const congratsContainer = document.getElementById("congrats-message");
-if (congratsContainer) {
-  congratsContainer.className = `congrats-message ${tipoMensaje}`;
-  congratsContainer.innerHTML = mensaje;
-}
+    const pctHigiene = Math.round((higiene / total) * 100);
+    const pctLimpieza = Math.round((limpieza / total) * 100);
+    const pctAlimentos = Math.round((alimentos / total) * 100);
+    const pctBienesServicios = Math.round((bienes_servicios / total) * 100);
+    const pctHabitos = Math.round((habitos_sostenibles / total) * 100);
+
+    generarBarraCategoriaHH(pctHigiene, "span_higiene");
+    generarBarraCategoriaHH(pctLimpieza, "span_limpieza");
+    generarBarraCategoriaHH(pctAlimentos, "span_alimentos");
+    generarBarraCategoriaHH(pctBienesServicios, "span_bienes_servicios");
+    generarBarraCategoriaHH(pctHabitos, "span_habitos_sostenibles");
+
+    // 🔵 Insertar los porcentajes dentro de cada barra
+    document.getElementById("pct_higiene").innerText = pctHigiene + "%";
+    document.getElementById("pct_limpieza").innerText = pctLimpieza + "%";
+    document.getElementById("pct_alimentos").innerText = pctAlimentos + "%";
+    document.getElementById("pct_bienes_servicios").innerText =
+      pctBienesServicios + "%";
+    document.getElementById("pct_habitos_sostenibles").innerText =
+      pctHabitos + "%";
+
+    // --- Insertar mensaje en el DOM ---
+    const congratsContainer = document.getElementById("congrats-message");
+    if (congratsContainer) {
+      congratsContainer.className = `congrats-message ${tipoMensaje}`;
+      congratsContainer.innerHTML = mensaje;
+    }
+  }
+
+  const resultadoElement = document.getElementById("resultado");
+  if (resultadoElement) {
+    resultadoElement.innerHTML = `${formattedTotal} <span>Litros/año</span>`;
   }
 </script>
-
-</html>
-
