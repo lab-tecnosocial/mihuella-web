@@ -1,45 +1,66 @@
 ---
-import './styles.css';  
-
+import "./styles.css";
 ---
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
     <title>Calculadora de Huella Hídrica</title>
   </head>
   <body>
-  <div class="water-calculator">
-   
- <!-- Paso 0: Introducción -->
-     <div id="step0" class="question">
-      <h1>¡Calcula tu Huella Hídrica!</h1>
-        <img src="/public/img/huella-hidrica-icon.png" alt="gota de agua-calculadora dehuella hidrica"
-     class="centered-image" />
-      
-    <b>Cada acción diaria,</b> desde beber un vaso de agua hasta elegir qué comer, <b>necesita agua.</b> Pero no siempre vemos cuánta.
-    </p>
-    <p> La huella hídrica es un indicador que mide la cantidad de agua que usas de forma directa e indirecta, ayudándote a entender
-       mejor tu impacto y a encontrar maneras sencillas de reducirlo. </p>
-       <p> <b>Esta huella hídrica se basa en 4 categorías: higiene, limpieza,
-       bienes, alimentos y bebidas, repartidas en 22 preguntas </b></p>
-   
-      <button id="nextToStep1" class="next-btn" enabled>Comienza a calcular</button>
-    </div>
-  
- 
-<!-- Pregunta 1: Origen-->
-    <div id="step1" class="question" style="display: none;"> 
+    <div class="water-calculator">
+      <!-- Paso 0: Introducción -->
+      <div id="step0">
+        <h1>¡Calcula tu Huella Hídrica!</h1>
+        <img
+          src="/img/huella-hidrica-icon.png"
+          alt="gota de agua-calculadora dehuella hidrica"
+          class="centered-image"
+        />
+
+        <p>
+          <b>Cada acción diaria,</b> desde beber un vaso de agua hasta elegir qué
+          comer, <b>necesita agua.</b> Pero no siempre vemos cuánta.
+        </p>
+        <p>
+          La huella hídrica es un indicador que mide la cantidad de agua que
+          usas de forma directa e indirecta, ayudándote a entender mejor tu
+          impacto y a encontrar maneras sencillas de reducirlo.
+        </p>
+        <p>
+          <b
+            >Esta huella hídrica se basa en 4 categorías: higiene, limpieza,
+            bienes, alimentos y bebidas, repartidas en 22 preguntas
+          </b>
+        </p>
+
+        <button id="nextToStep1" class="next-btn">Comienza a calcular</button>
+        <!--<div class="nav-arrows">
+          <button class="nav-arrow prev" onclick="goToPrevStep()">‹</button>
+          <button class="nav-arrow next" onclick="goToNextStep()">›</button>
+        </div>-->
+      </div>
+
+      <!-- Pregunta 1: Origen-->
+      <div id="step1" style="display: none;">
         <h2>Origen</h2>
-       <img src="/public/img/huella-hidrica-origen.png" alt="gota de agua-calculadora dehuella hidrica"
-     class="centered-image" />
-    
-      <h3>¿Cuál es la fuente de agua potable en tu hogar?</h3>
-     <div class="checkbox-group">
+        <img
+          src="/img/huella-hidrica-origen.png"
+          alt="gota de agua-calculadora dehuella hidrica"
+          class="centered-image"
+        />
+
+        <h3>¿Cuál es la fuente de agua potable en tu hogar?</h3>
+        <div class="checkbox-group">
           <div class="checkbox-item">
             <input type="checkbox" id="redAgua" />
             <label for="redAgua">Red de agua (SEMAPA, EPSAS, SAGUAPAC)</label>
@@ -59,144 +80,1167 @@ import './styles.css';
           <div class="checkbox-item">
             <input type="checkbox" id="pozos" />
             <label for="pozos">Pozos (Gobierno municipal)</label>
-          </div> 
-     </div> 
+          </div>
+        </div>
 
-      <h3>¿Cuántas personas viven en su hogar?</h3>
-     <div class="input-number">
-          <input type="number" placeholder="Ingresa un número" min="1" max="20" />
-     </div>
-      <button id="nextToStep2" class="next-btn" enabled>Siguiente pregunta</button>
-    
-  <!-- Flechas de navegación -->
-    <div class="nav-arrows">
-      <div class="arrow" id="prevArrow"><</div>
-      <div class="arrow" id="nextArrow">> </div>
+        <h3>¿Cuántas personas viven en su hogar?</h3>
+        <div class="input-number">
+          <input
+            type="number"
+            id="numPeople"
+            placeholder="Ingresa un número"
+            min="1"
+            max="20"
+          />
+        </div>
+        <button id="nextToStep3" class="next-btn">Siguiente pregunta</button>
+        <!--  
+        <div class="nav-arrows">
+        <button class="nav-arrow prev" onclick="goToPrevStep()">‹</button>
+        <button class="nav-arrow next" onclick="goToNextStep()">›</button>
+          </div>-->
+      </div>
+      <!-- Pregunta 3: Higiene tiempo de las duchas -->
+      <div id="step3" style="display: none;">
+        <img
+          src="/img/tiempo-ducha.png"
+          alt="duchas a las semana"
+          class="centered-image"
+        />
+        <h3>¿De cuánto tiempo son tus duchas?</h3>
+        <!-- Botones de opción -->
+        <div class="options-container">
+          <button class="option-btn" data-value="menos10"
+            >Menos de 10 minutos</button
+          >
+          <button class="option-btn" data-value="10a20">10 a 20 minutos</button>
+          <button class="option-btn" data-value="30a60">30 min a 1 hora</button>
+        </div>
+        <button id="nextToStep4" class="next-btn">Siguiente pregunta</button>
+        <!--<div class="nav-arrows">
+        <button class="nav-arrow prev" onclick="goToPrevStep()">‹</button>
+        <button class="nav-arrow next" onclick="goToNextStep()">›</button>
+          </div>-->
+      </div>
+
+      <!-- Pregunta 4: Higiene duchas a la semana -->
+      <div id="step4" style="display: none;">
+        <h2>Higiene</h2>
+        <h3>¿Cuántas veces te duchas a la semana?</h3>
+        <img
+          src="/img/higiene.png"
+          alt="duchas a las semana"
+          class="centered-image"
+        />
+
+        <div class="input-number">
+          <input
+            type="number"
+            id="showerTimesPerWeek"
+            placeholder="Ingresa un número"
+            min="1"
+            max="20"
+          />
+        </div>
+        <button id="nextToStep5" class="next-btn">Siguiente pregunta</button>
+        <!--<div class="nav-arrows">
+        <button class="nav-arrow prev" onclick="goToPrevStep()">‹</button>
+        <button class="nav-arrow next" onclick="goToNextStep()">›</button>
+          </div>-->
+      </div>
+
+      <!-- Pregunta 5: Higiene cepillado de dientes -->
+      <div id="step5" style="display: none;">
+        <h2>Higiene</h2>
+        <h3>¿Cuántas veces al día te lavas los dientes?</h3>
+        <img
+          src="/img/diente.png"
+          alt="cepillado de dientes al día"
+          class="centered-image"
+        />
+        <div id="brushDuration" class="options-container">
+          <button class="option-btn-brush option-btn" data-value="menos10"
+            >1 vez al día</button
+          >
+          <button class="option-btn-brush option-btn" data-value="10a20"
+            >2 veces al día</button
+          >
+          <button class="option-btn-brush option-btn" data-value="30a60"
+            >3 veces al día o más</button
+          >
+        </div>
+        <button id="nextToStep6" class="next-btn">Siguiente pregunta</button>
+        <!--<div class="nav-arrows">
+        <button class="nav-arrow prev" onclick="goToPrevStep()">‹</button>
+        <button class="nav-arrow next" onclick="goToNextStep()">›</button>
+          </div>-->
+      </div>
+
+      <!-- Pregunta 6: Higiene lavado de manos -->
+      <div id="step6" style="display: none;">
+        <h2>Higiene</h2>
+        <h3>¿Cuántas veces al día te lavas las manos?</h3>
+        <img
+          src="/img/manos-icon.png"
+          alt="cepillado de dientes al día"
+          class="centered-image"
+        />
+        <div id="handDuration" class="options-container">
+          <button class="option-btn-hand option-btn" data-value="menos10"
+            >2 a 3 veces</button
+          >
+          <button class="option-btn-hand option-btn" data-value="10a20"
+            >3 a 5 veces</button
+          >
+          <button class="option-btn-hand option-btn" data-value="30a60"
+            >Más de 5 veces</button
+          >
+        </div>
+        <button id="nextToStep7" class="next-btn">Siguiente pregunta</button>
+        <!--<div class="nav-arrows">
+          <button class="nav-arrow prev" onclick="goToPrevStep()">‹</button>
+          <button class="nav-arrow next" onclick="goToNextStep()">›</button>
+        </div>-->
+      </div>
+
+      <!-- Pregunta 7: Uso de inodoro -->
+      <div id="step7" style="display: none;">
+        <h2>Higiene</h2>
+        <h3>¿Tienes inodoro ahorrador o tradicional?</h3>
+        <img
+          src="/img/inodoro-icon.png"
+          alt="inodoro icon HH"
+          class="centered-image"
+        />
+        <div class="options2">
+          <label
+            ><input type="radio" name="toiletType" value="si" /> ahorrador</label
+          >
+          <label
+            ><input type="radio" name="toiletType" value="no" /> Tradicional</label
+          >
+        </div>
+        <button id="nextToStep8" class="next-btn">Siguiente pregunta</button>
+        <!--<div class="nav-arrows">
+          <button class="nav-arrow prev" onclick="goToPrevStep()">‹</button>
+          <button class="nav-arrow next" onclick="goToNextStep()">›</button>
+        </div>-->
+      </div>
+
+      <!-- Pregunta 8: Limpieza ropa -->
+      <div id="step8" style="display: none;">
+        <h2>Limpieza</h2>
+        <h3>¿Cómo lavas tu ropa?</h3>
+        <img
+          src="/img/ropa.png"
+          alt="ropa calculadora hidrica"
+          class="centered-image"
+        />
+        <div class="options-ropa">
+          <label class="option-ropa">
+            <input type="checkbox" name="washingMethod" value="aMano" />
+            <span>A mano</span>
+          </label>
+          <label class="option-ropa">
+            <input
+              type="checkbox"
+              name="washingMethod"
+              value="lavadoraEstandar"
+            />
+            <span>Lavadora estándar (Carga superior)</span>
+          </label>
+          <label class="option-ropa">
+            <input
+              type="checkbox"
+              name="washingMethod"
+              value="lavadoraEficiente"
+            />
+            <span>Lavadora eficiente (Carga frontal horizontal)</span>
+          </label>
+        </div>
+        <h3>¿Cuántas veces a la semana lavas ropa?</h3>
+        <div class="input-number">
+          <input
+            type="number"
+            id="clothesWashPerWeek"
+            placeholder="Ingresa un número"
+            min="1"
+            max="20"
+          />
+        </div>
+        <button id="nextToStep9" class="next-btn">Siguiente pregunta</button>
+        <!-- <div class="nav-arrows">
+          <button class="nav-arrow prev" onclick="goToPrevStep()">‹</button>
+          <button class="nav-arrow next" onclick="goToNextStep()">›</button>
+        </div>-->
+      </div>
+
+      <!-- Pregunta 9: Limpieza lavado de trastes-->
+      <div id="step9" style="display: none;">
+        <h2>Limpieza</h2>
+        <h3>¿Cómo lavas los platos y trastes de tu cocina?</h3>
+        <img
+          src="/img/trastes-icon.png"
+          alt="ropa calculadora hidrica"
+          class="centered-image"
+        />
+        <div class="options2">
+          <label
+            ><input type="radio" name="dishwashingMethod" value="si" /> A mano</label
+          >
+          <label
+            ><input type="radio" name="dishwashingMethod" value="no" /> lavajillas</label
+          >
+        </div>
+        <h3>¿Cuántas veces al día lavas los platos?</h3>
+        <div class="input-number">
+          <input
+            type="number"
+            id="dishesWashPerDay"
+            placeholder="Ingresa un número"
+            min="1"
+            max="20"
+          />
+        </div>
+        <button id="nextToStep10" class="next-btn">Siguiente pregunta</button>
+        <!--<div class="nav-arrows">
+          <button class="nav-arrow prev" onclick="goToPrevStep()">‹</button>
+          <button class="nav-arrow next" onclick="goToNextStep()">›</button>
+        </div>-->
+      </div>
+      <!-- Pregunta 10: Consumo de Alimentos -->
+      <div id="step10" style="display: none;">
+        <h2>Consumo de Alimentos</h2>
+        <img
+          src="/img/lunch_dining.png"
+          alt="Imagen de hamburguesa"
+          class="centered-image"
+        />
+        <h3>¿Cúantos kilos de carne de res consumes a la semana?</h3>
+        <div class="input-number">
+          <input
+            type="number"
+            id="beefKgPerWeek"
+            placeholder="Ingresa un número (0.5 = 1/2 kg)"
+            min="0"
+            max="20"
+          />
+        </div>
+        <h3>¿Cúantos kilos de carne de pollo consumes a la semana?</h3>
+        <div class="input-number">
+          <input
+            type="number"
+            id="chickenKgPerWeek"
+            placeholder="Ingresa un número (0.5 = 1/2 kg)"
+            min="0"
+            max="20"
+          />
+        </div>
+        <button id="nextToStep11" class="next-btn">Siguiente pregunta</button>
+        <!--<div class="nav-arrows">
+          <button class="nav-arrow prev" onclick="goToPrevStep()">‹</button>
+          <button class="nav-arrow next" onclick="goToNextStep()">›</button>
+        </div>-->
+      </div>
+
+      <!-- Pregunta 11: Consumo de Alimentos -->
+      <div id="step11" style="display: none;">
+        <h2>Consumo de Alimentos</h2>
+        <img
+          src="/img/coffee.png"
+          alt="Imagen de café"
+          class="centered-image"
+        />
+        <h3>¿Cúantas tazas de café consumes a la semana?</h3>
+        <div class="input-number">
+          <input
+            type="number"
+            id="coffeeCupsPerWeek"
+            placeholder="Ingresa un número"
+            min="0"
+            max="20"
+          />
+        </div>
+        <h3>¿Cúantas tazas de té consumes a la semana?</h3>
+        <div class="input-number">
+          <input
+            type="number"
+            id="teaCupsPerWeek"
+            placeholder="Ingresa un número"
+            min="0"
+            max="20"
+          />
+        </div>
+        <button id="nextToStep12" class="next-btn">Siguiente pregunta</button>
+        <!--<div class="nav-arrows">
+          <button class="nav-arrow prev" onclick="goToPrevStep()">‹</button>
+          <button class="nav-arrow next" onclick="goToNextStep()">›</button>
+        </div>-->
+      </div>
+
+      <!-- Pregunta 12: Consumo de Alimentos -->
+      <div id="step12" style="display: none;">
+        <h2>Consumo de Alimentos</h2>
+        <div style="display:flex; justify-content:center;">
+          <img
+            src="/img/egg.png"
+            alt="Imagen de huevo"
+            class="centered-image"
+          />
+          <img
+            src="/img/washoku.png"
+            alt="Imagen de arroz"
+            class="centered-image"
+          />
+        </div>
+        <h3>¿Cuántas veces a la semana comes arroz?</h3>
+        <div id="arrozOptions" class="options-container">
+          <button class="option-btn" data-value="menos10">No consumo</button>
+          <button class="option-btn" data-value="10a20">de 5 a 10 veces</button>
+          <button class="option-btn" data-value="30a60">más de 10 veces</button>
+        </div>
+
+        <h3>¿Cuántas veces consumes huevo?</h3>
+        <div id="huevoOptions" class="options-container">
+          <button class="option-btn" data-value="menos10">No consumo</button>
+          <button class="option-btn" data-value="10a20">de 5 a 10 veces</button>
+          <button class="option-btn" data-value="30a60">más de 10 veces</button>
+        </div>
+        <img
+          src="/img/bakery_dining.png"
+          alt="Croissant"
+          class="centered-image-pan"
+        />
+        <h3>¿Cuántas piezas de pan consumes al día?</h3>
+        <!-- Contador -->
+        <div class="counter-controls">
+          <button class="counter-btn" id="decrementBtn">-</button>
+          <span class="counter-value" id="PanCount">0</span>
+          <button class="counter-btn" id="incrementBtn">+</button>
+        </div>
+
+        <button id="nextToStep13" class="next-btn">Siguiente pregunta</button>
+      </div>
+
+      <!-- Pregunta 13: Consumo de Alimentos -->
+      <div id="step13" style="display: none;">
+        <h2>Consumo de Alimentos</h2>
+        <div
+          style="display:flex; justify-content: center;"
+          class="products-container"
+        >
+          <img
+            src="/img/orange.png"
+            alt="Imagen de naranja"
+            class="centered-image"
+          />
+          <img
+            src="/img/banana.png"
+            alt="Imagen de platano"
+            class="centered-image"
+          />
+        </div>
+        <h3>¿Cuántos plátanos consumes a la semana?</h3>
+        <div id="platanoOptions" class="options-container">
+          <button class="option-btn" data-value="menos10">No consumo</button>
+          <button class="option-btn" data-value="10a20">de 5 a 10 veces</button>
+          <button class="option-btn" data-value="30a60">más de 10 veces</button>
+        </div>
+
+        <h3>¿Cuántas naranjas consumes a la semana?</h3>
+        <div id="naranjaOptions" class="options-container">
+          <button class="option-btn" data-value="menos10">No consumo</button>
+          <button class="option-btn" data-value="10a20">de 3 a 6 veces</button>
+          <button class="option-btn" data-value="30a60">más de 7 veces</button>
+        </div>
+        <button id="nextToStep22" class="next-btn">Siguiente pregunta</button>
+        <!-- <div class="nav-arrows">
+          <button class="nav-arrow prev" onclick="goToPrevStep()">‹</button>
+          <button class="nav-arrow next" onclick="goToNextStep()">›</button>
+        </div>-->
+      </div>
+      <!-- Seccion bienes y servicios pregunta 22-->
+      <div id="step22" style="display: none;">
+        <h2>Bienes y Servicios</h2>
+
+        <img
+          src="/img/bienes-y-servicios.png"
+          alt="bienes y servicios en la huella hidrica"
+          class="centered-image"
+        />
+        <h3>¿Cuántas veces compras ropa o calzado <b> nuevo</b> al año?</h3>
+
+        <div id="purchaseFrequency" class="frequency-options options-container">
+          <button class="freq-btn option-btn" data-value="1"
+            >1 vez al año</button
+          >
+          <button class="freq-btn option-btn" data-value="6+"
+            >Más de 6 veces</button
+          >
+          <button class="freq-btn option-btn" data-value="2-5"
+            >Entre 2 a 5 veces</button
+          >
+        </div>
+
+        <!-- Pregunta 23: Cantidad por producto -->
+        <h3>¿Cuántos de estos productos compras al año?</h3>
+        <div id="productCounters" class="products-container">
+          <!-- Tenis -->
+          <div class="product-item" data-product="tenis">
+            <img src="/img/tenis-HH.png" alt="tenis-icon" />
+            <p>Tenis</p>
+            <div class="counter-controls">
+              <button class="counter-btn" data-action="decrement">-</button>
+              <span class="counter-value" id="tenisCount">0</span>
+              <button class="counter-btn" data-action="increment">+</button>
+            </div>
+          </div>
+
+          <!-- Camiseta -->
+          <div class="product-item" data-product="camiseta">
+            <img src="/img/camiseta-HH.png" alt="camiseta-icon" />
+            <p>Camiseta (algodón)</p>
+            <div class="counter-controls">
+              <button class="counter-btn" data-action="decrement">-</button>
+              <span class="counter-value" id="camisetaCount">0</span>
+              <button class="counter-btn" data-action="increment">+</button>
+            </div>
+          </div>
+
+          <!-- Jeans -->
+          <div class="product-item" data-product="jeans">
+            <img src="/img/jeans-HH.png" alt="camiseta-icon" />
+            <p>Jeans</p>
+            <div class="counter-controls">
+              <button class="counter-btn" data-action="decrement">-</button>
+              <span class="counter-value" id="jeansCount">0</span>
+              <button class="counter-btn" data-action="increment">+</button>
+            </div>
+          </div>
+        </div>
+
+        <button id="nextToStep23" class="next-btn">Siguiente pregunta</button>
+        <!--<div class="nav-arrows">
+          <button class="nav-arrow prev" onclick="goToPrevStep()">‹</button>
+          <button class="nav-arrow next" onclick="goToNextStep()">›</button>
+        </div>-->
+      </div>
+
+      <!-- Seccion bienes y servicios pregunta 24-->
+      <div id="step23" style="display: none;">
+        <h2>Bienes y servicios</h2>
+        <img
+          src="/img/bienes-y-servicios2.png"
+          alt="duchas a las semana"
+          class="centered-image"
+        />
+        <h3>¿Cuántos celulares has tenido durante los últimos 5 años?</h3>
+        <!-- Contador -->
+        <div class="counter-controls">
+          <button class="counter-btn" id="decrementCellphone">-</button>
+          <span class="counter-value" id="cellphoneCountValue">0</span>
+          <button class="counter-btn" id="incrementCellphone">+</button>
+        </div>
+        <button id="nextToStep24" class="next-btn">Siguiente pregunta</button>
+        <!--<div class="nav-arrows">
+          <button class="nav-arrow prev" onclick="goToPrevStep()">‹</button>
+          <button class="nav-arrow next" onclick="goToNextStep()">›</button>
+        </div>-->
+      </div>
+
+      <!-- Seccion habitos sostenibles-->
+      <div id="step24" style="display: none;">
+        <h2>Hábitos Sostenibles</h2>
+
+        <img
+          src="/img/habitos-sostenibles.png"
+          alt="hábitos sostenibles en la huella hidrica"
+          class="centered-image"
+        />
+        <div class="question24">
+          <h3>
+            ¿Tienes un sistema de recolección de agua de lluvia en tu hogar?
+          </h3>
+          <div class="options2">
+            <label><input type="radio" name="rainwater" value="si" /> Sí</label>
+            <label><input type="radio" name="rainwater" value="no" /> No</label>
+          </div>
+        </div>
+
+        <div class="question24">
+          <h3>¿Reciclas papel?</h3>
+          <div class="options2">
+            <label
+              ><input type="radio" name="recyclePaper" value="si" /> Sí</label
+            >
+            <label
+              ><input type="radio" name="recyclePaper" value="no" /> No</label
+            >
+          </div>
+        </div>
+        <div class="question24">
+          <h3>¿Cuántos kilos de papel reciclas al año aproximadamente?</h3>
+          <input
+            type="number"
+            id="recycledPaperKg"
+            placeholder="Ingresa un número (0.5 = 1/2 kg)"
+            min="0"
+            step="0.5"
+          />
+        </div>
+        <button id="nextToStep25" class="next-btn">Ver resultados</button>
+        <!--<div class="nav-arrows">
+          <button class="nav-arrow prev" onclick="goToPrevStep()">‹</button>
+          <button class="nav-arrow next" onclick="goToNextStep()">›</button>
+        </div>-->
+      </div>
+
+      <!--Resultados -->
+      <div id="step25" style="display: none;">
+        <!-- Fila de resultados -->
+        <div class="result-card">
+          <!-- Gota de agua -->
+          <img
+            src="/img/huella-hidrica-icon.png"
+            alt="Gota de agua"
+            class="drop-icon"
+          />
+          <!-- Texto del resultado -->
+          <div class="result-text">
+            <p>Tu huella hídrica es:</p>
+            <h2 id="resultado">3.467.500<span>Litros/año</span></h2>
+            <p>
+              Una persona consume una media de 3.468.000 litros por año en
+              Bolivia
+            </p>
+          </div>
+          <!-- Comparaciones -->
+          <div class="comparisons">
+            <!-- <div class="comparison">
+              <img
+                src="/public/img/botella-icon.png"
+                alt="Botella"
+                class="icon"
+              />
+              <p>
+                <strong>Tu consumo de agua</strong> en un mes se podría llenar
+                <strong>X botellas de 2 litros</strong>.
+              </p>
+            </div>-->
+            <div class="comparison">
+              <img
+                src="/img/camion-icon.png"
+                alt="Camión cisterna"
+                class="icon"
+              />
+              <p>
+                <strong>
+                  En un año, tu huella hídrica equivale al agua contenida en <div
+                    id="nroCisterna"
+                  >
+                    0
+                  </div> camiones cisterna
+                </strong>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div id="congrats-message" class="congrats-message"></div>
+        <div style="display:flex">
+          <button id="nextToStep27" class="next-btn">Estadísticas</button>
+          <button id="nextToStep26" class="next-btn">¿Cómo ahorrar?</button>
+        </div>
+
+        <!-- Botón Volver a calcular -->
+        <button class="back-button">Volver a calcular</button>
+        <!--<div class="nav-arrows">
+          <button class="nav-arrow prev" onclick="goToPrevStep()">‹</button>
+          <button class="nav-arrow next" onclick="goToNextStep()">›</button>
+        </div>-->
+      </div>
+
+      <!-- Consejos-->
+      <div id="step26" style="display: none;">
+        <h2>Consejos para ahorrar agua</h2>
+        <h3>¡Mejora tu HUELLA HÍDRICA!</h3>
+
+        <!-- Botones -->
+        <div class="buttons-container">
+          <button class="category-btn" data-category="higiene">Higiene</button>
+          <button class="category-btn" data-category="limpieza">Limpieza</button
+          >
+          <button class="category-btn" data-category="alimentos"
+            >Alimentos y bebidas</button
+          >
+          <button class="category-btn" data-category="bienes"
+            >Bienes y servicios</button
+          >
+        </div>
+
+        <!-- Modal flotante  no funciona-->
+        <div id="modal" class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title">Consejos Higiene</h2>
+            <div id="modal-body">Haz clic en alguna categoría</div>
+            <!-- Botón Volver a calcular -->
+          </div>
+          <button class="back-button2">Volver a calcular</button>
+        </div>
+      </div>
+      <!-- Estadísticas -->
+      <div id="step27" style="display: none;">
+        <h1>Estadísticas</h1>
+        <div class="categoria">
+          <label>Higiene</label>
+          <div class="barra">
+            <div class="porcentaje" id="pct_higiene"></div>
+            <span id="span_higiene"></span>
+          </div>
+        </div>
+
+        <div class="categoria">
+          <label>Limpieza</label>
+          <div class="barra">
+            <div class="porcentaje" id="pct_limpieza"></div>
+            <span id="span_limpieza"></span>
+          </div>
+        </div>
+
+        <div class="categoria">
+          <label>Alimentos</label>
+          <div class="barra">
+            <div class="porcentaje" id="pct_alimentos"></div>
+            <span id="span_alimentos"></span>
+          </div>
+        </div>
+
+        <div class="categoria">
+          <label>Bienes y servicios</label>
+          <div class="barra">
+            <div class="porcentaje" id="pct_bienes_servicios"></div>
+            <span id="span_bienes_servicios"></span>
+          </div>
+        </div>
+
+        <div class="categoria">
+          <label>Hábitos sostenibles</label>
+          <div class="barra">
+            <div class="porcentaje" id="pct_habitos_sostenibles"></div>
+            <span id="span_habitos_sostenibles"></span>
+          </div>
+        </div>
+      </div>
     </div>
-    </div>
-   
 
-<!-- Pregunta 2: Higiene duchas a la semana -->
-    <div id="step2" class="question" style="display: none;">
-      <h2>Higiene</h2>
-      <h3>¿Cuántas veces te duchas a la semana?</h3>
-        <img src="/public/img/higiene.png" alt="duchas a las semana"
-     class="centered-image" />
-      
-    <div id=shower-frequency" class="input-number">
-          <input type="number" placeholder="Ingresa un número" min="1" max="20" />
-     </div>
-      <button id="nextToStep3" class="next-btn" enabled>Siguiente pregunta</button>
-    
-    <!-- Flechas de navegación aunque no sirven -->
-    <div class="nav-arrows">
-      <div class="arrow" id="prevArrow"><</div>
-      <div class="arrow" id="nextArrow">></div>
-    </div>
-     </div>
-    
-
-<!-- Pregunta 3: Higiene tiempo de las duchas -->
-    <div id="step3" class="question" style="display: none;">
-      <p>¿De cuánto tiempo son tus duchas?</p>
-  <!-- Botones de opción -->
-    <div id="showerDuration" class="options-container">
-      <button class="option-btn" data-value="menos10">Menos de 10 minutos</button>
-      <button class="option-btn" data-value="10a20">10 a 20 minutos</button>
-      <button class="option-btn" data-value="30a60">3 min a 1 hora</button>
-    </div>
-      <button id="nextToStep4" class="next-btn" enabled>Siguiente pregunta</button>
-    </div>
-
-
-
-    <!--Resultados ponerlo en un div step final-->
-    <div id="result" class="result">
-      Su huella hídrica estimada es: <span id="waterFootprintResult">0</span> litros por día.
-    </div>
-  </div>
-  </div>
-
-
+    <footer class="footer">
+      <div class="footer-links">
+        <a
+          href="https://drive.google.com/file/d/1zH7R_ZTEsQGDwQYEDLS5SjtYsIV-ErBu/view?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer">¿Cómo calculamos?</a
+        >
+        <a href="https://labtecnosocial.org/category/tecnologias/app-movil/"
+          >Más de nuestros proyectos</a
+        >
+        <a href="https://mihuella.app/">🏠 Ir al inicio</a>
+      </div>
+      <p>© 2025 Calculadora de Huella Hídrica</p>
+    </footer>
   </body>
-</html>
+  <script>
+    // @ts-nocheck
+    let currentStep = 0;
+    const totalSteps = 28;
 
-  
-  <footer class="footer">
-    <div class="footer-links">
-      <a href="#">¿Cómo calculamos?</a>
-      <a href="#">Sobre nosotros</a>
-      <a href="#">¿Ya Conoces tu huella de Carbono?</a>
-    </div>
-    <p>© 2025 Calculadora de Huella Hídrica</p>
-  </footer>
-
-
-
-<script>
-
-  // Simulación de cambio de pantalla al hacer clic en las flechas
-    document.getElementById('prevArrow').addEventListener('click', function() {
-      alert("← Ir a la pantalla anterior (no implementada)");
-      // Aquí podrías cambiar el contenido o redirigir
-    });
-
-    document.getElementById('nextArrow').addEventListener('click', function() {
-      alert("→ Ir a la siguiente pantalla (no implementada)");
-      // Aquí podrías cambiar el contenido o redirigir
-    });
-
-
-// Validación y lógica para el Paso 0 introduccion
-  document.getElementById('nextToStep1').addEventListener('click', function() {
-  document.getElementById('step0').style.display = 'none';
-  document.getElementById('step1').style.display = 'block';
-});
-
-    // lógica para el Paso 1 fuente de agua potable
-   
-    const nextToStep2Btn = document.getElementById('nextToStep2');
-    nextToStep2Btn.addEventListener('click', function() {
-      document.getElementById('step1').style.display = 'none';
-      document.getElementById('step2').style.display = 'block';
-    });
-
-    
-    // lógica para el Paso 2- cuantas veces te duchas a la semana
-    const nextToStep3Btn = document.getElementById('nextToStep3');
-    nextToStep3Btn.addEventListener('click', function() {
-      document.getElementById('step2').style.display = 'none';
-      document.getElementById('step3').style.display = 'block';
-    });
-// lógica para el Paso 3 - tiempo de duchas
-// Cálculo de duchas
-const showerFrequencyInput = document.getElementById('shower-frequency') as HTMLInputElement;
-const showerDurationSelect = document.getElementById('shower-duration') as HTMLSelectElement;   
-
-const showerFrequency = parseInt(showerFrequencyInput.value) || 0;
-   const showerDuration = showerDurationSelect.value;
-    if (showerFrequency > 0) {
-      if (showerDuration === 'less-10') {
-        totalConsumption += showerFrequency * 20 * 10; // 20 litros/min * 10 min
-      } else if (showerDuration === '10-20') {
-        totalConsumption += showerFrequency * 20 * 15; // 20 litros/min * 15 min (promedio)
-      } else if (showerDuration === '30-60') {
-        totalConsumption += showerFrequency * 20 * 45; // 20 litros/min * 45 min (promedio)
+    function goToStep(stepIndex: number) {
+      if (stepIndex < 0 || stepIndex >= totalSteps) return;
+      for (let i = 0; i < totalSteps; i++) {
+        const el = document.getElementById(`step${i}`);
+        if (el) el.style.display = "none";
+      }
+      const target = document.getElementById(`step${stepIndex}`);
+      if (target) {
+        target.style.display = "block";
+        currentStep = stepIndex;
       }
     }
 
+    document.addEventListener("DOMContentLoaded", function () {
+      goToStep(0);
 
-    const nextToStep4Btn = document.getElementById('nextToStep4');
-    nextToStep4Btn.addEventListener('click', function() {
-      document.getElementById('step3').style.display = 'none';
-      document.getElementById('step4').style.display = 'block';
+      const stepMap = {
+        step0: 1,
+        step1: 3,
+        step3: 4,
+        step4: 5,
+        step5: 6,
+        step6: 7,
+        step7: 8,
+        step8: 9,
+        step9: 10,
+        step10: 11,
+        step11: 12,
+        step12: 13,
+        step13: 22,
+        step22: 23,
+        step23: 24,
+        step24: 25,
+        step25: 26,
+        step26: 27,
+      };
+
+      for (const [from, to] of Object.entries(stepMap)) {
+        const btn = document.getElementById(
+          `nextTo${from === "step0" ? "Step1" : `Step${to}`}`,
+        );
+        if (btn) {
+          btn.addEventListener("click", () => goToStep(to));
+        }
+      }
+
+      const backBtn = document.querySelector(".back-button");
+      if (backBtn) backBtn.addEventListener("click", () => goToStep(0));
+      const backBtn2 = document.querySelector(".back-button2");
+      if (backBtn2) backBtn2.addEventListener("click", () => goToStep(0));
+
+      const setupSelection = (
+        containerId: string,
+        buttonClass: string,
+      ): void => {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        const buttons = container.querySelectorAll(buttonClass);
+        buttons.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            buttons.forEach((b) => b.classList.remove("selected"));
+            btn.classList.add("selected");
+          });
+        });
+      };
+
+      setupSelection("step3", ".option-btn");
+      setupSelection("brushDuration", ".option-btn-brush");
+      setupSelection("handDuration", ".option-btn-hand");
+      setupSelection("arrozOptions", ".option-btn");
+      setupSelection("huevoOptions", ".option-btn");
+      setupSelection("platanoOptions", ".option-btn");
+      setupSelection("naranjaOptions", ".option-btn");
+      setupSelection("purchaseFrequency", ".freq-btn");
+
+      // Contador de pan
+      let panCount = 0;
+      const panDisplay = document.getElementById("PanCount");
+      const decPan = document.getElementById("decrementBtn");
+      const incPan = document.getElementById("incrementBtn");
+      if (panDisplay && decPan && incPan) {
+        decPan.addEventListener("click", () => {
+          if (panCount > 0) panCount--;
+          panDisplay.textContent = panCount;
+        });
+        incPan.addEventListener("click", () => {
+          panCount++;
+          panDisplay.textContent = panCount;
+        });
+      }
+
+      // Contador de celulares
+      let cellphoneCount = 0;
+      const cellDisplay = document.getElementById("cellphoneCountValue");
+      const decCell = document.getElementById("decrementCellphone");
+      const incCell = document.getElementById("incrementCellphone");
+      if (cellDisplay && decCell && incCell) {
+        decCell.addEventListener("click", () => {
+          if (cellphoneCount > 0) cellphoneCount--;
+          cellDisplay.textContent = cellphoneCount;
+        });
+        incCell.addEventListener("click", () => {
+          cellphoneCount++;
+          cellDisplay.textContent = cellphoneCount;
+        });
+      }
+
+      // Contadores de productos
+      document.querySelectorAll(".counter-btn[data-action]").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          const action = this.getAttribute("data-action");
+          const item = this.closest(".product-item");
+          if (!item) return;
+          const product = item.getAttribute("data-product");
+          const countEl = document.getElementById(`${product}Count`);
+          if (!countEl) return;
+          let count = parseInt(countEl.textContent, 10) || 0;
+          if (action === "increment") count++;
+          else if (action === "decrement" && count > 0) count--;
+          countEl.textContent = count;
+        });
+      });
+
+      // Modal de consejos --no funciona
+      // Datos de consejos por categoría
+      const tips = {
+        higiene: [
+          "Dúchate el menor tiempo posible y apaga el agua al enjabonarte.",
+          "Repara grifos o fugas en casa.",
+          "Cierra el grifo al cepillarte los dientes.",
+        ],
+        limpieza: [
+          "Usa cubetas en lugar de manguera para lavar el auto.",
+          "Lava la ropa solo cuando tengas cargas completas.",
+          "Recicla el agua de la lluvia para regar plantas.",
+        ],
+        alimentos: [
+          "Evita desperdiciar comida, ya que cada alimento requiere agua para producirse.",
+          "Elige productos locales y de temporada para reducir la huella hídrica del transporte.",
+          "Reduce el consumo de carne, especialmente de res, que requiere mucha agua.",
+        ],
+        bienes: [
+          "Compra ropa de segunda mano o reciclada.",
+          "Repara tus productos en lugar de reemplazarlos.",
+          "Elige productos duraderos y de calidad para reducir el consumo.",
+        ],
+      };
+
+      const modal = document.getElementById("modal");
+      const closeBtn = document.querySelector(".close");
+      if (closeBtn && modal)
+        closeBtn.addEventListener(
+          "click",
+          () => (modal.style.display = "none"),
+        );
+
+      document.querySelectorAll(".category-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const cat = btn.getAttribute("data-category");
+          if (!cat || !tips[cat] || !modal) return;
+          document.getElementById("modal-title").textContent =
+            `Consejos ${cat.charAt(0).toUpperCase() + cat.slice(1)}`;
+          const list = tips[cat]
+            .map((t, i) => `<li>${i + 1}. ${t}</li>`)
+            .join("");
+          document.getElementById("modal-body").innerHTML = `<ol>${list}</ol>`;
+          modal.style.display = "flex";
+        });
+      });
+
+      // Botón de resultados
+      const btn25 = document.getElementById("nextToStep25");
+      if (btn25) {
+        btn25.addEventListener("click", () => {
+          goToStep(25);
+          logAllFormValues();
+        });
+      }
     });
-    
 
+    function logAllFormValues() {
+      const values = {};
 
-  
+      // Inputs numéricos
+      document.querySelectorAll('input[type="number"]').forEach((input) => {
+        values[input.id] = parseFloat(input.value) || 0;
+      });
 
+      // Origen (checkboxes)
+      const origenCheckboxes = [
+        "redAgua",
+        "cooperativas",
+        "ventasBloque",
+        "cisternas",
+        "pozos",
+      ];
+      values.origen = origenCheckboxes.filter((id) => {
+        const el = document.getElementById(id);
+        return el && el.checked;
+      });
+
+      // Lavado de ropa
+      const washingChecks = document.querySelectorAll(
+        'input[name="washingMethod"]:checked',
+      );
+      values.washingMethod = washingChecks.length
+        ? washingChecks[0].value
+        : "aMano";
+
+      // Radios
+      const rainwaterEl = document.querySelector(
+        'input[name="rainwater"]:checked',
+      );
+      values.rainwater = rainwaterEl ? rainwaterEl.value : "no";
+
+      const recyclePaperEl = document.querySelector(
+        'input[name="recyclePaper"]:checked',
+      );
+      values.recyclePaper = recyclePaperEl ? recyclePaperEl.value : "no";
+
+      // Inodoro y trastes
+      const toiletEl = document.querySelector(
+        'input[name="toiletType"]:checked',
+      );
+      values.toiletType = toiletEl ? toiletEl.value : "no"; // "si" = ahorrador
+
+      const dishEl = document.querySelector(
+        'input[name="dishwashingMethod"]:checked',
+      );
+      values.dishwashingMethod = dishEl ? dishEl.value : "si"; // "si" = a mano
+
+      // Botones seleccionados
+      const getSelectedValue = (containerId, buttonClass) => {
+        const container = document.getElementById(containerId);
+        if (!container) return null;
+        const selected = container.querySelector(`${buttonClass}.selected`);
+        return selected ? selected.dataset.value : null;
+      };
+
+      values.showerDuration = getSelectedValue("step3", ".option-btn");
+      values.brushFrequency = getSelectedValue(
+        "brushDuration",
+        ".option-btn-brush",
+      );
+      values.handWashFrequency = getSelectedValue(
+        "handDuration",
+        ".option-btn-hand",
+      );
+      values.arrozFrequency = getSelectedValue("arrozOptions", ".option-btn");
+      values.huevoFrequency = getSelectedValue("huevoOptions", ".option-btn");
+      values.platanoFrequency = getSelectedValue(
+        "platanoOptions",
+        ".option-btn",
+      );
+      values.naranjaFrequency = getSelectedValue(
+        "naranjaOptions",
+        ".option-btn",
+      );
+      values.purchaseFrequency = getSelectedValue(
+        "purchaseFrequency",
+        ".freq-btn",
+      );
+
+      // Contadores
+      ["tenisCount", "camisetaCount", "jeansCount", "PanCount"].forEach(
+        (id) => {
+          const el = document.getElementById(id);
+          values[id] = el ? parseInt(el.textContent, 10) || 0 : 0;
+        },
+      );
+
+      const cellEl = document.getElementById("cellphoneCountValue");
+      values.cellphoneCount = cellEl
+        ? parseInt(cellEl.textContent, 10) || 0
+        : 0;
+
+      // --- CÁLCULO ---
+      let higiene = 0,
+        limpieza = 0,
+        alimentos = 0,
+        bienes_servicios = 0,
+        habitos_sostenibles = 0;
+
+      // Higiene
+      let duracion_duchas = 0;
+      if (values.showerDuration === "menos10") duracion_duchas = 4000;
+      else if (values.showerDuration === "10a20") duracion_duchas = 8000;
+      else if (values.showerDuration === "30a60") duracion_duchas = 18000; // tiene la multiplicacion la frecuencia de ducha?
+      // Duchas: veces por semana × litros por ducha × 52 semanas
+      const duchas_anual =
+        duracion_duchas * (values.showerTimesPerWeek || 0) * 52;
+
+      let lavado_dientes = 0;
+      if (values.brushFrequency === "menos10") lavado_dientes = 300;
+      else if (values.brushFrequency === "10a20") lavado_dientes = 600;
+      else if (values.brushFrequency === "30a60") lavado_dientes = 900; // donde esta el imput de las veces por día?
+      const lavado_dientes_anual =
+        lavado_dientes * (values.brushTimesPerDay || 0) * 365;
+
+      let lavado_manos = 0;
+      if (values.handWashFrequency === "menos10") lavado_manos = 135;
+      else if (values.handWashFrequency === "10a20") lavado_manos = 225;
+      else if (values.handWashFrequency === "30a60") lavado_manos = 450;
+      const lavado_manos_anual =
+        lavado_manos * (values.handWashTimesPerDay || 0) * 365;
+
+      let inodoro = values.toiletType === "si" ? 100 : 210; // "si" = ahorrador
+      const inodoro_anual = inodoro * 365;
+
+      higiene =
+        duchas_anual + lavado_dientes_anual + lavado_manos_anual + inodoro;
+
+      // Limpieza
+      let lavado_ropa_litros = 0;
+      if (values.washingMethod === "aMano") lavado_ropa_litros = 840;
+      else if (values.washingMethod === "lavadoraEstandar")
+        lavado_ropa_litros = 960;
+      else if (values.washingMethod === "lavadoraEficiente")
+        lavado_ropa_litros = 400;
+
+      // Ropa: lavados por semana × litros por lavado × 52 semanas
+      limpieza += (values.clothesWashPerWeek || 0) * lavado_ropa_litros * 52;
+
+      // Trastes
+      let trastesLitros = values.dishwashingMethod === "si" ? 20 : 12;
+      limpieza += (values.dishesWashPerDay || 0) * trastesLitros * 365;
+
+      // Alimentos
+      alimentos += (values.beefKgPerWeek || 0) * 15415 * 52;
+      alimentos += (values.chickenKgPerWeek || 0) * 4300 * 52;
+      alimentos += (values.coffeeCupsPerWeek || 0) * 132 * 52;
+      alimentos += (values.teaCupsPerWeek || 0) * 56 * 52;
+
+      const freqToLitersAnual = (freq) => {
+        if (freq === "menos10") return 0;
+        if (freq === "10a20") return 7 * 250 * 52; // 7 unidades/semana × 52 semanas
+        if (freq === "30a60") return 12 * 250 * 52; // 12 unidades/semana × 52 semanas
+        return 0;
+      };
+      alimentos += freqToLitersAnual(values.arrozFrequency);
+      alimentos += freqToLitersAnual(values.huevoFrequency);
+      alimentos += freqToLitersAnual(values.platanoFrequency);
+      alimentos += freqToLitersAnual(values.naranjaFrequency);
+      alimentos += (values.PanCount || 0) * 200 * 365;
+
+      // Bienes
+      bienes_servicios =
+        (values.tenisCount || 0) * 8000 +
+        (values.camisetaCount || 0) * 2700 +
+        (values.jeansCount || 0) * 6500 +
+        (values.cellphoneCount || 0) * 20000;
+
+      // Hábitos sostenibles
+      if (values.rainwater === "si") habitos_sostenibles -= 1000;
+      if (values.recyclePaper === "si")
+        habitos_sostenibles -= (values.recycledPaperKg || 0) * 26.5;
+
+      console.log("Tipos de dato de cada categoría");
+      console.log(typeof higiene);
+      console.log(typeof limpieza);
+      console.log(typeof alimentos);
+      console.log(typeof bienes_servicios);
+      console.log(typeof habitos_sostenibles);
+
+      // imprimir en consola cada categoría
+      console.log("Higiene ", higiene);
+      console.log("Limpieza ", limpieza);
+      console.log("Alimentos ", alimentos);
+      console.log("Bienes y servicios ", bienes_servicios);
+      console.log("Hábitos sostenibles", habitos_sostenibles);
+      // Total
+      let total =
+        higiene + limpieza + alimentos + bienes_servicios + habitos_sostenibles;
+      total = Math.round(total);
+
+      // Formato
+      let formattedTotal = "";
+      if (total >= 1_000_000) {
+        const millones = total / 1_000_000;
+        formattedTotal =
+          millones % 1 === 0
+            ? `${millones.toLocaleString()}M`
+            : `${millones.toFixed(1)}M`;
+      } else if (total >= 1_000) {
+        const miles = total / 1_000;
+        formattedTotal =
+          miles % 1 === 0
+            ? `${miles.toLocaleString()}K`
+            : `${miles.toFixed(1)}K`;
+      } else {
+        formattedTotal = total.toLocaleString();
+      }
+
+      const resultadoElement = document.getElementById("resultado");
+      if (resultadoElement) {
+        resultadoElement.innerHTML = `${formattedTotal} <span>Litros/año</span>`;
+      }
+
+      // --- CÁLCULO DE CAMIONES CISTERNA ---
+      const LITROS_POR_CISTERNA = 15_000; //
+      const camionesCisterna = Math.max(
+        1,
+        Math.round(total / LITROS_POR_CISTERNA),
+      );
+
+      // --- Actualizar número de cisternas en pantalla ---
+      const nroCisternaElement = document.getElementById("nroCisterna");
+      if (nroCisternaElement) {
+        nroCisternaElement.textContent = camionesCisterna; //
+      }
+
+      // --- Determinar mensaje según rango ---
+      let mensaje = "";
+      let tipoMensaje = "";
+
+      if (total < 2_000_000) {
+        mensaje = `
+    <div class="checkmark">✅</div>
+    <p>
+      <strong>¡Felicidades!</strong> Tu huella hídrica anual está por debajo del promedio estimado en Bolivia.
+      Esto indica que ya estás tomando decisiones más conscientes. Continúa así y considera seguir reduciendo con pequeñas acciones que suman cada día.
+    </p>
+  `;
+        tipoMensaje = "bajo";
+      } else if (total >= 2_000_000 && total <= 4_000_000) {
+        mensaje = `
+    <div class="info-icon">ℹ️</div>
+    <p>
+      <strong>Tu huella hídrica anual se encuentra en el rango promedio estimado para Bolivia.</strong>
+      No es mala, pero sí significa que tienes buena oportunidad para mejorar. Aplica los consejos de la app/web y conviértete en referente entre tus amigos o comunidad.
+    </p>
+  `;
+        tipoMensaje = "medio";
+      } else {
+        mensaje = `
+    <div class="alert-icon">⚠️</div>
+    <p>
+      <strong>Tu huella hídrica anual está por encima del promedio estimado en Bolivia.</strong>
+      Esto muestra que tus hábitos tienen un impacto importante sobre el recurso agua. Te animamos a revisar los consejos que te brinda la herramienta y adoptar cambios hoy mismo: cada litro que reduces cuenta hacia un futuro más sostenible.
+    </p>
+  `;
+        tipoMensaje = "alto";
+      }
+      // Estadísticas
+      function generarBarraCategoriaHH(categoria, nombreContenedor) {
+        for (let i = 0; i < categoria; i++) {
+          const span = document.createElement("span");
+          span.style.padding = "3px";
+          span.style.backgroundColor = "#657cc9";
+          let container = document.getElementById(nombreContenedor);
+          if (container) {
+            container.appendChild(span);
+          }
+        }
+      }
+
+      const pctHigiene = Math.round((higiene / total) * 100);
+      const pctLimpieza = Math.round((limpieza / total) * 100);
+      const pctAlimentos = Math.round((alimentos / total) * 100);
+      const pctBienesServicios = Math.round((bienes_servicios / total) * 100);
+      const pctHabitos = Math.round((habitos_sostenibles / total) * 100);
+
+      generarBarraCategoriaHH(pctHigiene, "span_higiene");
+      generarBarraCategoriaHH(pctLimpieza, "span_limpieza");
+      generarBarraCategoriaHH(pctAlimentos, "span_alimentos");
+      generarBarraCategoriaHH(pctBienesServicios, "span_bienes_servicios");
+      generarBarraCategoriaHH(pctHabitos, "span_habitos_sostenibles");
+
+      // 🔵 Insertar los porcentajes dentro de cada barra
+      document.getElementById("pct_higiene").innerText = pctHigiene + "%";
+      document.getElementById("pct_limpieza").innerText = pctLimpieza + "%";
+      document.getElementById("pct_alimentos").innerText = pctAlimentos + "%";
+      document.getElementById("pct_bienes_servicios").innerText =
+        pctBienesServicios + "%";
+      document.getElementById("pct_habitos_sostenibles").innerText =
+        pctHabitos + "%";
+
+      // --- Insertar mensaje en el DOM ---
+      const congratsContainer = document.getElementById("congrats-message");
+      if (congratsContainer) {
+        congratsContainer.className = `congrats-message ${tipoMensaje}`;
+        congratsContainer.innerHTML = mensaje;
+      }
+    }
+
+    const resultadoElement = document.getElementById("resultado");
+    if (resultadoElement) {
+      resultadoElement.innerHTML = `${formattedTotal} <span>Litros/año</span>`;
+    }
   </script>
-</div>
-
-
+</html>

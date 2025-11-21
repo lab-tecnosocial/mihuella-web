@@ -1,0 +1,65 @@
+---
+import Higiene from "../assets/images/wash.png"
+import Limpieza from "../assets/images/laundry.png";
+import Dieta from "../assets/images/howTo/dieta.png";
+import Alimentacion from "../assets/images/lunch_dining.png";
+import BienesyServicios from "../assets/images/bienes.png";
+import HabitosSostenibles from "../assets/images/habitos_sost.png";
+import CaculateCard from "../components/CaculateCard.astro";
+import Resultado from "../assets/images/howTo/grafico.png";
+import Rig from "../assets/images/howTo/rig-feliz.png";
+import Semaforo from "../assets/images/Rango semáforo de 5 colores.png";
+---
+
+<section
+  id="calcular"
+  class="flex flex-col items-center gap-5 justify-between bg-[#F5F5F5] py-4 md:py-16 px-4 md:px-[100px] mx-auto my-auto max-w-[1440px]  min-w-[100%] scroll-m-10"
+>
+  <h1 class="text-center text-xl md:text-6xl font-bold">
+    Calculadora de Huella Hídrica  </h1>
+    <h2 class="md:text-2xl">La prueba dura aproximadamente 5 minutos</h2>
+    <h2 class="md:text-2xl">Evalúa tu consumo de agua en cinco categorías principales:</h2>
+  <div class="flex flex-col md:flex-row mb-20 gap-2 md:justify-between w-full">
+    <CaculateCard
+      img={Higiene.src}
+      text="Higiene"
+      altImg="Higiene"
+      withImg="100px"
+      stylesComponent="md:h-auto mt-5 transition ease-in-out duration-500 transform hover:scale-110 hover:bg-transparent mb-30"
+    />
+
+    <CaculateCard
+      img={Limpieza.src}
+      text="Limpieza"
+      altImg="Limpieza"
+      withImg="100px"
+      stylesComponent="md:h-auto mt-5 transition ease-in-out duration-500 transform hover:scale-110 hover:bg-transparent mb-30"
+    />
+
+    <CaculateCard
+      img={Alimentacion.src}
+      text="Dieta"
+      altImg="Imagen Dieta"
+      withImg="100px"
+      stylesComponent="md:h-auto mt-5 transition ease-in-out duration-500 transform hover:scale-110 hover:bg-transparent mb-30"
+    />
+        <CaculateCard
+      img={BienesyServicios.src}
+      text="Bienes y Servicios"
+      altImg="Imagen Bienes y Servicios"
+      withImg="100px"
+      stylesComponent="md:h-auto mt-5 transition ease-in-out duration-500 transform hover:scale-110 hover:bg-transparent mb-30"
+    />
+        <CaculateCard
+      img={HabitosSostenibles.src}
+      text="Hábitos Sostenibles"
+      altImg="Imagen Hábitos Sostenibles"
+      withImg="100px"
+      stylesComponent="md:h-auto mt-5 transition ease-in-out duration-500 transform hover:scale-110 hover:bg-transparent mb-30 "
+    />
+  </div>
+    <h3 class="text-center text-base md:text-2xl max-w-[600px]">
+     Aprende a ahorrar agua con consejos prácticos que cuidan tu bolsillo y el planeta.
+    </h3>
+
+</section>

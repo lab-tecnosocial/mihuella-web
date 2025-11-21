@@ -9,6 +9,7 @@ export default {
 			colors: {
 				'huella-green': 'rgba(234,253,238,0.9)',
 				'huella-text-green': '#1E7B5C',
+				'huella-text-light-green': '#3BB273',
 				'huella-text-gray': '#575757',
 				'huella-text-gray-ligth': '#f9f9f9',
 			},
