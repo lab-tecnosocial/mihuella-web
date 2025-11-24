@@ -1,0 +1,950 @@
+---
+// 1. FRONTMATTER: Variables del artículo y metadata (SEO)
+const title = "Huella Hídrica: El agua invisible que consumes sin darte cuenta";
+const description = "¿Sabías que una hamburguesa puede consumir más agua que una ducha de un mes? Conoce más datos sobre la huella hídrica en América Latina y cómo medirla y cómo reducirla.";
+
+// Nota: Asume que tienes un componente de Layout principal
+// import Layout from '../layouts/Layout.astro';
+// Si utilizas un Layout, envolverías el <body> con <Layout title={title} description={description}>...</Layout>
+---
+<head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Huella Hídrica en Bolivia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    </head>
+<style>
+    /* Paleta de Colores: Blues (Agua) y Greens (Sostenibilidad) */
+    :root {
+        --color-primary: #1e40af;
+        --color-secondary: #10b17e;
+        --color-light: #eff6ff;
+        --color-dark: #1f2937;
+        --color-text: #3c434e;
+    }
+
+    /* Estilos Globales y Tipografía */
+    /* ATENCIÓN: Se asume que el Layout de Astro ya define font-family en <body> o global */
+    /* Si no, descomenta y ajusta el body y la fuente, o usa un archivo CSS global */
+    
+    body {
+        font-family: "poppins", "Roboto";
+        font-size: 2.2vh;
+        line-height: 1.8;
+        color: var(--color-text);
+        background-color: #f9fafb;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    /* Estilos CSS específicos de tu artículo */
+    .contenedor-imagen-texto {
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 5px;
+        border: 1px solid #eee;
+        border-radius: 8px;
+    }
+
+    .imagen-izquierda {
+        width: 180px;
+        height: auto;
+        flex-shrink: 0;
+        border-radius: 5px;
+    }
+
+    .contenedor-imagen-texto p {
+        flex-grow: 1;
+        line-height: 1.6;
+        color: #333;
+    }
+
+    h1, h2, h3 {
+        color: var(--color-dark);
+        line-height: 1.2;
+    }
+
+    h1 {
+        font-size: 2.8rem;
+        font-weight: 800;
+    }
+
+    h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        border-bottom: 2px solid var(--color-light);
+        padding-bottom: 10px;
+        margin-top: 40px;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+
+    /* HEADER */
+    header {
+        text-align: center;
+        padding: 60px 0 40px;
+        background-color: var(--color-light);
+        border-radius: 0 0 40px 40px;
+        margin-bottom: 40px;
+    }
+
+    header p {
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin: 20px auto 0;
+    }
+
+    /* SECCIONES */
+    section {
+        padding: 30px 0;
+    }
+
+    /* graficos*/
+    img {
+        width: 95%;
+        height: auto;
+        align-items: center;
+    }
+
+    /* Tarjetas de Impacto (Productos) */
+    .impact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin-top: 30px;
+    }
+
+    .impact-card {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        text-align: center;
+        border: 1px solid #e5e7eb;
+        transition: transform 0.3s;
+    }
+
+    .impact-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .impact-card .icon {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+    }
+
+    .impact-card .liters {
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: var(--color-primary);
+        margin: 5px 0 10px;
+    }
+
+    .seccion-formula {
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 20px;
+    }
+
+    .formula-container {
+        text-align: center;
+        margin: 2em 0;
+    }
+
+    .formula {
+        font-family: 'Times New Roman', serif;
+        font-style: italic;
+        font-size: 1.8em;
+        line-height: 1;
+        display: inline-block;
+    }
+
+    /* Estilo para los subíndices dentro de la fórmula */
+    .formula sub {
+        font-size: 0.6em;
+        vertical-align: sub;
+    }
+
+    /* Estilos para las definiciones (HH, Ci, Fi) */
+    .seccion-formula p {
+        margin-bottom: 0.5em;
+    }
+
+    /* Tipos de Agua */
+    .water-types {
+        display: flex;
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    .water-type-card {
+        flex: 1;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #fff;
+        border-left: 5px solid;
+    }
+
+    .water-type-card h4 {
+        margin-top: 0;
+        font-size: 1.2rem;
+    }
+
+    .water-type-card:nth-child(1) { border-left-color: var(--color-secondary); } /* Verde */
+    .water-type-card:nth-child(2) { border-left-color: var(--color-primary); } /* Azul */
+    .water-type-card:nth-child(3) { border-left-color: #9ca3af; } /* Gris */
+
+    .grafico-container {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        text-align: center;
+    }
+
+    .grafico-contenedor {
+        margin-top: 20px;
+        height: 500px;
+    }
+
+    h4{
+        color: #56638C;
+        margin-bottom: 5px;
+    }
+
+    /* Estilos base para la tabla */
+    .tabla-contenedor {
+        max-width: 900px;
+        margin: 40px auto;
+        font-family: Arial, sans-serif;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    /* ESTILO PARA EL ENCABEZADO (THEAD) */
+    thead {
+        background-color: #56638C;
+        color: white;
+    }
+
+    th {
+        padding: 12px 15px;
+        text-align: left;
+        font-weight: bold;
+    }
+
+    /* ESTILO PARA LA TABLA */
+    td {
+        padding: 10px 15px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    /* ESTILO DE FILAS ALTERNAS (CEBRADO) */
+    tbody tr:nth-child(even) {
+        background-color: #F2F2F2;
+    }
+
+    /* Quitar el borde inferior de la última fila */
+    tbody tr:last-child td {
+        border-bottom: none;
+    }
+
+    /* Estilo para la fuente */
+    .fuente {
+        margin-top: 10px;
+        font-size: 0.8em;
+        text-align: right;
+        color: #666;
+    }
+
+
+    .grafico-contenedor-alimentos {
+        max-width: 700px;
+        margin: 40px auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        text-align: center;
+        background-color: #fff;
+    }
+
+    .grafico-contenedor-alimentos h3 {
+        color: #56638C;
+        margin-bottom: 20px;
+    }
+
+    .canvas-wrapper {
+        position: relative;
+        height: 350px;
+        width: 100%;
+    }
+
+    #huellaHidricaAlimentosChart {
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    .fuente-alimentos {
+        margin-top: 25px;
+        font-size: 0.8em;
+        text-align: left;
+        color: #666;
+        padding-left: 10px;
+    }
+
+    /* Acciones (Llamada a la Acción) */
+    .action-list {
+        list-style: none;
+        padding: 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .action-list li {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        border-left: 4px solid var(--color-secondary);
+    }
+
+    .action-list li strong {
+        display: block;
+        font-size: 1.1rem;
+        color: var(--color-secondary);
+        margin-bottom: 5px;
+    }
+     .chart-section {
+            background-color: var(--color-light); 
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+
+        .bar-container {
+            margin-bottom: 20px;
+        }
+
+        .bar-label {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            color: var(--color-text);
+            margin-bottom: 5px;
+        }
+
+        .bar {
+            height: 25px;
+            border-radius: 5px;
+            overflow: hidden;
+            background-color: #e5e7eb;
+        }
+
+        .bar-fill {
+            height: 100%;
+            transition: width 1s ease-out;
+        }
+
+    /* Footer */
+    footer {
+        text-align: center;
+        padding: 40px 0;
+        border-top: 1px solid #e5e7eb;
+        margin-top: 60px;
+    }
+
+    footer .cta-button {
+        background-color: var(--color-primary);
+        color: white;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 50px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        text-decoration: none;
+        display: inline-block;
+        margin-top: 15px;
+    }
+
+    footer .cta-button:hover {
+        background-color: #1d4ed8;
+    }
+
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        h1 { font-size: 2rem; }
+        h2 { font-size: 1.6rem; }
+        h3 { font-size: 1.4rem; }
+        p { font-size: 0.85rem; } /* Ajuste de tamaño de fuente en móvil */
+        .water-types { flex-direction: column; }
+    }
+</style>
+
+
+<div class="container">
+
+    <header>
+        <span style="color: var(--color-secondary); font-weight: bold; text-transform: uppercase; font-size: 0.9rem;">
+            Medio Ambiente & Sostenibilidad
+        </span>
+        <h1>{title}</h1>
+        <p>
+            {description}
+        </p>
+    </header>
+
+    <section>
+        <div class="contenedor-imagen-texto">
+            <img src="/public/img/calculadora-de-huella-hidrica.png" alt="calculadora de huella hidrica herraimenta gratuita en Bol" class="imagen-izquierda">
+            <p>
+                <b>¿Alguna vez te has preguntado cuánta agua hay detrás de la taza de café que tomas por la mañana o de la camiseta que usas hoy?</b> Aunque no lo veamos, cada producto tiene un costo hídrico que acumulamos sin darnos cuenta. La huella hídrica nos ayuda justamente a revelar esa “agua invisible” que determina el impacto de nuestros hábitos de consumo.
+                <br> <br>
+                En un contexto de sequías crecientes, glaciares en retroceso y ciudades cada vez más demandantes, entender este indicador es fundamental para cualquier profesional ambiental del siglo XXI. En las siguientes secciones analizamos conceptos clave, datos sorprendentes y acciones concretas para convertir el conocimiento en soluciones reales.
+            </p>
+        </div>
+    </section>
+
+    <section>
+        <h2>1. ¿Qué es la Huella Hídrica y por qué importa?</h2>
+
+        <div class="contenedor-imagen-texto">
+            <img src="/public/img/huella hidrica recortada.png" alt="huella hidrica en app mi huella" class="imagen-izquierda">
+            <p>La huella hídrica representa la cantidad total de agua que se utiliza, **directa e indirectamente**, para producir los bienes y servicios que consumimos a diario. No se trata solo del agua que usamos para ducharnos, cocinar o lavar la ropa, sino también de la que está escondida en la producción de alimentos, ropa, aparatos electrónicos y energía.
+                <br><br>
+                <b>El ejemplo del café:</b> Para producir una taza de café se necesitan alrededor de <b>132 litros de agua</b>, si se considera todo el proceso: el cultivo del café, su procesamiento, transporte y preparación.
+            </p>
+        </div>
+
+        <blockquote style="border-left: 4px solid var(--color-primary); padding-left: 15px; margin: 20px 0; font-style: italic; background-color: #f0f8ff;">
+            "Aunque no siempre la vemos, el agua está presente en todas las etapas de nuestra vida diaria."
+        </blockquote>
+
+        <p> Medir y conocer nuestra huella hídrica permite **identificar en qué áreas del consumo se gasta más agua** y dónde pueden realizarse cambios efectivos. En un contexto de creciente estrés hídrico, especialmente en zonas urbanas y agrícolas de Sudamérica, comprender este impacto es fundamental para garantizar un uso sostenible del agua a largo plazo.</p>
+    </section>
+
+    <section>
+        <h3>¿Quién consume el agua en el mundo?</h3>
+
+        <div class="chart-section">
+            <div class="bar-container">
+                <div class="bar-label"><span>🌾 Agricultura</span> <span>70%</span></div>
+                <div class="bar"><div class="bar-fill" style="width: 70%; background-color: #22c55e;"></div></div>
+            </div>
+            <div class="bar-container">
+                <div class="bar-label"><span>🏭 Industria y Energía</span> <span>20%</span></div>
+                <div class="bar"><div class="bar-fill" style="width: 20%; background-color: #3b82f6;"></div></div>
+            </div>
+            <div class="bar-container">
+                <div class="bar-label"><span>🏠 Hogar</span> <span>10%</span></div>
+                <div class="bar"><div class="bar-fill" style="width: 10%; background-color: #0d9488;"></div></div>
+            </div>
+        </div>
+        <p> En términos mundiales, según la Fundación AQUAE, el sector que consume más agua es el sector de la **Agricultura con aproximadamente el 70%,** seguido del sector de Industria y Energía con un 20% y 10% para el consumo del Hogar. </p>
+    </section>
+
+    <section>
+        <h2>2. El costo oculto de tus compras (Huella Hídrica de Productos)</h2>
+        <p>
+            La huella hídrica nos revela la cantidad de agua que se "esconde" detrás de cada elección de consumo.
+        </p>
+
+        <img src="/public/img/productos de  huella hidrica.gif" alt="huella hidrica de diferentes productos">
+
+        <p style="text-align: right; font-size: 0.75rem; color: #9ca3af; margin-top: 10px;">
+            Fuente: Water Footprint Network (2020)
+        </p>
+
+        <p>El agua que usamos para producir alimentos y bienes de consumo es mucho mayor de lo que imaginamos.</p>
+        <p> Estos valores incluyen el riego de cultivos, el procesamiento industrial, el transporte y la energía necesaria para su elaboración. De esta forma, la huella hídrica nos revela la cantidad de agua que se “esconde” detrás de cada elección de consumo. Comprender estos datos es un paso esencial para generar conciencia sobre el impacto ambiental de nuestra rutina diaria.
+        </p>
+        <blockquote style="border-left: 4px solid var(--color-primary); padding-left: 15px; margin: 20px 0; font-style: italic; background-color: #f0f8ff;">
+            Un jean usa 6.500 L de agua — ¡lo mismo que 2 meses de duchas!
+        </blockquote>
+
+        <p>
+            Además de los alimentos, muchos productos que usamos frecuentemente también demandan grandes volúmenes de agua. Producir un teléfono móvil, por ejemplo, puede consumir más de 12.000 litros de agua a lo largo de su ciclo de vida, desde la extracción de minerales hasta el ensamblaje y distribución.
+        </p>
+        <div style="position: relative; width: 100%; height: 0; padding-top: 56.2225%;
+            padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+            border-radius: 8px; will-change: transform;">
+            <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+                src="https://www.canva.com/design/DAG5if_mKag/MK3LOHNoN3S1viSwZPIL8A/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+            </iframe>
+        </div>
+        <p>
+            Esta agua no solo se utiliza en la producción, sino también en la energía empleada para fabricar y transportar el producto. La WWF estima que **reducir el consumo de carne y optar por productos locales podría disminuir en un 30% la huella hídrica de un individuo promedio.** Las pequeñas decisiones que podamos tomar en nuestros hábitos diarios —como elegir ropa de segunda mano, alimentos vegetales o productos duraderos— pueden marcar una gran diferencia en la conservación del agua a nivel global.
+        </p>
+
+        <p>
+            Algunos de los datos que utilizamos en nuestros recursos para calcular la huella hídrica se presentan en los siguientes gráficos que nos ayuda a visibilizar cuanto consumo de agua hay por detrás de cada acción, de cada compra.
+        </p>
+    </section>
+
+    <section>
+        <h2>3. ¿Cómo se calcula la huella hídrica?</h2>
+
+        <p>En términos generales, el cálculo se realiza considerando cada actividad o consumo de agua, ya sea directo o indirecto, y aplicando un factor de huella hídrica específico a cada uno. Este factor representa la cantidad de agua utilizada por unidad de consumo, como litros por minuto de ducha, litros por carga de lavadora, o litros asociados a la producción de alimentos y bienes.
+        </p>
+        <p>
+            El cálculo se desarrolla de manera sistemática: primero, se identifica la frecuencia con la
+            que el usuario realiza cada actividad y la cantidad consumida en cada evento; luego, se
+            multiplica este valor por el factor de huella hídrica correspondiente siguiendo la siguiente
+            fórmula:
+        </p>
+        <div> <b>
+            <div class="formula-container">
+                <span class="formula">HH = C<sub>i</sub> &times; F<sub>i</sub></span>
+            </div>
+
+            <p>
+                Donde:
+            </p>
+            <p>
+                HH = Huella hídrica total (litros)
+            </p>
+            <p>
+                C<sub>i</sub> = Cantidad consumida de la actividad o producto i (minutos, kg, litros, etc.)
+            </p>
+            <p>
+                F<sub>i</sub> = Factor de huella hídrica asociado a la actividad o producto i (litros/unidad de consumo)
+            </p>
+            </b>
+        </div>
+
+        <p>
+            Calcular la huella hídrica significa seguir el recorrido del **agua desde su origen hasta que llega a nuestras manos.** Este proceso considera tanto el agua que se utiliza directamente como aquella que se contamina durante la producción. Según la metodología de la Water Footprint Network (2020), existen tres componentes principales:
+        </p>
+        <div class="water-types">
+            <div class="water-type-card">
+                <h4 style="color: var(--color-secondary);">Agua Verde 🟢</h4>
+                <p>Es el **agua de lluvia** almacenada en el suelo y usada por las plantas (principalmente en agricultura).</p>
+            </div>
+            <div class="water-type-card">
+                <h4 style="color: var(--color-primary);">Agua Azul 💧</h4>
+                <p>Agua extraída de **ríos, lagos y acuíferos** (usada para riego, industria y uso doméstico).</p>
+            </div>
+            <div class="water-type-card">
+                <h4 style="color: #9ca3af;">Agua Gris 🌫️</h4>
+                <p>El volumen de agua dulce necesario para **diluir los contaminantes** hasta los niveles aceptables.</p>
+            </div>
+        </div>
+        <p>
+            La combinación de estas tres formas nos permite estimar el impacto total de cada producto o servicio sobre los recursos hídricos.
+        </p>
+        <p>
+            Por ejemplo, el recorrido del agua en la producción de una hamburguesa refleja este proceso de forma clara.
+        </p>
+
+        <p>
+            Primero, se utiliza agua para cultivar el maíz o la soya que alimentan al ganado. Luego, se requiere agua para el propio consumo del animal, la limpieza de los establos, el procesamiento de la carne y su transporte hasta los puntos de venta.
+        </p>
+
+        <img src="/public/img/ruta del agua-hh.gif" alt="ruta del agua para medir la huella hidrica calculadora HH app">
+
+        <p>
+            Finalmente, se usa agua adicional para cocinar y servir el producto. Todo este ciclo suma más de 2,400 litros de agua por unidad, demostrando cómo las decisiones cotidianas están estrechamente relacionadas con el uso del recurso hídrico. Medir la huella hídrica permite identificar los puntos críticos de consumo y diseñar estrategias más sostenibles para reducir el desperdicio de agua en toda la cadena productiva.
+        </p>
+    </section>
+
+    <section>
+        <h2>4. Huella hídrica en América Latina</h2>
+        <p>
+            América Latina posee una de las mayores reservas de agua dulce del planeta; sin embargo, su gestión enfrenta crecientes desafíos debido al modelo agroexportador, la expansión de monocultivos y la producción ganadera intensiva. Según la FAO (2023), aproximadamente el 70 % del agua dulce de la región se destina al sector agropecuario.
+        </p>
+
+        <p>
+            Esta situación se ve agravada por el cambio climático y la expansión de monocultivos, los cuales requieren grandes volúmenes de agua y reducen la capacidad de los ecosistemas de retenerla (PNUMA, 2022). De acuerdo con el Water Footprint Assessment for Latin America and the Caribbean de Mekonnen y Hoekstra (2012), el consumo hídrico per cápita varía dramáticamente en la región.
+        </p>
+        <div class="grafico-container">
+            <h4>Huella hídrica del consumo nacional per cápita (1996-2005)</h4>
+            <div class="grafico-contenedor">
+                <canvas id="huellaHidricaStackedChart"></canvas>
+                <div style="font-size: x-small; text-align: right;"> Fuente: Adaptado de Mekonnen & Hoekstra (2012); Water Footprint Network (2012).</div>
+            </div>
+        </div>
+
+        <script is:inline src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+        <script is:inline src="/script-stacked-ranking.js"></script>
+
+        <p>
+            Bolivia registra una de las huellas hídricas más altas de la región, con aproximadamente **3,460m³/año por persona**. Esto se debe en gran medida a:
+        </p>
+        <ul style="list-style-type: disc; padding-left: 20px;">
+            <li><b> Cultivos extensivos:</b> Monocultivos como la soya.</li>
+            <li><b> Ganadería intensiva:</b> Donde el 92% del agua se consume para producir el alimento del animal. </li>
+        </ul>
+        <h4>La situación de los monocultivos y la agricultura de exportación</h4>
+
+        <p> Los monocultivos de soya, caña de azúcar, quinua y palma aceitera ocupan millones de hectáreas en Sudamérica, especialmente en Brasil, Argentina y Bolivia. Estas plantaciones generan ingresos por exportación, pero también elevan la huella hídrica azul (agua superficial y subterránea extraída para riego) y la gris (agua contaminada por agroquímicos). En la siguiente tabla se muestra las cantidades requeridas para la huella hídrica
+        </p>
+        <p>
+            En general, los países con mayor huella hídrica dependen de monocultivos y sistemas de producción intensivos, aumentando la presión sobre los recursos locales y la vulnerabilidad frente al cambio climático.
+        </p>
+        <div class="tabla-contenedor">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Cultivo</th>
+                        <th>Requerimiento promedio de agua (L/kg)</th>
+                        <th>Países principales productores</th>
+                        <th>Tipo de huella dominante</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Soya</td>
+                        <td>2 145</td>
+                        <td>Brasil, Bolivia, Argentina</td>
+                        <td>Azul y verde</td>
+                    </tr>
+                    <tr>
+                        <td>Caña de azúcar</td>
+                        <td>1 500 – 3 000</td>
+                        <td>Brasil, Colombia, Bolivia</td>
+                        <td>Azul y verde</td>
+                    </tr>
+                    <tr>
+                        <td>Quinua</td>
+                        <td>1 200 – 1 800</td>
+                        <td>Bolivia, Perú</td>
+                        <td>Verde y gris</td>
+                    </tr>
+                    <tr>
+                        <td>Palma aceitera</td>
+                        <td>3 000 – 5 000</td>
+                        <td>Colombia, Ecuador</td>
+                        <td>Azul</td>
+                    </tr>
+                    <tr>
+                        <td>Maíz</td>
+                        <td>900 – 1 400</td>
+                        <td>México, Argentina</td>
+                        <td>Verde</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="fuente">
+                Fuente: Mekonnen &amp; Hoekstra (2012); MDRyT (2022); FAO (2023).
+            </p>
+        </div>
+        <p>
+            Los cultivos de exportación han provocado un aumento en la demanda hídrica de cuencas vulnerables, especialmente en la Amazonía y el Chaco, donde los proyectos agroindustriales afectan la disponibilidad de agua para comunidades locales.
+        </p>
+        <h4>Ganadería intensiva y huella hídrica del consumo de carne</h4>
+
+        <p>
+            La ganadería bovina representa uno de los mayores consumos de agua dentro del sistema alimentario latinoamericano, debido principalmente al riego de pastos y a la producción de granos forrajeros utilizados como alimento animal. Estudios recientes muestran que alrededor del 92 % del agua empleada en la ganadería corresponde al crecimiento del alimento, mientras que solo un pequeño porcentaje se destina a agua de bebida del ganado.
+        </p>
+
+        <div class="grafico-contenedor-alimentos">
+            <h3>Comparación de huella hídrica por tipo de alimento <br>(litros por kg)</h3>
+            <div class="canvas-wrapper">
+                <canvas id="huellaHidricaAlimentosChart"></canvas>
+            </div>
+            <p class="fuente-alimentos">
+                Fuente: (Adaptado de Mekonnen &amp; Hoekstra, 2012)
+            </p>
+        </div>
+        
+        <script is:inline>
+           document.addEventListener('DOMContentLoaded', function() {
+
+    // --- 1. DATOS DEL GRÁFICO ---
+    const alimentos = ['Carne de res', 'Queso', 'Pollo', 'Legumbres', 'Cereales', 'Frutas'];
+    const huellaHidricaLitrosPorKg = [15000, 9000, 5000, 3900, 1200, 700]; 
+
+    // --- 2. PALETA DE COLORES Y ASIGNACIÓN ---
+    const nuevaPaletaColores = [
+        '#56638C', // Azul grisáceo oscuro
+        '#3397BF', // Azul claro
+        '#38A668', // Verde
+        '#94BF54', // Verde lima
+        // Los colores se ciclarán/repetirán para las dos barras restantes.
+    ];
+    
+    // Asignar colores a cada barra, usando el operador módulo (%) para ciclar
+    const coloresBarra = huellaHidricaLitrosPorKg.map((valor, index) => {
+        return nuevaPaletaColores[index % nuevaPaletaColores.length];
+    });
+
+    // Usamos el color Azul grisáceo oscuro para todos los bordes para dar uniformidad
+    const colorBorde = '#56638C'; 
+
+    // --- 3. CONFIGURACIÓN DEL GRÁFICO ---
+    const ctx = document.getElementById('huellaHidricaAlimentosChart').getContext('2d');
+
+    new Chart(ctx, {
+        type: 'bar', 
+        data: {
+            labels: alimentos,
+            datasets: [{
+                label: 'Litros de agua por kg',
+                data: huellaHidricaLitrosPorKg,
+                backgroundColor: coloresBarra, // ¡CADA BARRA TIENE UN COLOR DIFERENTE!
+                borderColor: colorBorde,
+                borderWidth: 1,
+                borderRadius: 5, 
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            indexAxis: 'y', 
+            plugins: {
+                legend: {
+                    display: false, 
+                },
+                title: {
+                    display: false, 
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            label += new Intl.NumberFormat('es-ES').format(context.parsed.x);
+                            return label + ' L';
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Litros por kg',
+                        padding: { top: 10 }
+                    },
+                    grid: {
+                        display: true,
+                        drawBorder: false
+                    },
+                    ticks: {
+                        callback: function(value) {
+                            return new Intl.NumberFormat('es-ES').format(value);
+                        }
+                    }
+                },
+                y: {
+                    grid: {
+                        display: false, 
+                        drawBorder: false
+                    },
+                    ticks: {
+                        padding: 10
+                    }
+                }
+            },
+            // --- ANIMACIÓN ---
+            animation: {
+                duration: 1500, 
+                easing: 'easeInOutQuart',
+                delay: (context) => {
+                    let delay = 0;
+                    if (context.type === 'data' && context.mode === 'default') {
+                        delay = context.dataIndex * 150; 
+                    }
+                    return delay;
+                },
+            }
+        }
+    });
+});
+        </script>
+
+        <p>
+            En América Latina, la expansión de la ganadería intensiva y extensiva tiene un impacto considerable sobre los recursos hídricos. Países como Brasil, Argentina, Bolivia y Paraguay concentran gran parte de la producción de carne y leche destinada al mercado interno y a la exportación, lo que implica una huella hídrica virtual significativa. Por ejemplo, la producción de 1 kg de carne de res requiere entre 13 000 y 15 000 litros de agua, mientras que la leche y productos derivados, como el queso, pueden alcanzar entre 700 y 5 000 litros por litro o kilogramo, según el tipo de producto y el sistema de producción (Mekonnen & Hoekstra, 2012; FAO, 2023).
+        </p>
+    </section>
+
+    <section style="background-color: #ecfdf5; padding: 40px; border-radius: 20px; border: 1px solid #d1fae5;">
+        <h2 style="border-bottom: none; margin-top: 0; color: var(--color-secondary); text-align: left;">6. ¿Qué puedes hacer tú? (Acciones que impactan)</h2>
+        <p style="text-align: left; margin-bottom: 30px;">
+            Los jóvenes desempeñan un papel fundamental en la reducción de la huella hídrica, ya que sus hábitos de consumo y decisiones diarias pueden influir significativamente en la conservación del agua, pequeñas acciones cotidianas pueden generar un gran impacto positivo en el medio ambiente y contribuir a un uso más sostenible del agua.
+        </p>
+
+        <ul class="action-list">
+            <li>
+                <strong>Reducir el Consumo de Carne 🥩</strong>
+                <p style="font-size: 0.98rem;"> La producción de carne, especialmente de res, requiere enormes cantidades de agua. Consume alimentos más sostenibles y saludables.
+                </p>
+            </li>
+            <li>
+                <strong>Moda Sostenible 👕</strong>
+                <p style="font-size: 0.98rem;">Elige ropa de segunda mano o marcas éticas. ntercambiar prendas con amigos o
+                    reparar y reutilizar ropa reduce la demanda de producción textil nueva, disminuyendo indirectamente la huella hídrica.
+                </p>
+            </li>
+            <li>
+                <strong>Repara y Reutiliza 🔧</strong>
+                <p style="font-size: 0.98rem;">Muchas veces, artículos como zapatos, mochilas o electrodomésticos se descartan antes de tiempo, cuando pueden ser reparados o donados. Extender su vida útil disminuye la demanda de producción.
+                </p>
+            </li>
+            <li>
+                <strong>Evita el Desperdicio de Alimentos 🥗</strong>
+                <p style="font-size: 0.98rem;">La planificación de las comidas y el aprovechamiento de las sobras son prácticas que ayudan a reducir la cantidad de alimentos que se desperdician. Cada alimento que se pierde representa agua utilizada en su producción.
+                </p>
+            </li>
+        </ul>
+        <p>Estas acciones no solo ayudan a conservar un recurso vital como el agua, sino que también fomentan hábitos de consumo más responsables y sostenibles. Los jóvenes tienen la capacidad de ser agentes de cambio, demostrando que decisiones pequeñas y cotidianas pueden tener un efecto positivo en la protección del medio ambiente y en la lucha contra la crisis hídrica global. Adoptar estos hábitos puede inspirar a familiares, amigos y comunidades enteras a sumarse a la conservación del agua.</p>
+    </section>
+
+    <footer>
+        <p style="font-style: italic; font-size: 1.1rem; color: var(--color-dark);">
+            Adoptar estos hábitos puede inspirar a familiares, amigos y comunidades enteras a sumarse a la conservación del agua.
+        </p>
+        <a href="https://mihuella.app/feature/calculadora-huella-hidrica/" class="cta-button">
+            ¡Calcula tu huella hidrica online aquí!
+        </a>
+        <p style="margin-top: 20px; font-size: 0.8rem; color: #9ca3af;">
+            Referencias: Mekonnen, M. M., & Hoekstra, A. Y. (2011). Hydrology and Earth System Sciences, 15(5), 1577–1600. / Water Footprint Network. (2020).
+        </p>
+    </footer>
+
+</div>
+
+<script is:inline>
+    
+document.addEventListener('DOMContentLoaded', function() {
+
+    // --- 1. DATOS APROXIMADOS DEL GRÁFICO ---
+    // (Los valores están basados en una estimación visual de tu imagen)
+    const paises = [
+        'Argentina', 'Bolivia', 'Brasil', 'Chile', 'Colombia', 'Costa Rica', 
+        'Cuba', 'Ecuador', 'El Salvador', 'Guatemala', 'Honduras', 
+        'México', 'Nicaragua', 'Panamá', 'Paraguay', 'Perú', 
+        'Rep. Dominicana', 'Uruguay', 'Venezuela'
+    ];
+
+    // Data por componente (Verde, Azul, Gris) en m³/año (aprox.)
+    // La suma de estas tres series debe coincidir con la altura total de la barra.
+    const aguaVerde = [1400, 3400, 1800, 1000, 1000, 1300, 1500, 1600, 800, 900, 1000, 1600, 800, 1000, 1800, 750, 1400, 1500, 1400];
+    const aguaAzul = [150, 50, 100, 150, 100, 200, 150, 200, 100, 50, 150, 300, 100, 200, 100, 300, 100, 250, 200];
+    const aguaGris = [50, 10, 100, 100, 200, 50, 0, 200, 100, 50, 50, 100, 0, 100, 50, 10, 50, 50, 100];
+    
+    // --- 2. COLORES DE TU PALETA ---
+    const colorGris = '#56638C'; // Gris/Azul oscuro para AGUA GRIS
+    const colorAzul = '#3397BF'; // Azul claro para AGUA AZUL
+    const colorVerde = '#38A668'; // Verde para AGUA VERDE
+    
+    // --- 3. CONFIGURACIÓN DEL GRÁFICO ---
+    const ctx = document.getElementById('huellaHidricaStackedChart').getContext('2d');
+    
+    new Chart(ctx, {
+        type: 'bar', // Gráfico de barras
+        data: {
+            labels: paises,
+            datasets: [
+                {
+                    label: 'Agua Verde (m³)', // Base de la barra (verde)
+                    data: aguaVerde,
+                    backgroundColor: colorVerde,
+                    borderColor: colorVerde,
+                    borderWidth: 1,
+                },
+                {
+                    label: 'Agua Azul (m³)', // Segundo componente (azul)
+                    data: aguaAzul,
+                    backgroundColor: colorAzul,
+                    borderColor: colorAzul,
+                    borderWidth: 1,
+                },
+                {
+                    label: 'Agua Gris (m³)', // Componente superior (gris)
+                    data: aguaGris,
+                    backgroundColor: colorGris,
+                    borderColor: colorGris,
+                    borderWidth: 1,
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            // Clave para hacer el gráfico APILADO
+            scales: {
+                x: {
+                    stacked: true, // Eje X apilado
+                    title: {
+                        display: false,
+                    }
+                },
+                y: {
+                    stacked: true, // Eje Y apilado
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'm³/año',
+                        padding: 10
+                    },
+                    max: 4000 // Máximo del eje Y como en el gráfico original
+                }
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'bottom', // Leyenda en la parte inferior
+                    labels: {
+                        usePointStyle: true
+                    }
+                },
+                tooltip: {
+                    mode: 'index',
+                    intersect: false,
+                    callbacks: {
+                        title: function(context) {
+                            return context[0].label; // Muestra el nombre del país
+                        },
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            // Formato con punto como separador de miles
+                            label += new Intl.NumberFormat('es-ES').format(context.parsed.y);
+                            return label;
+                        }
+                    }
+                }
+            }
+        }
+    });
+});
+
+
+
+</script>
