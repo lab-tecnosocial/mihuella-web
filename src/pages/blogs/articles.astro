@@ -1,0 +1,58 @@
+---
+import CaculateCard from "../../components/CaculateCard.astro";
+import Image1Blog from "../../assets/images/article_card.png";
+import Image2Blog from "../../assets/images/blog_card.png";
+---
+<meta charset="UTF-8">
+
+<section id="articulos" class="py-16 bg-huella-text-gray-ligth">
+  <h2 class="text-6xl font-bold text-center mb-10 text-green-800">Artículos</h2>
+
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 px-4">
+    
+    <div class="flex flex-col items-center text-center">
+      <div class="relative w-full rounded-lg shadow overflow-hidden group">
+        <CaculateCard
+          img={Image1Blog.src}
+          altImg="Imagen Huella Hídrica"
+          withImg="100px"
+          stylesComponent="w-full h-56 object-cover"
+        />
+
+        <a
+          href="/articuloHH"
+          class="absolute bottom-4 left-4 bg-green-700 text-white px-5 py-2 rounded-md hover:bg-green-800 transition shadow-lg"
+        >
+          Leer
+        </a>
+      </div>
+
+      <p class="mt-4 max-w-md text-sm text-gray-700 text-left">
+        ¿Sabías que una hamburguesa puede consumir más agua que una ducha de un mes? Conoce más datos sobre la huella hídrica en América Latina y cómo medirla y cómo reducirla.
+      </p>
+    </div>
+
+    <div class="flex flex-col items-center text-center">
+      <div class="relative w-full rounded-lg shadow overflow-hidden group">
+        <CaculateCard
+          img={Image2Blog.src}
+          altImg="Imagen Cristo"
+          withImg="100px"
+          stylesComponent="w-full h-56 object-cover"
+        />
+
+        <a
+          href="../blogs/emisiones-co2-bolivia.html"
+          class="absolute bottom-4 left-4 bg-green-700 text-white px-5 py-2 rounded-md hover:bg-green-800 transition shadow-lg"
+        >
+          Leer
+        </a>
+      </div>
+
+      <p class="mt-4 max-w-md text-sm text-gray-700 text-left">
+        Cochabamba, junto con la ciudad de El Alto están entre las cinco ciudades más contaminados del país, a causa de “humaredas de los incendios..."
+      </p>
+    </div>
+
+  </div>
+</section>
