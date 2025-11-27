@@ -1,5 +1,4 @@
 ---
-import Footer from "../Sections/Footer.astro";
 import Header from "../Sections/Header.astro";
 
 interface Props {
@@ -9,26 +8,29 @@ interface Props {
 const { title } = Astro.props;
 ---
 
-<html lang="en" class="scroll-smooth" >
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/HuellaIcon.png" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KJCC23VGG7" is:inline></script>
-<script is:inline>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KJCC23VGG7" is:inline></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  gtag('config', 'G-KJCC23VGG7');
-</script>
+      gtag('config', 'G-KJCC23VGG7');
+    </script>
   </head>
-  <body>
+  
+  <body class="flex flex-col min-h-screen"> 
     <Header />
-    <slot />
-    <Footer />
+
+    <main class="flex-grow pt-24">
+      <slot />
+    </main>
+    
   </body>
 </html>
