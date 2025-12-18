@@ -5,72 +5,68 @@ import Instagram from "../assets/icons/instagram.png";
 import Mail from "../assets/icons/mail.png";
 ---
 
-<header
-  class="loaded:opacity-100 shadow-md z-50 fixed top-0 left-0 right-0 bg-white"
->
-  <ul
-    class="flex items-center justify-center md:justify-between md:py-6 mx-auto max-w-[1440px] text-green"
-  >
-    <li>
-      <a href="/">
-        <img
-          src={LogoNuevoMiHuella2.src}
-          alt="Mi Huella icono"
-          width={100}
-          height={20}
-        />
+<header class="loaded:opacity-100 shadow-md z-50 fixed top-0 left-0 right-0 bg-white">
+  <nav class="flex items-center justify-around px-4 py-3 md:py-6 mx-auto max-w-[1440px]">
+    
+    <a href="/">
+      <img
+        src={LogoNuevoMiHuella2.src}
+        alt="Mi Huella icono"
+        width={100}
+        height={20}
+        class="w-[80px] md:w-[100px] h-auto"
+      />
+    </a>
+
+    <ul class="hidden md:flex items-center gap-20">
+      <li>
+        <a href="/#calcular" class="text-xl text-huella-text-green hover:opacity-80">¿Cómo calculamos?</a>
+      </li>
+      <li>
+        <a href="/#mision" class="text-xl text-huella-text-green hover:opacity-80">Nuestra misión</a>
+      </li>
+      <li>
+        <a href="/#nosotros" class="text-xl text-huella-text-green hover:opacity-80">Sobre nosotros</a>
+      </li>
+      <li>
+        <a href="/blogs/articles" class="text-xl text-huella-text-green hover:opacity-80">Artículos y Blog</a>
+      </li>
+    </ul>
+
+    <div class="flex items-center gap-4">
+      
+      <a href="/blogs/articles" class="md:hidden text-lg text-huella-text-green font-medium">
+        Blog
       </a>
-    </li>
-    <li class="hidden md:block">
-      <a href="/#calcular" class="text-xl text-huella-text-green"
-        >¿Cómo calculamos?</a
-      >
-    </li>
-    <li class="hidden md:block text-lg hover:m-0">
-      <a href="/#mision" class="text-xl text-huella-text-green"
-        >Nuestra misión</a
-      >
-    </li>
-    <li class="hidden md:block text-lg hover:m-0">
-      <a href="/#nosotros" class="text-xl text-huella-text-green"
-        >Sobre nosotros</a
-      >
-    </li>
 
-    <li class="hidden md:block text-lg hover:m-0">
-      <a
-        href="/blogs/articles"
-        class="text-xl text-huella-text-green">Artículos y Blog</a
-      >
-    </li>
-
-    <!-- <li class="hidden md:block text-lg hover:m-0">
-      <a href="/blogs" class="text-xl">Blog Prueba</a>
-    </li> -->
-
-    <div class="flex gap-5 items-center">
-      <li class="hidden md:block hover:m-0">
-        <a href="mailto:appmihuella@gmail.com"
-          ><img
+      <div class="flex items-center gap-3 md:gap-5">
+        <a href="mailto:appmihuella@gmail.com" class="hover:opacity-80">
+          <img
             src={Mail.src}
-            alt="icon mail de mi huella de carbono app"
-            class="size-10"
-          /></a
-        >
-      </li>
-      <li class="hidden md:block hover:m-0">
-        <a href="https://www.instagram.com/mi_huella_app/"
-          ><img src={Instagram.src} alt="Instagram logo" class="size-7,5" /></a
-        >
-      </li>
-      <li class="hidden md:block hover:m-0">
-        <a href="https://www.facebook.com/AppMiHuella"
-          ><img src={Facebook.src} alt="Facebook logo" class="size-8" /></a
-        >
-      </li>
+            alt="Mail"
+            class="w-7 h-7 md:w-10 md:h-10"
+          />
+        </a>
+        <a href="https://www.instagram.com/mi_huella_app/" class="hover:opacity-80">
+          <img 
+            src={Instagram.src} 
+            alt="Instagram" 
+            class="w-6 h-6 md:w-8 md:h-8" 
+          />
+        </a>
+        <a href="https://www.facebook.com/AppMiHuella" class="hover:opacity-80">
+          <img 
+            src={Facebook.src} 
+            alt="Facebook" 
+            class="w-6 h-6 md:w-8 md:h-8" 
+          />
+        </a>
+      </div>
     </div>
-  </ul>
+
+  </nav>
 </header>
+
 <body style="margin-top: 25px;">
   <script>
     document.addEventListener("DOMContentLoaded", () => {
