@@ -4,85 +4,80 @@ import LogoCiac from "../assets/images/Ciac.png";
 import Huella from "../assets/images/huella.svg";
 import LogoNuevoMiHuella from "../assets/images/miHuellaNuevo.png";
 import GoogleBtn from "../assets/images/GooglePlay Button.png";
-import HuellaHidricaBtn from "../assets/images/huella-hidrica.png";
 import AppStoreBtn from "../assets/images/AppStore Button.png";
 ---
 
 <section
   id="nosotros"
-  class="min-h-[75vh] min-w-[100%] bg-huella-text-gray-ligth"
+  class="relative flex flex-col items-center justify-center min-h-[80vh] w-full bg-[#F5F5F5] py-16 px-4 overflow-hidden"
 >
+  
   <img
     src={Huella.src}
-    alt="Imagen Huella"
-    class="absolute top-0 left-0 -translate-x-[70%] scale-50 md:scale-75 rotate-90 w-full h-auto max-w-[400px]"
+    alt="Fondo decorativo huella"
+    class="absolute bottom-0 right-0 translate-x-[30%] translate-y-[30%] w-[80%] md:w-[40%] max-w-[600px] opacity-10 md:opacity-20 pointer-events-none z-0"
   />
-  <!-- <img
-    src={Huella.src}
-    alt="Imagen Huella"
-    class="absolute bottom-0 right-0 translate-x-[50%] sm:translate-x-[70%] translate-y-[20%] scale-50 md:scale-75 -rotate-12 w-full h-auto max-w-[400px]"
-  /> -->
-  <article
-    class="flex flex-col items-center justify-center gap-8 py-4 sm:h-full px-4 md:px-[150px] mx-auto my-auto max-w-[1440px]"
-  >
-    <h2 class="text-center text-xl md:text-6xl font-bold mt-10">
+
+  <article class="relative z-10 flex flex-col items-center text-center max-w-4xl mx-auto gap-8">
+    
+    <h2 class="text-4xl md:text-6xl font-bold text-black">
       Sobre nosotros
     </h2>
-    <div class="p-9 bg-[transparent] rounded-xl max-w-[1050px]">
-      <p
-        class="text-huella-text-gray text-center text-base md:text-3xl text-pretty"
-      >
-        Creemos en el poder de las <span style="color: #3BB273;"
-          >pequeñas acciones para generar un gran impacto</span
-        >. Nuestro equipo está formado por apasionados por el medio ambiente y
-        la tecnología, comprometidos con la <span style="color: #3BB273;"
-          >misión de hacer del mundo un lugar más sostenible</span
-        >.
-      </p>
-    </div>
-    <div class="flex flex-row md:gap-10">
+
+    <p class="text-base md:text-2xl text-black leading-relaxed max-w-3xl px-2">
+      Creemos en el poder de las 
+      <span class="text-[#3BB273] font-medium">pequeñas acciones para generar un gran impacto</span>. 
+      Nuestro equipo está formado por profesionales en ingeniería ambiental, apasionados por el medio ambiente y la tecnología, comprometidos con la 
+      <span class="text-[#3BB273] font-medium">misión de hacer del mundo un lugar más sostenible</span>.
+    </p>
+
+    <div class="flex flex-row gap-4 md:gap-6 mt-4">
       <a
         href="https://play.google.com/store/apps/details?id=org.labtecnosocial.mihuella"
-        class="transition-transform transform hover:scale-110 hover:bg-transparent ease-in-out duration-300"
+        target="_blank"
+        class="transition-transform transform hover:scale-105"
       >
         <img
           src={GoogleBtn.src}
-          alt="Google play button"
-          width={250}
-          height={40}
+          alt="Disponible en Google Play"
+          class="h-10 md:h-20 w-auto" 
           loading="lazy"
         />
       </a>
       <a
         href="https://apps.apple.com/us/app/mi-huella-en-el-planeta/id6748420106"
-        class="transition-transform transform hover:scale-110 hover:bg-transparent ease-in-out duration-300"
+        target="_blank"
+        class="transition-transform transform hover:scale-105"
       >
         <img
           src={AppStoreBtn.src}
-          alt="Apple Store button"
-          width={225}
-          height={20}
+          alt="Consíguelo en el App Store"
+          class="h-10 md:h-20 w-auto"
           loading="lazy"
         />
       </a>
     </div>
 
-    <img src={LogoNuevoMiHuella.src} alt="Nuevo Logo MiHuella" width='250px"' />
-    <div class="flex gap-20">
-      <img src={LogoCiac.src} alt="Imagen logo Ciac" class="max-w-28 h-auto" />
-      <img
-        src={LogoLab.src}
-        alt="Imagen logo Laboratorio Tenologías Sociales"
-        class="max-w-24 h-auto"
+    <div class="mt-4">
+      <img 
+        src={LogoNuevoMiHuella.src} 
+        alt="Logo Mi Huella" 
+        class="w-48 md:w-60 h-auto"
       />
     </div>
-  </article>
-  <!-- <a  href="/feature/calculadora-huella-hidrica" >
-  <img
-  src={HuellaHidricaBtn.src}
-  alt="Botón de la Huella Hídrica"
-  class="absolute opacity-80 hover:opacity-100 bottom-5 right-20 w-20 sm:w-24 md:w-28 lg:w-32"
-/>
-  </a> -->
 
+    <div class="flex flex-row items-center gap-8 md:gap-12 mt-2">
+      <img 
+        src={LogoCiac.src} 
+        alt="Logo CIAC" 
+        class="h-20 w-auto" 
+      />
+      <img
+        src={LogoLab.src}
+        alt="Logo Laboratorio Tecnologías Sociales"
+        class="h-20 w-auto"
+      />
+    </div>
+
+  </article>
 </section>
