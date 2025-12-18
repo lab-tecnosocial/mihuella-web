@@ -4,26 +4,33 @@ import Transporte from "../assets/images/howTo/transporte.png";
 import Dieta from "../assets/images/howTo/dieta.png";
 import Residuos from "../assets/images/howTo/residuos.png";
 import CaculateCard from "../components/CaculateCard.astro";
-import Resultado from "../assets/images/howTo/grafico.png";
-import Rig from "../assets/images/howTo/rig-feliz.png";
 import Semaforo from "../assets/images/Rango semáforo de 5 colores.png";
 ---
 
 <section
   id="calcular"
-  class=" flex flex-col items-center gap-2 justify-between py-4 md:py-16 px-4 md:px-[100px] mx-auto my-auto max-w-[1440px] scroll-m-10"
+  class="flex flex-col items-center justify-center py-10 md:py-16 px-4 mx-auto max-w-[1440px]"
 >
-  <h1 class="text-center text-xl md:text-6xl font-bold">
-    Calculadora de Huella de Carbono  </h1>
-    <h2 class="md:text-2xl">La prueba dura aproximadamente 5 minutos</h2>
-    <h2 class="md:text-2xl">Mide tus emisiones de CO₂ en base a cuatro categorías clave:</h2>
-  <div class="flex flex-col md:flex-row  gap-2 md:justify-around w-full">
+  <h1 class="text-center text-3xl md:text-5xl lg:text-6xl font-bold mb-4 text-black leading-tight">
+    Calculadora de Huella de Carbono
+  </h1>
+
+  <div class="flex flex-col gap-1 items-center mb-8 text-center px-2">
+    <p class="text-base md:text-xl lg:text-2xl text-black">
+      La prueba dura aproximadamente 5 minutos
+    </p>
+    <p class="text-base md:text-xl lg:text-2xl text-black">
+      Mide tus emisiones de CO₂ en base a cuatro categorías clave:
+    </p>
+  </div>
+
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-4 md:gap-x-12 w-full max-w-5xl justify-items-center mb-10">
     <CaculateCard
       img={ConsumoElectrico.src}
       text="Energía"
       altImg="Energía"
       withImg="100px"
-      stylesComponent="md:h-auto mt-5 transition ease-in-out duration-500 transform hover:scale-110 hover:bg-transparent mb-30"
+      stylesComponent="transition ease-in-out duration-300 transform hover:scale-110"
     />
 
     <CaculateCard
@@ -31,7 +38,7 @@ import Semaforo from "../assets/images/Rango semáforo de 5 colores.png";
       text="Transporte"
       altImg="Imagen Transporte"
       withImg="100px"
-      stylesComponent="md:h-auto mt-5 transition ease-in-out duration-500 transform hover:scale-110 hover:bg-transparent mb-30"
+      stylesComponent="transition ease-in-out duration-300 transform hover:scale-110"
     />
 
     <CaculateCard
@@ -39,26 +46,28 @@ import Semaforo from "../assets/images/Rango semáforo de 5 colores.png";
       text="Dieta"
       altImg="Imagen Dieta"
       withImg="100px"
-      stylesComponent="md:h-auto mt-5 transition ease-in-out duration-500 transform hover:scale-110 hover:bg-transparent mb-30"
+      stylesComponent="transition ease-in-out duration-300 transform hover:scale-110"
     />
-        <CaculateCard
+    
+    <CaculateCard
       img={Residuos.src}
       text="Residuos"
       altImg="Imagen Residuos"
       withImg="100px"
-      stylesComponent="md:h-auto mt-5 transition ease-in-out duration-500 transform hover:scale-110 hover:bg-transparent mb-30"
+      stylesComponent="transition ease-in-out duration-300 transform hover:scale-110"
     />
   </div>
-  <img  
-        src={Semaforo.src}
-        alt="Imagen Transporte"
-        width="25%"
-        class="m-0 transition ease-in-out duration-500 transform hover:scale-110 hover:bg-transparent"
-      />
-    <h3 class="text-center text-base md:text-2xl max-w-[800px]">
-     Descubre cómo pequeños cambios pueden reducir significativamente 
-tu huella de carbono.
-    </h3>
 
- 
+  <img  
+    src={Semaforo.src}
+    alt="Rango semáforo"
+    class="w-48 md:w-64 lg:w-50 h-auto mb-6 transition ease-in-out duration-500 transform hover:scale-105"
+    loading="lazy"
+  />
+
+  <h3 class="text-center text-sm md:text-xl lg:text-2xl max-w-[300px] md:max-w-[800px] text-black leading-snug">
+    Descubre cómo pequeños cambios pueden reducir significativamente 
+    tu huella de carbono.
+  </h3>
+
 </section>
