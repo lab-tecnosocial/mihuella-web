@@ -6,14 +6,17 @@ export default {
 			sans: ['Roboto', 'Helvetica', 'sans-serif'],
 		},
 		extend: {
-			colors: {
+			colors: { 
 				'huella-green': 'rgba(234,253,238,0.9)',
-				'huella-text-green': '#1E7B5C',
-				'huella-text-light-green': '#3BB273',
+				'huella-text-green': 'rgb(0,110,79)',
+				'huella-text-light-green': 'rgb(65,173,86)',
 				'huella-text-gray': '#575757',
 				'huella-text-gray-ligth': '#f9f9f9',
+				'huella-text-blue': '#6AC1EE',
+				'huella-dark-blue': ' #1D70B7',
 			},
 		},
 	},
 	plugins: [require('tailwindcss-animated')],
 };
+

@@ -1,7 +1,7 @@
 body {
   font-family: "Roboto", sans-serif;
   line-height: 1.6;
-  color: #333;
+  color: #575757;
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
@@ -28,7 +28,7 @@ body {
 }
 
 h1 {
-  color: #2178BD;
+  color: #1D70B7;
   margin-top: 0;
   font-size: 2.8rem;
   font-weight: 800;
@@ -36,7 +36,7 @@ h1 {
 }
 
 h2 {
-  color: #2178BD;
+  color: #1D70B7;
   margin-top: 0;
   font-size: 2.6rem;
   font-weight: 500;
@@ -44,7 +44,7 @@ h2 {
 }
 
 h3 {
-  color: #2178BD;
+  color: #1D70B7;
   margin-top: 0;
   font-size: 1.3rem;
   font-weight: 500;
@@ -67,7 +67,7 @@ h3 {
 }
 
 input[type="checkbox"] {
-  accent-color: #0077b6;
+  accent-color: #1D70B7;
 }
 
 label {
@@ -84,7 +84,7 @@ label {
   width: 120px;
   padding: 8px;
   text-align: center;
-  border: 2px solid #0077b6;
+  border: 2px solid #1D70B7;
   border-radius: 6px;
   font-size: 1rem;
   outline: none;
@@ -92,7 +92,7 @@ label {
 
 
 .option-btn {
-  background: #00b4d8;
+  background: #6AC1EE;
   color: white;
   padding: 12px 20px;
   border: none;
@@ -105,7 +105,7 @@ label {
 }
 
 .option-btn:hover {
-  background: #023e8a;
+  background: #1D70B7;
 }
 
 /* lavado de ropa*/
@@ -130,9 +130,9 @@ label {
   margin-right: 5px;
   width: 16px;
   height: 16px;
-  border: 2px solid #2178BD;
+  border: 2px solid #1D70B7;
   border-radius: 4px;
-  accent-color: #2178BD;
+  accent-color: #1D70B7;
 }
 
 .centered-image-pan {
@@ -152,7 +152,7 @@ label {
 }
 
 .freq-btn {
-  background: #0077b6;
+  background: #1D70B7;
   color: white;
   padding: 8px 16px;
   border: none;
@@ -163,7 +163,7 @@ label {
 }
 
 .freq-btn:hover {
-  background: #023e8a;
+  background: #1D70B7;
 }
 
 .products-container {
@@ -210,8 +210,8 @@ label {
 }
 
 .counter-btn {
-  background: #e0f0ff;
-  border: 1px solid #0077b6;
+  background: #f9f9f9;
+  border: 1px solid #1D70B7;
   width: 24px;
   height: 24px;
   border-radius: 50%;
@@ -220,7 +220,7 @@ label {
   justify-content: center;
   cursor: pointer;
   font-size: 0.9rem;
-  color: #0077b6;
+  color: #1D70B7;
 }
 
 .counter-value {
@@ -256,9 +256,9 @@ label {
   justify-content: center;
   padding: 10px 15px;
   /* Aumenta el tamaño del botón */
-  background-color: #f5f5f5;
+  background-color: #f9f9f9;
   /* Fondo claro */
-  border: 2px solid #ddd;
+  border: 2px solid #f9f9f9;
   /* Borde sutil */
   border-radius: 12px;
   /* Redondeado (cuadrado circular) */
@@ -269,8 +269,8 @@ label {
 
 /* Hover para dar feedback visual */
 .options2 label:hover {
-  background-color: #e8f5e8;
-  border-color: #2e5d7d;
+  background-color: #f9f9f9;
+  border-color: #575757;
 }
 
 /* Cuando está seleccionado */
@@ -299,8 +299,8 @@ label {
   position: absolute;
   top: 30px;
   left: 30px;
-  background: #e0e0e0;
-  color: #2178BD;
+  background: #f9f9f9;
+  color: #1D70B7;
   padding: 15px 10px;
   border-radius: 20px;
   font-size: 14px;
@@ -309,8 +309,8 @@ label {
 }
 
 .back-button:hover {
-  background-color: grey;
-  color: #2178BD;
+  background-color: #f9f9f9;
+  color: #1D70B7;
 }
 
 /* --- Estilos generales del contenedor de resultados --- */
@@ -344,14 +344,14 @@ label {
 
 .result-text p {
   font-size: 16px;
-  color: #666;
+  color: #575757;
   margin: 0;
   line-height: 1.4;
 }
 
 .result-text h2 {
   font-size: 36px;
-  color: #2178BD;
+  color: #1D70B7;
   margin: 0;
   font-weight: 800;
   line-height: 1.2;
@@ -359,7 +359,7 @@ label {
 
 .result-text h2 span {
   font-size: 16px;
-  color: #666;
+  color: #575757;
   margin-left: 5px;
 }
 
@@ -371,7 +371,7 @@ label {
   align-items: center;
   gap: 8px;
   padding: 8px 12px;
-  background-color: #e8f7f5;
+  background-color: #f9f9f9;
   border-radius: 8px;
   font-size: 14px;
 }
@@ -383,7 +383,7 @@ label {
 }
 
 .comparison strong {
-  color: #2178BD;
+  color: #1D70B7;
   font-weight: 600;
 }
 
@@ -407,8 +407,8 @@ label {
 
 .congrats-message.bajo {
   background: #f0fff4;
-  border-left: 4px solid #28a745;
-  color: #155724;
+  border-left: 4px solid rgb(65,173,86);
+  color: rgb(0,110,79);
 }
 
 .congrats-message.medio {
@@ -445,7 +445,7 @@ label {
 }
 
 .save-button:hover {
-  background-color: #1976D2;
+  background-color: #1D70B7;
 }
 
 
@@ -461,7 +461,7 @@ select {
   width: 100%;
   padding: 10px;
   margin: 5px 0 15px;
-  border: 1px solid #ccc;
+  border: 1px solid #f9f9f9;
   border-radius: 4px;
   font-size: 1rem;
   box-sizing: border-box;
@@ -478,7 +478,7 @@ input[type="radio"] {
 }
 
 button {
-  background-color: #0077b6;
+  background-color: #1D70B7;
   color: white;
   padding: 12px 24px;
   border: none;
@@ -491,11 +491,11 @@ button {
 }
 
 button:hover {
-  background-color: #023e8a;
+  background-color: #1D70B7;
 }
 
 button:disabled {
-  background-color: #cccccc;
+  background-color: #f9f9f9;
   cursor: not-allowed;
 }
 
@@ -508,7 +508,7 @@ button:disabled {
 
 /* Estilo para el botón de "Siguiente pregunta" */
 .next-btn {
-  background-color: #00b4d8;
+  background-color: #6AC1EE;
   padding: 13px 25px;
   border: none;
   border-radius: 8px;
@@ -572,7 +572,7 @@ button:disabled {
 
 .footer-links a {
   margin: 0 12px;
-  color: #00b4d8;
+  color: #6AC1EE;
   text-decoration: none;
 }
 
@@ -709,8 +709,8 @@ button:disabled {
 .option-btn {
   padding: 10px 20px;
   margin: 5px;
-  border: 1px solid #ccc;
-  background-color: #0096c7;
+  border: 1px solid #f9f9f9;
+  background-color: #6AC1EE;
   color: black;
   border-radius: 4px;
   cursor: pointer;
@@ -734,7 +734,7 @@ button:disabled {
   position: relative;
   display: flex;
   height: 22px;
-  background-color: #e5e7eb;
+  background-color: #f9f9f9;
   border-radius: 4px;
   overflow: hidden;
   width: 60%;
