@@ -511,11 +511,9 @@ button:disabled {
   background-color: #6AC1EE;
   padding: 13px 25px;
   border: none;
-  border-radius: 8px;
   cursor: pointer;
   font-size: 1.3rem;
   display: block;
-  margin: 30px auto 0;
   transition: background 0.2s;
   text-align: center;
   position: relative;
