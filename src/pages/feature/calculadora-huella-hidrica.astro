@@ -93,7 +93,9 @@ import "./styles.css";
             max="20"
           />
         </div>
-        <div class="flex flex-row items-center justify-end w-full mt-6 pt-4 border-t border-gray-200">
+        <div
+          class="flex flex-row items-center justify-end w-full mt-6 pt-4 border-t border-gray-200"
+        >
           <button
             type="button"
             id="nextToStep3"
@@ -170,7 +172,7 @@ import "./styles.css";
             max="20"
           />
         </div>
-       <div
+        <div
           class="flex flex-row items-center justify-between w-full mt-6 pt-4 border-t border-gray-200"
         >
           <button
@@ -190,7 +192,7 @@ import "./styles.css";
             &rsaquo;
           </button>
         </div>
-        
+
         <!--<div class="nav-arrows">
         <button class="nav-arrow prev" onclick="goToPrevStep()">‹</button>
         <button class="nav-arrow next" onclick="goToNextStep()">›</button>
@@ -1117,7 +1119,22 @@ import "./styles.css";
           });
         });
       };
+      // Colorear botones seleccionados del formulario
+      const optionButtons = document.querySelectorAll(".option-btn");
 
+      optionButtons.forEach((button) => {
+        button.addEventListener("click", function () {
+          const container = this.closest(".options-container");
+
+          const siblingButtons = container.querySelectorAll(".option-btn");
+          siblingButtons.forEach((btn) => btn.classList.remove("selected"));
+
+          this.classList.add("selected");
+
+          const valorElegido = this.getAttribute("data-value");
+          console.log("El usuario seleccionó:", valorElegido);
+        });
+      });
       // Contador de pan
       let panCount = 0;
       const panDisplay = document.getElementById("PanCount");
