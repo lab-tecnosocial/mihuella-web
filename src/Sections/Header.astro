@@ -1,13 +1,10 @@
 ---
 import LogoNuevoMiHuella2 from "../assets/images/mihuella_logo2.webp";
-import Facebook from "../assets/icons/facebook.webp";
-import Instagram from "../assets/icons/instagram.webp";
-import Mail from "../assets/icons/mail.webp";
 ---
 
-<header class="loaded:opacity-100 shadow-md z-50 fixed top-0 left-0 right-0 bg-white">
-  <nav class="flex items-center justify-around px-4 py-3 md:py-6 mx-auto max-w-[1440px]">
-    
+<header class="shadow-md z-50 fixed top-0 left-0 right-0 bg-white">
+  <nav class="flex items-center justify-between px-7 py-4 mx-auto max-w-[1440px]">
+
     <a href="/">
       <img
         src={LogoNuevoMiHuella2.src}
@@ -18,59 +15,43 @@ import Mail from "../assets/icons/mail.webp";
       />
     </a>
 
-    <ul class="hidden md:flex items-center gap-20">
+    <ul class="hidden md:flex items-center gap-7">
       <li>
-        <a href="/#calcular" class="text-xl text-huella-text-green hover:opacity-80">¿Cómo calculamos?</a>
+        <a href="/#calcular" style="font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 20px; line-height: 28px; color:#1E7B5C;">
+          ¿Cómo calculamos?
+        </a>
       </li>
       <li>
-        <a href="/#mision" class="text-xl text-huella-text-green hover:opacity-80">Nuestra misión</a>
+        <a href="/#mision" style="font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 20px; line-height: 28px; color:#1E7B5C;">
+          Nuestra misión
+        </a>
       </li>
       <li>
-        <a href="/#nosotros" class="text-xl text-huella-text-green hover:opacity-80">Sobre nosotros</a>
+        <a href="/#nosotros" style="font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 20px; line-height: 28px; color:#1E7B5C;">
+          Sobre nosotros
+        </a>
       </li>
       <li>
-        <a href="/blogs/articles" class="text-xl text-huella-text-green hover:opacity-80">Artículos y Blog</a>
+        <a href="/blogs/articles" style="font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 20px; line-height: 28px; color:#1E7B5C;">
+          Blog
+        </a>
       </li>
     </ul>
 
     <div class="flex items-center gap-4">
-      
-      <a href="/blogs/articles" class="md:hidden text-lg text-huella-text-green font-medium">
+
+      <a href="/blogs/articles" class="md:hidden" style="font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 20px; color:#1E7B5C;">
         Blog
       </a>
 
-      <div class="flex items-center gap-3 md:gap-5">
-        <a href="mailto:appmihuella@gmail.com" class="hover:opacity-80">
-          <img
-            src={Mail.src}
-            alt="Mail"
-            class="w-7 h-7 md:w-10 md:h-10"
-          />
-        </a>
-        <a href="https://www.instagram.com/mi_huella_app/" class="hover:opacity-80">
-          <img 
-            src={Instagram.src} 
-            alt="Instagram" 
-            class="w-6 h-6 md:w-8 md:h-8" 
-          />
-        </a>
-        <a href="https://www.facebook.com/AppMiHuella" class="hover:opacity-80">
-          <img 
-            src={Facebook.src} 
-            alt="Facebook" 
-            class="w-6 h-6 md:w-8 md:h-8" 
-          />
-        </a>
-      </div>
+   <a href="/feature/calculadora-huella-hidrica"
+  class="inline-flex items-center justify-center px-4 py-2 rounded-lg text-white bg-[#439FC5] hover:opacity-90 transition-opacity"
+  style="font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 16px; letter-spacing: -0.02em; line-height: 1.2; box-shadow: 0px 5px 0px#2178BD; width: 197px; height: 51px;"
+>
+  Calcular huella hídrica
+</a>
+
     </div>
 
   </nav>
 </header>
-
-<body style="margin-top: 25px;">
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      document.body.classList.add("loaded");
-    });
-  </script>
-</body>
