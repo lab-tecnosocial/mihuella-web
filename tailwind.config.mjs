@@ -14,6 +14,7 @@ export default {
 				'huella-text-gray-ligth': '#f9f9f9',
 				'huella-text-blue': '#6AC1EE',
 				'huella-dark-blue': ' #1D70B7',
+				'green-text-primary': 'rgba(30, 123, 92, 1)',
 			},
 		},
 	},
