@@ -41,7 +41,7 @@ export function CarbonQuestionLayout({
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none z-0"
           style={{
-            backgroundImage: `url('/src/assets/images/bg-huella-carbono-01.webp')`,
+            backgroundImage: `url('/img/bg-huella-carbono-01.webp')`,
           }}
         />
 
