@@ -13,7 +13,7 @@ export function CarbonCalculatorOnboarding({
   return (
     <CarbonQuestionLayout
       currentCategoryIndex={-1}
-      icon="/src/assets/images/semilla.png"
+      icon="/src/assets/images/semilla.webp"
       onBack={onBackToHome}
       onExit={onBackToHome}
       onNext={onStartCalculation}

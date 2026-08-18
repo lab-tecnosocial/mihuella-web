@@ -3,15 +3,15 @@ import { CarbonQuestionLayout } from './CarbonQuestionLayout';
 
 // Lista de departamentos de Bolivia con rutas de imágenes de banderas
 const DEPARTMENTS = [
-  { id: 'beni', name: 'Beni', flag: '/src/assets/flags/beni.png' },
-  { id: 'chuquisaca', name: 'Chuquisaca', flag: '/src/assets/flags/chuquisaca.png' },
-  { id: 'cochabamba', name: 'Cochabamba', flag: '/src/assets/flags/cochabamba.png' },
-  { id: 'la_paz', name: 'La Paz', flag: '/src/assets/flags/laPaz.png' },
-  { id: 'oruro', name: 'Oruro', flag: '/src/assets/flags/oruro.png' },
-  { id: 'tarija', name: 'Tarija', flag: '/src/assets/flags/tarija.png' },
-  { id: 'potosi', name: 'Potosí', flag: '/src/assets/flags/potosi.png' },
-  { id: 'santa_cruz', name: 'Santa Cruz', flag: '/src/assets/flags/santaCruz.png' },
-  { id: 'pando', name: 'Pando', flag: '/src/assets/flags/pando.png' },
+  { id: 'beni', name: 'Beni', flag: '/src/assets/flags/beni.webp' },
+  { id: 'chuquisaca', name: 'Chuquisaca', flag: '/src/assets/flags/chuquisaca.webp' },
+  { id: 'cochabamba', name: 'Cochabamba', flag: '/src/assets/flags/cochabamba.webp' },
+  { id: 'la_paz', name: 'La Paz', flag: '/src/assets/flags/laPaz.webp' },
+  { id: 'oruro', name: 'Oruro', flag: '/src/assets/flags/oruro.webp' },
+  { id: 'tarija', name: 'Tarija', flag: '/src/assets/flags/tarija.webp' },
+  { id: 'potosi', name: 'Potosí', flag: '/src/assets/flags/potosi.webp' },
+  { id: 'santa_cruz', name: 'Santa Cruz', flag: '/src/assets/flags/santaCruz.webp' },
+  { id: 'pando', name: 'Pando', flag: '/src/assets/flags/pando.webp' },
 ];
 
 export function Question2Department({ onNext, onBack, onExit }) {
@@ -24,7 +24,7 @@ export function Question2Department({ onNext, onBack, onExit }) {
   return (
     <CarbonQuestionLayout
       currentCategoryIndex={0}
-      icon="/src/assets/images/boliviaDepartments.png"
+      icon="/src/assets/images/boliviaDepartments.webp"
       onBack={onBack}
       onExit={onExit}
       onNext={() => onNext(selectedDepartment)}

@@ -10,7 +10,7 @@ export function Question1People({ onNext, onBack, onExit }) {
   return (
     <CarbonQuestionLayout
       currentCategoryIndex={0}
-      icon="/src/assets/images/house.png"
+      icon="/src/assets/images/house.webp"
       onBack={onBack}
       onExit={onExit}
       onNext={() => onNext(peopleCount)}

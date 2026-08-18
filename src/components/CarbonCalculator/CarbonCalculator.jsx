@@ -22,10 +22,9 @@ export function CarbonCalculator() {
     <div className="relative min-h-screen w-full bg-[#3BB168] flex flex-col justify-between overflow-hidden font-sans">
       
       {/* 1. IMAGEN DE FONDO ILUSTRATIVA */}
-      {/* Reemplaza '/src/assets/images/bg-huella-carbono.png' por la ruta de la imagen que descargues */}
       <div 
         className="absolute inset-0 bg-cover bg-bottom bg-no-repeat pointer-events-none z-0 opacity-90 sm:opacity-100"
-        style={{ backgroundImage: `url('/src/assets/images/bg-huella-carbono.png')` }}
+        style={{ backgroundImage: `url('/src/assets/images/bg-huella-carbono.webp')` }}
       />
 
       {/* 2. BARRA SUPERIOR (HEADER) */}
