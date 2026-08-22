@@ -2,9 +2,12 @@
 import LogoNuevoMiHuella2 from "../assets/images/mihuella_logo2.webp";
 ---
 
-<header class="shadow-md z-50 fixed top-0 left-0 right-0 bg-white">
-  <nav class="flex items-center justify-between px-7 py-4 mx-auto max-w-[1440px]">
-
+<header
+  class="shadow-md z-50 fixed top-0 left-0 right-0 bg-white font-quicksand"
+>
+  <nav
+    class="flex items-center justify-between px-7 py-4 mx-auto max-w-[1440px]"
+  >
     <a href="/">
       <img
         src={LogoNuevoMiHuella2.src}
@@ -17,41 +20,63 @@ import LogoNuevoMiHuella2 from "../assets/images/mihuella_logo2.webp";
 
     <ul class="hidden md:flex items-center gap-7">
       <li>
-        <a href="/#calcular" style="font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 20px; line-height: 28px; color:#1E7B5C;">
+        <a
+          href="/#calcular"
+          style="font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 20px; line-height: 28px; color:#1E7B5C;"
+        >
           ¿Cómo calculamos?
         </a>
       </li>
       <li>
-        <a href="/#mision" style="font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 20px; line-height: 28px; color:#1E7B5C;">
+        <a
+          href="/#mision"
+          style="font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 20px; line-height: 28px; color:#1E7B5C;"
+        >
           Nuestra misión
         </a>
       </li>
       <li>
-        <a href="/#nosotros" style="font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 20px; line-height: 28px; color:#1E7B5C;">
+        <a
+          href="/#nosotros"
+          style="font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 20px; line-height: 28px; color:#1E7B5C;"
+        >
           Sobre nosotros
         </a>
       </li>
       <li>
-        <a href="/blogs/articles" style="font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 20px; line-height: 28px; color:#1E7B5C;">
+        <a
+          href="/blogs/articles"
+          style="font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 20px; line-height: 28px; color:#1E7B5C;"
+        >
           Blog
         </a>
       </li>
     </ul>
 
     <div class="flex items-center gap-4">
-
-      <a href="/blogs/articles" class="md:hidden" style="font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 20px; color:#1E7B5C;">
+      <a
+        href="/blogs/articles"
+        class="md:hidden"
+        style="font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 20px; color:#1E7B5C;"
+      >
         Blog
       </a>
-
-   <a href="/feature/calculadora-huella-hidrica"
-  class="inline-flex items-center justify-center px-4 py-2 rounded-lg text-white bg-[#439FC5] hover:opacity-90 transition-opacity"
-  style="font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 16px; letter-spacing: -0.02em; line-height: 1.2; box-shadow: 0px 5px 0px#2178BD; width: 197px; height: 51px;"
->
-  Calcular huella hídrica
-</a>
-
+      <!-- HABILITAR UNA VEZ ESTÉ COMPLETADO EL FORMULARIO DE HUELLA DE CARBONO
+      <a
+        href="/feature/calculadora-huella-carbono"
+        class="inline-flex items-center justify-center px-4 py-2 rounded-lg text-white bg-[#3ABA67] hover:opacity-90 transition-opacity"
+        style="font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 16px; letter-spacing: -0.02em; line-height: 1.2; box-shadow: 0px 5px 0px#007558; width: 232px; height: 51px;"
+      >
+        Calcular huella de carbono
+      </a>
+      -->
+      <a
+        href="/feature/calculadora-huella-hidrica"
+        class="inline-flex items-center justify-center px-4 py-2 rounded-lg text-white bg-[#439FC5] hover:opacity-90 transition-opacity"
+        style="font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 16px; letter-spacing: -0.02em; line-height: 1.2; box-shadow: 0px 5px 0px#2178BD; width: 197px; height: 51px;"
+      >
+        Calcular huella hídrica
+      </a>
     </div>
-
   </nav>
 </header>
