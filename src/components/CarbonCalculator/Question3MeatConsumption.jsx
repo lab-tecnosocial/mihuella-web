@@ -36,7 +36,7 @@ export function Question3MealConsumption({
       currentCategoryIndex={1} // Categoría: Alimentos
       currentQuestionIndex={0}
       totalQuestionsInCategory={1}
-      icon="/img/meal.webp"
+      icon="/img/meal.webp"     
       onBack={onBack}
       onExit={onExit}
       onNext={() => onNext(kgAmount)}
