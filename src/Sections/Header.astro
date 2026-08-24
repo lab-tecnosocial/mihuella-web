@@ -2,12 +2,9 @@
 import LogoNuevoMiHuella2 from "../assets/images/mihuella_logo2.webp";
 ---
 
-<header
-  class="shadow-md z-50 fixed top-0 left-0 right-0 bg-white font-quicksand"
->
-  <nav
-    class="flex items-center justify-between px-7 py-4 mx-auto max-w-[1440px]"
-  >
+<header class="shadow-md z-50 fixed top-0 left-0 right-0 bg-white font-quicksand">
+  <nav class="flex items-center justify-between px-7 py-4 mx-auto max-w-[1440px]">
+    <!-- Logo -->
     <a href="/">
       <img
         src={LogoNuevoMiHuella2.src}
@@ -18,65 +15,103 @@ import LogoNuevoMiHuella2 from "../assets/images/mihuella_logo2.webp";
       />
     </a>
 
+    <!-- Menú Escritorio -->
     <ul class="hidden md:flex items-center gap-7">
       <li>
-        <a
-          href="/#calcular"
-          style="font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 20px; line-height: 28px; color:#1E7B5C;"
-        >
-          ¿Cómo calculamos?
-        </a>
+        <a href="/#calcular" class="nav-link">¿Cómo calculamos?</a>
       </li>
       <li>
-        <a
-          href="/#mision"
-          style="font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 20px; line-height: 28px; color:#1E7B5C;"
-        >
-          Nuestra misión
-        </a>
+        <a href="/#mision" class="nav-link">Nuestra misión</a>
       </li>
       <li>
-        <a
-          href="/#nosotros"
-          style="font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 20px; line-height: 28px; color:#1E7B5C;"
-        >
-          Sobre nosotros
-        </a>
+        <a href="/#nosotros" class="nav-link">Sobre nosotros</a>
       </li>
       <li>
-        <a
-          href="/blogs/articles"
-          style="font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 20px; line-height: 28px; color:#1E7B5C;"
-        >
-          Blog
-        </a>
+        <a href="/blogs/articles" class="nav-link">Blog</a>
       </li>
     </ul>
 
+    <!-- Acciones Escritorio y Botón Hamburguesa Móvil -->
     <div class="flex items-center gap-4">
       <a
-        href="/blogs/articles"
-        class="md:hidden"
-        style="font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 20px; color:#1E7B5C;"
-      >
-        Blog
-      </a>
-      <!-- HABILITAR UNA VEZ ESTÉ COMPLETADO EL FORMULARIO DE HUELLA DE CARBONO
-      <a
-        href="/feature/calculadora-huella-carbono"
-        class="inline-flex items-center justify-center px-4 py-2 rounded-lg text-white bg-[#3ABA67] hover:opacity-90 transition-opacity"
-        style="font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 16px; letter-spacing: -0.02em; line-height: 1.2; box-shadow: 0px 5px 0px#007558; width: 232px; height: 51px;"
-      >
-        Calcular huella de carbono
-      </a>
-      -->
-      <a
         href="/feature/calculadora-huella-hidrica"
-        class="inline-flex items-center justify-center px-4 py-2 rounded-lg text-white bg-[#439FC5] hover:opacity-90 transition-opacity"
-        style="font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 16px; letter-spacing: -0.02em; line-height: 1.2; box-shadow: 0px 5px 0px#2178BD; width: 197px; height: 51px;"
+        class="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-lg text-white bg-[#439FC5] hover:opacity-90 transition-opacity text-[14px] md:text-[16px] font-bold h-[45px] md:h-[51px] shadow-[0px_5px_0px_#2178BD]"
       >
         Calcular huella hídrica
       </a>
+
+      <!-- Botón Hamburguesa (Móvil) -->
+      <button
+        id="menu-toggle"
+        aria-label="Abrir menú"
+        class="md:hidden p-2 text-[#1E7B5C] focus:outline-none"
+      >
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"
+          ></path>
+        </svg>
+      </button>
     </div>
   </nav>
+
+  <!-- Menú Desplegable Móvil -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden bg-white border-t border-gray-100 px-7 py-5 shadow-lg flex-col gap-4"
+  >
+    <a href="/#calcular" class="mobile-link">¿Cómo calculamos?</a>
+    <a href="/#mision" class="mobile-link">Nuestra misión</a>
+    <a href="/#nosotros" class="mobile-link">Sobre nosotros</a>
+    <a href="/blogs/articles" class="mobile-link">Blog</a>
+    
+    <a
+      href="/feature/calculadora-huella-hidrica"
+      class="sm:hidden inline-flex items-center justify-center px-4 py-3 rounded-lg text-white bg-[#439FC5] font-bold text-center mt-2 shadow-[0px_4px_0px_#2178BD]"
+    >
+      Calcular huella hídrica
+    </a>
+  </div>
 </header>
+
+<style>
+  .nav-link {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+    color: #1E7B5C;
+  }
+  
+  .mobile-link {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #1E7B5C;
+    padding: 8px 0;
+  }
+</style>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (menuToggle && mobileMenu) {
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      mobileMenu.classList.toggle('flex');
+    });
+
+    // Cerrar menú al hacer clic en una opción
+    const links = mobileMenu.querySelectorAll('a');
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        mobileMenu.classList.remove('flex');
+      });
+    });
+  }
+</script>
