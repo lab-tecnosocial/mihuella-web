@@ -36,7 +36,7 @@ export function Question3MealConsumption({
       currentCategoryIndex={1} // Categoría: Alimentos
       currentQuestionIndex={0}
       totalQuestionsInCategory={1}
-      icon="/img/carne.webp" // Cambiar a la ruta/import del ícono de carne correspondiente
+      icon="/img/meal.webp"
       onBack={onBack}
       onExit={onExit}
       onNext={() => onNext(kgAmount)}
