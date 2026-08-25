@@ -1,0 +1,10 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { WaterCalculator } from '../../components/WaterCalculator/WaterCalculator.jsx';
+---
+
+<Layout title="Calculadora de Huella Hídrica">
+  <main class="w-full min-h-screen">
+    <WaterCalculator client:load />
+  </main>
+</Layout>
