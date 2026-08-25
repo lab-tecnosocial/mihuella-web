@@ -2,16 +2,17 @@ import { useState } from 'react';
 import { CarbonCalculatorOnboarding } from './CarbonCalculatorOnboarding';
 import { Question1People } from './Question1People';
 import { Question2Department } from './Question2Department';
-import { Question3MealConsumption } from './Question3MeatConsumption';
+import { Question3MealConsumption } from './Question3MealConsumption';
+import { Question4ChickenConsumption } from './Question4ChickenConsumption';
 
 export function CarbonCalculatorFlow() {
-  // Pasos: -1 (Onboarding), 1 (Personas), 2 (Departamento), 3 (Consumo Carne)
   const [currentStep, setCurrentStep] = useState(-1);
 
   const [formData, setFormData] = useState({
     peopleCount: 0,
     department: '',
     meatKg: 0,
+    chickenKg: 0,
   });
 
   const handleBackToHome = () => {
@@ -54,10 +55,22 @@ export function CarbonCalculatorFlow() {
           initialValue={formData.meatKg}
           onNext={(kg) => {
             setFormData((prev) => ({ ...prev, meatKg: kg }));
-            alert(`Paso 3 guardado: ${kg} kg de carne.`);
-            // Siguiente pregunta: setCurrentStep(4);
+            setCurrentStep(4);
           }}
           onBack={() => setCurrentStep(2)}
+          onExit={handleBackToHome}
+        />
+      )}
+
+      {currentStep === 4 && (
+        <Question4ChickenConsumption
+          initialValue={formData.chickenKg}
+          onNext={(kg) => {
+            setFormData((prev) => ({ ...prev, chickenKg: kg }));
+            alert(`Paso 4 completado: ${kg} kg de pollo.`);
+            // Siguiente pregunta: setCurrentStep(5);
+          }}
+          onBack={() => setCurrentStep(3)} // Regresa a la pregunta de carne
           onExit={handleBackToHome}
         />
       )}
