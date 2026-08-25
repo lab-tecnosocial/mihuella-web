@@ -4,6 +4,7 @@ import { Question1People } from './Question1People';
 import { Question2Department } from './Question2Department';
 import { Question3MealConsumption } from './Question3MealConsumption';
 import { Question4ChickenConsumption } from './Question4ChickenConsumption';
+import { Question5PorkConsumption } from './Question5PorkConsumption';
 
 export function CarbonCalculatorFlow() {
   const [currentStep, setCurrentStep] = useState(-1);
@@ -71,6 +72,30 @@ export function CarbonCalculatorFlow() {
             // Siguiente pregunta: setCurrentStep(5);
           }}
           onBack={() => setCurrentStep(3)} // Regresa a la pregunta de carne
+          onExit={handleBackToHome}
+        />
+      )}
+{currentStep === 4 && (
+        <Question4ChickenConsumption
+          initialValue={formData.chickenKg}
+          onNext={(kg) => {
+            setFormData((prev) => ({ ...prev, chickenKg: kg }));
+            setCurrentStep(5);
+          }}
+          onBack={() => setCurrentStep(3)}
+          onExit={handleBackToHome}
+        />
+      )}
+
+      {currentStep === 5 && (
+        <Question5PorkConsumption
+          initialValue={formData.porkKg}
+          onNext={(kg) => {
+            setFormData((prev) => ({ ...prev, porkKg: kg }));
+            alert(`Paso 5 completado: ${kg} kg de cerdo.`);
+            // Siguiente pregunta o cambio de categoría: setCurrentStep(6);
+          }}
+          onBack={() => setCurrentStep(4)} // Regresa a la pregunta de pollo
           onExit={handleBackToHome}
         />
       )}
