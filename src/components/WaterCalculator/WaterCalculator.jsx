@@ -4,6 +4,7 @@ import { WaterQuestionLayout } from './WaterQuestionLayout';
 import { Question1Origin } from './questions/Question1Origin';
 import { Question2WaterExpense } from './questions/Question2WaterExpense';
 import { Question3ShowerDuration } from './questions/Question3ShowerDuration';
+import { Question4ShowerFrequency } from './questions/Question4ShowerFrequency';
 
 export function WaterCalculator() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -62,7 +63,15 @@ export function WaterCalculator() {
             initialValue={answers.showerMinutes || 0}
           />
         )}
-        {currentStep > 3 && (
+        {currentStep === 4 && (
+          <Question4ShowerFrequency
+            onNext={handleNext}
+            onBack={handleBack}
+            onExit={handleBackToHome}
+            initialValue={answers.showerFrequencyPerWeek || 0}
+          />
+        )}
+        {currentStep > 4 && (
           <WaterQuestionLayout
             currentCategoryIndex={-1}
             icon="/img/huella-hidrica-icon.webp"
