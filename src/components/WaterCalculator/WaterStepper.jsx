@@ -24,14 +24,14 @@ export function WaterStepper({
       <div className="flex items-center justify-between w-full mx-auto relative px-2 sm:px-4">
         {/* Línea discontinua */}
         <div className="absolute top-4 sm:top-5 left-[calc(0.5rem+18px)] right-[calc(0.5rem+18px)] sm:left-[calc(1rem+20px)] sm:right-[calc(1rem+20px)] h-[2px] z-0 pointer-events-none">
-          {/* Fondo inactivo (color claro) */}
-          <div className="w-full h-full border-b-2 border-dashed border-[#BADAF3]" /> {/* inactivo */}
-          {/* Progreso activo (color oscuro) */}
+          {/* Fondo inactivo */}
+          <div className="w-full h-full border-b-2 border-dashed border-[#BADAF3]" />
+          {/* Progreso activo */}
           <div
             className="absolute top-0 left-0 h-full overflow-hidden transition-all duration-500 ease-in-out"
             style={{ width: `${progressPercentage}%` }}
           >
-            <div className="w-[100%] min-w-[calc(100vw-2rem)] h-full border-b-2 border-dashed border-[#124168]" /> {/* activo */}
+            <div className="w-[100%] min-w-[calc(100vw-2rem)] h-full border-b-2 border-dashed border-[#124168]" />
           </div>
         </div>
 
@@ -55,7 +55,13 @@ export function WaterStepper({
                   </div>
                 </div>
               </div>
-              <span className="mt-1 text-center font-['Poppins',sans-serif] text-[16px] font-normal leading-[140%] text-[#FAFAFA]">
+
+              {/* Muestra únicamente la etiqueta si la categoría está activa */}
+              <span
+                className={`mt-1 text-center font-['Poppins',sans-serif] text-[14px] sm:text-[16px] font-normal leading-[140%] text-[#FAFAFA] transition-opacity duration-200 ${
+                  isActive ? "opacity-100" : "opacity-0 invisible"
+                }`}
+              >
                 {cat.label}
               </span>
             </div>
