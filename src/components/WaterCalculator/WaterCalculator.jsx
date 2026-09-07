@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { WaterCalculatorOnboarding } from './WaterCalculatorOnboarding';
 import { WaterQuestionLayout } from './WaterQuestionLayout';
 import { Question1Origin } from './questions/Question1Origin';
+import { Question2WaterExpense } from './questions/Question2WaterExpense';
+import { Question3ShowerDuration } from './questions/Question3ShowerDuration';
+import { Question4ShowerFrequency } from './questions/Question4ShowerFrequency';
 
 export function WaterCalculator() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -9,10 +12,12 @@ export function WaterCalculator() {
 
   const handleStart = () => setCurrentStep(1);
   const handleBackToHome = () => window.location.href = '/';
+
   const handleBack = () => {
     if (currentStep === 1) setCurrentStep(0);
     else setCurrentStep(currentStep - 1);
   };
+
   const handleNext = (newAnswer) => {
     setAnswers({ ...answers, ...newAnswer });
     setCurrentStep(currentStep + 1);
@@ -42,7 +47,31 @@ export function WaterCalculator() {
           />
         )}
 
-        {currentStep > 1 && (
+        {currentStep === 2 && (
+          <Question2WaterExpense
+            onNext={handleNext}
+            onBack={handleBack}
+            onExit={handleBackToHome}
+            initialValue={answers.waterExpenseBs || 0}
+          />
+        )}
+        {currentStep === 3 && (
+          <Question3ShowerDuration
+            onNext={handleNext}
+            onBack={handleBack}
+            onExit={handleBackToHome}
+            initialValue={answers.showerMinutes || 0}
+          />
+        )}
+        {currentStep === 4 && (
+          <Question4ShowerFrequency
+            onNext={handleNext}
+            onBack={handleBack}
+            onExit={handleBackToHome}
+            initialValue={answers.showerFrequencyPerWeek || 0}
+          />
+        )}
+        {currentStep > 4 && (
           <WaterQuestionLayout
             currentCategoryIndex={-1}
             icon="/img/huella-hidrica-icon.webp"
