@@ -5,6 +5,9 @@ import { Question1Origin } from './questions/Question1Origin';
 import { Question2WaterExpense } from './questions/Question2WaterExpense';
 import { Question3ShowerDuration } from './questions/Question3ShowerDuration';
 import { Question4ShowerFrequency } from './questions/Question4ShowerFrequency';
+import { Question5TeethBrushing } from './questions/Question5TeethBrushing';
+import { Question6HandWashing } from './questions/Question6HandWashing';
+import { Question7ToiletType } from './questions/Question7ToiletType';
 
 export function WaterCalculator() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -55,6 +58,7 @@ export function WaterCalculator() {
             initialValue={answers.waterExpenseBs || 0}
           />
         )}
+
         {currentStep === 3 && (
           <Question3ShowerDuration
             onNext={handleNext}
@@ -63,6 +67,7 @@ export function WaterCalculator() {
             initialValue={answers.showerMinutes || 0}
           />
         )}
+
         {currentStep === 4 && (
           <Question4ShowerFrequency
             onNext={handleNext}
@@ -71,7 +76,37 @@ export function WaterCalculator() {
             initialValue={answers.showerFrequencyPerWeek || 0}
           />
         )}
-        {currentStep > 4 && (
+
+        {/* */}
+        {currentStep === 5 && (
+          <Question5TeethBrushing
+            onNext={handleNext}
+            onBack={handleBack}
+            onExit={handleBackToHome}
+            initialValue={answers.teethBrushingFrequencyPerDay || 0}
+          />
+        )}
+
+        {currentStep === 6 && (
+  <Question6HandWashing
+    onNext={handleNext}
+    onBack={handleBack}
+    onExit={handleBackToHome}
+    initialValue={answers.handWashingFrequencyPerDay || 0}
+  />
+)}
+
+{currentStep === 7 && (
+  <Question7ToiletType
+    onNext={handleNext}
+    onBack={handleBack}
+    onExit={handleBackToHome}
+    initialValue={answers.toiletType || ''}
+  />
+)}
+
+        {/* */}
+        {currentStep > 7 && (
           <WaterQuestionLayout
             currentCategoryIndex={-1}
             icon="/img/huella-hidrica-icon.webp"

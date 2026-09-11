@@ -2,47 +2,47 @@ import React, { useState } from "react";
 import { ChevronUp, ChevronDown, HelpCircle } from "lucide-react";
 import { WaterQuestionLayout } from "../WaterQuestionLayout";
 
-export function Question4ShowerFrequency({
+export function Question6HandWashing({
   onNext,
   onBack,
   onExit,
   initialValue = 0,
 }) {
-  const [timesPerWeek, setTimesPerWeek] = useState(initialValue);
+  const [timesPerDay, setTimesPerDay] = useState(initialValue);
 
   const handleIncrement = () => {
-    setTimesPerWeek((prev) => prev + 1);
+    setTimesPerDay((prev) => prev + 1);
   };
 
   const handleDecrement = () => {
-    setTimesPerWeek((prev) => (prev - 1 < 0 ? 0 : prev - 1));
+    setTimesPerDay((prev) => (prev - 1 < 0 ? 0 : prev - 1));
   };
 
   const handleInputChange = (e) => {
     const val = parseInt(e.target.value, 10);
     if (isNaN(val)) {
-      setTimesPerWeek(0);
+      setTimesPerDay(0);
     } else {
-      setTimesPerWeek(val >= 0 ? val : 0);
+      setTimesPerDay(val >= 0 ? val : 0);
     }
   };
 
   return (
     <WaterQuestionLayout
-      currentCategoryIndex={1} 
-      currentQuestionIndex={1}
+      currentCategoryIndex={1}
+      currentQuestionIndex={3}
       totalQuestionsInCategory={3}
-      icon="/img/shower.webp" 
+      icon="/img/handwashing.webp"
       onBack={onBack}
       onExit={onExit}
-      onNext={() => onNext({ showerFrequencyPerWeek: timesPerWeek })}
+      onNext={() => onNext({ handWashingFrequencyPerDay: timesPerDay })}
       isNextDisabled={false}
       nextText="Continuar"
     >
       <div className="flex flex-col items-center w-full max-w-md mx-auto">
         {/* TÍTULO Y SUBTÍTULO */}
         <h2 className="text-xl sm:text-2xl font-extrabold text-gray-900 leading-snug mb-1 text-center font-quicksand">
-          ¿Cuántas veces te duchas a la semana?
+          ¿Cuántas veces al día te lavas las manos?
         </h2>
         <p className="text-xs sm:text-sm text-gray-400 font-medium mb-5 text-center font-quicksand">
           Ingresa una cantidad
@@ -54,7 +54,7 @@ export function Question4ShowerFrequency({
             <input
               type="number"
               min="0"
-              value={timesPerWeek}
+              value={timesPerDay}
               onChange={handleInputChange}
               className="text-3xl sm:text-4xl font-extrabold text-gray-600 text-center bg-transparent focus:outline-none w-24 font-quicksand"
             />
@@ -68,7 +68,7 @@ export function Question4ShowerFrequency({
               type="button"
               onClick={handleIncrement}
               className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#90C8EF] hover:bg-[#72B7E5] text-[#124168] flex items-center justify-center transition active:scale-95 shadow-xs cursor-pointer"
-              aria-label="Aumentar veces por semana"
+              aria-label="Aumentar veces al día"
             >
               <ChevronUp className="w-5 h-5 stroke-[2.5]" />
             </button>
@@ -76,7 +76,7 @@ export function Question4ShowerFrequency({
               type="button"
               onClick={handleDecrement}
               className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#90C8EF] hover:bg-[#72B7E5] text-[#124168] flex items-center justify-center transition active:scale-95 shadow-xs cursor-pointer"
-              aria-label="Disminuir veces por semana"
+              aria-label="Disminuir veces al día"
             >
               <ChevronDown className="w-5 h-5 stroke-[2.5]" />
             </button>
@@ -87,7 +87,7 @@ export function Question4ShowerFrequency({
         <div className="w-full bg-[#DCEFEF] border border-[#BDE0E0] rounded-xl p-3 flex items-center gap-2 text-left">
           <HelpCircle className="w-4 h-4 text-[#2178BD] shrink-0" />
           <p className="text-[11px] sm:text-xs text-[#2178BD] font-medium leading-tight font-quicksand">
-            <span className="font-bold">Referencia:</span> Lo común para una persona es ducharse entre 7 y 14 veces a la semana (1 a 2 veces al día).
+            <span className="font-bold">Referencia:</span> Una persona suele lavarse las manos entre 5 y 10 veces al día.
           </p>
         </div>
       </div>

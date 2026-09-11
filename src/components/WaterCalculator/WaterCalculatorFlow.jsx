@@ -1,19 +1,20 @@
 import { useState } from 'react';
-import { CarbonCalculatorOnboarding } from './CarbonCalculatorOnboarding';
-import { Question1People } from './Question1People';
-import { Question2Department } from './Question2Department';
-import { Question3MealConsumption } from './Question3MealConsumption';
-import { Question4ChickenConsumption } from './Question4ChickenConsumption';
-import { Question5PorkConsumption } from './Question5PorkConsumption';
+import { WaterCalculatorOnboarding } from './WaterCalculatorOnboarding';
+import { Question1Origin } from './questions/Question1Origin';
+import { Question2WaterExpense } from './questions/Question2WaterExpense';
+import { Question3ShowerDuration } from './questions/Question3ShowerDuration';
+import { Question4ShowerFrequency } from './questions/Question4ShowerFrequency';
+import { Question5TeethBrushing } from './questions/Question5TeethBrushing';
 
-export function CarbonCalculatorFlow() {
+export function WaterCalculatorFlow() {
   const [currentStep, setCurrentStep] = useState(-1);
 
   const [formData, setFormData] = useState({
-    peopleCount: 0,
-    department: '',
-    meatKg: 0,
-    chickenKg: 0,
+    origin: '',
+    expense: 0,
+    showerDuration: 0,
+    showerFrequencyPerWeek: 0,
+    teethBrushingFrequencyPerDay: 0, // Estado inicial
   });
 
   const handleBackToHome = () => {
@@ -23,16 +24,17 @@ export function CarbonCalculatorFlow() {
   return (
     <>
       {currentStep === -1 && (
-        <CarbonCalculatorOnboarding
+        <WaterCalculatorOnboarding
           onBackToHome={handleBackToHome}
           onStartCalculation={() => setCurrentStep(1)}
         />
       )}
 
+      {/* Pregunta 1: Origen */}
       {currentStep === 1 && (
-        <Question1People
-          onNext={(count) => {
-            setFormData((prev) => ({ ...prev, peopleCount: count }));
+        <Question1Origin
+          onNext={(data) => {
+            setFormData((prev) => ({ ...prev, ...data }));
             setCurrentStep(2);
           }}
           onBack={() => setCurrentStep(-1)}
@@ -40,10 +42,11 @@ export function CarbonCalculatorFlow() {
         />
       )}
 
+      {/* Pregunta 2: Gasto de agua */}
       {currentStep === 2 && (
-        <Question2Department
-          onNext={(departmentId) => {
-            setFormData((prev) => ({ ...prev, department: departmentId }));
+        <Question2WaterExpense
+          onNext={(data) => {
+            setFormData((prev) => ({ ...prev, ...data }));
             setCurrentStep(3);
           }}
           onBack={() => setCurrentStep(1)}
@@ -51,11 +54,11 @@ export function CarbonCalculatorFlow() {
         />
       )}
 
+      {/* Pregunta 3: Duración de ducha */}
       {currentStep === 3 && (
-        <Question3MealConsumption
-          initialValue={formData.meatKg}
-          onNext={(kg) => {
-            setFormData((prev) => ({ ...prev, meatKg: kg }));
+        <Question3ShowerDuration
+          onNext={(data) => {
+            setFormData((prev) => ({ ...prev, ...data }));
             setCurrentStep(4);
           }}
           onBack={() => setCurrentStep(2)}
@@ -63,39 +66,28 @@ export function CarbonCalculatorFlow() {
         />
       )}
 
+      {/* Pregunta 4: Frecuencia de ducha */}
       {currentStep === 4 && (
-        <Question4ChickenConsumption
-          initialValue={formData.chickenKg}
-          onNext={(kg) => {
-            setFormData((prev) => ({ ...prev, chickenKg: kg }));
-            alert(`Paso 4 completado: ${kg} kg de pollo.`);
-            // Siguiente pregunta: setCurrentStep(5);
-          }}
-          onBack={() => setCurrentStep(3)} // Regresa a la pregunta de carne
-          onExit={handleBackToHome}
-        />
-      )}
-{currentStep === 4 && (
-        <Question4ChickenConsumption
-          initialValue={formData.chickenKg}
-          onNext={(kg) => {
-            setFormData((prev) => ({ ...prev, chickenKg: kg }));
-            setCurrentStep(5);
+        <Question4ShowerFrequency
+          initialValue={formData.showerFrequencyPerWeek}
+          onNext={(data) => {
+            setFormData((prev) => ({ ...prev, ...data }));
+            setCurrentStep(5); // 2. AVANZA AL PASO 5
           }}
           onBack={() => setCurrentStep(3)}
           onExit={handleBackToHome}
         />
       )}
 
-      {currentStep === 5 && (
-        <Question5PorkConsumption
-          initialValue={formData.porkKg}
-          onNext={(kg) => {
-            setFormData((prev) => ({ ...prev, porkKg: kg }));
-            alert(`Paso 5 completado: ${kg} kg de cerdo.`);
-            // Siguiente pregunta o cambio de categoría: setCurrentStep(6);
+      {/* Pregunta 5: Cepillado de dientes */}
+      {currentStep === 5 && ( // 3. NUEVO BLOQUE
+        <Question5TeethBrushing
+          initialValue={formData.teethBrushingFrequencyPerDay}
+          onNext={(data) => {
+            setFormData((prev) => ({ ...prev, ...data }));
+            setCurrentStep(6); // Siguiente pregunta o categoría
           }}
-          onBack={() => setCurrentStep(4)} // Regresa a la pregunta de pollo
+          onBack={() => setCurrentStep(4)}
           onExit={handleBackToHome}
         />
       )}
