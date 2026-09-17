@@ -8,6 +8,8 @@ import { Question4ShowerFrequency } from './questions/Question4ShowerFrequency';
 import { Question5TeethBrushing } from './questions/Question5TeethBrushing';
 import { Question6HandWashing } from './questions/Question6HandWashing';
 import { Question7ToiletType } from './questions/Question7ToiletType';
+import { Question8ClothesWashing } from './questions/Question8ClothesWashing';
+import { Question9Dishwashing } from './questions/Question9Dishwashing';
 
 export function WaterCalculator() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -105,8 +107,26 @@ export function WaterCalculator() {
   />
 )}
 
-        {/* */}
-        {currentStep > 7 && (
+                {currentStep === 8 && (
+          <Question8ClothesWashing
+            onNext={handleNext}
+            onBack={handleBack}
+            onExit={handleBackToHome}
+            initialValue={answers.clothesWashingFrequencyPerWeek || 0}
+          />
+        )}
+
+        {currentStep === 9 && (
+          <Question9Dishwashing
+            onNext={handleNext}
+            onBack={handleBack}
+            onExit={handleBackToHome}
+            initialValue={answers.dishwashingMethod || ''}
+          />
+        )}
+
+        {/* Pantalla final después de la pregunta 9 */}
+        {currentStep > 9 && (
           <WaterQuestionLayout
             currentCategoryIndex={-1}
             icon="/img/huella-hidrica-icon.webp"
