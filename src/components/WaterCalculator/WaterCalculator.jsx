@@ -10,6 +10,7 @@ import { Question6HandWashing } from './questions/Question6HandWashing';
 import { Question7ToiletType } from './questions/Question7ToiletType';
 import { Question8ClothesWashing } from './questions/Question8ClothesWashing';
 import { Question9Dishwashing } from './questions/Question9Dishwashing';
+import { Question12Proteins } from './questions/Question12Proteins';
 
 export function WaterCalculator() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -20,12 +21,17 @@ export function WaterCalculator() {
 
   const handleBack = () => {
     if (currentStep === 1) setCurrentStep(0);
+    else if (currentStep === 12) setCurrentStep(9); // Salta de la 12 a la 9 al ir atrás
     else setCurrentStep(currentStep - 1);
   };
 
   const handleNext = (newAnswer) => {
     setAnswers({ ...answers, ...newAnswer });
-    setCurrentStep(currentStep + 1);
+    if (currentStep === 9) {
+      setCurrentStep(12); // Salta de la 9 a la 12 temporalmente
+    } else {
+      setCurrentStep(currentStep + 1);
+    }
   };
 
   return (
@@ -79,7 +85,6 @@ export function WaterCalculator() {
           />
         )}
 
-        {/* */}
         {currentStep === 5 && (
           <Question5TeethBrushing
             onNext={handleNext}
@@ -125,8 +130,17 @@ export function WaterCalculator() {
           />
         )}
 
-        {/* Pantalla final después de la pregunta 9 */}
-        {currentStep > 9 && (
+        {currentStep === 12 && (
+          <Question12Proteins
+            onNext={handleNext}
+            onBack={handleBack}
+            onExit={handleBackToHome}
+            initialValue={answers.proteins || []}
+          />
+        )}
+
+        {/* Pantalla final después de la pregunta 12 */}
+        {currentStep > 12 && (
           <WaterQuestionLayout
             currentCategoryIndex={-1}
             icon="/img/huella-hidrica-icon.webp"
