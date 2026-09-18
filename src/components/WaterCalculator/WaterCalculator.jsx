@@ -90,24 +90,24 @@ export function WaterCalculator() {
         )}
 
         {currentStep === 6 && (
-  <Question6HandWashing
-    onNext={handleNext}
-    onBack={handleBack}
-    onExit={handleBackToHome}
-    initialValue={answers.handWashingFrequencyPerDay || 0}
-  />
-)}
+          <Question6HandWashing
+            onNext={handleNext}
+            onBack={handleBack}
+            onExit={handleBackToHome}
+            initialValue={answers.handWashingFrequencyPerDay || 0}
+          />
+        )}
 
-{currentStep === 7 && (
-  <Question7ToiletType
-    onNext={handleNext}
-    onBack={handleBack}
-    onExit={handleBackToHome}
-    initialValue={answers.toiletType || ''}
-  />
-)}
+        {currentStep === 7 && (
+          <Question7ToiletType
+            onNext={handleNext}
+            onBack={handleBack}
+            onExit={handleBackToHome}
+            initialValue={answers.toiletType || ''}
+          />
+        )}
 
-                {currentStep === 8 && (
+        {currentStep === 8 && (
           <Question8ClothesWashing
             onNext={handleNext}
             onBack={handleBack}
