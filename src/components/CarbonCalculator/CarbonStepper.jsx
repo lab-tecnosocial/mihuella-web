@@ -75,8 +75,12 @@ export function CarbonStepper({
                 </div>
               </div>
 
-              {/* Etiqueta de texto debajo de cada categoría */}
-              <span className="mt-1 text-center font-['Poppins',sans-serif] text-[12px] sm:text-[14px] md:text-[16px] font-normal leading-[140%] text-[#FAFAFA]">
+              {/* Muestra únicamente la etiqueta si la categoría está activa */}
+              <span
+                className={`mt-1 text-center font-['Poppins',sans-serif] text-[14px] sm:text-[16px] font-normal leading-[140%] text-[#FAFAFA] transition-opacity duration-200 ${
+                  isActive ? "opacity-100" : "opacity-0 invisible"
+                }`}
+              >
                 {cat.label}
               </span>
             </div>
