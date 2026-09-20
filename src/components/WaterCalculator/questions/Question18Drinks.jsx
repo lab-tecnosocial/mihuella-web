@@ -4,12 +4,12 @@ import { WaterQuestionLayout } from "../WaterQuestionLayout";
 
 const DRINK_OPTIONS = [
   { id: "te", label: "Té", unit: "Lt/semana", image: "/img/tea.webp" },
-  { id: "cafe", label: "Café", unit: "Lt/semana", image: "/img/cofeee.webp" },
+  { id: "cafe", label: "Café", unit: "Lt/semana", image: "/img/coffeee.webp" },
   { id: "leche", label: "Leche", unit: "Lt/semana", image: "/img/milk.webp" },
   { id: "jugos", label: "Jugos", unit: "Lt/semana", image: "/img/orange-juice.webp" },
   { id: "gaseosa", label: "Gaseosa", unit: "Lt/semana", image: "/img/soda.webp" },
   { id: "ninguno", label: "Ninguno", unit: "", image: "/img/none.webp" },
-  { id: "otro", label: "Otro", unit: "Lt/semana", image: "/img/three-dots.webp" },
+  { id: "otro", label: "Otro", unit: "Lt/semana", image: "/img/three_dots.webp"},
 ];
 
 export function Question18Drinks({
