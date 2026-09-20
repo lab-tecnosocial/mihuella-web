@@ -207,6 +207,15 @@ export function WaterCalculator() {
             initialValue={answers.fruits || []}
           />
         )}
+        {currentStep === 17 && (
+          <Question17FruitAmounts
+            onNext={handleNext}
+            onBack={handleBack}
+            onExit={handleBackToHome}
+            selectedFruits={answers.fruits || []}
+            initialValue={answers.fruitAmounts || {}}
+          />
+        )}
 
         {currentStep > 16 && (
           <WaterQuestionLayout
