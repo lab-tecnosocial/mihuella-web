@@ -12,7 +12,8 @@ import { Question8ClothesWashing } from './questions/Question8ClothesWashing';
 import { Question9Dishwashing } from './questions/Question9Dishwashing';
 import { Question12Proteins } from './questions/Question12Proteins';
 import { Question13ProteinAmounts } from './questions/Question13ProteinAmounts';
-import { Question15Cereals } from './questions/Question15Cereals';
+import { Question14Cereals } from './questions/Question14Cereals';
+import { Question15CerealAmounts } from './questions/Question15CerealAmounts';
 
 export function WaterCalculator() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -25,15 +26,15 @@ export function WaterCalculator() {
     if (currentStep === 1) setCurrentStep(0);
     else if (currentStep === 12) setCurrentStep(9);
     else if (currentStep === 13) setCurrentStep(12);
-    else if (currentStep === 15) {
+    else if (currentStep === 14) {
       const selectedProteins = answers.proteins || [];
-      // Si solo había elegido "ninguno" en la 12, regresa directamente a la 12
       if (selectedProteins.length === 1 && selectedProteins[0] === 'ninguno') {
         setCurrentStep(12);
       } else {
-        setCurrentStep(13); // De lo contrario regresa a la 13 (cantidades)
+        setCurrentStep(13);
       }
     }
+    else if (currentStep === 15) setCurrentStep(14);
     else setCurrentStep(currentStep - 1);
   };
 
@@ -45,14 +46,20 @@ export function WaterCalculator() {
       setCurrentStep(12);
     } else if (currentStep === 12) {
       const selected = updatedAnswers.proteins || [];
-      // Si solo eligió "ninguno", salta directo a la pregunta 15
       if (selected.length === 1 && selected[0] === 'ninguno') {
-        setCurrentStep(15);
+        setCurrentStep(14); // Pasa a cereales
       } else {
-        setCurrentStep(13);
+        setCurrentStep(13); // Pasa a cantidad de proteínas
       }
     } else if (currentStep === 13) {
-      setCurrentStep(15); // Desde la 13 pasa a la 15
+      setCurrentStep(14); // Pasa a cereales
+    } else if (currentStep === 14) {
+      const selectedCereals = updatedAnswers.cereals || [];
+      if (selectedCereals.length === 1 && selectedCereals[0] === 'ninguno') {
+        setCurrentStep(16); // Salta las cantidades de cereales si eligió ninguno
+      } else {
+        setCurrentStep(15); // Pasa a cantidad de cereales
+      }
     } else {
       setCurrentStep(currentStep + 1);
     }
@@ -173,12 +180,22 @@ export function WaterCalculator() {
           />
         )}
 
-        {currentStep === 15 && (
-          <Question15Cereals
+        {currentStep === 14 && (
+          <Question14Cereals
             onNext={handleNext}
             onBack={handleBack}
             onExit={handleBackToHome}
             initialValue={answers.cereals || []}
+          />
+        )}
+
+        {currentStep === 15 && (
+          <Question15CerealAmounts
+            onNext={handleNext}
+            onBack={handleBack}
+            onExit={handleBackToHome}
+            selectedCereals={answers.cereals || []}
+            initialValue={answers.cerealAmounts || {}}
           />
         )}
 
