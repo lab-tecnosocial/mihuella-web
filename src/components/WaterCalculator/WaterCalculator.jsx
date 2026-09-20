@@ -216,8 +216,16 @@ export function WaterCalculator() {
             initialValue={answers.fruitAmounts || {}}
           />
         )}
+        {currentStep === 18 && (
+          <Question18Drinks
+            onNext={handleNext}
+            onBack={handleBack}
+            onExit={handleBackToHome}
+            initialValue={answers.drinks || []}
+          />
+        )}
 
-        {currentStep > 16 && (
+        {currentStep > 18 && (
           <WaterQuestionLayout
             currentCategoryIndex={-1}
             icon="/img/huella-hidrica-icon.webp"
