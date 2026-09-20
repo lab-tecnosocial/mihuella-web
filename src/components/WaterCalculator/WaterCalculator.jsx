@@ -11,6 +11,8 @@ import { Question7ToiletType } from './questions/Question7ToiletType';
 import { Question8ClothesWashing } from './questions/Question8ClothesWashing';
 import { Question9Dishwashing } from './questions/Question9Dishwashing';
 import { Question12Proteins } from './questions/Question12Proteins';
+import { Question13ProteinAmounts } from './questions/Question13ProteinAmounts';
+import { Question15Cereals } from './questions/Question15Cereals';
 
 export function WaterCalculator() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -21,14 +23,36 @@ export function WaterCalculator() {
 
   const handleBack = () => {
     if (currentStep === 1) setCurrentStep(0);
-    else if (currentStep === 12) setCurrentStep(9); // Salta de la 12 a la 9 al ir atrás
+    else if (currentStep === 12) setCurrentStep(9);
+    else if (currentStep === 13) setCurrentStep(12);
+    else if (currentStep === 15) {
+      const selectedProteins = answers.proteins || [];
+      // Si solo había elegido "ninguno" en la 12, regresa directamente a la 12
+      if (selectedProteins.length === 1 && selectedProteins[0] === 'ninguno') {
+        setCurrentStep(12);
+      } else {
+        setCurrentStep(13); // De lo contrario regresa a la 13 (cantidades)
+      }
+    }
     else setCurrentStep(currentStep - 1);
   };
 
   const handleNext = (newAnswer) => {
-    setAnswers({ ...answers, ...newAnswer });
+    const updatedAnswers = { ...answers, ...newAnswer };
+    setAnswers(updatedAnswers);
+
     if (currentStep === 9) {
-      setCurrentStep(12); // Salta de la 9 a la 12 temporalmente
+      setCurrentStep(12);
+    } else if (currentStep === 12) {
+      const selected = updatedAnswers.proteins || [];
+      // Si solo eligió "ninguno", salta directo a la pregunta 15
+      if (selected.length === 1 && selected[0] === 'ninguno') {
+        setCurrentStep(15);
+      } else {
+        setCurrentStep(13);
+      }
+    } else if (currentStep === 13) {
+      setCurrentStep(15); // Desde la 13 pasa a la 15
     } else {
       setCurrentStep(currentStep + 1);
     }
@@ -139,8 +163,27 @@ export function WaterCalculator() {
           />
         )}
 
-        {/* Pantalla final después de la pregunta 12 */}
-        {currentStep > 12 && (
+        {currentStep === 13 && (
+          <Question13ProteinAmounts
+            onNext={handleNext}
+            onBack={handleBack}
+            onExit={handleBackToHome}
+            selectedProteins={answers.proteins || []}
+            initialValue={answers.proteinAmounts || {}}
+          />
+        )}
+
+        {currentStep === 15 && (
+          <Question15Cereals
+            onNext={handleNext}
+            onBack={handleBack}
+            onExit={handleBackToHome}
+            initialValue={answers.cereals || []}
+          />
+        )}
+
+        {/* Pantalla final después de la pregunta 15 */}
+        {currentStep > 15 && (
           <WaterQuestionLayout
             currentCategoryIndex={-1}
             icon="/img/huella-hidrica-icon.webp"
