@@ -14,6 +14,7 @@ import { Question12Proteins } from './questions/Question12Proteins';
 import { Question13ProteinAmounts } from './questions/Question13ProteinAmounts';
 import { Question14Cereals } from './questions/Question14Cereals';
 import { Question15CerealAmounts } from './questions/Question15CerealAmounts';
+import { Question16Fruits } from './questions/Question16Fruits';
 
 export function WaterCalculator() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -198,9 +199,16 @@ export function WaterCalculator() {
             initialValue={answers.cerealAmounts || {}}
           />
         )}
+        {currentStep === 16 && (
+          <Question16Fruits
+            onNext={handleNext}
+            onBack={handleBack}
+            onExit={handleBackToHome}
+            initialValue={answers.fruits || []}
+          />
+        )}
 
-        {/* Pantalla final después de la pregunta 15 */}
-        {currentStep > 15 && (
+        {currentStep > 16 && (
           <WaterQuestionLayout
             currentCategoryIndex={-1}
             icon="/img/huella-hidrica-icon.webp"
