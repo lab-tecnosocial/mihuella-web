@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Check } from "lucide-react";
 import { WaterQuestionLayout } from "../WaterQuestionLayout";
 
@@ -13,22 +13,24 @@ const CEREAL_OPTIONS = [
   { id: "otro", label: "Otro", unit: "", image: "/img/three_dots.webp" },
 ] as const;
 
-type Question15CerealsProps = {
+type CerealId = (typeof CEREAL_OPTIONS)[number]["id"];
+
+type Question14CerealsProps = {
   onNext: (value: { cereals: string[] }) => void;
   onBack: () => void;
   onExit: () => void;
   initialValue?: string[];
 };
 
-export function Question15Cereals({
+export function Question14Cereals({
   onNext,
   onBack,
   onExit,
   initialValue = [],
-}: Question15CerealsProps) {
+}: Question14CerealsProps) {
   const [selectedCereals, setSelectedCereals] = useState<string[]>(initialValue);
 
-  const toggleOption = (id: string) => {
+  const toggleOption = (id: CerealId | string) => {
     if (id === "ninguno") {
       setSelectedCereals(["ninguno"]);
       return;
@@ -47,8 +49,8 @@ export function Question15Cereals({
     <WaterQuestionLayout
       currentCategoryIndex={3} // Categoría: Dieta
       currentQuestionIndex={2}
-      totalQuestionsInCategory={3}
-      icon="/img/cereals-icon.webp"
+      totalQuestionsInCategory={4}
+      icon="/img/dieta-icon.webp"
       onBack={onBack}
       onExit={onExit}
       onNext={() => onNext({ cereals: selectedCereals })}
@@ -57,7 +59,7 @@ export function Question15Cereals({
     >
       <div className="flex flex-col items-center w-full max-w-md mx-auto">
         <h2 className="text-xl sm:text-2xl font-extrabold text-gray-900 leading-snug mb-1 text-center font-quicksand">
-          ¿Qué tipo de cereales includes en tu alimentación habitual?
+          ¿Qué tipo de cereales incluyes en tu alimentación habitual?
         </h2>
         <p className="text-xs sm:text-sm text-gray-400 font-medium mb-5 text-center font-quicksand">
           Selecciona todas las que consumes
@@ -79,7 +81,6 @@ export function Question15Cereals({
                     : "border-gray-200 bg-white hover:border-gray-300"
                 }`}
               >
-                {/* CHECKBOX ESQUINA SUPERIOR DERECHA */}
                 <div
                   className={`absolute top-2.5 right-2.5 w-5 h-5 rounded-md flex items-center justify-center transition-colors ${
                     isSelected
@@ -90,7 +91,6 @@ export function Question15Cereals({
                   {isSelected && <Check className="w-3.5 h-3.5 stroke-[3]" />}
                 </div>
 
-                {/* IMAGEN DE FIGMA */}
                 <div className="w-12 h-12 sm:w-14 sm:h-14 mb-2 flex items-center justify-center">
                   <img
                     src={option.image}
@@ -99,7 +99,6 @@ export function Question15Cereals({
                   />
                 </div>
 
-                {/* ETIQUETA Y UNIDAD */}
                 <span className="text-xs sm:text-sm font-bold text-gray-800 text-center font-quicksand leading-tight">
                   {option.label}
                 </span>
