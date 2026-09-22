@@ -102,13 +102,6 @@ export function Question10YogurtConsumption({
           </p>
           <br/>
         </div>
-        {/* Botón de Continuar */}
-        <button
-          type="submit"
-          className="w-full py-3.5 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-xl shadow-md transition-all flex items-center justify-center gap-2"
-        >
-          Continuar →
-        </button>
       </form>
     </CarbonQuestionLayout>
   );
