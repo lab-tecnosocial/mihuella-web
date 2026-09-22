@@ -694,7 +694,7 @@ const description = "¿Sabías que una hamburguesa puede consumir más agua que 
     ];
     
     // Asignar colores a cada barra, usando el operador módulo (%) para ciclar
-    const coloresBarra = huellaHidricaLitrosPorKg.map((valor, index) => {
+    const coloresBarra = huellaHidricaLitrosPorKg.map((index) => {
         return nuevaPaletaColores[index % nuevaPaletaColores.length];
     });
 
