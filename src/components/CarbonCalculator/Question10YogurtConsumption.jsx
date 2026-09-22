@@ -1,8 +1,6 @@
 import { ChevronUp, ChevronDown, Lightbulb } from 'lucide-react';
-import { CarbonQuestionLayout } from '../CarbonQuestionLayout';
-
-// Importación desde assets según la nueva estructura
-import yogurtImg from '../../../assets/images/yogurt.webp';
+import { CarbonQuestionLayout } from "./CarbonQuestionLayout";
+import { useState } from 'react';
 
 export function Question10YogurtConsumption({
   onNext,
@@ -33,7 +31,7 @@ export function Question10YogurtConsumption({
   return (
     <CarbonQuestionLayout
       currentCategoryIndex={1}
-      icon={yogurtImg}
+      icon={"/img/yogurt.webp" }
       onBack={onBack}
       onExit={onExit}
     >

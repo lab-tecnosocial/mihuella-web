@@ -1,8 +1,6 @@
 import { ChevronUp, ChevronDown, Lightbulb } from 'lucide-react';
-import { CarbonQuestionLayout } from '../CarbonQuestionLayout';
-
-// Importación desde assets según la nueva estructura
-import cheeseImg from '../../../assets/images/queso.webp';
+import { CarbonQuestionLayout } from "./CarbonQuestionLayout";
+import { useState } from 'react'; 
 
 export function Question9CheeseConsumption({
   onNext,
@@ -13,11 +11,11 @@ export function Question9CheeseConsumption({
   const [amount, setAmount] = useState(initialValue);
 
   const handleIncrement = () => {
-    setAmount((prev) => parseFloat((prev + 0.1).toFixed(1)));
+    setAmount((prev) => parseFloat((prev + 0.05).toFixed(1)));
   };
 
   const handleDecrement = () => {
-    setAmount((prev) => Math.max(0, parseFloat((prev - 0.1).toFixed(1))));
+    setAmount((prev) => Math.max(0, parseFloat((prev - 0.05).toFixed(1))));
   };
 
   const handleChange = (e) => {
@@ -32,10 +30,15 @@ export function Question9CheeseConsumption({
 
   return (
     <CarbonQuestionLayout
-      currentCategoryIndex={1}
-      icon={cheeseImg}
+      currentCategoryIndex={1} // Categoría: Alimentos
+      currentQuestionIndex={2} // Tercera sub-pregunta de la categoría
+      totalQuestionsInCategory={3}
+      icon="/img/cheese.webp" 
       onBack={onBack}
       onExit={onExit}
+      onNext={() => onNext(amount)}
+      isNextDisabled={false}
+      nextText="Continuar"
     >
       <form onSubmit={handleSubmit} className="flex flex-col items-center w-full max-w-md mx-auto">
         <h2 className="text-2xl font-bold text-gray-800 text-center mb-1">
@@ -43,56 +46,61 @@ export function Question9CheeseConsumption({
         </h2>
         <p className="text-sm text-gray-500 mb-6">Ingresa una cantidad</p>
 
-        {/* Control Numérico */}
-        <div className="relative w-full bg-white border border-gray-200 rounded-2xl p-4 flex items-center justify-between mb-4 shadow-sm">
-          <div className="flex-1 flex flex-col items-center pl-8">
-            <div className="flex items-baseline">
+        <div className="w-full bg-white border border-gray-200 rounded-2xl p-3 sm:p-4 flex items-center justify-between mb-4 shadow-sm">
+          {/* Valor y Sufijo de Unidad */}
+          <div className="flex-1 flex flex-col items-center justify-center">
+            <div className="flex items-baseline justify-center gap-1 border-b-2 border-dashed border-gray-300 pb-1 px-4 w-full max-w-[200px]">
               <input
                 type="number"
                 step="0.1"
                 min="0"
-                value={amount}
+                value={amount === 0 ? "0.0" : amount}
                 onChange={handleChange}
-                className="text-4xl font-extrabold text-gray-700 w-24 text-center focus:outline-none bg-transparent"
+                className="text-3xl sm:text-4xl font-extrabold text-gray-600 text-center bg-transparent focus:outline-none w-28 font-quicksand"
               />
-              <span className="text-xl font-medium text-gray-400 ml-1">kg</span>
+              <span className="text-sm sm:text-base font-semibold text-gray-400 font-quicksand">
+                Kg
+              </span>
             </div>
-            <p className="text-xs text-gray-400 mt-1">Si no consumes queso escribe 0</p>
+
+            {/* Texto aclaratorio */}
+            <span className="text-[11px] sm:text-xs text-gray-400 font-medium mt-2 flex items-center gap-1">
+              <span className="inline-block w-3.5 h-3.5 rounded-full border border-gray-400 text-gray-400 text-[9px] text-center leading-3">
+                ?
+              </span>
+              Si no consumes queso escribe 0
+            </span>
           </div>
 
-          <div className="flex flex-col gap-1">
+          {/* Botones Incrementar / Decrementar */}
+          <div className="flex flex-col gap-1.5 pl-2">
             <button
               type="button"
               onClick={handleIncrement}
-              className="p-2 bg-emerald-100 hover:bg-emerald-200 text-emerald-700 rounded-lg transition-colors"
+              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#A0E6BA] hover:bg-[#8BD8A8] text-[#1E7B5C] flex items-center justify-center transition active:scale-95 shadow-xs cursor-pointer"
+              aria-label="Aumentar kilos de queso"
             >
-              <ChevronUp size={20} />
+              <ChevronUp className="w-5 h-5 stroke-[2.5]" />
             </button>
             <button
               type="button"
               onClick={handleDecrement}
-              className="p-2 bg-emerald-100 hover:bg-emerald-200 text-emerald-700 rounded-lg transition-colors"
+              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#A0E6BA] hover:bg-[#8BD8A8] text-[#1E7B5C] flex items-center justify-center transition active:scale-95 shadow-xs cursor-pointer"
+              aria-label="Disminuir kilos de queso"
             >
-              <ChevronDown size={20} />
+              <ChevronDown className="w-5 h-5 stroke-[2.5]" />
             </button>
           </div>
         </div>
-
-        {/* Cuadro de Referencia */}
-        <div className="w-full bg-emerald-50 border border-emerald-100 rounded-xl p-3 flex items-start gap-3 mb-6">
-          <Lightbulb className="text-emerald-500 shrink-0 mt-0.5" size={18} />
-          <p className="text-xs text-emerald-800">
-            <span className="font-semibold">Referencia:</span> Una porción de queso curado suele ser <span className="font-semibold">0,05 kg</span>. ¿Cuántas comiste esta semana?
+        <div className="w-full bg-[#D8F3E5] border border-[#A0E6BA] rounded-xl p-3 sm:p-3.5 flex items-start gap-2.5 text-left">
+          <div className="bg-[#3ABA67] text-white p-1 rounded-full shrink-0 mt-0.5">
+            <Lightbulb className="w-3.5 h-3.5" />
+          </div>
+          <p className="text-[11px] sm:text-xs text-[#1E7B5C] font-semibold leading-relaxed font-quicksand">
+            <span className="font-bold">Referencia:</span>  Una porción de queso curado suele ser <span className="font-semibold">0,05 kg</span>. ¿Cuántas comiste esta semana?
           </p>
+          <br/>
         </div>
-
-        {/* Botón de Continuar */}
-        <button
-          type="submit"
-          className="w-full py-3.5 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-xl shadow-md transition-all flex items-center justify-center gap-2"
-        >
-          Continuar →
-        </button>
       </form>
     </CarbonQuestionLayout>
   );
