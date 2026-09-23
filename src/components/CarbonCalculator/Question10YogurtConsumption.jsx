@@ -98,7 +98,7 @@ export function Question10YogurtConsumption({
             <Lightbulb className="w-3.5 h-3.5" />
           </div>
           <p className="text-[11px] sm:text-xs text-[#1E7B5C] font-semibold leading-relaxed font-quicksand">
-            <span className="font-bold">Referencia:</span>  Una porción de yogurt equivale aproximadamente a <span className="font-semibold">0,2 Lt</span>. ¿Cuántas comiste esta semana?
+            <span className="font-bold">Referencia:</span>  Un envase de yogur suele contener <span className="font-semibold">0,25 Lt</span>. ¿Cuántos consumiste esta semana?
           </p>
           <br/>
         </div>
