@@ -30,10 +30,15 @@ export function Question11FruitsConsumption({
 
   return (
     <CarbonQuestionLayout
-      currentCategoryIndex={1}
-      icon={"/img/apple-and-carrot.webp"}
+      currentCategoryIndex={1} 
+      currentQuestionIndex={2} 
+      totalQuestionsInCategory={3}
+      icon="/img/apple-and-carrot.webp" 
       onBack={onBack}
       onExit={onExit}
+      onNext={() => onNext(amount)}
+      isNextDisabled={false}
+      nextText="Continuar"
     >
       <form onSubmit={handleSubmit} className="flex flex-col items-center w-full max-w-md mx-auto">
         <h2 className="text-2xl font-bold text-gray-800 text-center mb-1">
@@ -41,56 +46,39 @@ export function Question11FruitsConsumption({
         </h2>
         <p className="text-sm text-gray-500 mb-6">Ingresa una cantidad</p>
 
-        {/* Control Numérico */}
-        <div className="relative w-full bg-white border border-gray-200 rounded-2xl p-4 flex items-center justify-between mb-4 shadow-sm">
-          <div className="flex-1 flex flex-col items-center pl-8">
-            <div className="flex items-baseline">
+          <div className="flex-1 flex flex-col items-center justify-center">
+            <div className="flex items-baseline justify-center gap-1 border-b-2 border-dashed border-gray-300 pb-1 px-4 w-full max-w-[200px]">
               <input
                 type="number"
                 step="0.1"
                 min="0"
-                value={amount}
+                value={amount === 0 ? "0.0" : amount}
                 onChange={handleChange}
-                className="text-4xl font-extrabold text-gray-700 w-24 text-center focus:outline-none bg-transparent"
+                className="text-3xl sm:text-4xl font-extrabold text-gray-600 text-center bg-transparent focus:outline-none w-28 font-quicksand"
               />
-              <span className="text-xl font-medium text-gray-400 ml-1">kg</span>
+              <span className="text-sm sm:text-base font-semibold text-gray-400 font-quicksand">
+                Lts
+              </span>
             </div>
-            <p className="text-xs text-gray-400 mt-1">Si no consumes fruta/verdura escribe 0</p>
+
+            {/* Texto aclaratorio */}
+            <span className="text-[11px] sm:text-xs text-gray-400 font-medium mt-2 flex items-center gap-1">
+              <span className="inline-block w-3.5 h-3.5 rounded-full border border-gray-400 text-gray-400 text-[9px] text-center leading-3">
+                ?
+              </span>
+              Si no consumes ni frutas ni verduras escribe 0
+            </span>
           </div>
 
-          <div className="flex flex-col gap-1">
-            <button
-              type="button"
-              onClick={handleIncrement}
-              className="p-2 bg-emerald-100 hover:bg-emerald-200 text-emerald-700 rounded-lg transition-colors"
-            >
-              <ChevronUp size={20} />
-            </button>
-            <button
-              type="button"
-              onClick={handleDecrement}
-              className="p-2 bg-emerald-100 hover:bg-emerald-200 text-emerald-700 rounded-lg transition-colors"
-            >
-              <ChevronDown size={20} />
-            </button>
+      <div className="w-full bg-[#D8F3E5] border border-[#A0E6BA] rounded-xl p-3 sm:p-3.5 flex items-start gap-2.5 text-left">
+          <div className="bg-[#3ABA67] text-white p-1 rounded-full shrink-0 mt-0.5">
+            <Lightbulb className="w-3.5 h-3.5" />
           </div>
-        </div>
-
-        {/* Cuadro de Referencia */}
-        <div className="w-full bg-emerald-50 border border-emerald-100 rounded-xl p-3 flex items-start gap-3 mb-6">
-          <Lightbulb className="text-emerald-500 shrink-0 mt-0.5" size={18} />
-          <p className="text-xs text-emerald-800">
-            <span className="font-semibold">Referencia:</span> Una manzana mediana pesa aproximadamente <span className="font-semibold">0,15 kg</span> y una porción de ensalada es de <span className="font-semibold">0,2 kg</span>.
+          <p className="text-[11px] sm:text-xs text-[#1E7B5C] font-semibold leading-relaxed font-quicksand">
+            <span className="font-bold">Referencia:</span> Una fruta mediana pesa aprox. <span className="font-semibold">0,15 kg</span> Cuenta tus porciones de la semana.
           </p>
+          <br/>
         </div>
-
-        {/* Botón de Continuar */}
-        <button
-          type="submit"
-          className="w-full py-3.5 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-xl shadow-md transition-all flex items-center justify-center gap-2"
-        >
-          Continuar →
-        </button>
       </form>
     </CarbonQuestionLayout>
   );
