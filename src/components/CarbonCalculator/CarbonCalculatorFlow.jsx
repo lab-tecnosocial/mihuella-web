@@ -5,6 +5,9 @@ import { Question2Department } from './Question2Department';
 import { Question3MealConsumption } from './Question3MealConsumption';
 import { Question4ChickenConsumption } from './Question4ChickenConsumption';
 import { Question5PorkConsumption } from './Question5PorkConsumption';
+import { Question6FishConsumption } from './Question6FishConsumption';
+import { Question7LambConsumption } from './Question7LambConsumption';
+import { Question8MilkConsumption } from './Question8MilkConsumption';
 import { Question9CheeseConsumption } from './Question9CheeseConsumption';
 import { Question10YogurtConsumption } from './Question10YogurtConsumption';
 import { Question11FruitsConsumption } from './Question11FruitsConsumption';
@@ -19,6 +22,9 @@ export function CarbonCalculatorFlow() {
     meatKg: 0,
     chickenKg: 0,
     porkKg: 0,
+    fishKg: 0,
+    lambKg: 0,
+    milkLt: 0,
     cheeseConsumptionKg: 0,
     yogurtConsumptionLt: 0,
     fruitsAndVegetablesKg: 0,
@@ -89,9 +95,45 @@ export function CarbonCalculatorFlow() {
           onNext={(data) => {
             const kg = typeof data === 'object' ? data.porkKg : data;
             setFormData((prev) => ({ ...prev, porkKg: kg }));
-            setCurrentStep(9); // Salta directo a Queso
+            setCurrentStep(6);
           }}
           onBack={() => setCurrentStep(4)}
+          onExit={handleBackToHome}
+        />
+      )}
+
+      {currentStep === 6 && (
+        <Question6FishConsumption
+          initialValue={formData.fishKg}
+          onNext={(kg) => {
+            setFormData((prev) => ({ ...prev, fishKg: kg }));
+            setCurrentStep(7);
+          }}
+          onBack={() => setCurrentStep(5)}
+          onExit={handleBackToHome}
+        />
+      )}
+
+      {currentStep === 7 && (
+        <Question7LambConsumption
+          initialValue={formData.lambKg}
+          onNext={(kg) => {
+            setFormData((prev) => ({ ...prev, lambKg: kg }));
+            setCurrentStep(8); // Avanza a Leche
+          }}
+          onBack={() => setCurrentStep(6)}
+          onExit={handleBackToHome}
+        />
+      )}
+
+      {currentStep === 8 && (
+        <Question8MilkConsumption
+          initialValue={formData.milkLt}
+          onNext={(lt) => {
+            setFormData((prev) => ({ ...prev, milkLt: lt }));
+            setCurrentStep(9); // Avanza a Queso
+          }}
+          onBack={() => setCurrentStep(7)}
           onExit={handleBackToHome}
         />
       )}
@@ -103,7 +145,7 @@ export function CarbonCalculatorFlow() {
             setFormData((prev) => ({ ...prev, ...data }));
             setCurrentStep(10);
           }}
-          onBack={() => setCurrentStep(5)}
+          onBack={() => setCurrentStep(8)}
           onExit={handleBackToHome}
         />
       )}
@@ -132,12 +174,12 @@ export function CarbonCalculatorFlow() {
         />
       )}
 
-      {/* VISTA DE RESPALDO: Evita que la pantalla quede en blanco si currentStep no coincide */}
-      {(currentStep > 11 || (currentStep > 5 && currentStep < 9)) && (
+      {/* VISTA DE RESPALDO: Ya no debería activarse en el rango 1-11, queda solo para pasos futuros */}
+      {currentStep > 11 && (
         <CarbonQuestionLayout
           currentCategoryIndex={1}
           icon="/img/semilla.webp"
-          onBack={() => setCurrentStep(5)}
+          onBack={() => setCurrentStep(11)}
           onExit={handleBackToHome}
         >
           <div className="flex flex-col items-center text-center text-gray-800">
