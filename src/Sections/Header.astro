@@ -1,52 +1,81 @@
----
+﻿---
 import LogoNuevoMiHuella2 from "../assets/images/mihuella_logo2.webp";
 ---
 
-<header class="shadow-md z-50 fixed top-0 left-0 right-0 bg-white font-quicksand">
+<header class="fixed top-0 left-0 right-0 z-50 bg-white shadow-md font-quicksand">
   <nav class="flex items-center justify-between px-7 py-4 mx-auto max-w-[1440px]">
+    
     <!-- Logo -->
     <a href="/">
       <img
         src={LogoNuevoMiHuella2.src}
-        alt="Mi Huella icono"
-        width={100}
-        height={20}
+        alt="Mi Huella"
+        width="100"
+        height="20"
         class="w-[80px] md:w-[100px] h-auto"
       />
     </a>
 
-    <!-- Menú Escritorio -->
+    <!-- Menú escritorio -->
     <ul class="hidden md:flex items-center gap-7">
       <li>
-        <a href="/#calcular" class="nav-link">¿Cómo calculamos?</a>
+        <a href="/#calcular" class="nav-link">
+          Como calculamos?
+        </a>
       </li>
+
       <li>
-        <a href="/#mision" class="nav-link">Nuestra misión</a>
+        <a href="/#mision" class="nav-link">
+          Nuestra mision
+        </a>
       </li>
+
       <li>
-        <a href="/#nosotros" class="nav-link">Sobre nosotros</a>
+        <a href="/#nosotros" class="nav-link">
+          Sobre nosotros
+        </a>
       </li>
+
       <li>
-        <a href="/blogs/articles" class="nav-link">Blog</a>
+        <a href="/blogs/articles" class="nav-link">
+          Blog
+        </a>
       </li>
     </ul>
 
-    <!-- Acciones Escritorio y Botón Hamburguesa Móvil -->
+    <!-- Botones + menú móvil -->
     <div class="flex items-center gap-4">
+
+      <!-- Botón huella de carbono -->
       <a
-        href="/feature/calculadora-huella-hidrica"
-        class="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-lg text-white bg-[#439FC5] hover:opacity-90 transition-opacity text-[14px] md:text-[16px] font-bold h-[45px] md:h-[51px] shadow-[0px_5px_0px_#2178BD]"
+        href="/feature/calculadora-huella-carbono"
+        class="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-lg text-white bg-[#3ABA67] hover:opacity-90 transition-opacity text-[14px] md:text-[16px] font-bold h-[45px] md:h-[51px] shadow-[0px_5px_0px_#007558]"
       >
-        Calcular huella hídrica
+        Calcular huella de carbono
       </a>
 
-      <!-- Botón Hamburguesa (Móvil) -->
+      <!-- Botón huella hídrica -->
+      <a
+        href="/feature/calculadora-huella-hidrica-v2"
+        class="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-lg text-white bg-[#439FC5] hover:opacity-90 transition-opacity text-[14px] md:text-[16px] font-bold h-[45px] md:h-[51px] shadow-[0px_5px_0px_#2178BD]"
+      >
+        Calcular huella hidrica
+      </a>
+
+      <!-- Botón hamburguesa -->
       <button
         id="menu-toggle"
-        aria-label="Abrir menú"
+        type="button"
+        aria-label="Abrir menu"
+        aria-expanded="false"
         class="md:hidden p-2 text-[#1E7B5C] focus:outline-none"
       >
-        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg
+          class="w-8 h-8"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
           <path
             stroke-linecap="round"
             stroke-linejoin="round"
@@ -58,21 +87,41 @@ import LogoNuevoMiHuella2 from "../assets/images/mihuella_logo2.webp";
     </div>
   </nav>
 
-  <!-- Menú Desplegable Móvil -->
+  <!-- Menú móvil -->
   <div
     id="mobile-menu"
     class="hidden md:hidden bg-white border-t border-gray-100 px-7 py-5 shadow-lg flex-col gap-4"
   >
-    <a href="/#calcular" class="mobile-link">¿Cómo calculamos?</a>
-    <a href="/#mision" class="mobile-link">Nuestra misión</a>
-    <a href="/#nosotros" class="mobile-link">Sobre nosotros</a>
-    <a href="/blogs/articles" class="mobile-link">Blog</a>
-    
+    <a href="/#calcular" class="mobile-link">
+      Como calculamos?
+    </a>
+
+    <a href="/#mision" class="mobile-link">
+      Nuestra mision
+    </a>
+
+    <a href="/#nosotros" class="mobile-link">
+      Sobre nosotros
+    </a>
+
+    <a href="/blogs/articles" class="mobile-link">
+      Blog
+    </a>
+
+    <!-- Botón carbono móvil -->
     <a
-      href="/feature/calculadora-huella-hidrica"
+      href="/feature/calculadora-huella-carbono"
+      class="sm:hidden inline-flex items-center justify-center px-4 py-3 rounded-lg text-white bg-[#3ABA67] font-bold text-center mt-2 shadow-[0px_4px_0px_#007558]"
+    >
+      Calcular huella de carbono
+    </a>
+
+    <!-- Botón hídrica móvil -->
+    <a
+      href="/feature/calculadora-huella-hidrica-v2"
       class="sm:hidden inline-flex items-center justify-center px-4 py-3 rounded-lg text-white bg-[#439FC5] font-bold text-center mt-2 shadow-[0px_4px_0px_#2178BD]"
     >
-      Calcular huella hídrica
+      Calcular huella hidrica
     </a>
   </div>
 </header>
@@ -84,14 +133,24 @@ import LogoNuevoMiHuella2 from "../assets/images/mihuella_logo2.webp";
     font-size: 20px;
     line-height: 28px;
     color: #1E7B5C;
+    transition: opacity 0.2s ease;
   }
-  
+
+  .nav-link:hover {
+    opacity: 0.75;
+  }
+
   .mobile-link {
     font-family: 'Quicksand', sans-serif;
     font-weight: 600;
     font-size: 18px;
     color: #1E7B5C;
     padding: 8px 0;
+    display: block;
+  }
+
+  .mobile-link:hover {
+    opacity: 0.75;
   }
 </style>
 
@@ -101,16 +160,26 @@ import LogoNuevoMiHuella2 from "../assets/images/mihuella_logo2.webp";
 
   if (menuToggle && mobileMenu) {
     menuToggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-      mobileMenu.classList.toggle('flex');
+      const isHidden = mobileMenu.classList.contains('hidden');
+
+      if (isHidden) {
+        mobileMenu.classList.remove('hidden');
+        mobileMenu.classList.add('flex');
+        menuToggle.setAttribute('aria-expanded', 'true');
+      } else {
+        mobileMenu.classList.add('hidden');
+        mobileMenu.classList.remove('flex');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      }
     });
 
-    // Cerrar menú al hacer clic en una opción
     const links = mobileMenu.querySelectorAll('a');
-    links.forEach(link => {
+
+    links.forEach((link) => {
       link.addEventListener('click', () => {
         mobileMenu.classList.add('hidden');
         mobileMenu.classList.remove('flex');
+        menuToggle.setAttribute('aria-expanded', 'false');
       });
     });
   }

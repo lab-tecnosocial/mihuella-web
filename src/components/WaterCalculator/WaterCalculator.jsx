@@ -10,6 +10,8 @@ import { Question6HandWashing } from './questions/Question6HandWashing';
 import { Question7ToiletType } from './questions/Question7ToiletType';
 import { Question8ClothesWashing } from './questions/Question8ClothesWashing';
 import { Question9Dishwashing } from './questions/Question9Dishwashing';
+import { Question10DishwashingFrequency } from './questions/Question10DishwashingFrequency';
+import { Question11PatioCleaning } from './questions/Question11PatioCleaning';
 import { Question12Proteins } from './questions/Question12Proteins';
 import { Question13ProteinAmounts } from './questions/Question13ProteinAmounts';
 import { Question14Cereals } from './questions/Question14Cereals';
@@ -28,7 +30,9 @@ export function WaterCalculator() {
 
   const handleBack = () => {
     if (currentStep === 1) setCurrentStep(0);
-    else if (currentStep === 12) setCurrentStep(9);
+    else if (currentStep === 12) setCurrentStep(11);
+    else if (currentStep === 11) setCurrentStep(10);
+    else if (currentStep === 10) setCurrentStep(9);
     else if (currentStep === 13) setCurrentStep(12);
     else if (currentStep === 14) {
       const selectedProteins = answers.proteins || [];
@@ -73,6 +77,10 @@ export function WaterCalculator() {
     setAnswers(updatedAnswers);
 
     if (currentStep === 9) {
+      setCurrentStep(10);
+    } else if (currentStep === 10) {
+      setCurrentStep(11);
+    } else if (currentStep === 11) {
       setCurrentStep(12);
     } else if (currentStep === 12) {
       const selected = updatedAnswers.proteins || [];
@@ -208,6 +216,24 @@ export function WaterCalculator() {
             onBack={handleBack}
             onExit={handleBackToHome}
             initialValue={answers.dishwashingMethod || ''}
+          />
+        )}
+
+        {currentStep === 10 && (
+          <Question10DishwashingFrequency
+            onNext={handleNext}
+            onBack={handleBack}
+            onExit={handleBackToHome}
+            initialValue={answers.dishwashingTimesPerDay || 0}
+          />
+        )}
+
+        {currentStep === 11 && (
+          <Question11PatioCleaning
+            onNext={handleNext}
+            onBack={handleBack}
+            onExit={handleBackToHome}
+            initialValue={answers.patioCleaningMethod || ''}
           />
         )}
 
