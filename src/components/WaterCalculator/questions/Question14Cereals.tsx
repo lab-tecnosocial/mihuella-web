@@ -50,7 +50,7 @@ export function Question14Cereals({
       currentCategoryIndex={3} // Categoría: Dieta
       currentQuestionIndex={2}
       totalQuestionsInCategory={4}
-      icon="/img/dieta-icon.webp"
+      icon="/img/cereals-icon.webp"
       onBack={onBack}
       onExit={onExit}
       onNext={() => onNext({ cereals: selectedCereals })}
