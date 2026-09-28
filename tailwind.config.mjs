@@ -18,6 +18,8 @@ export default {
 			},
 		},
 	},
-	plugins: [require('tailwindcss-animated')],
+	plugins: [tailwindcssAnimated],
 };
+
+import tailwindcssAnimated from 'tailwindcss-animated';
 
