@@ -1,4 +1,3 @@
-import React from "react";
 import { Apple, Zap, CarTaxiFront, Lightbulb, Flame } from "lucide-react";
 import { CarbonQuestionLayout } from "./CarbonQuestionLayout";
 

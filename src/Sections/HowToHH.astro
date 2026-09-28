@@ -1,14 +1,11 @@
 ---
-import Higiene from "../assets/images/wash.webp"
-import Limpieza from "../assets/images/laundry.webp";
-import Dieta from "../assets/images/howTo/dieta.webp";
-import Alimentacion from "../assets/images/lunch_dining.webp";
-import BienesyServicios from "../assets/images/bienes.webp";
-import HabitosSostenibles from "../assets/images/habitos_sost.webp";
+const Higiene = new URL("../assets/images/wash.webp", import.meta.url).href;
+const Limpieza = new URL("../assets/images/laundry.webp", import.meta.url).href;
+const Alimentacion = new URL("../assets/images/lunch_dining.webp", import.meta.url).href;
+const BienesyServicios = new URL("../assets/images/bienes.webp", import.meta.url).href;
+const HabitosSostenibles = new URL("../assets/images/habitos_sost.webp", import.meta.url).href;
 import CaculateCard from "../components/CaculateCard.astro";
-import Resultado from "../assets/images/howTo/grafico.webp";
-import Rig from "../assets/images/howTo/rig-feliz.webp";
-import Semaforo from "../assets/images/Rango semáforo de 5 colores.webp";
+
 ---
 
 <section
@@ -21,7 +18,7 @@ import Semaforo from "../assets/images/Rango semáforo de 5 colores.webp";
     <h2 class="text-center md:text-2xl">Evalúa tu consumo de agua en cinco categorías principales:</h2>
   <div class="flex flex-col md:flex-row mb-20 gap-2 md:justify-between w-full">
     <CaculateCard
-      img={Higiene.src}
+      img={Higiene}
       text="Higiene"
       altImg="Higiene"
       withImg="100px"
@@ -29,7 +26,7 @@ import Semaforo from "../assets/images/Rango semáforo de 5 colores.webp";
     />
 
     <CaculateCard
-      img={Limpieza.src}
+      img={Limpieza}
       text="Limpieza"
       altImg="Limpieza"
       withImg="100px"
@@ -37,21 +34,21 @@ import Semaforo from "../assets/images/Rango semáforo de 5 colores.webp";
     />
 
     <CaculateCard
-      img={Alimentacion.src}
+      img={Alimentacion}
       text="Dieta"
       altImg="Imagen Dieta"
       withImg="100px"
       stylesComponent="md:h-auto mt-5 transition ease-in-out duration-500 transform hover:scale-110 hover:bg-transparent mb-30"
     />
         <CaculateCard
-      img={BienesyServicios.src}
+      img={BienesyServicios}
       text="Bienes y Servicios"
       altImg="Imagen Bienes y Servicios"
       withImg="100px"
       stylesComponent="md:h-auto mt-5 transition ease-in-out duration-500 transform hover:scale-110 hover:bg-transparent mb-30"
     />
         <CaculateCard
-      img={HabitosSostenibles.src}
+      img={HabitosSostenibles}
       text="Hábitos Sostenibles"
       altImg="Imagen Hábitos Sostenibles"
       withImg="100px"
