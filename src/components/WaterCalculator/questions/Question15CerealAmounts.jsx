@@ -57,7 +57,7 @@ export function Question15CerealAmounts({
       currentCategoryIndex={3} // Categoría: Dieta
       currentQuestionIndex={3}
       totalQuestionsInCategory={4}
-      icon="/img/dieta-icon.webp"
+      icon="/img/cereals-icon.webp"
       onBack={onBack}
       onExit={onExit}
       onNext={() => onNext({ cerealAmounts: amounts })}
