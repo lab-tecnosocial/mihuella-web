@@ -11,7 +11,15 @@ import { Question8MilkConsumption } from './Question8MilkConsumption';
 import { Question9CheeseConsumption } from './Question9CheeseConsumption';
 import { Question10YogurtConsumption } from './Question10YogurtConsumption';
 import { Question11FruitsConsumption } from './Question11FruitsConsumption';
-import { CarbonQuestionLayout } from './CarbonQuestionLayout';
+import { Question14TransportMode } from './Question14TransportMode';
+import { Question15TransportDays } from './Question15TransportDays';
+import { Question16TransportDistance } from './Question16TransportDistance';
+import { Question17CarOccupants } from './Question17CarOccupants';
+import { Question18AirplaneTrips } from './Question18AirplaneTrips';
+import { Question19FlightDuration } from './Question19FlightDuration';
+import { Question20WasteSeparation } from './Question20WasteSeparation';
+import { Question21WasteTypes } from './Question21WasteTypes';
+import { Question22WasteQuantities } from './Question22WasteQuantities';
 
 export function CarbonCalculatorFlow() {
   const [currentStep, setCurrentStep] = useState(-1);
@@ -28,10 +36,32 @@ export function CarbonCalculatorFlow() {
     cheeseConsumptionKg: 0,
     yogurtConsumptionLt: 0,
     fruitsAndVegetablesKg: 0,
+    // Campos de Transporte
+    transportMode: '',
+    transportDays: 0,
+    transportDistance: 0,
+    carOccupants: 1,
+    airplaneTrips: 0,
+    flightDurationMin: 0,
+    // Campos de Residuos
+    separatesWaste: true,
+    wasteTypes: [],
+    wasteQuantities: {
+      comunes: 0,
+      organicos: 0,
+      papel: 0,
+      plasticos: 0,
+    },
   });
 
   const handleBackToHome = () => {
     window.location.href = '/';
+  };
+
+  const handleFinishCalculation = (finalData) => {
+    const updatedData = { ...formData, ...finalData };
+    console.log('Datos completos para calcular huella de carbono:', updatedData);
+    // Aquí rediriges a tus resultados o ejecutas la lógica final de cálculo
   };
 
   return (
@@ -119,7 +149,7 @@ export function CarbonCalculatorFlow() {
           initialValue={formData.lambKg}
           onNext={(kg) => {
             setFormData((prev) => ({ ...prev, lambKg: kg }));
-            setCurrentStep(8); // Avanza a Leche
+            setCurrentStep(8);
           }}
           onBack={() => setCurrentStep(6)}
           onExit={handleBackToHome}
@@ -131,7 +161,7 @@ export function CarbonCalculatorFlow() {
           initialValue={formData.milkLt}
           onNext={(lt) => {
             setFormData((prev) => ({ ...prev, milkLt: lt }));
-            setCurrentStep(9); // Avanza a Queso
+            setCurrentStep(9);
           }}
           onBack={() => setCurrentStep(7)}
           onExit={handleBackToHome}
@@ -167,28 +197,143 @@ export function CarbonCalculatorFlow() {
           initialValue={formData.fruitsAndVegetablesKg}
           onNext={(data) => {
             setFormData((prev) => ({ ...prev, ...data }));
-            setCurrentStep(12);
+            setCurrentStep(14);
           }}
           onBack={() => setCurrentStep(10)}
           onExit={handleBackToHome}
         />
       )}
 
-      {/* VISTA DE RESPALDO: Ya no debería activarse en el rango 1-11, queda solo para pasos futuros */}
-      {currentStep > 11 && (
-        <CarbonQuestionLayout
-          currentCategoryIndex={1}
-          icon="/img/semilla.webp"
+      {currentStep === 14 && (
+        <Question14TransportMode
+          initialValue={formData.transportMode}
+          onNext={(data) => {
+            setFormData((prev) => ({ ...prev, ...data }));
+            setCurrentStep(15);
+          }}
           onBack={() => setCurrentStep(11)}
           onExit={handleBackToHome}
-        >
-          <div className="flex flex-col items-center text-center text-gray-800">
-            <h2 className="text-xl font-bold mb-2">Próximamente</h2>
-            <p className="text-sm text-gray-600">
-              Esta sección está en desarrollo. (Paso actual: {currentStep})
-            </p>
-          </div>
-        </CarbonQuestionLayout>
+        />
+      )}
+
+      {currentStep === 15 && (
+        <Question15TransportDays
+          initialValue={formData.transportDays}
+          onNext={(data) => {
+            setFormData((prev) => ({ ...prev, ...data }));
+            setCurrentStep(16);
+          }}
+          onBack={() => setCurrentStep(14)}
+          onExit={handleBackToHome}
+        />
+      )}
+
+      {currentStep === 16 && (
+        <Question16TransportDistance
+          initialValue={formData.transportDistance}
+          onNext={(data) => {
+            setFormData((prev) => ({ ...prev, ...data }));
+            if (formData.transportMode === 'auto_propio') {
+              setCurrentStep(17);
+            } else {
+              setCurrentStep(18);
+            }
+          }}
+          onBack={() => setCurrentStep(15)}
+          onExit={handleBackToHome}
+        />
+      )}
+
+      {currentStep === 17 && (
+        <Question17CarOccupants
+          initialValue={formData.carOccupants}
+          onNext={(data) => {
+            setFormData((prev) => ({ ...prev, ...data }));
+            setCurrentStep(18);
+          }}
+          onBack={() => setCurrentStep(16)}
+          onExit={handleBackToHome}
+        />
+      )}
+
+      {currentStep === 18 && (
+        <Question18AirplaneTrips
+          initialValue={formData.airplaneTrips}
+          onNext={(data) => {
+            setFormData((prev) => ({ ...prev, ...data }));
+            setCurrentStep(19);
+          }}
+          onBack={() => {
+            if (formData.transportMode === 'auto_propio') {
+              setCurrentStep(17);
+            } else {
+              setCurrentStep(16);
+            }
+          }}
+          onExit={handleBackToHome}
+        />
+      )}
+
+      {currentStep === 19 && (
+        <Question19FlightDuration
+          initialValue={formData.flightDurationMin}
+          onNext={(data) => {
+            setFormData((prev) => ({ ...prev, ...data }));
+            setCurrentStep(20);
+          }}
+          onBack={() => setCurrentStep(18)}
+          onExit={handleBackToHome}
+        />
+      )}
+
+      {/* Pregunta 20: ¿Separas los residuos? */}
+      {currentStep === 20 && (
+        <Question20WasteSeparation
+          initialValue={formData.separatesWaste}
+          onNext={(data) => {
+            setFormData((prev) => ({ ...prev, ...data }));
+            if (data.separatesWaste) {
+              setCurrentStep(21);
+            } else {
+              setCurrentStep(22);
+            }
+          }}
+          onBack={() => setCurrentStep(19)}
+          onExit={handleBackToHome}
+        />
+      )}
+
+      {/* Pregunta 21: Selección de tipos de residuos */}
+      {currentStep === 21 && (
+        <Question21WasteTypes
+          initialValue={formData.wasteTypes}
+          onNext={(data) => {
+            setFormData((prev) => ({ ...prev, ...data }));
+            setCurrentStep(22);
+          }}
+          onBack={() => setCurrentStep(20)}
+          onExit={handleBackToHome}
+        />
+      )}
+
+      {/* Pregunta 22: Cantidades por residuo */}
+      {currentStep === 22 && (
+        <Question22WasteQuantities
+          initialValue={formData.wasteQuantities}
+          // AQUÍ: Pasamos los tipos seleccionados (o solo 'comunes' si no separa)
+          selectedWasteTypes={!formData.separatesWaste ? ['comunes'] : formData.wasteTypes}
+          onNext={(data) => {
+            handleFinishCalculation(data);
+          }}
+          onBack={() => {
+            if (formData.separatesWaste) {
+              setCurrentStep(21);
+            } else {
+              setCurrentStep(20);
+            }
+          }}
+          onExit={handleBackToHome}
+        />
       )}
     </>
   );
