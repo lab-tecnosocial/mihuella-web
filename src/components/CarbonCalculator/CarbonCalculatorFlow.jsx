@@ -17,7 +17,9 @@ import { Question16TransportDistance } from './Question16TransportDistance';
 import { Question17CarOccupants } from './Question17CarOccupants';
 import { Question18AirplaneTrips } from './Question18AirplaneTrips';
 import { Question19FlightDuration } from './Question19FlightDuration';
-import { CarbonQuestionLayout } from './CarbonQuestionLayout';
+import { Question20WasteSeparation } from './Question20WasteSeparation';
+import { Question21WasteTypes } from './Question21WasteTypes';
+import { Question22WasteQuantities } from './Question22WasteQuantities';
 
 export function CarbonCalculatorFlow() {
   const [currentStep, setCurrentStep] = useState(-1);
@@ -41,10 +43,25 @@ export function CarbonCalculatorFlow() {
     carOccupants: 1,
     airplaneTrips: 0,
     flightDurationMin: 0,
+    // Campos de Residuos
+    separatesWaste: true,
+    wasteTypes: [],
+    wasteQuantities: {
+      comunes: 0,
+      organicos: 0,
+      papel: 0,
+      plasticos: 0,
+    },
   });
 
   const handleBackToHome = () => {
     window.location.href = '/';
+  };
+
+  const handleFinishCalculation = (finalData) => {
+    const updatedData = { ...formData, ...finalData };
+    console.log('Datos completos para calcular huella de carbono:', updatedData);
+    // Aquí rediriges a tus resultados o ejecutas la lógica final de cálculo
   };
 
   return (
@@ -180,7 +197,6 @@ export function CarbonCalculatorFlow() {
           initialValue={formData.fruitsAndVegetablesKg}
           onNext={(data) => {
             setFormData((prev) => ({ ...prev, ...data }));
-            // Corregido: salta directamente al paso 14 (Modo de transporte)
             setCurrentStep(14);
           }}
           onBack={() => setCurrentStep(10)}
@@ -217,7 +233,6 @@ export function CarbonCalculatorFlow() {
           initialValue={formData.transportDistance}
           onNext={(data) => {
             setFormData((prev) => ({ ...prev, ...data }));
-            // Lógica condicional: sólo va a la 17 si es auto propio
             if (formData.transportMode === 'auto_propio') {
               setCurrentStep(17);
             } else {
@@ -249,7 +264,6 @@ export function CarbonCalculatorFlow() {
             setCurrentStep(19);
           }}
           onBack={() => {
-            // Regresa al paso 17 o 16 según el modo de transporte
             if (formData.transportMode === 'auto_propio') {
               setCurrentStep(17);
             } else {
@@ -272,21 +286,53 @@ export function CarbonCalculatorFlow() {
         />
       )}
 
-      {/* VISTA DE RESPALDO: Para pasos futuros (> 19) */}
-      {currentStep > 19 && (
-        <CarbonQuestionLayout
-          currentCategoryIndex={1}
-          icon="/img/semilla.webp"
+      {/* Pregunta 20: ¿Separas los residuos? */}
+      {currentStep === 20 && (
+        <Question20WasteSeparation
+          initialValue={formData.separatesWaste}
+          onNext={(data) => {
+            setFormData((prev) => ({ ...prev, ...data }));
+            // Si el usuario responde "No" (false), puedes finalizar o saltar a la 22 según la lógica requerida
+            if (data.separatesWaste) {
+              setCurrentStep(21);
+            } else {
+              setCurrentStep(22);
+            }
+          }}
           onBack={() => setCurrentStep(19)}
           onExit={handleBackToHome}
-        >
-          <div className="flex flex-col items-center text-center text-gray-800">
-            <h2 className="text-xl font-bold mb-2">Próximamente</h2>
-            <p className="text-sm text-gray-600">
-              Esta sección está en desarrollo. (Paso actual: {currentStep})
-            </p>
-          </div>
-        </CarbonQuestionLayout>
+        />
+      )}
+
+      {/* Pregunta 21: Selección de tipos de residuos */}
+      {currentStep === 21 && (
+        <Question21WasteTypes
+          initialValue={formData.wasteTypes}
+          onNext={(data) => {
+            setFormData((prev) => ({ ...prev, ...data }));
+            setCurrentStep(22);
+          }}
+          onBack={() => setCurrentStep(20)}
+          onExit={handleBackToHome}
+        />
+      )}
+
+      {/* Pregunta 22: Cantidades por residuo */}
+      {currentStep === 22 && (
+        <Question22WasteQuantities
+          initialValue={formData.wasteQuantities}
+          onNext={(data) => {
+            handleFinishCalculation(data);
+          }}
+          onBack={() => {
+            if (formData.separatesWaste) {
+              setCurrentStep(21);
+            } else {
+              setCurrentStep(20);
+            }
+          }}
+          onExit={handleBackToHome}
+        />
       )}
     </>
   );
