@@ -15,11 +15,13 @@ export function Question22WasteQuantities({
     onBack,
     onExit,
     initialValue = DEFAULT_QUANTITIES,
+    selectedWasteTypes = [], // <-- Nueva propiedad agregada
 }: {
     onNext: (value: { wasteQuantities: typeof DEFAULT_QUANTITIES }) => void;
     onBack: () => void;
     onExit: () => void;
     initialValue?: typeof DEFAULT_QUANTITIES;
+    selectedWasteTypes?: string[]; // <-- Tipado para la nueva propiedad
 }) {
     const [quantities, setQuantities] = useState({
         ...DEFAULT_QUANTITIES,
@@ -60,6 +62,11 @@ export function Question22WasteQuantities({
         { id: 'plasticos', label: 'Plásticos', icon: '/img/bottles.webp' },
     ];
 
+    // Filtramos los items basándonos en lo seleccionado previamente (Si está vacío, muestra todos como respaldo)
+    const displayedItems = selectedWasteTypes.length > 0 
+        ? items.filter((item) => selectedWasteTypes.includes(item.id))
+        : items;
+
     return (
         <CarbonQuestionLayout
             currentCategoryIndex={4}
@@ -78,7 +85,8 @@ export function Question22WasteQuantities({
 
                 {/* Lista de Controles de Cantidad */}
                 <div className="w-full space-y-3 mb-5">
-                    {items.map((item) => (
+                    {/* Iteramos sobre el arreglo filtrado */}
+                    {displayedItems.map((item) => (
                         <div
                             key={item.id}
                             className="flex items-center justify-between bg-white border border-gray-200 rounded-xl p-3 shadow-sm"

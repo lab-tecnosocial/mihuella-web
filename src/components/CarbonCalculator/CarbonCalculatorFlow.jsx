@@ -292,7 +292,6 @@ export function CarbonCalculatorFlow() {
           initialValue={formData.separatesWaste}
           onNext={(data) => {
             setFormData((prev) => ({ ...prev, ...data }));
-            // Si el usuario responde "No" (false), puedes finalizar o saltar a la 22 según la lógica requerida
             if (data.separatesWaste) {
               setCurrentStep(21);
             } else {
@@ -321,6 +320,8 @@ export function CarbonCalculatorFlow() {
       {currentStep === 22 && (
         <Question22WasteQuantities
           initialValue={formData.wasteQuantities}
+          // AQUÍ: Pasamos los tipos seleccionados (o solo 'comunes' si no separa)
+          selectedWasteTypes={!formData.separatesWaste ? ['comunes'] : formData.wasteTypes}
           onNext={(data) => {
             handleFinishCalculation(data);
           }}
