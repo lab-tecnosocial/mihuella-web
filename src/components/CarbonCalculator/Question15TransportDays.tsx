@@ -36,10 +36,15 @@ export function Question15TransportDays({
 
   return (
     <CarbonQuestionLayout
-      currentCategoryIndex={3}
+      currentCategoryIndex={1} 
+      currentQuestionIndex={2} 
+      totalQuestionsInCategory={3}
       icon={'/img/trufi.webp'}
       onBack={onBack}
       onExit={onExit}
+      onNext={() => onNext({ transportDays: days })}
+      isNextDisabled={false}
+      nextText="Continuar"
     >
       <form onSubmit={handleSubmit} className="flex flex-col items-center w-full max-w-md mx-auto">
         <h2 className="text-2xl font-bold text-gray-800 text-center mb-1">
@@ -49,45 +54,32 @@ export function Question15TransportDays({
 
         {/* Control Numérico */}
         <div className="relative w-full bg-white border border-gray-200 rounded-2xl p-4 flex items-center justify-between mb-6 shadow-sm">
-          <div className="flex-1 flex flex-col items-center pl-8">
-            <div className="flex items-baseline">
-              <input
-                type="number"
-                min="0"
-                max="7"
-                value={days}
-                onChange={handleChange}
-                className="text-4xl font-extrabold text-gray-700 w-24 text-center focus:outline-none bg-transparent"
-              />
-              <span className="text-xl font-medium text-gray-400 ml-1">Días</span>
-            </div>
-          </div>
+        <div className="flex-1 flex items-baseline justify-center gap-2 border-b-2 border-dashed border-gray-300 pb-1 mx-4">
+          <span className="text-3xl sm:text-4xl font-black text-gray-800">
+            {days}
+          </span>
+          <span className="text-sm sm:text-base font-semibold text-gray-400">
+            días
+          </span>
+        </div>
 
           <div className="flex flex-col gap-1">
             <button
               type="button"
               onClick={handleIncrement}
-              className="p-2 bg-emerald-100 hover:bg-emerald-200 text-emerald-700 rounded-lg transition-colors"
+              className="p-2 bg-[#3ABA67]-100 hover:bg-[#3ABA67]-200 text-[#3ABA67]-700 rounded-lg transition-colors"
             >
               <ChevronUp size={20} />
             </button>
             <button
               type="button"
               onClick={handleDecrement}
-              className="p-2 bg-emerald-100 hover:bg-emerald-200 text-emerald-700 rounded-lg transition-colors"
+              className="p-2 bg-[#3ABA67]-100 hover:bg-[#3ABA67]-200 text-[#3ABA67]-700 rounded-lg transition-colors"
             >
               <ChevronDown size={20} />
             </button>
           </div>
         </div>
-
-        {/* Botón de Continuar */}
-        <button
-          type="submit"
-          className="w-full py-3.5 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-xl shadow-md transition-all flex items-center justify-center gap-2"
-        >
-          Continuar →
-        </button>
       </form>
     </CarbonQuestionLayout>
   );

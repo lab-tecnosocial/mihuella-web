@@ -9,11 +9,11 @@ type Question17CarOccupantsProps = {
 };
 
 const OCCUPANT_OPTIONS = [
-  { id: '1', label: '1 persona', value: 1 },
-  { id: '2', label: '2 personas', value: 2 },
-  { id: '3', label: '3 personas', value: 3 },
-  { id: '4', label: '4 personas', value: 4 },
-  { id: 'more_4', label: 'Más de 4 personas', value: 5 },
+  { id: '1', value:1, label: 'persona', icon: '/img/1p.webp' },
+  { id: '2', value:2, label: 'personas', icon: '/img/2p.webp' },
+  { id: '3', value:3, label: 'personas', icon: '/img/3p.webp' },
+  { id: '4', value:4, label: 'personas', icon: '/img/4p.webp' },
+  { id: 'more_4', value:5, label: 'Más de 4 personas', icon: '/img/more_than_4p.webp' },
 ];
 
 export function Question17CarOccupants({
@@ -35,6 +35,9 @@ export function Question17CarOccupants({
       icon={'/img/car.webp'}
       onBack={onBack}
       onExit={onExit}
+      onNext={() => onNext({ carOccupants: occupants })}
+      isNextDisabled={false}
+      nextText="Continuar"
     >
       <form onSubmit={handleSubmit} className="flex flex-col items-center w-full max-w-md mx-auto">
         <h2 className="text-xl sm:text-2xl font-bold text-gray-800 text-center mb-1">
@@ -52,7 +55,7 @@ export function Question17CarOccupants({
                 onClick={() => setOccupants(option.value)}
                 className={`cursor-pointer rounded-2xl p-3 border-2 transition-all flex flex-col items-center justify-between text-center relative bg-white min-h-[90px] ${
                   isSelected
-                    ? 'border-emerald-500 shadow-md ring-2 ring-emerald-500/20'
+                    ? 'border-[#3ABA67] shadow-md ring-2 ring-[#3ABA67]/20'
                     : 'border-gray-200 hover:border-gray-300'
                 } ${option.id === 'more_4' ? 'col-span-2' : ''}`}
               >
@@ -61,7 +64,7 @@ export function Question17CarOccupants({
                   <div
                     className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${
                       isSelected
-                        ? 'border-emerald-500 bg-emerald-500'
+                        ? 'border-[#3ABA67] bg-[#3ABA67]'
                         : 'border-gray-300 bg-white'
                     }`}
                   >
@@ -69,22 +72,15 @@ export function Question17CarOccupants({
                   </div>
                 </div>
 
-                <span className="text-emerald-600 font-extrabold text-lg mt-1">
-                  {option.id === 'more_4' ? '+4' : option.value}
+                <img src={option.icon} alt="" className="h-10 w-10 object-contain" />
+                <span className="text-[#3ABA67] font-extrabold text-lg mt-1">
+                  {option.value > 4 ? '+4' : option.value}
                 </span>
                 <span className="text-xs text-gray-600 font-medium">{option.label}</span>
               </div>
             );
           })}
         </div>
-
-        {/* Botón de Continuar */}
-        <button
-          type="submit"
-          className="w-full py-3.5 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-xl shadow-md transition-all flex items-center justify-center gap-2"
-        >
-          Continuar →
-        </button>
       </form>
     </CarbonQuestionLayout>
   );
