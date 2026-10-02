@@ -11,6 +11,10 @@ import { Question8MilkConsumption } from './Question8MilkConsumption';
 import { Question9CheeseConsumption } from './Question9CheeseConsumption';
 import { Question10YogurtConsumption } from './Question10YogurtConsumption';
 import { Question11FruitsConsumption } from './Question11FruitsConsumption';
+import { Question12ElectricityCost } from './Question12ElectricityCost';
+import { Question13GasType } from './Question13GasType';
+import { Question13aGasDomicilioCost } from './Question13aGasDomicilioCost';
+import { Question13bGarrafaQuantity } from './Question13bGarrafaQuantity';
 import { Question14TransportMode } from './Question14TransportMode';
 import { Question15TransportDays } from './Question15TransportDays';
 import { Question16TransportDistance } from './Question16TransportDistance';
@@ -36,6 +40,11 @@ export function CarbonCalculatorFlow() {
     cheeseConsumptionKg: 0,
     yogurtConsumptionLt: 0,
     fruitsAndVegetablesKg: 0,
+    //Campos de Energía
+    electricityCostBs: 0,
+    gasType: 'garrafa',
+    gasDomicilioCostBs: 0,
+    garrafaCount: 0,
     // Campos de Transporte
     transportMode: '',
     transportDays: 0,
@@ -197,13 +206,69 @@ export function CarbonCalculatorFlow() {
           initialValue={formData.fruitsAndVegetablesKg}
           onNext={(data) => {
             setFormData((prev) => ({ ...prev, ...data }));
-            setCurrentStep(14);
+            setCurrentStep(12);
           }}
           onBack={() => setCurrentStep(10)}
           onExit={handleBackToHome}
         />
       )}
 
+      {currentStep === 12 && (
+        <Question12ElectricityCost
+          initialValue={formData.electricityCostBs}
+          onNext={(data) => {
+            setFormData((prev) => ({ ...prev, ...data }));
+            setCurrentStep(13);
+          }}
+          onBack={() => setCurrentStep(11)}
+          onExit={handleBackToHome}
+        />
+      )}
+
+      {/* Pregunta 13: Tipo de Suministro de Gas */}
+      {currentStep === 13 && (
+        <Question13GasType
+          initialValue={formData.gasType}
+          onNext={(data) => {
+            setFormData((prev) => ({ ...prev, ...data }));
+            if (data.gasType === 'domicilio') {
+              setCurrentStep('13a');
+            } else {
+              setCurrentStep('13b');
+            }
+          }}
+          onBack={() => setCurrentStep(12)}
+          onExit={handleBackToHome}
+        />
+      )}
+
+      {/* Pregunta 13a: Costo Gas Domiciliario */}
+      {currentStep === '13a' && (
+        <Question13aGasDomicilioCost
+          initialValue={formData.gasDomicilioCostBs}
+          onNext={(data) => {
+            setFormData((prev) => ({ ...prev, ...data }));
+            setCurrentStep(14);
+          }}
+          onBack={() => setCurrentStep(13)}
+          onExit={handleBackToHome}
+        />
+      )}
+
+      {/* Pregunta 13b: Cantidad de Garrafas */}
+      {currentStep === '13b' && (
+        <Question13bGarrafaQuantity
+          initialValue={formData.garrafaCount}
+          onNext={(data) => {
+            setFormData((prev) => ({ ...prev, ...data }));
+            setCurrentStep(14);
+          }}
+          onBack={() => setCurrentStep(13)}
+          onExit={handleBackToHome}
+        />
+      )}
+
+      {/* Pregunta 14: Transporte */}
       {currentStep === 14 && (
         <Question14TransportMode
           initialValue={formData.transportMode}
@@ -211,7 +276,13 @@ export function CarbonCalculatorFlow() {
             setFormData((prev) => ({ ...prev, ...data }));
             setCurrentStep(15);
           }}
-          onBack={() => setCurrentStep(11)}
+          onBack={() => {
+            if (formData.gasType === 'domicilio') {
+              setCurrentStep('13a');
+            } else {
+              setCurrentStep('13b');
+            }
+          }}
           onExit={handleBackToHome}
         />
       )}
