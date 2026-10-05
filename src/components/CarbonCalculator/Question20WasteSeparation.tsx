@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { CarbonQuestionLayout } from './CarbonQuestionLayout';
 
 const SEPARATION_OPTIONS = [

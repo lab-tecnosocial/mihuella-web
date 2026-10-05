@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ChevronUp, ChevronDown, Lightbulb, HelpCircle } from 'lucide-react';
 import { CarbonQuestionLayout } from './CarbonQuestionLayout';
 
@@ -25,10 +25,10 @@ export function Question16TransportDistance({
     setKm((prev) => Math.max(0, prev - 1));
   };
 
-  const handleChange = (e: { target: { value: string; }; }) => {
-    const val = parseFloat(e.target.value);
-    setKm(isNaN(val) ? 0 : Math.max(0, val));
-  };
+  // const handleChange = (e: { target: { value: string; }; }) => {
+  //   const val = parseFloat(e.target.value);
+  //   setKm(isNaN(val) ? 0 : Math.max(0, val));
+  // };
 
   const handleSubmit = (e: { preventDefault: () => void; }) => {
     e.preventDefault();

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Plus, Minus, Lightbulb } from 'lucide-react';
 import { CarbonQuestionLayout } from './CarbonQuestionLayout';
 
