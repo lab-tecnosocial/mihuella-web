@@ -4,11 +4,11 @@ import { WaterQuestionLayout } from "../WaterQuestionLayout";
 
 const DRINK_METADATA = {
   te: { label: "Té", image: "/img/tea.webp" },
-  cafe: { label: "Café", image: "/img/cofeee.webp" },
+  cafe: { label: "Café", image: "/img/coffeee.webp" },
   leche: { label: "Leche", image: "/img/milk.webp" },
   jugos: { label: "Jugos", image: "/img/orange-juice.webp" },
   gaseosa: { label: "Gaseosas", image: "/img/soda.webp" },
-  otro: { label: "Otro", image: "/img/three-dots.webp" },
+  otro: { label: "Otro", image: "/img/three_dots.webp" },
 };
 
 export function Question19DrinkAmounts({
