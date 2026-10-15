@@ -2,15 +2,8 @@ import { useState } from 'react';
 import { WaterCalculatorOnboarding } from './WaterCalculatorOnboarding';
 import { WaterQuestionLayout } from './WaterQuestionLayout';
 import { Question1Origin } from './questions/Question1Origin';
-import { Question2WaterExpense } from './questions/Question2WaterExpense';
-import { Question3ShowerDuration } from './questions/Question3ShowerDuration';
-import { Question4ShowerFrequency } from './questions/Question4ShowerFrequency';
-import { Question5TeethBrushing } from './questions/Question5TeethBrushing';
-import { Question6HandWashing } from './questions/Question6HandWashing';
 import { Question7ToiletType } from './questions/Question7ToiletType';
-import { Question8ClothesWashing } from './questions/Question8ClothesWashing';
 import { Question9Dishwashing } from './questions/Question9Dishwashing';
-import { Question10DishwashingFrequency } from './questions/Question10DishwashingFrequency';
 import { Question11PatioCleaning } from './questions/Question11PatioCleaning';
 import { Question12Proteins } from './questions/Question12Proteins';
 import { Question13ProteinAmounts } from './questions/Question13ProteinAmounts';
@@ -20,6 +13,99 @@ import { Question16Fruits } from './questions/Question16Fruits';
 import { Question17FruitAmounts } from './questions/Question17FruitAmounts';
 import { Question18Drinks } from './questions/Question18Drinks';
 import { Question19DrinkAmounts } from './questions/Question19DrinkAmounts';
+import { NumberQuestion } from './questions/NumberQuestion';
+
+const NUMBER_QUESTIONS = {
+  2: {
+    answerKey: 'waterExpenseBs',
+    title: '¿Cuál es tu gasto mensual aproximado en agua? En Bs',
+    icon: '/img/form_hidrica_gotita.webp',
+    unit: 'Bs',
+    step: 10,
+    ariaLabel: 'gasto en Bs',
+    currentCategoryIndex: 0,
+    currentQuestionIndex: 0,
+    totalQuestionsInCategory: 1,
+    reference:
+      'Revisa tu factura de servicio de agua potable del último mes para colocar un dato preciso.',
+  },
+  3: {
+    answerKey: 'showerMinutes',
+    title: '¿Aproximadamente cuántos minutos duran tus duchas?',
+    icon: '/img/shower.webp',
+    unit: 'minutos',
+    step: 1,
+    ariaLabel: 'minutos',
+    currentCategoryIndex: 1,
+    currentQuestionIndex: 0,
+    totalQuestionsInCategory: 1,
+    reference: 'Una ducha promedio dura entre 5 a 10 minutos.',
+  },
+  4: {
+    answerKey: 'showerFrequencyPerWeek',
+    title: '¿Cuántas veces te duchas a la semana?',
+    icon: '/img/shower.webp',
+    unit: 'veces',
+    step: 1,
+    ariaLabel: 'veces por semana',
+    currentCategoryIndex: 1,
+    currentQuestionIndex: 1,
+    totalQuestionsInCategory: 3,
+    reference:
+      'Lo común para una persona es ducharse entre 7 y 14 veces a la semana (1 a 2 veces al día).',
+  },
+  5: {
+    answerKey: 'teethBrushingFrequencyPerDay',
+    title: '¿Cuántas veces al día te cepillas los dientes?',
+    icon: '/img/toothbrush.webp',
+    unit: 'veces',
+    step: 1,
+    ariaLabel: 'veces al día',
+    currentCategoryIndex: 1,
+    currentQuestionIndex: 2,
+    totalQuestionsInCategory: 3,
+    reference:
+      'Lo común para una persona es cepillarse entre 2 y 3 veces al día.',
+  },
+  6: {
+    answerKey: 'handWashingFrequencyPerDay',
+    title: '¿Cuántas veces al día te lavas las manos?',
+    icon: '/img/handwashing.webp',
+    unit: 'veces',
+    step: 1,
+    ariaLabel: 'veces al día',
+    currentCategoryIndex: 1,
+    currentQuestionIndex: 3,
+    totalQuestionsInCategory: 3,
+    reference:
+      'Una persona suele lavarse las manos entre 5 y 10 veces al día.',
+  },
+  8: {
+    answerKey: 'clothesWashingFrequencyPerWeek',
+    title: '¿Cuántas veces lavas ropa en una semana?',
+    icon: '/img/lavar-ropa.webp',
+    unit: 'Veces',
+    step: 1,
+    ariaLabel: 'veces',
+    currentCategoryIndex: 2,
+    currentQuestionIndex: 0,
+    totalQuestionsInCategory: 2,
+    reference: 'Lo común es lavar la ropa entre 1 y 3 veces por semana.',
+  },
+  10: {
+    answerKey: 'dishwashingTimesPerDay',
+    title: '¿Cuántas veces al día lavas los platos?',
+    icon: '/img/traste-calendario.webp',
+    unit: 'Veces',
+    step: 1,
+    ariaLabel: 'veces al día',
+    currentCategoryIndex: 1,
+    currentQuestionIndex: 3,
+    totalQuestionsInCategory: 3,
+    reference:
+      'Lavar platos a mano puede usar hasta 20 litros por lavado; con lavavajillas, el consumo baja considerablemente.',
+  },
+};
 
 export function WaterCalculator() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -123,6 +209,8 @@ export function WaterCalculator() {
     }
   };
 
+  const numberQuestion = NUMBER_QUESTIONS[currentStep];
+
   return (
     <div className="relative min-h-screen w-full bg-[#2178BD] flex flex-col justify-between overflow-hidden font-sans">
       <div
@@ -147,48 +235,13 @@ export function WaterCalculator() {
           />
         )}
 
-        {currentStep === 2 && (
-          <Question2WaterExpense
+        {numberQuestion && (
+          <NumberQuestion
+            {...numberQuestion}
             onNext={handleNext}
             onBack={handleBack}
             onExit={handleBackToHome}
-            initialValue={answers.waterExpenseBs || 0}
-          />
-        )}
-
-        {currentStep === 3 && (
-          <Question3ShowerDuration
-            onNext={handleNext}
-            onBack={handleBack}
-            onExit={handleBackToHome}
-            initialValue={answers.showerMinutes || 0}
-          />
-        )}
-
-        {currentStep === 4 && (
-          <Question4ShowerFrequency
-            onNext={handleNext}
-            onBack={handleBack}
-            onExit={handleBackToHome}
-            initialValue={answers.showerFrequencyPerWeek || 0}
-          />
-        )}
-
-        {currentStep === 5 && (
-          <Question5TeethBrushing
-            onNext={handleNext}
-            onBack={handleBack}
-            onExit={handleBackToHome}
-            initialValue={answers.teethBrushingFrequencyPerDay || 0}
-          />
-        )}
-
-        {currentStep === 6 && (
-          <Question6HandWashing
-            onNext={handleNext}
-            onBack={handleBack}
-            onExit={handleBackToHome}
-            initialValue={answers.handWashingFrequencyPerDay || 0}
+            initialValue={answers[numberQuestion.answerKey] || 0}
           />
         )}
 
@@ -201,30 +254,12 @@ export function WaterCalculator() {
           />
         )}
 
-        {currentStep === 8 && (
-          <Question8ClothesWashing
-            onNext={handleNext}
-            onBack={handleBack}
-            onExit={handleBackToHome}
-            initialValue={answers.clothesWashingFrequencyPerWeek || 0}
-          />
-        )}
-
         {currentStep === 9 && (
           <Question9Dishwashing
             onNext={handleNext}
             onBack={handleBack}
             onExit={handleBackToHome}
             initialValue={answers.dishwashingMethod || ''}
-          />
-        )}
-
-        {currentStep === 10 && (
-          <Question10DishwashingFrequency
-            onNext={handleNext}
-            onBack={handleBack}
-            onExit={handleBackToHome}
-            initialValue={answers.dishwashingTimesPerDay || 0}
           />
         )}
 
