@@ -4,11 +4,11 @@ import { WaterQuestionLayout } from "../WaterQuestionLayout";
 
 const DRINK_METADATA = {
   te: { label: "Té", image: "/img/tea.webp" },
-  cafe: { label: "Café", image: "/img/cofeee.webp" },
+  cafe: { label: "Café", image: "/img/coffeee.webp" },
   leche: { label: "Leche", image: "/img/milk.webp" },
   jugos: { label: "Jugos", image: "/img/orange-juice.webp" },
   gaseosa: { label: "Gaseosas", image: "/img/soda.webp" },
-  otro: { label: "Otro", image: "/img/three-dots.webp" },
+  otro: { label: "Otro", image: "/img/three_dots.webp" },
 };
 
 export function Question19DrinkAmounts({
@@ -114,7 +114,7 @@ export function Question19DrinkAmounts({
                       min="0"
                       value={value}
                       onChange={(e) => handleInputChange(id, e.target.value)}
-                      className="w-10 text-center font-bold text-gray-700 text-sm focus:outline-none font-quicksand"
+                      className="w-10 text-center font-bold text-gray-700 text-sm focus:outline-none font-quicksand [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                     />
                     <span className="text-xs text-gray-400 font-medium font-quicksand">
                       kg
