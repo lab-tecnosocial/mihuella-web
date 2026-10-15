@@ -4,6 +4,15 @@ import { WaterQuestionLayout } from './WaterQuestionLayout';
 import { Question1Origin } from './questions/Question1Origin';
 import { Question7ToiletType } from './questions/Question7ToiletType';
 import { Question9Dishwashing } from './questions/Question9Dishwashing';
+import { Question11PatioCleaning } from './questions/Question11PatioCleaning';
+import { Question12Proteins } from './questions/Question12Proteins';
+import { Question13ProteinAmounts } from './questions/Question13ProteinAmounts';
+import { Question14Cereals } from './questions/Question14Cereals';
+import { Question15CerealAmounts } from './questions/Question15CerealAmounts';
+import { Question16Fruits } from './questions/Question16Fruits';
+import { Question17FruitAmounts } from './questions/Question17FruitAmounts';
+import { Question18Drinks } from './questions/Question18Drinks';
+import { Question19DrinkAmounts } from './questions/Question19DrinkAmounts';
 import { NumberQuestion } from './questions/NumberQuestion';
 
 const NUMBER_QUESTIONS = {
@@ -83,6 +92,19 @@ const NUMBER_QUESTIONS = {
     totalQuestionsInCategory: 2,
     reference: 'Lo común es lavar la ropa entre 1 y 3 veces por semana.',
   },
+  10: {
+    answerKey: 'dishwashingTimesPerDay',
+    title: '¿Cuántas veces al día lavas los platos?',
+    icon: '/img/traste-calendario.webp',
+    unit: 'Veces',
+    step: 1,
+    ariaLabel: 'veces al día',
+    currentCategoryIndex: 1,
+    currentQuestionIndex: 3,
+    totalQuestionsInCategory: 3,
+    reference:
+      'Lavar platos a mano puede usar hasta 20 litros por lavado; con lavavajillas, el consumo baja considerablemente.',
+  },
 };
 
 export function WaterCalculator() {
@@ -94,12 +116,97 @@ export function WaterCalculator() {
 
   const handleBack = () => {
     if (currentStep === 1) setCurrentStep(0);
+    else if (currentStep === 12) setCurrentStep(11);
+    else if (currentStep === 11) setCurrentStep(10);
+    else if (currentStep === 10) setCurrentStep(9);
+    else if (currentStep === 13) setCurrentStep(12);
+    else if (currentStep === 14) {
+      const selectedProteins = answers.proteins || [];
+      if (selectedProteins.length === 1 && selectedProteins[0] === 'ninguno') {
+        setCurrentStep(12);
+      } else {
+        setCurrentStep(13);
+      }
+    }
+    else if (currentStep === 15) setCurrentStep(14);
+    else if (currentStep === 16) {
+      const selectedCereals = answers.cereals || [];
+      if (selectedCereals.length === 1 && selectedCereals[0] === 'ninguno') {
+        setCurrentStep(14);
+      } else {
+        setCurrentStep(15);
+      }
+    }
+    else if (currentStep === 17) setCurrentStep(16);
+    else if (currentStep === 18) {
+      const selectedFruits = answers.fruits || [];
+      if (selectedFruits.length === 1 && selectedFruits[0] === 'ninguno') {
+        setCurrentStep(16);
+      } else {
+        setCurrentStep(17);
+      }
+    }
+    else if (currentStep === 19) setCurrentStep(18);
+    else if (currentStep === 20) {
+      const selectedDrinks = answers.drinks || [];
+      if (selectedDrinks.length === 1 && selectedDrinks[0] === 'ninguno') {
+        setCurrentStep(18);
+      } else {
+        setCurrentStep(19);
+      }
+    }
     else setCurrentStep(currentStep - 1);
   };
 
   const handleNext = (newAnswer) => {
-    setAnswers({ ...answers, ...newAnswer });
-    setCurrentStep(currentStep + 1);
+    const updatedAnswers = { ...answers, ...newAnswer };
+    setAnswers(updatedAnswers);
+
+    if (currentStep === 9) {
+      setCurrentStep(10);
+    } else if (currentStep === 10) {
+      setCurrentStep(11);
+    } else if (currentStep === 11) {
+      setCurrentStep(12);
+    } else if (currentStep === 12) {
+      const selected = updatedAnswers.proteins || [];
+      if (selected.length === 1 && selected[0] === 'ninguno') {
+        setCurrentStep(14);
+      } else {
+        setCurrentStep(13);
+      }
+    } else if (currentStep === 13) {
+      setCurrentStep(14);
+    } else if (currentStep === 14) {
+      const selectedCereals = updatedAnswers.cereals || [];
+      if (selectedCereals.length === 1 && selectedCereals[0] === 'ninguno') {
+        setCurrentStep(16);
+      } else {
+        setCurrentStep(15);
+      }
+    } else if (currentStep === 15) {
+      setCurrentStep(16);
+    } else if (currentStep === 16) {
+      const selectedFruits = updatedAnswers.fruits || [];
+      if (selectedFruits.length === 1 && selectedFruits[0] === 'ninguno') {
+        setCurrentStep(18);
+      } else {
+        setCurrentStep(17);
+      }
+    } else if (currentStep === 17) {
+      setCurrentStep(18);
+    } else if (currentStep === 18) {
+      const selectedDrinks = updatedAnswers.drinks || [];
+      if (selectedDrinks.length === 1 && selectedDrinks[0] === 'ninguno') {
+        setCurrentStep(20); // Salta directo a la pregunta 20 si eligió "ninguno"
+      } else {
+        setCurrentStep(19);
+      }
+    } else if (currentStep === 19) {
+      setCurrentStep(20);
+    } else {
+      setCurrentStep(currentStep + 1);
+    }
   };
 
   const numberQuestion = NUMBER_QUESTIONS[currentStep];
@@ -156,8 +263,93 @@ export function WaterCalculator() {
           />
         )}
 
-        {/* Pantalla final después de la pregunta 9 */}
-        {currentStep > 9 && (
+        {currentStep === 11 && (
+          <Question11PatioCleaning
+            onNext={handleNext}
+            onBack={handleBack}
+            onExit={handleBackToHome}
+            initialValue={answers.patioCleaningMethod || ''}
+          />
+        )}
+
+        {currentStep === 12 && (
+          <Question12Proteins
+            onNext={handleNext}
+            onBack={handleBack}
+            onExit={handleBackToHome}
+            initialValue={answers.proteins || []}
+          />
+        )}
+
+        {currentStep === 13 && (
+          <Question13ProteinAmounts
+            onNext={handleNext}
+            onBack={handleBack}
+            onExit={handleBackToHome}
+            selectedProteins={answers.proteins || []}
+            initialValue={answers.proteinAmounts || {}}
+          />
+        )}
+
+        {currentStep === 14 && (
+          <Question14Cereals
+            onNext={handleNext}
+            onBack={handleBack}
+            onExit={handleBackToHome}
+            initialValue={answers.cereals || []}
+          />
+        )}
+
+        {currentStep === 15 && (
+          <Question15CerealAmounts
+            onNext={handleNext}
+            onBack={handleBack}
+            onExit={handleBackToHome}
+            selectedCereals={answers.cereals || []}
+            initialValue={answers.cerealAmounts || {}}
+          />
+        )}
+
+        {currentStep === 16 && (
+          <Question16Fruits
+            onNext={handleNext}
+            onBack={handleBack}
+            onExit={handleBackToHome}
+            initialValue={answers.fruits || []}
+          />
+        )}
+
+        {currentStep === 17 && (
+          <Question17FruitAmounts
+            onNext={handleNext}
+            onBack={handleBack}
+            onExit={handleBackToHome}
+            selectedFruits={answers.fruits || []}
+            initialValue={answers.fruitAmounts || {}}
+          />
+        )}
+
+        {currentStep === 18 && (
+          <Question18Drinks
+            onNext={handleNext}
+            onBack={handleBack}
+            onExit={handleBackToHome}
+            initialValue={answers.drinks || []}
+          />
+        )}
+
+        {currentStep === 19 && (
+          <Question19DrinkAmounts
+            onNext={handleNext}
+            onBack={handleBack}
+            onExit={handleBackToHome}
+            selectedDrinks={answers.drinks || []}
+            initialValue={answers.drinkAmounts || {}}
+          />
+        )}
+
+        {/* Pantalla final después de la pregunta 19 */}
+        {currentStep > 19 && (
           <WaterQuestionLayout
             currentCategoryIndex={-1}
             icon="/img/huella-hidrica-icon.webp"
