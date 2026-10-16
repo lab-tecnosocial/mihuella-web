@@ -35,8 +35,8 @@ const NUMBER_QUESTIONS = {
     step: 10,
     ariaLabel: "gasto en Bs",
     currentCategoryIndex: 0,
-    currentQuestionIndex: 0,
-    totalQuestionsInCategory: 1,
+    currentQuestionIndex: 1,
+    totalQuestionsInCategory: 2,
     reference:
       "Revisa tu factura de servicio de agua potable del último mes para colocar un dato preciso.",
   },
@@ -49,7 +49,7 @@ const NUMBER_QUESTIONS = {
     ariaLabel: "minutos",
     currentCategoryIndex: 1,
     currentQuestionIndex: 0,
-    totalQuestionsInCategory: 1,
+    totalQuestionsInCategory: 5,
     reference: "Una ducha promedio dura entre 5 a 10 minutos.",
   },
   4: {
@@ -61,7 +61,7 @@ const NUMBER_QUESTIONS = {
     ariaLabel: "veces por semana",
     currentCategoryIndex: 1,
     currentQuestionIndex: 1,
-    totalQuestionsInCategory: 3,
+    totalQuestionsInCategory: 5,
     reference:
       "Lo común para una persona es ducharse entre 7 y 14 veces a la semana (1 a 2 veces al día).",
   },
@@ -74,7 +74,7 @@ const NUMBER_QUESTIONS = {
     ariaLabel: "veces al día",
     currentCategoryIndex: 1,
     currentQuestionIndex: 2,
-    totalQuestionsInCategory: 3,
+    totalQuestionsInCategory: 5,
     reference:
       "Lo común para una persona es cepillarse entre 2 y 3 veces al día.",
   },
@@ -87,7 +87,7 @@ const NUMBER_QUESTIONS = {
     ariaLabel: "veces al día",
     currentCategoryIndex: 1,
     currentQuestionIndex: 3,
-    totalQuestionsInCategory: 3,
+    totalQuestionsInCategory: 5,
     reference: "Una persona suele lavarse las manos entre 5 y 10 veces al día.",
   },
   8: {
@@ -99,7 +99,7 @@ const NUMBER_QUESTIONS = {
     ariaLabel: "veces",
     currentCategoryIndex: 2,
     currentQuestionIndex: 0,
-    totalQuestionsInCategory: 2,
+    totalQuestionsInCategory: 4,
     reference: "Lo común es lavar la ropa entre 1 y 3 veces por semana.",
   },
   10: {
@@ -109,9 +109,9 @@ const NUMBER_QUESTIONS = {
     unit: "Veces",
     step: 1,
     ariaLabel: "veces al día",
-    currentCategoryIndex: 1,
-    currentQuestionIndex: 3,
-    totalQuestionsInCategory: 3,
+    currentCategoryIndex: 2,
+    currentQuestionIndex: 2,
+    totalQuestionsInCategory: 4,
     reference:
       "Lavar platos a mano puede usar hasta 20 litros por lavado; con lavavajillas, el consumo baja considerablemente.",
   },
@@ -165,6 +165,8 @@ export function WaterCalculator() {
       setCurrentStep(20);
     } else if (currentStep === 22) {
       setCurrentStep(21);
+    } else {
+      setCurrentStep(currentStep - 1);
     }
   };
 
