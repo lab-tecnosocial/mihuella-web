@@ -7,7 +7,7 @@ const DRINK_METADATA = {
   cafe: { label: "Café", image: "/img/coffeee.webp" },
   leche: { label: "Leche", image: "/img/milk.webp" },
   jugos: { label: "Jugos", image: "/img/orange-juice.webp" },
-  gaseosa: { label: "Gaseosa", image: "/img/soda.webp" },
+  gaseosa: { label: "Gaseosas", image: "/img/soda.webp" },
   otro: { label: "Otro", image: "/img/three_dots.webp" },
 };
 
