@@ -33,8 +33,8 @@ export function Question11PatioCleaning({
 
   return (
     <WaterQuestionLayout
-      currentCategoryIndex={1} // Categoría: Limpieza
-      currentQuestionIndex={4} // Ajusta según el orden real de la sub-pregunta
+      currentCategoryIndex={2} // Categoría: Limpieza
+      currentQuestionIndex={3} // Limpieza: 0 ropa, 1 método platos, 2 veces platos, 3 patio
       totalQuestionsInCategory={4}
       icon="/img/casa-arbol.webp"
       onBack={onBack}

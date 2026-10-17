@@ -56,7 +56,7 @@ export function Question15CerealAmounts({
     <WaterQuestionLayout
       currentCategoryIndex={3} // Categoría: Dieta
       currentQuestionIndex={3}
-      totalQuestionsInCategory={4}
+      totalQuestionsInCategory={8}
       icon="/img/cereals-icon.webp"
       onBack={onBack}
       onExit={onExit}
@@ -77,7 +77,7 @@ export function Question15CerealAmounts({
           {activeCereals.map((id) => {
             const meta = CEREAL_METADATA[id] || {
               label: id,
-              image: "/img/otro.webp",
+              image: "/img/three_dots.webp",
             };
             const value = amounts[id] !== undefined ? amounts[id] : 0;
 
