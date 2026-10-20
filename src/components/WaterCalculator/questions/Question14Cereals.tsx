@@ -49,7 +49,7 @@ export function Question14Cereals({
     <WaterQuestionLayout
       currentCategoryIndex={3} // Categoría: Dieta
       currentQuestionIndex={2}
-      totalQuestionsInCategory={4}
+      totalQuestionsInCategory={8}
       icon="/img/cereals-icon.webp"
       onBack={onBack}
       onExit={onExit}
