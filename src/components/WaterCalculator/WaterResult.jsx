@@ -127,7 +127,6 @@ export function WaterResult() {
 
   return (
     <WaterQuestionLayout
-      currentCategoryIndex={-1}
       icon="/img/huella-hidrica-icon.webp"
       onBack={() => (window.location.href = CALCULADORA_URL)}
       onExit={() => (window.location.href = "/")}

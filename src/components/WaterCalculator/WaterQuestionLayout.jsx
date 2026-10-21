@@ -1,11 +1,10 @@
 import { ArrowLeft, LogOut, ArrowRight } from "lucide-react";
+import { useContext } from "react";
 import { Button3DWater } from "./Button3DWater";
 import { WaterStepper } from "./WaterStepper";
+import { ProgresoHidricaContext } from "./WaterProgreso";
 
 export function WaterQuestionLayout({
-  currentCategoryIndex = -1,
-  currentQuestionIndex = 0,
-  totalQuestionsInCategory = 1,
   icon,
   onBack,
   onExit,
@@ -14,6 +13,8 @@ export function WaterQuestionLayout({
   nextText = "Continuar",
   children,
 }) {
+  const progreso = useContext(ProgresoHidricaContext);
+
   return (
     <>
       <style>{`
@@ -81,9 +82,8 @@ export function WaterQuestionLayout({
 
           {/* Stepper */}
           <WaterStepper
-            currentCategoryIndex={currentCategoryIndex}
-            currentQuestionIndex={currentQuestionIndex}
-            totalQuestionsInCategory={totalQuestionsInCategory}
+            currentCategoryIndex={progreso.currentCategoryIndex}
+            porcentaje={progreso.porcentaje}
           />
         </header>
 

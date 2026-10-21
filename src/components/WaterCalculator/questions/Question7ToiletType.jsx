@@ -16,9 +16,6 @@ export function Question7ToiletType({ onNext, onBack, onExit, initialValue = '' 
 
   return (
     <WaterQuestionLayout
-      currentCategoryIndex={1}
-      currentQuestionIndex={4}
-      totalQuestionsInCategory={5}
       icon="/img/toilet.webp"
       onBack={onBack}
       onExit={onExit}

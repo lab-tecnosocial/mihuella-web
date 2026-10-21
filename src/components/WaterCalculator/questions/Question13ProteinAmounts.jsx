@@ -56,9 +56,6 @@ export function Question13ProteinAmounts({
 
   return (
     <WaterQuestionLayout
-      currentCategoryIndex={3} // Categoría: Dieta / Alimentos
-      currentQuestionIndex={1}
-      totalQuestionsInCategory={2}
       icon="/img/dieta-icon.webp"
       onBack={onBack}
       onExit={onExit}

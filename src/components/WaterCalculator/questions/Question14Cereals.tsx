@@ -47,9 +47,6 @@ export function Question14Cereals({
 
   return (
     <WaterQuestionLayout
-      currentCategoryIndex={3} // Categoría: Dieta
-      currentQuestionIndex={2}
-      totalQuestionsInCategory={4}
       icon="/img/cereals-icon.webp"
       onBack={onBack}
       onExit={onExit}

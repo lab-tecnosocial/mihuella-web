@@ -1,23 +1,6 @@
 import { WATER_CATEGORIES } from "../../constants/waterCategories";
 
-export function WaterStepper({
-  currentCategoryIndex = -1,
-  currentQuestionIndex = 0,
-  totalQuestionsInCategory = 1,
-}) {
-  const getProgressPercentage = () => {
-    if (currentCategoryIndex < 0 || WATER_CATEGORIES.length <= 1) return 0;
-    const baseProgress = currentCategoryIndex / (WATER_CATEGORIES.length - 1);
-    const stepFraction =
-      totalQuestionsInCategory > 1
-        ? currentQuestionIndex / totalQuestionsInCategory / (WATER_CATEGORIES.length - 1)
-        : 0;
-    const total = (baseProgress + stepFraction) * 100;
-    return Math.min(total, 100);
-  };
-
-  const progressPercentage = getProgressPercentage();
-
+export function WaterStepper({ currentCategoryIndex = -1, porcentaje = 0 }) {
   return (
     <div className="w-full pt-2 pb-2 overflow-x-auto no-scrollbar">
       <div className="flex items-center justify-between w-full mx-auto relative px-2 sm:px-4">
@@ -28,7 +11,7 @@ export function WaterStepper({
           {/* Progreso activo */}
           <div
             className="absolute top-0 left-0 h-full overflow-hidden transition-all duration-500 ease-in-out"
-            style={{ width: `${progressPercentage}%` }}
+            style={{ width: `${porcentaje}%` }}
           >
             <div className="w-[100%] min-w-[calc(100vw-2rem)] h-full border-b-2 border-dashed border-[#124168]" />
           </div>

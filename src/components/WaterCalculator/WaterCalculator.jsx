@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { WaterCalculatorOnboarding } from './WaterCalculatorOnboarding';
 import { Question1Origin } from './questions/Question1Origin';
+import { NumberQuestion } from './questions/NumberQuestion';
+import { QuestionOpciones } from './questions/QuestionOpciones';
 import { Question7ToiletType } from './questions/Question7ToiletType';
 import { Question9Dishwashing } from './questions/Question9Dishwashing';
 import { Question11PatioCleaning } from './questions/Question11PatioCleaning';
@@ -12,106 +14,159 @@ import { Question16Fruits } from './questions/Question16Fruits';
 import { Question17FruitAmounts } from './questions/Question17FruitAmounts';
 import { Question18Drinks } from './questions/Question18Drinks';
 import { Question19DrinkAmounts } from './questions/Question19DrinkAmounts';
+import { ProgresoHidricaContext } from './WaterProgreso';
 import { guardarRespuestas } from './calculo/almacenamiento';
-import { NumberQuestion } from './questions/NumberQuestion';
+import { PASOS_HIDRICA, siguientePaso, pasoAnterior, progresoDePaso } from './pasos_hidrica';
 
 const NUMBER_QUESTIONS = {
-  2: {
+  gastoAgua: {
     answerKey: 'waterExpenseBs',
     title: '¿Cuál es tu gasto mensual aproximado en agua? En Bs',
     icon: '/img/form_hidrica_gotita.webp',
     unit: 'Bs',
     step: 10,
     ariaLabel: 'gasto en Bs',
-    currentCategoryIndex: 0,
-    currentQuestionIndex: 0,
-    totalQuestionsInCategory: 1,
     reference:
       'Revisa tu factura de servicio de agua potable del último mes para colocar un dato preciso.',
   },
-  3: {
+  duracionDucha: {
     answerKey: 'showerMinutes',
     title: '¿Aproximadamente cuántos minutos duran tus duchas?',
     icon: '/img/shower.webp',
     unit: 'minutos',
     step: 1,
     ariaLabel: 'minutos',
-    currentCategoryIndex: 1,
-    currentQuestionIndex: 0,
-    totalQuestionsInCategory: 1,
     reference: 'Una ducha promedio dura entre 5 a 10 minutos.',
   },
-  4: {
+  frecuenciaDucha: {
     answerKey: 'showerFrequencyPerWeek',
     title: '¿Cuántas veces te duchas a la semana?',
     icon: '/img/shower.webp',
     unit: 'veces',
     step: 1,
     ariaLabel: 'veces por semana',
-    currentCategoryIndex: 1,
-    currentQuestionIndex: 1,
-    totalQuestionsInCategory: 3,
     reference:
       'Lo común para una persona es ducharse entre 7 y 14 veces a la semana (1 a 2 veces al día).',
   },
-  5: {
+  cepillado: {
     answerKey: 'teethBrushingFrequencyPerDay',
     title: '¿Cuántas veces al día te cepillas los dientes?',
     icon: '/img/toothbrush.webp',
     unit: 'veces',
     step: 1,
     ariaLabel: 'veces al día',
-    currentCategoryIndex: 1,
-    currentQuestionIndex: 2,
-    totalQuestionsInCategory: 3,
-    reference:
-      'Lo común para una persona es cepillarse entre 2 y 3 veces al día.',
+    reference: 'Lo común para una persona es cepillarse entre 2 y 3 veces al día.',
   },
-  6: {
+  lavadoManos: {
     answerKey: 'handWashingFrequencyPerDay',
     title: '¿Cuántas veces al día te lavas las manos?',
     icon: '/img/handwashing.webp',
     unit: 'veces',
     step: 1,
     ariaLabel: 'veces al día',
-    currentCategoryIndex: 1,
-    currentQuestionIndex: 3,
-    totalQuestionsInCategory: 3,
-    reference:
-      'Una persona suele lavarse las manos entre 5 y 10 veces al día.',
+    reference: 'Una persona suele lavarse las manos entre 5 y 10 veces al día.',
   },
-  8: {
+  frecuenciaRopa: {
     answerKey: 'clothesWashingFrequencyPerWeek',
     title: '¿Cuántas veces lavas ropa en una semana?',
     icon: '/img/lavar-ropa.webp',
     unit: 'Veces',
     step: 1,
     ariaLabel: 'veces',
-    currentCategoryIndex: 2,
-    currentQuestionIndex: 0,
-    totalQuestionsInCategory: 2,
     reference: 'Lo común es lavar la ropa entre 1 y 3 veces por semana.',
   },
-  10: {
+  frecuenciaPlatos: {
     answerKey: 'dishwashingTimesPerDay',
     title: '¿Cuántas veces al día lavas los platos?',
     icon: '/img/traste-calendario.webp',
     unit: 'Veces',
     step: 1,
     ariaLabel: 'veces al día',
-    currentCategoryIndex: 1,
-    currentQuestionIndex: 3,
-    totalQuestionsInCategory: 3,
     reference:
       'Lavar platos a mano puede usar hasta 20 litros por lavado; con lavavajillas, el consumo baja considerablemente.',
   },
+  calzado: {
+    answerKey: 'shoePairsPerYear',
+    title: '¿Cuántos pares de calzado compras al año?',
+    icon: '/img/tenis-HH.webp',
+    unit: 'pares',
+    step: 1,
+    ariaLabel: 'pares de calzado al año',
+    reference: 'Un par de zapatos o tenis puede tener una huella hídrica de miles de litros.',
+  },
+  jeans: {
+    answerKey: 'jeansPerYear',
+    title: '¿Cuántos jeans compras al año?',
+    icon: '/img/jeans-HH.webp',
+    unit: 'unidades',
+    step: 1,
+    ariaLabel: 'jeans al año',
+    reference: 'Un jean de algodón puede requerir miles de litros de agua en su producción.',
+  },
+  camisetas: {
+    answerKey: 'shirtsPerYear',
+    title: '¿Cuántas camisetas compras al año?',
+    icon: '/img/camiseta-HH.webp',
+    unit: 'unidades',
+    step: 1,
+    ariaLabel: 'camisetas al año',
+    reference: 'Una camiseta de algodón puede requerir alrededor de 2.700 litros de agua.',
+  },
+  celulares: {
+    answerKey: 'phonesLast5Years',
+    title: '¿Cuántos celulares has tenido en los últimos 5 años?',
+    icon: '/img/huella-hidrica-icon.webp',
+    unit: 'celulares',
+    step: 1,
+    ariaLabel: 'celulares en 5 años',
+    reference: 'Fabricar un celular consume miles de litros de agua en su cadena de producción.',
+  },
+  papel: {
+    answerKey: 'paperRecycledKgPerYear',
+    title: '¿Cuántos kilos de papel reciclas al año? Aproximadamente',
+    icon: '/img/carton.webp',
+    unit: 'kg',
+    step: 1,
+    ariaLabel: 'kilos de papel al año',
+    reference: 'Reciclar papel reduce la cantidad de agua que se usa para producir papel nuevo.',
+  },
+  inteligenciaArtificial: {
+    answerKey: 'aiUsesPerWeek',
+    title: '¿Cuántas veces a la semana usas herramientas de inteligencia artificial?',
+    icon: '/img/huella-hidrica-icon.webp',
+    unit: 'veces',
+    step: 1,
+    ariaLabel: 'veces por semana con IA',
+    reference: 'Cada consulta a una herramienta de inteligencia artificial consume agua en los centros de datos.',
+  },
+  correos: {
+    answerKey: 'emailsDeletedPerMonth',
+    title: '¿Cuántas veces al mes eliminas correos electrónicos que ya no usas?',
+    icon: '/img/huella-hidrica-icon.webp',
+    unit: 'veces',
+    step: 1,
+    ariaLabel: 'correos eliminados al mes',
+    reference: 'Eliminar correos reduce el almacenamiento en centros de datos, que consumen agua para enfriarse.',
+  },
 };
 
+const OPCIONES_METODO_ROPA = [
+  { id: 'mano', label: 'A mano', icon: '/img/a-mano.webp' },
+  { id: 'lavadoraComun', label: 'En lavadora común\n(carga superior)', icon: '/img/lavar-ropa.webp' },
+  { id: 'lavadoraModerna', label: 'En lavadora moderna\n(carga frontal)', icon: '/img/ropa.webp' },
+];
+
+const OPCIONES_SI_NO = [
+  { id: true, label: 'Sí' },
+  { id: false, label: 'No' },
+];
+
 export function WaterCalculator() {
-  const [currentStep, setCurrentStep] = useState(0);
+  // -1 = pantalla de inicio; 0..N-1 = índice en PASOS_HIDRICA.
+  const [currentStep, setCurrentStep] = useState(-1);
   const [answers, setAnswers] = useState({});
 
-  const handleStart = () => setCurrentStep(1);
+  const handleStart = () => setCurrentStep(0);
   const handleBackToHome = () => window.location.href = '/';
 
   const finishCalculation = (respuestas) => {
@@ -119,93 +174,119 @@ export function WaterCalculator() {
     window.location.href = '/feature/resultado-huella-hidrica';
   };
 
-  const handleBack = () => {
-    if (currentStep === 1) setCurrentStep(0);
-    else if (currentStep === 12) setCurrentStep(11);
-    else if (currentStep === 11) setCurrentStep(10);
-    else if (currentStep === 10) setCurrentStep(9);
-    else if (currentStep === 13) setCurrentStep(12);
-    else if (currentStep === 14) {
-      const selectedProteins = answers.proteins || [];
-      if (selectedProteins.length === 1 && selectedProteins[0] === 'ninguno') {
-        setCurrentStep(12);
-      } else {
-        setCurrentStep(13);
-      }
-    }
-    else if (currentStep === 15) setCurrentStep(14);
-    else if (currentStep === 16) {
-      const selectedCereals = answers.cereals || [];
-      if (selectedCereals.length === 1 && selectedCereals[0] === 'ninguno') {
-        setCurrentStep(14);
-      } else {
-        setCurrentStep(15);
-      }
-    }
-    else if (currentStep === 17) setCurrentStep(16);
-    else if (currentStep === 18) {
-      const selectedFruits = answers.fruits || [];
-      if (selectedFruits.length === 1 && selectedFruits[0] === 'ninguno') {
-        setCurrentStep(16);
-      } else {
-        setCurrentStep(17);
-      }
-    }
-    else setCurrentStep(currentStep - 1);
-  };
+  const handleBack = () => setCurrentStep(pasoAnterior(currentStep, answers));
 
   const handleNext = (newAnswer) => {
     const updatedAnswers = { ...answers, ...newAnswer };
     setAnswers(updatedAnswers);
 
-    if (currentStep === 9) {
-      setCurrentStep(10);
-    } else if (currentStep === 10) {
-      setCurrentStep(11);
-    } else if (currentStep === 11) {
-      setCurrentStep(12);
-    } else if (currentStep === 12) {
-      const selected = updatedAnswers.proteins || [];
-      if (selected.length === 1 && selected[0] === 'ninguno') {
-        setCurrentStep(14);
-      } else {
-        setCurrentStep(13);
-      }
-    } else if (currentStep === 13) {
-      setCurrentStep(14);
-    } else if (currentStep === 14) {
-      const selectedCereals = updatedAnswers.cereals || [];
-      if (selectedCereals.length === 1 && selectedCereals[0] === 'ninguno') {
-        setCurrentStep(16);
-      } else {
-        setCurrentStep(15);
-      }
-    } else if (currentStep === 15) {
-      setCurrentStep(16);
-    } else if (currentStep === 16) {
-      const selectedFruits = updatedAnswers.fruits || [];
-      if (selectedFruits.length === 1 && selectedFruits[0] === 'ninguno') {
-        setCurrentStep(18);
-      } else {
-        setCurrentStep(17);
-      }
-    } else if (currentStep === 17) {
-      setCurrentStep(18);
-    } else if (currentStep === 18) {
-      const selectedDrinks = updatedAnswers.drinks || [];
-      if (selectedDrinks.length === 1 && selectedDrinks[0] === 'ninguno') {
-        finishCalculation(updatedAnswers); // Sin bebidas no hay cantidades que pedir
-      } else {
-        setCurrentStep(19);
-      }
-    } else if (currentStep === 19) {
-      finishCalculation(updatedAnswers);
-    } else {
-      setCurrentStep(currentStep + 1);
+    const siguiente = siguientePaso(currentStep, updatedAnswers);
+    if (siguiente === null) finishCalculation(updatedAnswers);
+    else setCurrentStep(siguiente);
+  };
+
+  const renderPregunta = (id) => {
+    const comunes = { onNext: handleNext, onBack: handleBack, onExit: handleBackToHome };
+
+    if (NUMBER_QUESTIONS[id]) {
+      const config = NUMBER_QUESTIONS[id];
+      return (
+        <NumberQuestion
+          {...config}
+          {...comunes}
+          initialValue={answers[config.answerKey] || 0}
+        />
+      );
+    }
+
+    switch (id) {
+      case 'origen':
+        return <Question1Origin {...comunes} initialValue={answers.origin || ''} />;
+      case 'tipoInodoro':
+        return <Question7ToiletType {...comunes} initialValue={answers.toiletType || ''} />;
+      case 'metodoRopa':
+        return (
+          <QuestionOpciones
+            {...comunes}
+            answerKey="clothesWashingMethod"
+            title="¿De qué manera lavas tu ropa?"
+            icon="/img/lavar-ropa.webp"
+            options={OPCIONES_METODO_ROPA}
+            initialValue={answers.clothesWashingMethod || ''}
+          />
+        );
+      case 'metodoPlatos':
+        return <Question9Dishwashing {...comunes} initialValue={answers.dishwashingMethod || ''} />;
+      case 'patio':
+        return <Question11PatioCleaning {...comunes} initialValue={answers.patioCleaningMethod || ''} />;
+      case 'proteinas':
+        return <Question12Proteins {...comunes} initialValue={answers.proteins || []} />;
+      case 'cantidadesProteinas':
+        return (
+          <Question13ProteinAmounts
+            {...comunes}
+            selectedProteins={answers.proteins || []}
+            initialValue={answers.proteinAmounts || {}}
+          />
+        );
+      case 'cereales':
+        return <Question14Cereals {...comunes} initialValue={answers.cereals || []} />;
+      case 'cantidadesCereales':
+        return (
+          <Question15CerealAmounts
+            {...comunes}
+            selectedCereals={answers.cereals || []}
+            initialValue={answers.cerealAmounts || {}}
+          />
+        );
+      case 'frutas':
+        return <Question16Fruits {...comunes} initialValue={answers.fruits || []} />;
+      case 'cantidadesFrutas':
+        return (
+          <Question17FruitAmounts
+            {...comunes}
+            selectedFruits={answers.fruits || []}
+            initialValue={answers.fruitAmounts || {}}
+          />
+        );
+      case 'bebidas':
+        return <Question18Drinks {...comunes} initialValue={answers.drinks || []} />;
+      case 'cantidadesBebidas':
+        return (
+          <Question19DrinkAmounts
+            {...comunes}
+            selectedDrinks={answers.drinks || []}
+            initialValue={answers.drinkAmounts || {}}
+          />
+        );
+      case 'lluvia':
+        return (
+          <QuestionOpciones
+            {...comunes}
+            answerKey="hasRainwaterSystem"
+            title="¿Tienes sistema de recolección de agua de lluvia?"
+            icon="/img/form_hidrica_gotita.webp"
+            options={OPCIONES_SI_NO}
+            initialValue={answers.hasRainwaterSystem}
+          />
+        );
+      case 'reutilizaAgua':
+        return (
+          <QuestionOpciones
+            {...comunes}
+            answerKey="reusesWashingWater"
+            title="¿Reutilizas el agua de la lavadora para otras actividades?"
+            icon="/img/lavar-ropa.webp"
+            options={OPCIONES_SI_NO}
+            initialValue={answers.reusesWashingWater}
+          />
+        );
+      default:
+        return null;
     }
   };
 
-  const numberQuestion = NUMBER_QUESTIONS[currentStep];
+  const pasoActual = currentStep >= 0 ? PASOS_HIDRICA[currentStep] : null;
 
   return (
     <div className="relative min-h-screen w-full bg-[#2178BD] flex flex-col justify-between overflow-hidden font-sans">
@@ -215,135 +296,18 @@ export function WaterCalculator() {
       />
 
       <main className="relative z-10 flex-1 flex items-center justify-center px-4 py-6">
-        {currentStep === 0 && (
+        {currentStep === -1 && (
           <WaterCalculatorOnboarding
             onBackToHome={handleBackToHome}
             onStartCalculation={handleStart}
           />
         )}
 
-        {currentStep === 1 && (
-          <Question1Origin
-            onNext={handleNext}
-            onBack={handleBack}
-            onExit={handleBackToHome}
-            initialValue={answers.origin || ''}
-          />
+        {pasoActual && (
+          <ProgresoHidricaContext.Provider value={progresoDePaso(currentStep)}>
+            {renderPregunta(pasoActual.id)}
+          </ProgresoHidricaContext.Provider>
         )}
-
-        {numberQuestion && (
-          <NumberQuestion
-            {...numberQuestion}
-            onNext={handleNext}
-            onBack={handleBack}
-            onExit={handleBackToHome}
-            initialValue={answers[numberQuestion.answerKey] || 0}
-          />
-        )}
-
-        {currentStep === 7 && (
-          <Question7ToiletType
-            onNext={handleNext}
-            onBack={handleBack}
-            onExit={handleBackToHome}
-            initialValue={answers.toiletType || ''}
-          />
-        )}
-
-        {currentStep === 9 && (
-          <Question9Dishwashing
-            onNext={handleNext}
-            onBack={handleBack}
-            onExit={handleBackToHome}
-            initialValue={answers.dishwashingMethod || ''}
-          />
-        )}
-
-        {currentStep === 11 && (
-          <Question11PatioCleaning
-            onNext={handleNext}
-            onBack={handleBack}
-            onExit={handleBackToHome}
-            initialValue={answers.patioCleaningMethod || ''}
-          />
-        )}
-
-        {currentStep === 12 && (
-          <Question12Proteins
-            onNext={handleNext}
-            onBack={handleBack}
-            onExit={handleBackToHome}
-            initialValue={answers.proteins || []}
-          />
-        )}
-
-        {currentStep === 13 && (
-          <Question13ProteinAmounts
-            onNext={handleNext}
-            onBack={handleBack}
-            onExit={handleBackToHome}
-            selectedProteins={answers.proteins || []}
-            initialValue={answers.proteinAmounts || {}}
-          />
-        )}
-
-        {currentStep === 14 && (
-          <Question14Cereals
-            onNext={handleNext}
-            onBack={handleBack}
-            onExit={handleBackToHome}
-            initialValue={answers.cereals || []}
-          />
-        )}
-
-        {currentStep === 15 && (
-          <Question15CerealAmounts
-            onNext={handleNext}
-            onBack={handleBack}
-            onExit={handleBackToHome}
-            selectedCereals={answers.cereals || []}
-            initialValue={answers.cerealAmounts || {}}
-          />
-        )}
-
-        {currentStep === 16 && (
-          <Question16Fruits
-            onNext={handleNext}
-            onBack={handleBack}
-            onExit={handleBackToHome}
-            initialValue={answers.fruits || []}
-          />
-        )}
-
-        {currentStep === 17 && (
-          <Question17FruitAmounts
-            onNext={handleNext}
-            onBack={handleBack}
-            onExit={handleBackToHome}
-            selectedFruits={answers.fruits || []}
-            initialValue={answers.fruitAmounts || {}}
-          />
-        )}
-
-        {currentStep === 18 && (
-          <Question18Drinks
-            onNext={handleNext}
-            onBack={handleBack}
-            onExit={handleBackToHome}
-            initialValue={answers.drinks || []}
-          />
-        )}
-
-        {currentStep === 19 && (
-          <Question19DrinkAmounts
-            onNext={handleNext}
-            onBack={handleBack}
-            onExit={handleBackToHome}
-            selectedDrinks={answers.drinks || []}
-            initialValue={answers.drinkAmounts || {}}
-          />
-        )}
-
       </main>
 
       <footer className="relative z-10 py-2 text-center text-xs text-white/70">

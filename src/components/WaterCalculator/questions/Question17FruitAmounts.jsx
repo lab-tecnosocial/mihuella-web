@@ -54,9 +54,6 @@ export function Question17FruitAmounts({
 
   return (
     <WaterQuestionLayout
-      currentCategoryIndex={3} // Categoría: Dieta
-      currentQuestionIndex={5}
-      totalQuestionsInCategory={5}
       icon="/img/dieta-icon.webp"
       onBack={onBack}
       onExit={onExit}

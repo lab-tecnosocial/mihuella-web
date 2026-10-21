@@ -33,9 +33,6 @@ export function Question11PatioCleaning({
 
   return (
     <WaterQuestionLayout
-      currentCategoryIndex={1} // Categoría: Limpieza
-      currentQuestionIndex={4} // Ajusta según el orden real de la sub-pregunta
-      totalQuestionsInCategory={4}
       icon="/img/casa-arbol.webp"
       onBack={onBack}
       onExit={onExit}

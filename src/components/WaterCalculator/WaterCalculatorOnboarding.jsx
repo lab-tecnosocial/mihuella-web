@@ -11,7 +11,6 @@ export function WaterCalculatorOnboarding({
 
   return (
     <WaterQuestionLayout
-      currentCategoryIndex={-1}
       icon="/img/huella-hidrica-icon.webp"
       onBack={onBackToHome}
       onExit={onBackToHome}

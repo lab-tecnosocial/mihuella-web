@@ -20,9 +20,6 @@ export function Question1Origin({ onNext, onBack, onExit, initialValue = '' }) {
 
   return (
     <WaterQuestionLayout
-      currentCategoryIndex={0}
-      currentQuestionIndex={0}
-      totalQuestionsInCategory={1}
       icon="/img/hidrica-bs.webp" // ✅ icono de la pregunta
       onBack={onBack}
       onExit={onExit}

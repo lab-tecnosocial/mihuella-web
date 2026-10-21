@@ -38,9 +38,6 @@ export function Question16Fruits({
 
   return (
     <WaterQuestionLayout
-      currentCategoryIndex={3} // Categoría: Dieta
-      currentQuestionIndex={4}
-      totalQuestionsInCategory={5}
       icon="/img/fruits-icon.webp"
       onBack={onBack}
       onExit={onExit}

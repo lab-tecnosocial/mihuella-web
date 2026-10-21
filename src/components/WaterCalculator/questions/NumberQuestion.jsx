@@ -8,9 +8,6 @@ export function NumberQuestion({
   unit,
   step = 1,
   min = 0,
-  currentCategoryIndex = 0,
-  currentQuestionIndex = 0,
-  totalQuestionsInCategory = 1,
   answerKey,
   reference,
   ariaLabel,
@@ -41,9 +38,6 @@ export function NumberQuestion({
 
   return (
     <WaterQuestionLayout
-      currentCategoryIndex={currentCategoryIndex}
-      currentQuestionIndex={currentQuestionIndex}
-      totalQuestionsInCategory={totalQuestionsInCategory}
       icon={icon}
       onBack={onBack}
       onExit={onExit}

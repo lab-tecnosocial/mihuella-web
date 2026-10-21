@@ -52,9 +52,6 @@ export function Question19DrinkAmounts({
 
   return (
     <WaterQuestionLayout
-      currentCategoryIndex={3} // Categoría: Dieta
-      currentQuestionIndex={7}
-      totalQuestionsInCategory={7}
       icon="/img/drinks-icon.webp"
       onBack={onBack}
       onExit={onExit}
