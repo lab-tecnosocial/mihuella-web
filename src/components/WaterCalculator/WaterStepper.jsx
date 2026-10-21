@@ -1,4 +1,3 @@
-import React from "react";
 import { WATER_CATEGORIES } from "../../constants/waterCategories";
 
 export function WaterStepper({

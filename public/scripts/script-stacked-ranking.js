@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
     
     // Asignar colores a cada barra, usando el operador módulo (%) para ciclar
-    const coloresBarra = huellaHidricaLitrosPorKg.map((valor, index) => {
+    const coloresBarra = huellaHidricaLitrosPorKg.map((_valor, index) => {
         return nuevaPaletaColores[index % nuevaPaletaColores.length];
     });
 
