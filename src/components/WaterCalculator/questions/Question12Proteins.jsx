@@ -8,7 +8,7 @@ const PROTEIN_OPTIONS = [
   { id: "pescado", label: "Pescado", unit: "Kg/semana", image: "/img/fish.webp" },
   { id: "cerdo", label: "Cerdo", unit: "Kg/semana", image: "/img/bacon.webp" },
   { id: "cordero", label: "Cordero", unit: "Kg/semana", image: "/img/lamb.webp" },
-  { id: "huevos", label: "Huevos", unit: "Kg/semana", image: "/img/eggs.webp" },
+  { id: "huevos", label: "Huevos", unit: "Unidades/semana", image: "/img/eggs.webp" },
   { id: "ninguno", label: "Ninguno", unit: "", image: "/img/none.webp" },
   { id: "otro", label: "Otro", unit: "", image: "/img/three_dots.webp" },
 ];

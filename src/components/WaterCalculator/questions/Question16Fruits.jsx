@@ -3,9 +3,9 @@ import { Check } from "lucide-react";
 import { WaterQuestionLayout } from "../WaterQuestionLayout";
 
 const FRUIT_OPTIONS = [
-  { id: "platano", label: "Plátano", unit: "Kg/semana", image: "/img/yellow-banana.webp" },
+  { id: "platano", label: "Plátano", unit: "Unidades/semana", image: "/img/yellow-banana.webp" },
   { id: "manzana", label: "Manzana", unit: "Kg/semana", image: "/img/apple.webp" },
-  { id: "naranja", label: "Naranja", unit: "Kg/semana", image: "/img/orangee.webp" },
+  { id: "naranja", label: "Naranja", unit: "Unidades/semana", image: "/img/orangee.webp" },
   { id: "uvas", label: "Uvas", unit: "Kg/semana", image: "/img/grapes.webp" },
   { id: "frutilla", label: "Frutilla", unit: "Kg/semana", image: "/img/strawberry.webp" },
   { id: "papaya", label: "Papaya", unit: "Kg/semana", image: "/img/papaya.webp" },

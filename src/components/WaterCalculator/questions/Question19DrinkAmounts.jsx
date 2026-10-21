@@ -3,12 +3,12 @@ import { Plus, Minus } from "lucide-react";
 import { WaterQuestionLayout } from "../WaterQuestionLayout";
 
 const DRINK_METADATA = {
-  te: { label: "Té", image: "/img/tea.webp" },
-  cafe: { label: "Café", image: "/img/coffeee.webp" },
-  leche: { label: "Leche", image: "/img/milk.webp" },
-  jugos: { label: "Jugos", image: "/img/orange-juice.webp" },
-  gaseosa: { label: "Gaseosas", image: "/img/soda.webp" },
-  otro: { label: "Otro", image: "/img/three_dots.webp" },
+  te: { label: "Té", image: "/img/tea.webp", unit: "tazas" },
+  cafe: { label: "Café", image: "/img/coffeee.webp", unit: "tazas" },
+  leche: { label: "Leche", image: "/img/milk.webp", unit: "vasos" },
+  jugos: { label: "Jugos", image: "/img/orange-juice.webp", unit: "vasos" },
+  gaseosa: { label: "Gaseosas", image: "/img/soda.webp", unit: "vasos" },
+  otro: { label: "Otro", image: "/img/three_dots.webp", unit: "unid" },
 };
 
 export function Question19DrinkAmounts({
@@ -60,7 +60,7 @@ export function Question19DrinkAmounts({
       onExit={onExit}
       onNext={() => onNext({ drinkAmounts: amounts })}
       isNextDisabled={false}
-      nextText="Continuar"
+      nextText="Calcular mi huella"
     >
       <div className="flex flex-col items-center w-full max-w-md mx-auto">
         <h2 className="text-xl sm:text-2xl font-extrabold text-gray-900 leading-snug mb-1 text-center font-quicksand">
@@ -117,7 +117,7 @@ export function Question19DrinkAmounts({
                       className="w-10 text-center font-bold text-gray-700 text-sm focus:outline-none font-quicksand [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                     />
                     <span className="text-xs text-gray-400 font-medium font-quicksand">
-                      kg
+                      {meta.unit}
                     </span>
                   </div>
 
