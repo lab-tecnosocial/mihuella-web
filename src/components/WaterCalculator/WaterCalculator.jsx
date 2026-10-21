@@ -2,15 +2,8 @@ import { useState } from 'react';
 import { WaterCalculatorOnboarding } from './WaterCalculatorOnboarding';
 import { WaterQuestionLayout } from './WaterQuestionLayout';
 import { Question1Origin } from './questions/Question1Origin';
-import { Question2WaterExpense } from './questions/Question2WaterExpense';
-import { Question3ShowerDuration } from './questions/Question3ShowerDuration';
-import { Question4ShowerFrequency } from './questions/Question4ShowerFrequency';
-import { Question5TeethBrushing } from './questions/Question5TeethBrushing';
-import { Question6HandWashing } from './questions/Question6HandWashing';
 import { Question7ToiletType } from './questions/Question7ToiletType';
-import { Question8ClothesWashing } from './questions/Question8ClothesWashing';
 import { Question9Dishwashing } from './questions/Question9Dishwashing';
-import { Question10DishwashingFrequency } from './questions/Question10DishwashingFrequency';
 import { Question11PatioCleaning } from './questions/Question11PatioCleaning';
 import { Question12Proteins } from './questions/Question12Proteins';
 import { Question13ProteinAmounts } from './questions/Question13ProteinAmounts';
@@ -120,6 +113,8 @@ export function WaterCalculator() {
     }
   };
 
+  const numberQuestion = NUMBER_QUESTIONS[currentStep];
+
   return (
     <div className="relative min-h-screen w-full bg-[#2178BD] flex flex-col justify-between overflow-hidden font-sans">
       <div
@@ -144,48 +139,13 @@ export function WaterCalculator() {
           />
         )}
 
-        {currentStep === 2 && (
-          <Question2WaterExpense
+        {numberQuestion && (
+          <NumberQuestion
+            {...numberQuestion}
             onNext={handleNext}
             onBack={handleBack}
             onExit={handleBackToHome}
-            initialValue={answers.waterExpenseBs || 0}
-          />
-        )}
-
-        {currentStep === 3 && (
-          <Question3ShowerDuration
-            onNext={handleNext}
-            onBack={handleBack}
-            onExit={handleBackToHome}
-            initialValue={answers.showerMinutes || 0}
-          />
-        )}
-
-        {currentStep === 4 && (
-          <Question4ShowerFrequency
-            onNext={handleNext}
-            onBack={handleBack}
-            onExit={handleBackToHome}
-            initialValue={answers.showerFrequencyPerWeek || 0}
-          />
-        )}
-
-        {currentStep === 5 && (
-          <Question5TeethBrushing
-            onNext={handleNext}
-            onBack={handleBack}
-            onExit={handleBackToHome}
-            initialValue={answers.teethBrushingFrequencyPerDay || 0}
-          />
-        )}
-
-        {currentStep === 6 && (
-          <Question6HandWashing
-            onNext={handleNext}
-            onBack={handleBack}
-            onExit={handleBackToHome}
-            initialValue={answers.handWashingFrequencyPerDay || 0}
+            initialValue={answers[numberQuestion.answerKey] || 0}
           />
         )}
 
@@ -198,30 +158,12 @@ export function WaterCalculator() {
           />
         )}
 
-        {currentStep === 8 && (
-          <Question8ClothesWashing
-            onNext={handleNext}
-            onBack={handleBack}
-            onExit={handleBackToHome}
-            initialValue={answers.clothesWashingFrequencyPerWeek || 0}
-          />
-        )}
-
         {currentStep === 9 && (
           <Question9Dishwashing
             onNext={handleNext}
             onBack={handleBack}
             onExit={handleBackToHome}
             initialValue={answers.dishwashingMethod || ''}
-          />
-        )}
-
-        {currentStep === 10 && (
-          <Question10DishwashingFrequency
-            onNext={handleNext}
-            onBack={handleBack}
-            onExit={handleBackToHome}
-            initialValue={answers.dishwashingTimesPerDay || 0}
           />
         )}
 

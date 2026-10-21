@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ChevronUp, ChevronDown } from 'lucide-react';
 import { CarbonQuestionLayout } from './CarbonQuestionLayout';
 
@@ -23,11 +23,11 @@ export function Question15TransportDays({
     setDays((prev) => Math.max(0, prev - 1));
   };
 
-  const handleChange = (e: { target: { value: string; }; }) => {
-    const val = parseInt(e.target.value, 10);
-    if (isNaN(val)) setDays(0);
-    else setDays(Math.min(7, Math.max(0, val)));
-  };
+  // const handleChange = (e: { target: { value: string; }; }) => {
+  //   const val = parseInt(e.target.value, 10);
+  //   if (isNaN(val)) setDays(0);
+  //   else setDays(Math.min(7, Math.max(0, val)));
+  // };
 
   const handleSubmit = (e: { preventDefault: () => void; }) => {
     e.preventDefault();

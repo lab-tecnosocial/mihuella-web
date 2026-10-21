@@ -121,7 +121,7 @@ export function Question13ProteinAmounts({
                       min="0"
                       value={value}
                       onChange={(e) => handleInputChange(id, e.target.value)}
-                      className="w-10 text-center font-bold text-gray-700 text-sm focus:outline-none font-quicksand"
+                      className="w-10 text-center font-bold text-gray-700 text-sm focus:outline-none font-quicksand [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                     />
                     <span className="text-xs text-gray-400 font-medium font-quicksand">
                       {meta.unit}
