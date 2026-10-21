@@ -4,13 +4,13 @@ import { WaterQuestionLayout } from "../WaterQuestionLayout";
 
 // Mapeo base de opciones para mantener coherencia con las imágenes y nombres
 const PROTEIN_METADATA = {
-  res: { label: "Carne de res", image: "/img/meal.webp" },
-  pollo: { label: "Pollo", image: "/img/chicken.webp" },
-  pescado: { label: "Pescado", image: "/img/fish.webp" },
-  cerdo: { label: "Cerdo", image: "/img/bacon.webp" },
-  cordero: { label: "Cordero", image: "/img/lamb.webp" },
-  huevos: { label: "Huevos", image: "/img/eggs.webp" },
-  otro: { label: "Otro", image: "/img/three_dots.webp" },
+  res: { label: "Carne de res", image: "/img/meal.webp", unit: "kg" },
+  pollo: { label: "Pollo", image: "/img/chicken.webp", unit: "kg" },
+  pescado: { label: "Pescado", image: "/img/fish.webp", unit: "kg" },
+  cerdo: { label: "Cerdo", image: "/img/bacon.webp", unit: "kg" },
+  cordero: { label: "Cordero", image: "/img/lamb.webp", unit: "kg" },
+  huevos: { label: "Huevos", image: "/img/eggs.webp", unit: "unid" },
+  otro: { label: "Otro", image: "/img/three_dots.webp", unit: "" },
 };
 
 export function Question13ProteinAmounts({
@@ -124,7 +124,7 @@ export function Question13ProteinAmounts({
                       className="w-10 text-center font-bold text-gray-700 text-sm focus:outline-none font-quicksand"
                     />
                     <span className="text-xs text-gray-400 font-medium font-quicksand">
-                      kg
+                      {meta.unit}
                     </span>
                   </div>
 

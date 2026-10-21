@@ -20,6 +20,7 @@ import { Question16Fruits } from './questions/Question16Fruits';
 import { Question17FruitAmounts } from './questions/Question17FruitAmounts';
 import { Question18Drinks } from './questions/Question18Drinks';
 import { Question19DrinkAmounts } from './questions/Question19DrinkAmounts';
+import { guardarRespuestas } from './calculo/almacenamiento';
 
 export function WaterCalculator() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -27,6 +28,11 @@ export function WaterCalculator() {
 
   const handleStart = () => setCurrentStep(1);
   const handleBackToHome = () => window.location.href = '/';
+
+  const finishCalculation = (respuestas) => {
+    guardarRespuestas(respuestas);
+    window.location.href = '/feature/resultado-huella-hidrica';
+  };
 
   const handleBack = () => {
     if (currentStep === 1) setCurrentStep(0);
@@ -58,15 +64,6 @@ export function WaterCalculator() {
         setCurrentStep(16);
       } else {
         setCurrentStep(17);
-      }
-    }
-    else if (currentStep === 19) setCurrentStep(18);
-    else if (currentStep === 20) {
-      const selectedDrinks = answers.drinks || [];
-      if (selectedDrinks.length === 1 && selectedDrinks[0] === 'ninguno') {
-        setCurrentStep(18);
-      } else {
-        setCurrentStep(19);
       }
     }
     else setCurrentStep(currentStep - 1);
@@ -112,12 +109,12 @@ export function WaterCalculator() {
     } else if (currentStep === 18) {
       const selectedDrinks = updatedAnswers.drinks || [];
       if (selectedDrinks.length === 1 && selectedDrinks[0] === 'ninguno') {
-        setCurrentStep(20); // Salta directo a la pregunta 20 si eligió "ninguno"
+        finishCalculation(updatedAnswers); // Sin bebidas no hay cantidades que pedir
       } else {
         setCurrentStep(19);
       }
     } else if (currentStep === 19) {
-      setCurrentStep(20);
+      finishCalculation(updatedAnswers);
     } else {
       setCurrentStep(currentStep + 1);
     }
@@ -313,22 +310,6 @@ export function WaterCalculator() {
           />
         )}
 
-        {/* Pantalla final después de la pregunta 19 */}
-        {currentStep > 19 && (
-          <WaterQuestionLayout
-            currentCategoryIndex={-1}
-            icon="/img/huella-hidrica-icon.webp"
-            onBack={handleBack}
-            onExit={handleBackToHome}
-          >
-            <div className="flex flex-col items-center text-center text-black w-full max-w-md mx-auto">
-              <h2 className="text-2xl font-bold text-gray-800 mb-4">Próximamente</h2>
-              <p className="text-gray-600">
-                Más preguntas estarán disponibles pronto.
-              </p>
-            </div>
-          </WaterQuestionLayout>
-        )}
       </main>
 
       <footer className="relative z-10 py-2 text-center text-xs text-white/70">
