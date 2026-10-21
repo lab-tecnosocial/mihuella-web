@@ -1,4 +1,3 @@
-import React from "react";
 import { ArrowLeft, LogOut, ArrowRight } from "lucide-react";
 import { Button3D } from "./Button3D";
 import { CarbonStepper } from "./CarbonStepper";

@@ -1,4 +1,4 @@
-import { ChevronUp, ChevronDown, Lightbulb } from 'lucide-react';
+import { Lightbulb } from 'lucide-react';
 import { CarbonQuestionLayout } from "./CarbonQuestionLayout";
 import { useState } from 'react';
 
@@ -9,14 +9,6 @@ export function Question11FruitsConsumption({
   initialValue = 0,
 }) {
   const [amount, setAmount] = useState(initialValue);
-
-  const handleIncrement = () => {
-    setAmount((prev) => parseFloat((prev + 0.1).toFixed(1)));
-  };
-
-  const handleDecrement = () => {
-    setAmount((prev) => Math.max(0, parseFloat((prev - 0.1).toFixed(1))));
-  };
 
   const handleChange = (e) => {
     const val = parseFloat(e.target.value);
