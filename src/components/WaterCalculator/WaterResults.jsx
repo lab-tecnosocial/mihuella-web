@@ -151,7 +151,7 @@ export function WaterResults({ answers, onRestart, onExit }) {
 
           <div className="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto shrink-0">
             <a
-              href="https://labtecnosocial.org/category/tecnologias/app-movil/"
+              href="https://play.google.com/store/apps/details?id=org.labtecnosocial.mihuella"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto flex items-center justify-center gap-2 bg-[#2178BD] hover:bg-[#1a629b] text-white font-extrabold text-sm px-5 py-3 rounded-xl shadow-md transition cursor-pointer"
