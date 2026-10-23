@@ -125,6 +125,11 @@ export function WaterCalculator() {
   const handleStart = () => setCurrentStep(1);
   const handleBackToHome = () => (window.location.href = "/");
 
+  const finishCalculation = (respuestas) => {
+    guardarRespuestas(respuestas);
+    window.location.href = '/feature/resultado-huella-hidrica';
+  };
+
   const handleBack = () => {
     if (currentStep === 1) setCurrentStep(0);
     else if (currentStep === 12) setCurrentStep(11);

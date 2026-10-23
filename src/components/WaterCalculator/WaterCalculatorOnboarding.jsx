@@ -1,4 +1,3 @@
-import React from "react";
 import { Droplets, ShowerHead, Utensils, ShoppingBag, Leaf } from "lucide-react";
 import { WaterQuestionLayout } from "./WaterQuestionLayout";
 

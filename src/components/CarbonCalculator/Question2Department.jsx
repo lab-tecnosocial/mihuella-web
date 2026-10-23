@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { CarbonQuestionLayout } from './CarbonQuestionLayout';
 
 // Lista de departamentos de Bolivia con rutas de imágenes de banderas
