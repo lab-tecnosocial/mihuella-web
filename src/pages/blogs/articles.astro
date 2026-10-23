@@ -1,65 +1,188 @@
 ---
-import CaculateCard from "../../components/CaculateCard.astro";
 import Image1Blog from "../../assets/images/article_card.webp";
 import Image2Blog from "../../assets/images/blog_card.webp";
+import Image3Blog from "../../assets/images/article3_card.webp";
 import Layout from "../../layouts/Layout.astro";
+
+const otherArticles = [
+  {
+    category: "Huella de carbono",
+    title: "Cochabamba está entre las cinco ciudades más contaminadas del país",
+    date: "2 de Mayo, 2026",
+    summary: "Subir al Cristo de la Concordia en Cochabamba y admirar el valle desde lo alto es una experiencia turística increíble. Sin embargo...",
+    image: Image2Blog.src,
+    alt: "Cristo de la Concordia",
+    link: "/blogs/emisiones-co2-bolivia",
+    categoryType: "carbono",
+  },
+  {
+    category: "Medioambiente y sostenibilidad",
+    title: "¿Cómo tus hábitos diarios influyen en el planeta?",
+    date: "18 de Abril, 2026",
+    summary: "Desde cómo te transportas hasta lo que consumes en casa, muchas decisiones cotidianas generan emisiones. Conocerlas es el primer paso...",
+    image: Image1Blog.src,
+    alt: "Hábitos diarios y huella",
+    link: "/articuloHH",
+    categoryType: "hidrica",
+  },
+  {
+    category: "Huella de Carbono",
+    title: "El costo de carbono de los plásticos de un solo uso: una decisión que está en tus manos",
+    date: "20 de marzo, 2026",
+    summary: "El equipo de Mi Huella participó en el evento de la Hora del Planeta, un espacio de encuentro para reflexionar sobre el impacto de...",
+    image: Image3Blog.src,
+    alt: "Plásticos de un solo uso",
+    link: "/articuloPlasticos",
+    categoryType: "carbono",
+  },
+];
 ---
 
 <meta charset="UTF-8" />
 <Layout title="Artículos Mi Huella">
-  <section id="articulos" class="py-16 mt-100px bg-huella-text-gray-ligth">
-    <h2 class="text-6xl font-bold text-center mb-10 text-green-800">
-      Artículos
-    </h2>
+  <section id="articulos" class="py-12 md:py-16 px-4 max-w-7xl mx-auto bg-white font-quicksand">
+    
+    {/* Título de la sección */}
+    <h1 class="text-3xl md:text-5xl font-extrabold text-gray-900 mb-8 text-center md:text-left">
+     Artículos
+    </h1>
 
-    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 px-4">
-      <div class="flex flex-col items-center text-center">
-        <div class="relative w-full rounded-lg shadow overflow-hidden group">
-          <CaculateCard
-            img={Image1Blog.src}
-            altImg="Imagen Huella Hídrica"
-            withImg="100px"
-            stylesComponent="w-full h-56 object-cover"
-          />
+    {/* Filtros por categoría */}
+    <div class="flex gap-3 mb-10 overflow-x-auto pb-2 scrollbar-none justify-start">
+      <button 
+        id="btn-todos" 
+        class="filter-btn active bg-gray-800 text-white px-5 py-2 rounded-full font-bold text-sm whitespace-nowrap transition-colors cursor-pointer"
+      >
+        Todos
+      </button>
+      <button 
+        id="btn-carbono" 
+        class="filter-btn border border-gray-300 text-gray-700 px-5 py-2 rounded-full font-bold text-sm whitespace-nowrap transition-colors hover:bg-gray-100 cursor-pointer"
+      >
+        Huella de carbono
+      </button>
+      <button 
+        id="btn-hidrica" 
+        class="filter-btn border border-gray-300 text-gray-700 px-5 py-2 rounded-full font-bold text-sm whitespace-nowrap transition-colors hover:bg-gray-100 cursor-pointer"
+      >
+        Huella hídrica
+      </button>
+    </div>
 
-          <a
-            href="/articuloHH"
-            class="absolute bottom-4 left-4 bg-green-700 text-white px-5 py-2 rounded-md hover:bg-#3BB273-800 transition shadow-lg"
-          >
-            Leer
-          </a>
-        </div>
+    {/* Grid de Tarjetas de Artículos */}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+      {otherArticles.map((article) => (
+        <article
+          data-category={article.categoryType}
+          class="article-card flex flex-col justify-between group transition-all duration-300"
+        >
+          <div>
+            {/* Imagen con tarjeta superpuesta (Hero Image con título) */}
+            <div class="relative w-full aspect-[4/3] rounded-3xl overflow-hidden mb-4 shadow-sm bg-gray-100">
+              <img
+                src={article.image}
+                alt={article.alt}
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              {/* Overlay gradiente oscuro inferior */}
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent p-5 flex flex-col justify-end">
+                <span class="text-xs font-semibold text-gray-200 mb-1">
+                  {article.category}
+                </span>
+                <h2 class="text-lg md:text-xl font-bold text-white leading-snug line-clamp-3">
+                  {article.title}
+                </h2>
+              </div>
+            </div>
 
-        <p class="mt-4 max-w-md text-sm text-gray-700 text-left">
-          ¿Sabías que una hamburguesa puede consumir más agua que una ducha de
-          un mes? Conoce más datos sobre la huella hídrica en América Latina y
-          cómo medirla y cómo reducirla.
-        </p>
-      </div>
+            {/* Fecha y Resumen */}
+            <div class="px-1">
+              <p class="text-xs font-medium text-gray-400 mb-2">
+                {article.date}
+              </p>
+              <p class="text-sm font-medium text-gray-600 leading-relaxed line-clamp-3 mb-4">
+                {article.summary}
+              </p>
+            </div>
+          </div>
 
-      <div class="flex flex-col items-center text-center">
-        <div class="relative w-full rounded-lg shadow overflow-hidden group">
-          <CaculateCard
-            img={Image2Blog.src}
-            altImg="Imagen Cristo"
-            withImg="100px"
-            stylesComponent="w-full h-56 object-cover"
-          />
-
-          <a
-            href="/blogs/emisiones-co2-bolivia2"
-            class="absolute bottom-4 left-4 bg-green-700 text-white px-5 py-2 rounded-md hover:bg-green-800 transition shadow-lg"
-          >
-            Leer
-          </a>
-        </div>
-
-        <p class="mt-4 max-w-md text-sm text-gray-700 text-left">
-          Cochabamba, junto con la ciudad de El Alto están entre las cinco
-          ciudades más contaminados del país, a causa de “humaredas de los
-          incendios..."
-        </p>
-      </div>
+          {/* Enlace "Ver más ->" */}
+          <div class="px-1 pt-2">
+            <a
+              href={article.link}
+              class="inline-flex items-center gap-2 text-[#22C55E] hover:text-[#16A34A] font-bold text-base transition-colors group/link"
+            >
+              <span>Ver más</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2.5"
+                stroke="currentColor"
+                class="w-4 h-4 transform group-hover/link:translate-x-1.5 transition-transform"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                />
+              </svg>
+            </a>
+          </div>
+        </article>
+      ))}
     </div>
   </section>
 </Layout>
+
+<script>
+  const btnTodos = document.getElementById('btn-todos');
+  const btnCarbono = document.getElementById('btn-carbono');
+  const btnHidrica = document.getElementById('btn-hidrica');
+  const articles = document.querySelectorAll('.article-card');
+  const buttons = document.querySelectorAll('.filter-btn');
+
+  function updateActiveButton(activeBtn: HTMLElement) {
+    buttons.forEach(btn => {
+      btn.classList.remove('bg-gray-800', 'text-white', 'active');
+      btn.classList.add('border', 'border-gray-300', 'text-gray-700', 'hover:bg-gray-100');
+    });
+    activeBtn.className = "filter-btn active bg-gray-800 text-white px-5 py-2 rounded-full font-bold text-sm whitespace-nowrap transition-colors cursor-pointer";
+  }
+
+  function filterArticles(category: string | null) {
+    articles.forEach((article) => {
+      const itemCategory = article.getAttribute('data-category');
+      if (category === 'todos' || itemCategory === category) {
+        (article as HTMLElement).style.display = 'flex';
+      } else {
+        (article as HTMLElement).style.display = 'none';
+      }
+    });
+  }
+
+  btnTodos?.addEventListener('click', () => {
+    updateActiveButton(btnTodos);
+    filterArticles('todos');
+  });
+
+  btnCarbono?.addEventListener('click', () => {
+    updateActiveButton(btnCarbono);
+    filterArticles('carbono');
+  });
+
+  btnHidrica?.addEventListener('click', () => {
+    updateActiveButton(btnHidrica);
+    filterArticles('hidrica');
+  });
+</script>
+
+<style>
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>
