@@ -54,7 +54,7 @@ export function Question19DrinkAmounts({
     <WaterQuestionLayout
       currentCategoryIndex={3} // Categoría: Dieta
       currentQuestionIndex={7}
-      totalQuestionsInCategory={7}
+      totalQuestionsInCategory={8}
       icon="/img/drinks-icon.webp"
       onBack={onBack}
       onExit={onExit}
@@ -75,7 +75,7 @@ export function Question19DrinkAmounts({
           {activeDrinks.map((id) => {
             const meta = DRINK_METADATA[id] || {
               label: id,
-              image: "/img/otro.webp",
+              image: "/img/three_dots.webp",
             };
             const value = amounts[id] !== undefined ? amounts[id] : 0;
 
@@ -117,7 +117,7 @@ export function Question19DrinkAmounts({
                       className="w-10 text-center font-bold text-gray-700 text-sm focus:outline-none font-quicksand [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                     />
                     <span className="text-xs text-gray-400 font-medium font-quicksand">
-                      {meta.unit}
+                      Lt/semana
                     </span>
                   </div>
 

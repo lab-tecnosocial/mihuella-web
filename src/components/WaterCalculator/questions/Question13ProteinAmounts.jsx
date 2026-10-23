@@ -58,7 +58,7 @@ export function Question13ProteinAmounts({
     <WaterQuestionLayout
       currentCategoryIndex={3} // Categoría: Dieta / Alimentos
       currentQuestionIndex={1}
-      totalQuestionsInCategory={2}
+      totalQuestionsInCategory={8}
       icon="/img/dieta-icon.webp"
       onBack={onBack}
       onExit={onExit}
@@ -80,7 +80,7 @@ export function Question13ProteinAmounts({
           {activeProteins.map((id) => {
             const meta = PROTEIN_METADATA[id] || {
               label: id,
-              image: "/img/otro.webp",
+              image: "/img/three_dots.webp",
             };
             const value = amounts[id] !== undefined ? amounts[id] : 0;
 

@@ -40,7 +40,7 @@ export function Question16Fruits({
     <WaterQuestionLayout
       currentCategoryIndex={3} // Categoría: Dieta
       currentQuestionIndex={4}
-      totalQuestionsInCategory={5}
+      totalQuestionsInCategory={8}
       icon="/img/fruits-icon.webp"
       onBack={onBack}
       onExit={onExit}
@@ -50,7 +50,7 @@ export function Question16Fruits({
     >
       <div className="flex flex-col items-center w-full max-w-md mx-auto">
         <h2 className="text-xl sm:text-2xl font-extrabold text-gray-900 leading-snug mb-1 text-center font-quicksand">
-          ¿Qué tipo de frutas includes en tu alimentación habitual?
+          ¿Qué tipo de frutas incluyes en tu alimentación habitual?
         </h2>
         <p className="text-xs sm:text-sm text-gray-400 font-medium mb-5 text-center font-quicksand">
           Selecciona todas las que consumes
