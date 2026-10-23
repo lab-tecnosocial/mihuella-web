@@ -7,59 +7,175 @@ import Layout from "../../layouts/Layout.astro";
 
 <meta charset="UTF-8" />
 <Layout title="Artículos Mi Huella">
-  <section id="articulos" class="py-16 mt-100px bg-huella-text-gray-ligth">
-    <h2 class="text-6xl font-bold text-center mb-10 text-green-800">
-      Artículos
-    </h2>
+  <section id="articulos" class="py-16 px-4 max-w-7xl mx-auto bg-white">
+    
+    <h1 class="text-5xl font-bold text-gray-800 mb-8 text-left pl-2">
+      Blog y artículos
+    </h1>
 
-    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 px-4">
-      <div class="flex flex-col items-center text-center">
-        <div class="relative w-full rounded-lg shadow overflow-hidden group">
+    <div class="flex gap-3 mb-12 overflow-x-auto pb-2 scrollbar-none">
+      <button 
+        id="btn-todos" 
+        class="filter-btn active bg-gray-600 text-white px-5 py-2 rounded-full font-medium text-sm whitespace-nowrap transition-colors"
+      >
+        Todos
+      </button>
+      <button 
+        id="btn-carbono" 
+        class="filter-btn border border-gray-400 text-gray-700 px-5 py-2 rounded-full font-medium text-sm whitespace-nowrap transition-colors hover:bg-gray-100"
+      >
+        Huella de carbono
+      </button>
+      <button 
+        id="btn-hidrica" 
+        class="filter-btn border border-gray-400 text-gray-700 px-5 py-2 rounded-full font-medium text-sm whitespace-nowrap transition-colors hover:bg-gray-100"
+      >
+        Huella hídrica
+      </button>
+    </div>
+
+    <div class="space-y-16">
+      
+      <div data-category="hidrica" class="article-item flex flex-col lg:flex-row gap-8 items-center bg-white rounded-2xl overflow-hidden transition-all duration-300">
+        
+        <div class="w-full lg:w-7/12 bg-[#E3F2FD] p-8 rounded-2xl flex items-center justify-center min-h-[380px] shadow-sm">
           <CaculateCard
             img={Image1Blog.src}
             altImg="Imagen Huella Hídrica"
-            withImg="100px"
-            stylesComponent="w-full h-56 object-cover"
+            withImg="100%"
+            stylesComponent="w-full h-auto max-h-[340px] object-contain"
           />
+        </div>
+
+        <div class="w-full lg:w-5/12 flex flex-col justify-center items-start px-2">
+          <span class="border border-gray-400 text-gray-600 px-4 py-1 rounded-full text-xs font-semibold mb-4">
+            Huella hídrica
+          </span>
+          
+          <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4 leading-tight">
+            Huella Hídrica:<br>El agua invisible que consumes sin darte cuenta
+          </h2>
+          
+          <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+            ¿Sabías que una hamburguesa puede consumir más agua que una ducha de un mes? Conoce más datos sobre la huella hídrica en América Latina y cómo medirla y cómo reducirla.
+          </p>
+          
+          <p class="text-gray-600 text-sm mb-6 leading-relaxed">
+            ¿Alguna vez te has preguntado cuánta agua hay detrás de la taza de café que tomas por la mañana o de la camiseta que usas hoy? Aunque no lo veamos, cada producto tiene...
+          </p>
 
           <a
             href="/articuloHH"
-            class="absolute bottom-4 left-4 bg-green-700 text-white px-5 py-2 rounded-md hover:bg-#3BB273-800 transition shadow-lg"
+            class="inline-flex items-center gap-2 bg-[#22C55E] hover:bg-[#16A34A] text-white font-semibold px-6 py-3 rounded-lg transition-colors shadow-md group"
           >
-            Leer
+            Leer artículo
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4 transform group-hover:translate-x-1 transition-transform">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
           </a>
         </div>
-
-        <p class="mt-4 max-w-md text-sm text-gray-700 text-left">
-          ¿Sabías que una hamburguesa puede consumir más agua que una ducha de
-          un mes? Conoce más datos sobre la huella hídrica en América Latina y
-          cómo medirla y cómo reducirla.
-        </p>
       </div>
 
-      <div class="flex flex-col items-center text-center">
-        <div class="relative w-full rounded-lg shadow overflow-hidden group">
+      <hr id="divider" class="border-gray-100" />
+
+      <div data-category="carbono" class="article-item flex flex-col lg:flex-row gap-8 items-center bg-white rounded-2xl overflow-hidden transition-all duration-300">
+        
+        <div class="w-full lg:w-7/12 bg-[#F3F4F6] p-8 rounded-2xl flex items-center justify-center min-h-[380px] shadow-sm">
           <CaculateCard
             img={Image2Blog.src}
             altImg="Imagen Cristo"
-            withImg="100px"
-            stylesComponent="w-full h-56 object-cover"
+            withImg="100%"
+            stylesComponent="w-full h-auto max-h-[340px] object-contain"
           />
+        </div>
+
+        <div class="w-full lg:w-5/12 flex flex-col justify-center items-start px-2">
+          <span class="border border-gray-400 text-gray-600 px-4 py-1 rounded-full text-xs font-semibold mb-4">
+            Huella de carbono
+          </span>
+          
+          <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4 leading-tight">
+            Calidad del aire:<br>La situación crítica en las ciudades de Bolivia
+          </h2>
+          
+          <p class="text-gray-600 text-sm mb-6 leading-relaxed">
+            Cochabamba, junto con la ciudad de El Alto están entre las cinco ciudades más contaminadas del país, a causa de “humaredas de los incendios..." Conoce los factores de riesgo y qué medidas de contingencia se planean implementar en el departamento.
+          </p>
 
           <a
             href="/blogs/emisiones-co2-bolivia2"
-            class="absolute bottom-4 left-4 bg-green-700 text-white px-5 py-2 rounded-md hover:bg-green-800 transition shadow-lg"
+            class="inline-flex items-center gap-2 bg-[#22C55E] hover:bg-[#16A34A] text-white font-semibold px-6 py-3 rounded-lg transition-colors shadow-md group"
           >
-            Leer
+            Leer artículo
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4 transform group-hover:translate-x-1 transition-transform">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
           </a>
         </div>
-
-        <p class="mt-4 max-w-md text-sm text-gray-700 text-left">
-          Cochabamba, junto con la ciudad de El Alto están entre las cinco
-          ciudades más contaminados del país, a causa de “humaredas de los
-          incendios..."
-        </p>
       </div>
+
     </div>
   </section>
 </Layout>
+
+<script>
+  const btnTodos = document.getElementById('btn-todos');
+  const btnCarbono = document.getElementById('btn-carbono');
+  const btnHidrica = document.getElementById('btn-hidrica');
+  const articles = document.querySelectorAll('.article-item');
+  const divider = document.getElementById('divider');
+  const buttons = document.querySelectorAll('.filter-btn');
+
+  function updateActiveButton(activeBtn: HTMLElement) {
+    buttons.forEach(btn => {
+      btn.classList.remove('bg-gray-600', 'text-white', 'active');
+      btn.classList.add('border', 'border-gray-400', 'text-gray-700', 'hover:bg-gray-100');
+    });
+    // Clear previous classes and set the active styles
+    activeBtn.className = "filter-btn active bg-gray-600 text-white px-5 py-2 rounded-full font-medium text-sm whitespace-nowrap transition-colors";
+  }
+
+  function filterArticles(category: string | null) {
+    let visibleCount = 0;
+    
+    articles.forEach((article) => {
+      const itemCategory = article.getAttribute('data-category');
+      if (category === 'todos' || itemCategory === category) {
+        (article as HTMLElement).style.display = 'flex';
+        visibleCount++;
+      } else {
+        (article as HTMLElement).style.display = 'none';
+      }
+    });
+
+    // Ocultar la línea divisoria si solo hay un artículo en pantalla
+    if (divider) {
+      divider.style.display = visibleCount > 1 ? 'block' : 'none';
+    }
+  }
+
+  btnTodos?.addEventListener('click', () => {
+    updateActiveButton(btnTodos);
+    filterArticles('todos');
+  });
+
+  btnCarbono?.addEventListener('click', () => {
+    updateActiveButton(btnCarbono);
+    filterArticles('carbono');
+  });
+
+  btnHidrica?.addEventListener('click', () => {
+    updateActiveButton(btnHidrica);
+    filterArticles('hidrica');
+  });
+</script>
+
+<style>
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>
