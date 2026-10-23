@@ -29,7 +29,7 @@ export function WaterResults({ answers, onRestart, onExit }) {
           onClick={onExit}
           className="flex items-center gap-1.5 bg-white/20 hover:bg-white/30 backdrop-blur-md text-white font-bold text-sm px-4 py-1.5 rounded-full transition cursor-pointer"
         >
-          <span>Salir</span>
+          <a href="/">Salir</a>
           <LogOut className="w-4 h-4" />
         </button>
       </div>
