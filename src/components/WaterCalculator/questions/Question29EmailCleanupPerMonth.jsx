@@ -24,7 +24,7 @@ export function Question29EmailCleanupPerMonth({
       onBack={onBack}
       onExit={onExit}
       initialValue={initialValue}
-      nextText="Continuar"
+      nextText="Calcular mi Huella"
     />
   );
 }

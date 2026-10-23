@@ -23,6 +23,7 @@ import { Question26PaperRecycledPerYear } from "./questions/Question26PaperRecyc
 import { Question27PlasticRecycledPerYear } from "./questions/Question27PlasticRecycledPerYear";
 import { Question28AiUsePerWeek } from "./questions/Question28AiUsePerWeek";
 import { Question29EmailCleanupPerMonth } from "./questions/Question29EmailCleanupPerMonth";
+import { WaterResults } from "./WaterResults";
 
 import { NumberQuestion } from "./questions/NumberQuestion";
 
@@ -454,23 +455,16 @@ export function WaterCalculator() {
           />
         )}
 
-        {/* Pantalla final después del último paso activo (paso 29) */}
+        {/* Pantalla de resultados (Estadísticas 2026) */}
         {currentStep > 29 && (
-          <WaterQuestionLayout
-            currentCategoryIndex={-1}
-            icon="/img/huella-hidrica-icon.webp"
-            onBack={handleBack}
+          <WaterResults
+            answers={answers}
+            onRestart={() => {
+              setAnswers({});
+              setCurrentStep(0);
+            }}
             onExit={handleBackToHome}
-          >
-            <div className="flex flex-col items-center text-center text-black w-full max-w-md mx-auto">
-              <h2 className="text-2xl font-bold text-gray-800 mb-4">
-                Próximamente
-              </h2>
-              <p className="text-gray-600">
-                Más preguntas estarán disponibles pronto.
-              </p>
-            </div>
-          </WaterQuestionLayout>
+          />
         )}
       </main>
 
