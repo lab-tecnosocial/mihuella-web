@@ -1,119 +1,136 @@
 ---
-import CaculateCard from "../../components/CaculateCard.astro";
 import Image1Blog from "../../assets/images/article_card.webp";
 import Image2Blog from "../../assets/images/blog_card.webp";
+import Image3Blog from "../../assets/images/article3_card.webp";
 import Layout from "../../layouts/Layout.astro";
+
+const otherArticles = [
+  {
+    category: "Huella de carbono",
+    title: "Cochabamba está entre las cinco ciudades más contaminadas del país",
+    date: "2 de Mayo, 2026",
+    summary: "Subir al Cristo de la Concordia en Cochabamba y admirar el valle desde lo alto es una experiencia turística increíble. Sin embargo...",
+    image: Image2Blog.src,
+    alt: "Cristo de la Concordia",
+    link: "/blogs/emisiones-co2-bolivia2",
+    categoryType: "carbono",
+  },
+  {
+    category: "Medioambiente y sostenibilidad",
+    title: "¿Cómo tus hábitos diarios influyen en el planeta?",
+    date: "18 de Abril, 2026",
+    summary: "Desde cómo te transportas hasta lo que consumes en casa, muchas decisiones cotidianas generan emisiones. Conocerlas es el primer paso...",
+    image: Image1Blog.src,
+    alt: "Hábitos diarios y huella",
+    link: "/articuloHH",
+    categoryType: "hidrica",
+  },
+  {
+    category: "Huella de Carbono",
+    title: "El costo de carbono de los plásticos de un solo uso: una decisión que está en tus manos",
+    date: "20 de marzo, 2026",
+    summary: "El equipo de Mi Huella participó en el evento de la Hora del Planeta, un espacio de encuentro para reflexionar sobre el impacto de...",
+    image: Image3Blog.src,
+    alt: "Plásticos de un solo uso",
+    link: "/articuloPlasticos",
+    categoryType: "carbono",
+  },
+];
 ---
 
 <meta charset="UTF-8" />
 <Layout title="Artículos Mi Huella">
-  <section id="articulos" class="py-16 px-4 max-w-7xl mx-auto bg-white">
+  <section id="articulos" class="py-12 md:py-16 px-4 max-w-7xl mx-auto bg-white font-quicksand">
     
-    <h1 class="text-5xl font-bold text-gray-800 mb-8 text-left pl-2">
-      Blog y artículos
+    {/* Título de la sección */}
+    <h1 class="text-3xl md:text-5xl font-extrabold text-gray-900 mb-8 text-center md:text-left">
+     Artículos
     </h1>
 
-    <div class="flex gap-3 mb-12 overflow-x-auto pb-2 scrollbar-none">
+    {/* Filtros por categoría */}
+    <div class="flex gap-3 mb-10 overflow-x-auto pb-2 scrollbar-none justify-start">
       <button 
         id="btn-todos" 
-        class="filter-btn active bg-gray-600 text-white px-5 py-2 rounded-full font-medium text-sm whitespace-nowrap transition-colors"
+        class="filter-btn active bg-gray-800 text-white px-5 py-2 rounded-full font-bold text-sm whitespace-nowrap transition-colors cursor-pointer"
       >
         Todos
       </button>
       <button 
         id="btn-carbono" 
-        class="filter-btn border border-gray-400 text-gray-700 px-5 py-2 rounded-full font-medium text-sm whitespace-nowrap transition-colors hover:bg-gray-100"
+        class="filter-btn border border-gray-300 text-gray-700 px-5 py-2 rounded-full font-bold text-sm whitespace-nowrap transition-colors hover:bg-gray-100 cursor-pointer"
       >
         Huella de carbono
       </button>
       <button 
         id="btn-hidrica" 
-        class="filter-btn border border-gray-400 text-gray-700 px-5 py-2 rounded-full font-medium text-sm whitespace-nowrap transition-colors hover:bg-gray-100"
+        class="filter-btn border border-gray-300 text-gray-700 px-5 py-2 rounded-full font-bold text-sm whitespace-nowrap transition-colors hover:bg-gray-100 cursor-pointer"
       >
         Huella hídrica
       </button>
     </div>
 
-    <div class="space-y-16">
-      
-      <div data-category="hidrica" class="article-item flex flex-col lg:flex-row gap-8 items-center bg-white rounded-2xl overflow-hidden transition-all duration-300">
-        
-        <div class="w-full lg:w-7/12 bg-[#E3F2FD] p-8 rounded-2xl flex items-center justify-center min-h-[380px] shadow-sm">
-          <CaculateCard
-            img={Image1Blog.src}
-            altImg="Imagen Huella Hídrica"
-            withImg="100%"
-            stylesComponent="w-full h-auto max-h-[340px] object-contain"
-          />
-        </div>
+    {/* Grid de Tarjetas de Artículos */}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+      {otherArticles.map((article) => (
+        <article
+          data-category={article.categoryType}
+          class="article-card flex flex-col justify-between group transition-all duration-300"
+        >
+          <div>
+            {/* Imagen con tarjeta superpuesta (Hero Image con título) */}
+            <div class="relative w-full aspect-[4/3] rounded-3xl overflow-hidden mb-4 shadow-sm bg-gray-100">
+              <img
+                src={article.image}
+                alt={article.alt}
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              {/* Overlay gradiente oscuro inferior */}
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent p-5 flex flex-col justify-end">
+                <span class="text-xs font-semibold text-gray-200 mb-1">
+                  {article.category}
+                </span>
+                <h2 class="text-lg md:text-xl font-bold text-white leading-snug line-clamp-3">
+                  {article.title}
+                </h2>
+              </div>
+            </div>
 
-        <div class="w-full lg:w-5/12 flex flex-col justify-center items-start px-2">
-          <span class="border border-gray-400 text-gray-600 px-4 py-1 rounded-full text-xs font-semibold mb-4">
-            Huella hídrica
-          </span>
-          
-          <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4 leading-tight">
-            Huella Hídrica:<br>El agua invisible que consumes sin darte cuenta
-          </h2>
-          
-          <p class="text-gray-600 text-sm mb-4 leading-relaxed">
-            ¿Sabías que una hamburguesa puede consumir más agua que una ducha de un mes? Conoce más datos sobre la huella hídrica en América Latina y cómo medirla y cómo reducirla.
-          </p>
-          
-          <p class="text-gray-600 text-sm mb-6 leading-relaxed">
-            ¿Alguna vez te has preguntado cuánta agua hay detrás de la taza de café que tomas por la mañana o de la camiseta que usas hoy? Aunque no lo veamos, cada producto tiene...
-          </p>
+            {/* Fecha y Resumen */}
+            <div class="px-1">
+              <p class="text-xs font-medium text-gray-400 mb-2">
+                {article.date}
+              </p>
+              <p class="text-sm font-medium text-gray-600 leading-relaxed line-clamp-3 mb-4">
+                {article.summary}
+              </p>
+            </div>
+          </div>
 
-          <a
-            href="/articuloHH"
-            class="inline-flex items-center gap-2 bg-[#22C55E] hover:bg-[#16A34A] text-white font-semibold px-6 py-3 rounded-lg transition-colors shadow-md group"
-          >
-            Leer artículo
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4 transform group-hover:translate-x-1 transition-transform">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-            </svg>
-          </a>
-        </div>
-      </div>
-
-      <hr id="divider" class="border-gray-100" />
-
-      <div data-category="carbono" class="article-item flex flex-col lg:flex-row gap-8 items-center bg-white rounded-2xl overflow-hidden transition-all duration-300">
-        
-        <div class="w-full lg:w-7/12 bg-[#F3F4F6] p-8 rounded-2xl flex items-center justify-center min-h-[380px] shadow-sm">
-          <CaculateCard
-            img={Image2Blog.src}
-            altImg="Imagen Cristo"
-            withImg="100%"
-            stylesComponent="w-full h-auto max-h-[340px] object-contain"
-          />
-        </div>
-
-        <div class="w-full lg:w-5/12 flex flex-col justify-center items-start px-2">
-          <span class="border border-gray-400 text-gray-600 px-4 py-1 rounded-full text-xs font-semibold mb-4">
-            Huella de carbono
-          </span>
-          
-          <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4 leading-tight">
-            Calidad del aire:<br>La situación crítica en las ciudades de Bolivia
-          </h2>
-          
-          <p class="text-gray-600 text-sm mb-6 leading-relaxed">
-            Cochabamba, junto con la ciudad de El Alto están entre las cinco ciudades más contaminadas del país, a causa de “humaredas de los incendios..." Conoce los factores de riesgo y qué medidas de contingencia se planean implementar en el departamento.
-          </p>
-
-          <a
-            href="/blogs/emisiones-co2-bolivia2"
-            class="inline-flex items-center gap-2 bg-[#22C55E] hover:bg-[#16A34A] text-white font-semibold px-6 py-3 rounded-lg transition-colors shadow-md group"
-          >
-            Leer artículo
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4 transform group-hover:translate-x-1 transition-transform">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-            </svg>
-          </a>
-        </div>
-      </div>
-
+          {/* Enlace "Ver más ->" */}
+          <div class="px-1 pt-2">
+            <a
+              href={article.link}
+              class="inline-flex items-center gap-2 text-[#22C55E] hover:text-[#16A34A] font-bold text-base transition-colors group/link"
+            >
+              <span>Ver más</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2.5"
+                stroke="currentColor"
+                class="w-4 h-4 transform group-hover/link:translate-x-1.5 transition-transform"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                />
+              </svg>
+            </a>
+          </div>
+        </article>
+      ))}
     </div>
   </section>
 </Layout>
@@ -122,36 +139,26 @@ import Layout from "../../layouts/Layout.astro";
   const btnTodos = document.getElementById('btn-todos');
   const btnCarbono = document.getElementById('btn-carbono');
   const btnHidrica = document.getElementById('btn-hidrica');
-  const articles = document.querySelectorAll('.article-item');
-  const divider = document.getElementById('divider');
+  const articles = document.querySelectorAll('.article-card');
   const buttons = document.querySelectorAll('.filter-btn');
 
   function updateActiveButton(activeBtn: HTMLElement) {
     buttons.forEach(btn => {
-      btn.classList.remove('bg-gray-600', 'text-white', 'active');
-      btn.classList.add('border', 'border-gray-400', 'text-gray-700', 'hover:bg-gray-100');
+      btn.classList.remove('bg-gray-800', 'text-white', 'active');
+      btn.classList.add('border', 'border-gray-300', 'text-gray-700', 'hover:bg-gray-100');
     });
-    // Clear previous classes and set the active styles
-    activeBtn.className = "filter-btn active bg-gray-600 text-white px-5 py-2 rounded-full font-medium text-sm whitespace-nowrap transition-colors";
+    activeBtn.className = "filter-btn active bg-gray-800 text-white px-5 py-2 rounded-full font-bold text-sm whitespace-nowrap transition-colors cursor-pointer";
   }
 
   function filterArticles(category: string | null) {
-    let visibleCount = 0;
-    
     articles.forEach((article) => {
       const itemCategory = article.getAttribute('data-category');
       if (category === 'todos' || itemCategory === category) {
         (article as HTMLElement).style.display = 'flex';
-        visibleCount++;
       } else {
         (article as HTMLElement).style.display = 'none';
       }
     });
-
-    // Ocultar la línea divisoria si solo hay un artículo en pantalla
-    if (divider) {
-      divider.style.display = visibleCount > 1 ? 'block' : 'none';
-    }
   }
 
   btnTodos?.addEventListener('click', () => {
