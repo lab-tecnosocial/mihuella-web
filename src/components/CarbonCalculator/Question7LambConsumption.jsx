@@ -1,114 +1,133 @@
-import React, { useState } from "react";
-import { ChevronUp, ChevronDown, Lightbulb } from "lucide-react";
-import { CarbonQuestionLayout } from "./CarbonQuestionLayout";
+import { useState } from 'react';
+import { ChevronUp, ChevronDown, HelpCircle, Lightbulb } from 'lucide-react';
+import { CarbonQuestionLayout } from './CarbonQuestionLayout';
+
+const STEP = 0.1;
+
+// Texto -> número >= 0 (acepta coma o punto)
+const toNumber = (s) => {
+  const n = parseFloat(String(s).replace(',', '.'));
+  return Number.isNaN(n) ? 0 : Math.max(0, n);
+};
+const fmt = (n) => toNumber(n).toFixed(1);
 
 export function Question7LambConsumption({
   onNext,
   onBack,
   onExit,
-  initialValue = 0.0,
+  initialValue = 0,
+  progress,
 }) {
-  const [lambKg, setLambKg] = useState(initialValue);
+  // Se guarda como texto para mostrar siempre un decimal ("0.0")
+  const [value, setValue] = useState(fmt(initialValue ?? 0));
 
-  const handleIncrement = () => {
-    setLambKg((prev) => parseFloat((prev + 0.1).toFixed(1)));
+  const handleIncrement = () => setValue((v) => fmt(toNumber(v) + STEP));
+  const handleDecrement = () => setValue((v) => fmt(Math.max(0, toNumber(v) - STEP)));
+
+  const handleChange = (e) => {
+    const raw = e.target.value.replace(',', '.');
+    if (/^\d*\.?\d{0,1}$/.test(raw)) setValue(raw);
   };
 
-  const handleDecrement = () => {
-    setLambKg((prev) => {
-      const nextVal = prev - 0.1;
-      return nextVal < 0 ? 0 : parseFloat(nextVal.toFixed(1));
-    });
+  const submit = () => onNext({ lambKg: toNumber(value) });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    submit();
   };
 
-  const handleInputChange = (e) => {
-    const val = parseFloat(e.target.value);
-    if (isNaN(val)) {
-      setLambKg(0);
-    } else {
-      setLambKg(val >= 0 ? val : 0);
-    }
-  };
+  const arrowBtn =
+    'w-10 h-10 rounded-full bg-[#A9E4BE] text-[#1E6B3E] flex items-center justify-center hover:brightness-95 active:scale-95 transition';
 
   return (
     <CarbonQuestionLayout
-      currentCategoryIndex={1} // Categoría: Alimentos
-      currentQuestionIndex={2} // Ajusta según el orden real de la sub-pregunta
-      totalQuestionsInCategory={3}
+      currentCategoryIndex={1}
+      currentQuestionIndex={4}
+      totalQuestionsInCategory={9}
+      {...progress}
       icon="/img/lamb.webp"
       onBack={onBack}
       onExit={onExit}
-      onNext={() => onNext(lambKg)}
+      onNext={submit}
       isNextDisabled={false}
       nextText="Continuar"
     >
-      <div className="flex flex-col items-center w-full max-w-md mx-auto">
-        {/* TÍTULO Y SUBTÍTULO */}
-        <h2 className="text-xl sm:text-2xl font-extrabold text-gray-900 leading-snug mb-1 text-center font-quicksand">
-          ¿Cuántos kilos de carne de cordero consumes en una semana?
-        </h2>
-        <p className="text-xs sm:text-sm text-gray-400 font-medium mb-5 text-center font-quicksand">
-          Ingresa una cantidad
-        </p>
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col w-full max-w-[470px] mx-auto"
+      >
+        {/* Título */}
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-semibold text-gray-800 leading-tight font-quicksand">
+            ¿Cuántos kilos de carne de cordero consumes en una semana?
+          </h2>
+          <p className="mt-2 text-lg text-gray-500 font-quicksand">
+            Ingresa una cantidad
+          </p>
+        </div>
 
-        {/* CAMPO DE ENTRADA CON FLECHAS */}
-        <div className="w-full bg-white border border-gray-200 rounded-2xl p-3 sm:p-4 flex items-center justify-between mb-4 shadow-sm">
-          {/* Valor y Sufijo de Unidad */}
-          <div className="flex-1 flex flex-col items-center justify-center">
-            <div className="flex items-baseline justify-center gap-1 border-b-2 border-dashed border-gray-300 pb-1 px-4 w-full max-w-[200px]">
-              <input
-                type="number"
-                step="0.1"
-                min="0"
-                value={lambKg === 0 ? "0.0" : lambKg}
-                onChange={handleInputChange}
-                className="text-3xl sm:text-4xl font-extrabold text-gray-600 text-center bg-transparent focus:outline-none w-28 font-quicksand"
-              />
-              <span className="text-sm sm:text-base font-semibold text-gray-400 font-quicksand">
-                Kg
+        {/* Grupo input + referencia (espacio 16px) */}
+        <div className="flex flex-col gap-4">
+          {/* Input numérico con botones */}
+          <div className="w-full flex items-center justify-between gap-4 rounded-2xl border border-gray-400 bg-white px-6 py-4">
+            <div className="flex-1 flex flex-col items-center">
+              <div className="flex items-baseline justify-center gap-1 border-b-2 border-dashed border-gray-400 pb-1 px-2">
+                <input
+                  type="text"
+                  inputMode="decimal"
+                  value={value}
+                  placeholder="0.0"
+                  onChange={handleChange}
+                  onFocus={(e) => e.target.select()}
+                  onBlur={() => setValue(fmt(value))}
+                  aria-label="Kilos de carne de cordero por semana"
+                  style={{ width: `${Math.max(value.length, 1) + 0.5}ch` }}
+                  className="text-6xl font-bold text-gray-400 placeholder:text-gray-400 text-center bg-transparent focus:outline-none font-quicksand"
+                />
+                <span className="text-xl font-medium text-gray-400 font-quicksand">
+                  Kg
+                </span>
+              </div>
+
+              <span className="mt-2 flex items-center gap-1.5 text-xs text-gray-500 font-['Poppins',sans-serif]">
+                <HelpCircle className="w-3.5 h-3.5 shrink-0" />
+                Si no consumes carne escribe 0
               </span>
             </div>
 
-            {/* Texto aclaratorio */}
-            <span className="text-[11px] sm:text-xs text-gray-400 font-medium mt-2 flex items-center gap-1">
-              <span className="inline-block w-3.5 h-3.5 rounded-full border border-gray-400 text-gray-400 text-[9px] text-center leading-3">
-                ?
-              </span>
-              Si no consumes carne escribe 0
-            </span>
+            <div className="flex flex-col gap-2">
+              <button
+                type="button"
+                onClick={handleIncrement}
+                aria-label="Aumentar"
+                className={arrowBtn}
+              >
+                <ChevronUp className="w-5 h-5" strokeWidth={2.5} />
+              </button>
+              <button
+                type="button"
+                onClick={handleDecrement}
+                aria-label="Disminuir"
+                className={arrowBtn}
+              >
+                <ChevronDown className="w-5 h-5" strokeWidth={2.5} />
+              </button>
+            </div>
           </div>
 
-          {/* Botones Incrementar / Decrementar */}
-          <div className="flex flex-col gap-1.5 pl-2">
-            <button
-              type="button"
-              onClick={handleIncrement}
-              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#A0E6BA] hover:bg-[#8BD8A8] text-[#1E7B5C] flex items-center justify-center transition active:scale-95 shadow-xs cursor-pointer"
-              aria-label="Aumentar kilos de carne de cordero"
-            >
-              <ChevronUp className="w-5 h-5 stroke-[2.5]" />
-            </button>
-            <button
-              type="button"
-              onClick={handleDecrement}
-              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#A0E6BA] hover:bg-[#8BD8A8] text-[#1E7B5C] flex items-center justify-center transition active:scale-95 shadow-xs cursor-pointer"
-              aria-label="Disminuir kilos de carne de cordero"
-            >
-              <ChevronDown className="w-5 h-5 stroke-[2.5]" />
-            </button>
+          {/* Referencia */}
+          <div className="w-full min-h-[66px] flex items-center gap-3 rounded-lg bg-[#D0F0DC] p-4 text-left">
+            <div className="bg-[#3ABA67] text-white p-1.5 rounded-full shrink-0">
+              <Lightbulb className="w-4 h-4" />
+            </div>
+            <p className="text-sm text-gray-600 font-['Poppins',sans-serif] leading-snug">
+              <span className="font-medium text-[#2E9E5B]">Referencia:</span>{' '}
+              Una porción de carne de cordero suele pesar{' '}
+              <b className="font-semibold">0,1 kg.</b> ¿Cuántas comiste esta semana?
+            </p>
           </div>
         </div>
-
-        {/* NOTA DE REFERENCIA Y AYUDA */}
-        <div className="w-full bg-[#D8F3E5] border border-[#A0E6BA] rounded-xl p-3 sm:p-3.5 flex items-start gap-2.5 text-left">
-          <div className="bg-[#3ABA67] text-white p-1 rounded-full shrink-0 mt-0.5">
-            <Lightbulb className="w-3.5 h-3.5" />
-          </div>
-          <p className="text-[11px] sm:text-xs text-[#1E7B5C] font-semibold leading-relaxed font-quicksand">
-            <span className="font-bold">Referencia:</span> Una porción de carne de cordero suele pesar 0,1 kg. ¿Cuántas comiste esta semana?
-          </p>
-        </div>
-      </div>
+      </form>
     </CarbonQuestionLayout>
   );
 }

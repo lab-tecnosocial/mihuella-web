@@ -1,6 +1,8 @@
-import { ChevronUp, ChevronDown, Lightbulb } from 'lucide-react';
-import { CarbonQuestionLayout } from "./CarbonQuestionLayout";
 import { useState } from 'react';
+import { ChevronUp, ChevronDown, HelpCircle, Lightbulb } from 'lucide-react';
+import { CarbonQuestionLayout } from './CarbonQuestionLayout';
+
+const STEP = 0.1;
 
 export function Question11FruitsConsumption({
   onNext,
@@ -10,74 +12,107 @@ export function Question11FruitsConsumption({
 }) {
   const [amount, setAmount] = useState(initialValue);
 
-  const handleIncrement = () => {
-    setAmount((prev) => parseFloat((prev + 0.1).toFixed(1)));
-  };
-
-  const handleDecrement = () => {
-    setAmount((prev) => Math.max(0, parseFloat((prev - 0.1).toFixed(1))));
-  };
+  const round = (n) => parseFloat(n.toFixed(1));
+  const handleIncrement = () => setAmount((prev) => round(prev + STEP));
+  const handleDecrement = () => setAmount((prev) => Math.max(0, round(prev - STEP)));
 
   const handleChange = (e) => {
     const val = parseFloat(e.target.value);
     setAmount(isNaN(val) ? 0 : Math.max(0, val));
   };
 
+  const submit = () => onNext({ fruitsAndVegetablesKg: amount });
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    onNext({ fruitsAndVegetablesKg: amount });
+    submit();
   };
+
+  const arrowBtn =
+    'w-10 h-10 rounded-full bg-[#A9E4BE] text-[#1E6B3E] flex items-center justify-center hover:brightness-95 active:scale-95 transition';
 
   return (
     <CarbonQuestionLayout
-      currentCategoryIndex={1} 
-      currentQuestionIndex={2} 
+      currentCategoryIndex={1}
+      currentQuestionIndex={2}
       totalQuestionsInCategory={3}
-      icon="/img/apple-and-carrot.webp" 
+      icon="/img/apple-and-carrot.webp"
       onBack={onBack}
       onExit={onExit}
-      onNext={() => onNext(amount)}
+      onNext={submit}
       isNextDisabled={false}
       nextText="Continuar"
     >
-      <form onSubmit={handleSubmit} className="flex flex-col items-center w-full max-w-md mx-auto">
-        <h2 className="text-2xl font-bold text-gray-800 text-center mb-1">
-          ¿Cuántos kilos de fruta y verduras consumes a la semana?
-        </h2>
-        <p className="text-sm text-gray-500 mb-6">Ingresa una cantidad</p>
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col items-center gap-5 w-full max-w-[470px] mx-auto"
+      >
+        {/* Título */}
+        <div className="text-center">
+          <h2 className="text-3xl font-semibold text-gray-800 leading-tight font-quicksand">
+            ¿Cuántos kilos de fruta y verduras consumes a la semana?
+          </h2>
+          <p className="mt-2 text-lg text-gray-500 font-quicksand">
+            Ingresa una cantidad
+          </p>
+        </div>
 
-          <div className="flex-1 flex flex-col items-center justify-center">
-            <div className="flex items-baseline justify-center gap-1 border-b-2 border-dashed border-gray-300 pb-1 px-4 w-full max-w-[200px]">
+        {/* Input numérico con botones */}
+        <div className="w-full flex items-center justify-between gap-4 rounded-2xl border border-gray-400 bg-white px-6 py-4">
+          <div className="flex-1 flex flex-col items-center">
+            <div className="flex items-baseline justify-center gap-1 border-b-2 border-dashed border-gray-400 pb-1 px-2">
               <input
                 type="number"
-                step="0.1"
+                inputMode="decimal"
+                step={STEP}
                 min="0"
-                value={amount === 0 ? "0.0" : amount}
+                value={amount}
                 onChange={handleChange}
-                className="text-3xl sm:text-4xl font-extrabold text-gray-600 text-center bg-transparent focus:outline-none w-28 font-quicksand"
+                style={{ width: `${Math.max(String(amount).length, 1) + 0.5}ch` }}
+                className="text-6xl font-bold text-gray-400 text-center bg-transparent focus:outline-none font-quicksand [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
               />
-              <span className="text-sm sm:text-base font-semibold text-gray-400 font-quicksand">
-                Lts
+              <span className="text-xl font-medium text-gray-400 font-quicksand">
+                kg
               </span>
             </div>
 
-            {/* Texto aclaratorio */}
-            <span className="text-[11px] sm:text-xs text-gray-400 font-medium mt-2 flex items-center gap-1">
-              <span className="inline-block w-3.5 h-3.5 rounded-full border border-gray-400 text-gray-400 text-[9px] text-center leading-3">
-                ?
-              </span>
+            <span className="mt-2 flex items-center gap-1.5 text-xs text-gray-500 font-quicksand">
+              <HelpCircle className="w-3.5 h-3.5 shrink-0" />
               Si no consumes ni frutas ni verduras escribe 0
             </span>
           </div>
 
-      <div className="w-full bg-[#D8F3E5] border border-[#A0E6BA] rounded-xl p-3 sm:p-3.5 flex items-start gap-2.5 text-left">
-          <div className="bg-[#3ABA67] text-white p-1 rounded-full shrink-0 mt-0.5">
-            <Lightbulb className="w-3.5 h-3.5" />
+          <div className="flex flex-col gap-2">
+            <button
+              type="button"
+              onClick={handleIncrement}
+              aria-label="Aumentar"
+              className={arrowBtn}
+            >
+              <ChevronUp className="w-5 h-5" strokeWidth={2.5} />
+            </button>
+            <button
+              type="button"
+              onClick={handleDecrement}
+              aria-label="Disminuir"
+              className={arrowBtn}
+            >
+              <ChevronDown className="w-5 h-5" strokeWidth={2.5} />
+            </button>
           </div>
-          <p className="text-[11px] sm:text-xs text-[#1E7B5C] font-semibold leading-relaxed font-quicksand">
-            <span className="font-bold">Referencia:</span> Una fruta mediana pesa aprox. <span className="font-semibold">0,15 kg</span> Cuenta tus porciones de la semana.
+        </div>
+
+        {/* Referencia */}
+        <div className="w-full min-h-[66px] flex items-center gap-3 rounded-lg bg-[#D0F0DC] p-4 text-left">
+          <div className="bg-[#3ABA67] text-white p-1.5 rounded-full shrink-0">
+            <Lightbulb className="w-4 h-4" />
+          </div>
+          <p className="text-sm text-gray-600 font-['Poppins',sans-serif] leading-snug">
+            <span className="font-medium text-[#2E9E5B]">Referencia:</span> Una
+            fruta mediana pesa aprox.{' '}
+            <span className="font-medium">0,15 kg</span>. Cuenta tus porciones
+            de la semana.
           </p>
-          <br/>
         </div>
       </form>
     </CarbonQuestionLayout>

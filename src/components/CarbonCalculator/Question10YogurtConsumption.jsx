@@ -1,106 +1,138 @@
-import { ChevronUp, ChevronDown, Lightbulb } from 'lucide-react';
-import { CarbonQuestionLayout } from "./CarbonQuestionLayout";
 import { useState } from 'react';
+import { ChevronUp, ChevronDown, HelpCircle, Lightbulb } from 'lucide-react';
+import { CarbonQuestionLayout } from './CarbonQuestionLayout';
+
+const STEP = 0.25;
+
+// Texto -> número >= 0 (acepta coma o punto)
+const toNumber = (s) => {
+  const n = parseFloat(String(s).replace(',', '.'));
+  return Number.isNaN(n) ? 0 : Math.max(0, n);
+};
+
+// Muestra al menos un decimal y como máximo dos: 0 -> "0.0", 0.5 -> "0.5", 0.25 -> "0.25"
+const fmt = (n) => {
+  const x = Math.round(toNumber(n) * 100) / 100;
+  return Math.round(x * 10) === x * 10 ? x.toFixed(1) : x.toFixed(2);
+};
 
 export function Question10YogurtConsumption({
   onNext,
   onBack,
   onExit,
   initialValue = 0,
+  progress,
 }) {
-  const [amount, setAmount] = useState(initialValue);
+  // Se guarda como texto para mostrar siempre al menos un decimal ("0.0")
+  const [value, setValue] = useState(fmt(initialValue ?? 0));
 
-  const handleIncrement = () => {
-    setAmount((prev) => parseFloat((prev + 0.1).toFixed(1)));
-  };
-
-  const handleDecrement = () => {
-    setAmount((prev) => Math.max(0, parseFloat((prev - 0.1).toFixed(1))));
-  };
+  const handleIncrement = () => setValue((v) => fmt(toNumber(v) + STEP));
+  const handleDecrement = () => setValue((v) => fmt(Math.max(0, toNumber(v) - STEP)));
 
   const handleChange = (e) => {
-    const val = parseFloat(e.target.value);
-    setAmount(isNaN(val) ? 0 : Math.max(0, val));
+    const raw = e.target.value.replace(',', '.');
+    if (/^\d*\.?\d{0,2}$/.test(raw)) setValue(raw);
   };
+
+  const submit = () => onNext({ yogurtConsumptionLt: toNumber(value) });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onNext({ yogurtConsumptionLt: amount });
+    submit();
   };
+
+  const arrowBtn =
+    'w-10 h-10 rounded-full bg-[#A9E4BE] text-[#1E6B3E] flex items-center justify-center hover:brightness-95 active:scale-95 transition';
 
   return (
     <CarbonQuestionLayout
-      currentCategoryIndex={1} 
-      currentQuestionIndex={2} 
-      totalQuestionsInCategory={3}
-      icon="/img/yogurt.webp" 
+      currentCategoryIndex={1}
+      currentQuestionIndex={7}
+      totalQuestionsInCategory={9}
+      {...progress}
+      icon="/img/yogurt.webp"
       onBack={onBack}
       onExit={onExit}
-      onNext={() => onNext(amount)}
+      onNext={submit}
       isNextDisabled={false}
       nextText="Continuar"
     >
-      <form onSubmit={handleSubmit} className="flex flex-col items-center w-full max-w-md mx-auto">
-        <h2 className="text-2xl font-bold text-gray-800 text-center mb-1">
-          ¿Cuántos litros de yogurt consumes a la semana?
-        </h2>
-        <p className="text-sm text-gray-500 mb-6">Ingresa una cantidad</p>
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col w-full max-w-[470px] mx-auto"
+      >
+        {/* Título */}
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-semibold text-gray-800 leading-tight font-quicksand">
+            ¿Cuántos litros de
+            <br />
+            yogurt consumes a la semana?
+          </h2>
+          <p className="mt-2 text-lg text-gray-500 font-quicksand">
+            Ingresa una cantidad
+          </p>
+        </div>
 
-        <div className="w-full bg-white border border-gray-200 rounded-2xl p-3 sm:p-4 flex items-center justify-between mb-4 shadow-sm">
-          {/* Valor y Sufijo de Unidad */}
-          <div className="flex-1 flex flex-col items-center justify-center">
-            <div className="flex items-baseline justify-center gap-1 border-b-2 border-dashed border-gray-300 pb-1 px-4 w-full max-w-[200px]">
-              <input
-                type="number"
-                step="0.1"
-                min="0"
-                value={amount === 0 ? "0.0" : amount}
-                onChange={handleChange}
-                className="text-3xl sm:text-4xl font-extrabold text-gray-600 text-center bg-transparent focus:outline-none w-28 font-quicksand"
-              />
-              <span className="text-sm sm:text-base font-semibold text-gray-400 font-quicksand">
-                Lts
+        {/* Grupo input + referencia (espacio 16px) */}
+        <div className="flex flex-col gap-4">
+          {/* Input numérico con botones */}
+          <div className="w-full flex items-center justify-between gap-4 rounded-2xl border border-gray-400 bg-white px-6 py-4">
+            <div className="flex-1 flex flex-col items-center">
+              <div className="flex items-baseline justify-center gap-1 border-b-2 border-dashed border-gray-400 pb-1 px-2">
+                <input
+                  type="text"
+                  inputMode="decimal"
+                  value={value}
+                  placeholder="0.0"
+                  onChange={handleChange}
+                  onFocus={(e) => e.target.select()}
+                  onBlur={() => setValue(fmt(value))}
+                  aria-label="Litros de yogurt por semana"
+                  style={{ width: `${Math.max(value.length, 1) + 0.5}ch` }}
+                  className="text-6xl font-bold text-gray-400 placeholder:text-gray-400 text-center bg-transparent focus:outline-none font-quicksand"
+                />
+                <span className="text-xl font-medium text-gray-400 font-quicksand">
+                  Lt
+                </span>
+              </div>
+
+              <span className="mt-2 flex items-center gap-1.5 text-xs text-gray-500 font-['Poppins',sans-serif]">
+                <HelpCircle className="w-3.5 h-3.5 shrink-0" />
+                Si no consumes yogurt escribe 0
               </span>
             </div>
 
-            {/* Texto aclaratorio */}
-            <span className="text-[11px] sm:text-xs text-gray-400 font-medium mt-2 flex items-center gap-1">
-              <span className="inline-block w-3.5 h-3.5 rounded-full border border-gray-400 text-gray-400 text-[9px] text-center leading-3">
-                ?
-              </span>
-              Si no consumes yogurt escribe 0
-            </span>
+            <div className="flex flex-col gap-2">
+              <button
+                type="button"
+                onClick={handleIncrement}
+                aria-label="Aumentar"
+                className={arrowBtn}
+              >
+                <ChevronUp className="w-5 h-5" strokeWidth={2.5} />
+              </button>
+              <button
+                type="button"
+                onClick={handleDecrement}
+                aria-label="Disminuir"
+                className={arrowBtn}
+              >
+                <ChevronDown className="w-5 h-5" strokeWidth={2.5} />
+              </button>
+            </div>
           </div>
 
-          {/* Botones Incrementar / Decrementar */}
-          <div className="flex flex-col gap-1.5 pl-2">
-            <button
-              type="button"
-              onClick={handleIncrement}
-              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#A0E6BA] hover:bg-[#8BD8A8] text-[#1E7B5C] flex items-center justify-center transition active:scale-95 shadow-xs cursor-pointer"
-              aria-label="Aumentar litros de yogurt"
-            >
-              <ChevronUp className="w-5 h-5 stroke-[2.5]" />
-            </button>
-            <button
-              type="button"
-              onClick={handleDecrement}
-              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#A0E6BA] hover:bg-[#8BD8A8] text-[#1E7B5C] flex items-center justify-center transition active:scale-95 shadow-xs cursor-pointer"
-              aria-label="Disminuir kilos de queso"
-            >
-              <ChevronDown className="w-5 h-5 stroke-[2.5]" />
-            </button>
+          {/* Referencia */}
+          <div className="w-full min-h-[66px] flex items-center gap-3 rounded-lg bg-[#D0F0DC] p-4 text-left">
+            <div className="bg-[#3ABA67] text-white p-1.5 rounded-full shrink-0">
+              <Lightbulb className="w-4 h-4" />
+            </div>
+            <p className="text-sm text-gray-600 font-['Poppins',sans-serif] leading-snug">
+              <span className="font-medium text-[#2E9E5B]">Referencia:</span>{' '}
+              Un envase de yogur suele contener{' '}
+              <b className="font-semibold">0,25 L.</b> ¿Cuántos consumiste esta semana?
+            </p>
           </div>
-        </div>
-
-       <div className="w-full bg-[#D8F3E5] border border-[#A0E6BA] rounded-xl p-3 sm:p-3.5 flex items-start gap-2.5 text-left">
-          <div className="bg-[#3ABA67] text-white p-1 rounded-full shrink-0 mt-0.5">
-            <Lightbulb className="w-3.5 h-3.5" />
-          </div>
-          <p className="text-[11px] sm:text-xs text-[#1E7B5C] font-semibold leading-relaxed font-quicksand">
-            <span className="font-bold">Referencia:</span>  Un envase de yogur suele contener <span className="font-semibold">0,25 Lt</span>. ¿Cuántos consumiste esta semana?
-          </p>
-          <br/>
         </div>
       </form>
     </CarbonQuestionLayout>
