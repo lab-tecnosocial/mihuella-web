@@ -1,4 +1,3 @@
-import React from "react";
 import { ArrowLeft, LogOut, ArrowRight } from "lucide-react";
 import { Button3DWater } from "./Button3DWater";
 import { WaterStepper } from "./WaterStepper";

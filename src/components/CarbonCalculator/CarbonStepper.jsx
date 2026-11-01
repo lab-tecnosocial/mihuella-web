@@ -1,4 +1,3 @@
-import React from "react";
 import { CARBON_CATEGORIES } from "../../constants/carbonCategories";
 
 export function CarbonStepper({

@@ -1,0 +1,394 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Article3CardImg from "../assets/images/article3_card.webp";
+import CarruselPlasticoImg from "../assets/images/carrusel-plastico.webp";
+import DiagramaExtraccionImg from "../assets/images/diagrama-extraccion.webp";
+import DiagramaExtraccionImg2 from "../assets/images/diagrama-extraccion2.webp";
+import DiagramaExtraccionImg3 from "../assets/images/diagrama-extraccion3.webp";
+import OurTeam from "../Sections/OurTeam.astro";
+
+const title = "El costo de carbono de los plásticos de un solo uso: una decisión que está en tus manos";
+const subtitle = "La producción de un solo vaso desechable genera 8.12kg de CO2 equivalente. Elegir una alternativa reutilizable puede reducir ese impacto hasta un 90%.";
+
+const tableOfContents = [
+  { id: "seccion-1", title: "01. ¿Qué son los plásticos de un solo uso?", active: true },
+  { id: "seccion-2", title: "02. La huella de carbono en todas sus etapas", active: false, subitems: [
+    { id: "extraccion", title: "Extracción" },
+    { id: "transporte", title: "Transporte y distribución" },
+    { id: "reciclaje", title: "Reciclaje y desperdicio" },
+    { id: "disposicion", title: "Disposición final" },
+    { id: "medidas", title: "Medidas para mitigar el impacto" },
+  ]},
+  { id: "seccion-3", title: "03. Conclusiones", active: false },
+  { id: "seccion-4", title: "04. Referencias", active: false },
+];
+
+const actionPoints = [
+  {
+    num: "01",
+    title: "Reducción del Consumo",
+    description: "La estrategia más efectiva es, simplemente, usar menos plástico. Optar por alternativas reutilizables, comprar a granel y rechazar los plásticos de un solo uso son acciones individuales con un gran impacto colectivo.",
+  },
+  {
+    num: "02",
+    title: "Innovación en Materiales",
+    description: "La investigación y el desarrollo de bioplásticos, creados a partir de fuentes renovables como el almidón de maíz o la caña de azúcar, ofrecen una alternativa prometedora. Sin embargo, es crucial analizar su ciclo de vida completo para asegurar que su producción y descomposición sean verdaderamente sostenibles.",
+  },
+  {
+    num: "03",
+    title: "Responsabilidad Corporativa",
+    description: "Las empresas tienen la responsabilidad de diseñar productos pensando en su final de vida útil (diseño para el reciclaje), de invertir en infraestructuras de reciclaje y de ser transparentes sobre la huella de carbono de sus productos.",
+  },
+  {
+    num: "04",
+    title: "Políticas Públicas",
+    description: "Los gobiernos juegan un rol clave al implementar políticas que incentiven el reciclaje, desincentivan el uso de plástico virgen (mediante impuestos, por ejemplo) y promuevan una economía circular.",
+  },
+  {
+    num: "05",
+    title: "Economía circular",
+    description: "Fomentar el reciclaje y la reutilización minimiza la necesidad de producir nuevos plásticos, reduciendo su impacto ambiental.",
+  },
+  {
+    num: "06",
+    title: "Energía renovable",
+    description: "Utilizar fuentes limpias en la producción disminuye las emisiones de gases de efecto invernadero.",
+  },
+];
+
+const references = [
+  "Atlas del Plástico (2020). Datos y cifras sobre el mundo de los polímeros sintéticos.",
+  "Partido Verde (12 de marzo de 2020). Plástico y clima: la huella de carbono oculta.",
+  "The Gravity Wave (marzo de 2022). La huella de carbono de los plásticos: ¿cómo impacta y qué pueden hacer las empresas para reducirla?",
+  "WWF (mayo de 2021). Diagnóstico sobre la producción, uso y disposición final de plásticos de un solo uso en Bolivia.",
+  "ZEO (21 de enero de 2020). ¿Cuánto CO₂ emite el plástico?",
+  "Helvetas (2026). Basura 0, fase 2.",
+  "Pablo Deheza (2026). Fundares: 17 años de liderazgo impulsando la economía circular. Energías y Negocios.",
+  "Otras citas del manuscrito: ONU (2021), ProCórdoba (2018), KSEE (2025) y Wong (2026).",
+];
+---
+
+<Layout title={title}>
+  <div class="bg-white min-h-screen font-quicksand text-gray-800">
+    {/* Header del Artículo / Hero */}
+    <div class="max-w-6xl mx-auto px-4 pt-10 pb-8">
+      <h1 class="text-3xl md:text-5xl font-black text-gray-900 leading-tight mb-4">
+        {title}
+      </h1>
+      <p class="text-sm md:text-base text-gray-500 font-medium max-w-4xl leading-relaxed mb-8">
+        {subtitle}
+      </p>
+
+      {/* Imagen Hero Principal */}
+      <div class="w-full rounded-3xl overflow-hidden shadow-sm bg-gray-100 mb-12">
+        <img
+          src={Article3CardImg.src}
+          alt="Plásticos de un solo uso"
+          class="w-full h-auto max-h-[500px] object-cover"
+        />
+      </div>
+
+      {/* Contenido Principal con Índice Lateral Sticky */}
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        
+        {/* ÍNDICE IZQUIERDO STICKY */}
+        <aside class="lg:col-span-4 sticky top-28 hidden lg:block pr-4 self-start">
+          <nav class="space-y-4 text-sm font-semibold text-gray-600">
+            {tableOfContents.map((item) => (
+              <div class="space-y-2">
+                <a
+                  href={`#${item.id}`}
+                  class:list={[
+                    "block transition-colors leading-snug",
+                    item.active
+                      ? "text-[#22C55E] font-bold border-l-2 border-[#22C55E] pl-3 -ml-[2px]"
+                      : "hover:text-gray-900 pl-3",
+                  ]}
+                >
+                  {item.title}
+                </a>
+
+                {item.subitems && (
+                  <ul class="pl-7 space-y-2 text-xs text-gray-500 font-medium">
+                    {item.subitems.map((sub) => (
+                      <li>
+                        <a href={`#${sub.id}`} class="hover:text-gray-800 transition-colors">
+                          • {sub.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))}
+          </nav>
+        </aside>
+
+        {/* CONTENIDO DEL ARTÍCULO */}
+        <main class="lg:col-span-8 space-y-12">
+          
+          {/* SECCIÓN 01 */}
+          <section id="seccion-1" class="space-y-6 scroll-mt-28">
+            <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900">
+              ¿Qué son los plásticos de un solo uso?
+            </h2>
+
+            <p class="text-base text-gray-600 leading-relaxed">
+              Los plásticos de un solo uso son objetos diseñados para ser utilizados una sola vez o durante un periodo muy breve antes de ser desechados (KSEE, 2025). Abarcan una amplia gama de productos cotidianos, como ser las bolsas de compra, botellas de agua, vasos y cubiertos, pajitas, envoltorio de alimentos y envases de todo tipo. Estos productos están fabricados principalmente con polímeros no biodegradables como polietileno (PE), polipropileno (PP), tereftalato de polietileno (PET) y poliestireno (PS) (Wong, 2026).
+            </p>
+
+            {/* Infografía Carrusel del Plástico */}
+            <div class="bg-gray-50 border border-gray-100 rounded-3xl p-4 md:p-6 text-center shadow-xs my-6">
+              <img
+                src={CarruselPlasticoImg.src}
+                alt="El Carrusel del Plástico - Tipos de reciclaje"
+                class="w-full h-auto max-h-[500px] object-contain mx-auto rounded-xl"
+                onerror="this.src='/img/bienes-y-servicios.webp'"
+              />
+              <p class="text-xs text-gray-400 mt-3 font-medium text-left">
+                Fuentes: Atlas del Plástico (2020)
+              </p>
+            </div>
+
+            {/* Cita Destacada / Callout Verde */}
+            <div class="bg-[#E6F7ED] border border-[#BBEBD0] rounded-2xl p-6 text-gray-800">
+              <p class="text-sm md:text-base font-medium leading-relaxed italic mb-2">
+                “Cuanto más se reutiliza cualquier producto, menor es el impacto ambiental que este genera. Cuando los consumidores no pueden evitar los plásticos desechables, deben mitigar su impacto ambiental reutilizándolos cuando sea posible en lugar de desecharlos inmediatamente.”
+              </p>
+              <span class="text-xs font-bold text-gray-500">— ONU, 2021</span>
+            </div>
+          </section>
+
+          {/* SECCIÓN 02 */}
+          <section id="seccion-2" class="space-y-6 scroll-mt-28 border-t border-gray-100 pt-8">
+            <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900">
+              La huella de carbono en todas sus etapas
+            </h2>
+
+            <p class="text-base text-gray-600 leading-relaxed">
+              La contribución de los plásticos de un solo uso al cambio climático no se limita a su acumulación como residuo. Su impacto se extiende a lo largo de todo su ciclo de vida, desde la extracción de materia prima hasta su disposición final.
+            </p>
+
+            {/* Subsección Extracción */}
+            <div id="extraccion" class="space-y-4 pt-2">
+              <h3 class="text-xl font-bold text-gray-900">
+                1. Extracción
+              </h3>
+
+              <p class="text-base text-gray-600 leading-relaxed">
+                La mayoría de los plásticos convencionales provienen del petróleo y el gas natural, lo que significa que la extracción de estos recursos y su posterior procesamiento generan grandes cantidades de CO2. Un informe reciente de la universidad de California (2024) estima que la extracción de petróleo para producir plásticos representa alrededor del 30% de las emisiones asociadas con esta industria (GravityWave, 2021).
+              </p>
+              <img
+                src={DiagramaExtraccionImg.src}
+                alt="Diagrama de Extracción de Petróleo y Gas Natural"
+                class="w-full h-auto max-h-[500px] object-contain mx-auto rounded-xl"
+                onerror="this.src='/img/bienes-y-servicios.webp'"
+              />
+              <p class="text-base text-gray-600 leading-relaxed">
+                De acuerdo al Partido Verde (2020) el proceso comienza con la extracción de estos hidrocarburos. Luego, en las refinerías, se separan en diferentes componentes, incluyendo etano y propano. Estos gases son la materia prima clave y se someten a un proceso llamado "craqueo por vapor". Durante este paso, los gases se mezclan con vapor y se calientan a temperaturas extremadamente altas, superiores a los 900 °C. Este calor intenso rompe las moléculas de hidrocarburos saturados y las convierte en monómeros insaturados más ligeros, como el etileno y el propileno, que son los bloques de construcción fundamentales de casi todos los plásticos. 
+              </p>
+              <p class="text-base text-gray-600 leading-relaxed">
+                Este proceso de craqueo es increíblemente demandante en términos energéticos y, por lo tanto, es una fuente masiva de emisiones de gases de efecto invernadero. Pero el proceso no termina ahí. A estos monómeros se les añaden catalizadores químicos en reactores industriales para iniciar la polimerización (ver figura 2), un proceso que une a los monómeros en largas cadenas para formar polímeros. El resultado son pequeños gránulos o pellets de plástico virgen.
+              </p>
+              <img
+                src={DiagramaExtraccionImg2.src}
+                alt="Diagrama de Extracción de Petróleo y Gas Natural"
+                class="w-full h-auto max-h-[500px] object-contain mx-auto rounded-xl"
+                onerror="this.src='/img/bienes-y-servicios.webp'"
+              />
+              <p class="text-base text-gray-600 leading-relaxed">
+                Finalmente, estos pellets se transportan a las fábricas, donde se funden y se moldean mediante técnicas como la extrusión o el moldeo por inyección para crear los productos finales que conocemos: botellas, bolsas, tuberías, juguetes, etc. Cada uno de estos pasos, desde la extracción del petróleo hasta el transporte y la manufactura final, consume enormes cantidades de energía y libera CO2 a la atmósfera (ver figura 3) (PartidoVerde, 2020).
+              </p>
+              <img
+                src={DiagramaExtraccionImg3.src}
+                alt="Diagrama de Extracción de Petróleo y Gas Natural"
+                class="w-full h-auto max-h-[500px] object-contain mx-auto rounded-xl"
+                onerror="this.src='/img/bienes-y-servicios.webp'"
+              />
+            </div>
+
+            {/* Subsección Transporte y Distribución */}
+            <div id="transporte" class="space-y-4 pt-4 border-t border-gray-100">
+              <h3 class="text-xl font-bold text-gray-900">
+                2. Transporte y distribución
+              </h3>
+              <p class="text-base text-gray-600 leading-relaxed">
+                El transporte de plásticos juega un papel significativo en su huella de carbono. Muchas veces, los plásticos vírgenes se fabrican en regiones de bajo coste como Asia y luego se exportan a otros continentes, generando grandes emisiones de CO2 debido al transporte marítimo y terrestre. Este impacto logístico no solo aumenta la huella ambiental del plástico, sino que también evidencia la necesidad de modelos de producción más locales y sostenibles (WWF, 2021).
+              </p>
+              <p class="text-base text-gray-600 leading-relaxed">
+                De acuerdo con ProCordoba que realizó un estudio de mercado sobre el mercado sobre el sector Caucho y Plástico en Bolivia (ProCordoba, 2018), los principales sectores de venta y distribución de productos plásticos a nivel nacional son empresas importadoras, supermercados, ferias, tiendas, representantes de marcas y sector de la construcción. Siendo los demandantes de productos plásticos empresas comercializadoras, empresas industriales, entidades estatales y municipales y personas naturales (WWF, 2021).
+              </p>
+            </div>
+
+            {/* Subsección Reciclaje y desperdicio */}
+            <div id="reciclaje" class="space-y-4 pt-4 border-t border-gray-100">
+              <h3 class="text-xl font-bold text-gray-900">
+                3. Reciclaje y desperdicio
+              </h3>
+              <p class="text-base text-gray-600 leading-relaxed">
+                Algunos residuos que generamos en nuestra vida diaria son más fáciles de reciclar que otros. Por ejemplo, materiales como el papel o el vidrio, requieren de menor energía, tiempo y costes para ser transformados en nuevos productos. El plástico, por el contrario, es uno de los residuos más difíciles de reciclar (ZEO, 2020). 
+              </p>
+              <p class="text-base text-gray-600 leading-relaxed">
+                La paradoja de los plásticos de un solo uso reside en que es un objeto diseñado para ser usado durante minutos o segundos tiene una vida útil funcional extremadamente corta, pero su impacto ambiental, incluyendo las emisiones de carbono, ya ha sido generado en su totalidad.
+              </p>
+              <p class="text-base text-gray-600 leading-relaxed">
+                Aunque la cantidad de plásticos reciclados ha aumentado, sigue siendo insuficiente. solo el 9% de todos los plásticos producidos a nivel global se reciclan correctamente. Esta baja tasa de reciclaje se traduce en una mayor demanda de plásticos nuevos y, por ende, más emisiones derivadas de su fabricación (GravityWave, 2021). 
+              </p>
+              <p class="text-base text-gray-600 leading-relaxed">
+                Bolivia el año 2016 solo el 4% de los residuos sólidos a nivel nacional eran reciclados. En cuanto a plásticos de un solo uso el material que más es reciclado es el polietileno tereftalato (PET) y los polietilenos de alta y baja densidad (PEAD, PEBD) (WWF, 2021). 
+              </p>
+              <p class="text-base text-gray-600 leading-relaxed">
+                Aún así, teniendo en cuenta la demanda de plásticos, siempre supone una menor huella de carbono fabricar un producto con plástico reciclado que fabricarlo desde cero. Para fabricar un kilogramo de plástico de cero emite unos 3,5 kg de CO2 a la atmósfera, mientras que por cada kilo de plástico que fabricamos con materia reciclada emitimos 1,7 kg de CO2 (ZEO, 2020). 
+              </p>
+              <p class="text-base text-gray-600 leading-relaxed">
+                Al evitar la primera fase del proceso de producción, la que se realiza en la refinería, reducimos la huella de carbono un 49%. Si lo extrapolamos a grandes cantidades, para fabricar 1 tonelada de plástico desde cero estaríamos emitiendo 3.500 kg de CO2, mientras que si lo hacemos con plástico PET emitiremos 1.700 kg. Fabricar dos kilos de plástico tiene una huella de carbono mayor, que las generadas por el uso medio de un vehículo de gasolina durante 40 kilómetros (6,4 kg de CO2) (ZEO, 2020).
+              </p>
+            </div>
+
+            {/* Subsección Disposición Final */}
+            <div id="disposicion" class="space-y-4 pt-4 border-t border-gray-100">
+              <h3 class="text-xl font-bold text-gray-900">
+                4. Disposición final
+              </h3>
+              <p class="text-base text-gray-600 leading-relaxed">
+                El destino de los plásticos al final de su ciclo de vida también es un factor importante. Si se incineran o terminan en vertederos y ríos, se liberan gases de efecto invernadero adicionales, lo que incrementa aún más la huella de carbono de los plásticos. Se calcula que la incineración de plásticos representa una fuente significativa de CO2 adicional, dependiendo de su manejo (GravityWave, 2021)
+              </p>
+              <p class="text-base text-gray-600 leading-relaxed">
+                En los vertederos, la degradación anaeróbica de los plásticos libera metano, un gas de efecto invernadero con un potencial de calentamiento mucho mayor que el CO₂. La descomposición de estos materiales puede tardar entre 100 y 1000 años. 
+              </p>
+              <p class="text-base text-gray-600 leading-relaxed">
+                La incineración, aunque reduce el volumen físico de residuos, libera CO₂ y sustancias tóxicas como dioxinas, transfiriendo el problema de un medio a otro sin resolver la emisión de gases de efecto invernadero. Algunos estudios indican que incinerar plásticos puede generar casi 1.5 veces las emisiones de gases de efecto invernadero comparado con la producción de plástico nuevo. 
+              </p>
+              <p class="text-base text-gray-600 leading-relaxed">
+                El alcance de reciclaje es bajo, puesto que de momento no existen normativas implementadas ni la infraestructura apropiada para su realización. Un número limitado de empresas realiza el reciclaje de productos plásticos, con una demanda la mayor parte del tiempo insatisfecha para poder realizar sus actividades. Entre las más destacadas EMPACAR de Santa Cruz que rescata buena parte de botellas de plástico reciclables para la producción de preformas de botellas plásticas. Entre sus clientes se encuentra EMBOL (Coca Cola) y de acuerdo a sus funcionarios requieren de importar materia prima para la fabricación de preformas de botellas plásticas ya que con el material que recolectan no es suficiente (WWF, 2021). 
+              </p>
+              <p class="text-base text-gray-600 leading-relaxed">
+                Existen diferentes fundaciones, empresas y proyectos que apoyan al reciclaje en Bolivia. Fundares es la Fundación para el Reciclaje, Energía y Sostenibilidad de la Cámara de Industria, Turismo y Servicios de Santa Cruz (Cainco). Es una organización que busca disminuir el impacto ambiental del manejo de los residuos sólidos. Fundares trabaja con empresas en la implementación de sistemas de gestión de residuos y en la medición de su huella de carbono a través de su programa Ecosector. El argumento que usa Silva director ejecutivo para convencer a los empresarios es deliberadamente pragmático. «Sostenibilidad es sinónimo de eficiencia. Si tengo prácticas de economía circular, no voy a tener grandes cantidades de desperdicio. Lo mismo con el agua. Todo eso implica eficiencia y, por lo tanto, una reducción de costos”, asevera. (Pablo Deheza,2026). 
+              </p>
+              <p class="text-base text-gray-600 leading-relaxed">
+                Hay además un componente social en el modelo de gestión de residuos. Las empresas afiliadas donan sus materiales reciclables a recuperadores de base. Al recibirlos, los recuperadores los venden y generan un ingreso. «Se activa la cadena del reciclaje y se genera una oportunidad para este grupo vulnerable», explica Silva. (WWF, 2021). 
+              </p>
+              <p class="text-base text-gray-600 leading-relaxed">
+                Su área de acción se concentra principalmente en las ciudades del eje troncal de Bolivia y otros municipios colindantes, apoyando a los recolectores mediante capacitación y dotación de equipos para mejorar las condiciones de trabajo. Las personas que participan en estas actividades recolectan principalmente los residuos generados en unidades educativas, empresas e instituciones (WWF, 2021). 
+              </p>
+              <p class="text-base text-gray-600 leading-relaxed">
+                Helvetas con su proyecto Basura 0 (financiada por la cooperación sueca), busca contribuir a generar modelos de gestión de residuos y mejorar los existentes donde se priorice el aprovechamiento, el reciclaje inclusivo, la participación del sector privado y así como la disposición final, en los gobiernos autónomos municipales de La Paz, Tarija, Uriondo, San Lorenzo; y a la Mancomunidad de los municipios del Chaco Cruceño que comprenden a: Camiri, Boyuibe, Gutiérrez, Cuevo y Lagunillas (Helvetas, 2026).
+              </p>
+            </div>
+
+            {/* Subsección Medidas para mitigar el impacto */}
+            <div id="medidas" class="space-y-6 pt-4 border-t border-gray-100">
+              <h3 class="text-xl font-bold text-gray-900">
+                5. Medidas para mitigar el impacto
+              </h3>
+              <p class="text-base text-gray-600 leading-relaxed">
+                Frente a este panorama, el reciclaje emerge como una de las herramientas más poderosas y efectivas para reducir la huella de carbono del plástico. Aunque algunos críticos argumentan que el proceso de reciclaje también consume energía y recursos, numerosos estudios científicos han demostrado de manera concluyente que sus beneficios ambientales superan con creces a los de la producción de plástico (PartidoVerde, 2020).
+              </p>
+              <p class="text-base text-gray-600 leading-relaxed">
+                Las estimaciones más conservadoras indican que el uso de plástico reciclado en lugar de virgen ahorra al menos un 30% de las emisiones de carbono. Aplicando esto a nuestras cifras anteriores, el reciclaje a nivel global podría evitar la emisión de entre 30 y 150 millones de toneladas de CO2 cada año. Esto equivale a retirar entre 6 y 30 millones de coches de las carreteras anualmente (PartidoVerde, 2020). 
+              </p>
+              <p class="text-base text-gray-600 leading-relaxed">
+                Investigaciones más optimistas, como un análisis del ciclo de vida realizado por científicos italianos, elevan este ahorro a un impresionante 70% u 80%. Al comparar la producción de plástico a partir de material reciclado con la producción desde cero, identificaron una reducción drástica en las emisiones de gases de efecto invernadero. Esto se debe a que el reciclaje evita los pasos más contaminantes y energéticamente intensivos del proceso: la extracción de combustibles fósiles y el craqueo por vapor (PartidoVerde, 2020).
+              </p>
+
+              {/* TABLA COMPARATIVA: Producción mundial de plásticos por procedencia de materia prima */}
+              <div class="my-8 overflow-x-auto">
+                <h4 class="text-base font-bold text-gray-900 mb-4">
+                  Producción mundial de plásticos por procedencia de materia prima
+                </h4>
+                <table class="w-full text-left border-collapse border-y border-gray-200 text-xs sm:text-sm">
+                  <thead>
+                    <tr class="border-b border-gray-200 bg-gray-50/50">
+                      <th class="py-3 px-4 font-bold text-gray-900">Aspecto</th>
+                      <th class="py-3 px-4 font-bold text-gray-900">Producción de Plástico Virgen</th>
+                      <th class="py-3 px-4 font-bold text-gray-900">Producción con Plástico Reciclado</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-gray-100">
+                    <tr>
+                      <td class="py-3 px-4 font-bold text-gray-800">Fuente de Materia Prima</td>
+                      <td class="py-3 px-4 text-gray-600">Petróleo y gas natural (recursos no renovables)</td>
+                      <td class="py-3 px-4 text-gray-600">Residuos plásticos post-consumo (economía circular)</td>
+                    </tr>
+                    <tr>
+                      <td class="py-3 px-4 font-bold text-gray-800">Consumo de Energía</td>
+                      <td class="py-3 px-4 text-gray-600">Muy alto (extracción, refinado, craqueo)</td>
+                      <td class="py-3 px-4 text-gray-600">Significativamente menor (ahorro de hasta 88%)</td>
+                    </tr>
+                    <tr>
+                      <td class="py-3 px-4 font-bold text-gray-800">Emisiones de CO2</td>
+                      <td class="py-3 px-4 text-gray-600">Altas (entre 1 a 5 kg de CO2 por kg de plástico)</td>
+                      <td class="py-3 px-4 text-gray-600">Bajas (ahorro de emisiones del 30% al 80%)</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p class="text-xs text-gray-400 italic mt-2">
+                  Fuentes: Partido Verde (2020)
+                </p>
+              </div>
+
+              <p class="text-base text-gray-600 leading-relaxed">
+                Si bien el reciclaje es fundamental, no es la única solución. Para abordar de raíz el problema de la huella de carbono del plástico, necesitamos un enfoque multifacético que incluye:
+              </p>
+
+              {/* LISTA NUMERADA (01 A 06) ENFOQUE MULTIFACÉTICO */}
+              <div class="space-y-6 pt-4 border-t border-gray-100">
+                {actionPoints.map((item) => (
+                  <div class="flex items-start gap-4 sm:gap-6 border-b border-gray-100 pb-6 last:border-b-0">
+                    <span class="text-lg font-bold text-[#22C55E] shrink-0 pt-0.5">
+                      {item.num}
+                    </span>
+                    <div class="space-y-1">
+                      <h4 class="text-lg font-bold text-gray-900">
+                        {item.title}
+                      </h4>
+                      <p class="text-sm md:text-base text-gray-600 leading-relaxed">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* SECCIÓN 03: CONCLUSIONES */}
+          <section id="seccion-3" class="space-y-4 scroll-mt-28 border-t border-gray-100 pt-8">
+            <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900">
+              Conclusiones
+            </h2>
+            <p class="text-base text-gray-600 leading-relaxed">
+              El uso de plásticos es incompatible con la idea de conseguir una sociedad cero emisiones. Reducir la huella de carbono de los plásticos no es solo una cuestión ambiental, sino también una oportunidad estratégica para las empresas. A medida que los consumidores se vuelven más conscientes de los problemas ambientales, las empresas que adoptan prácticas sostenibles tienen una ventaja competitiva.
+            </p>
+            <p class="text-base text-gray-600 leading-relaxed">
+              Adoptar soluciones más sostenibles y ser parte de la transición hacia una economía circular no es solo una inversión en el futuro del planeta, sino también en el futuro de la sociedad. En este contexto, la educación ambiental juega un papel clave: formar ciudadanos críticos y consumidores informados es el primer paso para transformar hábitos profundamente arraigados.
+            </p>
+            <p class="text-base text-gray-600 leading-relaxed">
+              Sin embargo, la responsabilidad no puede recaer solo en el individuo; se necesita una corresponsabilidad real entre administraciones, industria y sociedad civil, donde cada agente asuma su parte en la cadena de producción, consumo y gestión de residuos. Fomentar hábitos sostenibles —como la reutilización, la reparación y la compra consciente— deja de ser una opción personal para convertirse en una necesidad colectiva.
+            </p>
+            <p class="text-base text-gray-600 leading-relaxed">
+              Las empresas que anticipen este cambio, adoptando modelos circulares y materiales renovables, no solo ganarán ventaja competitiva ante una ciudadanía cada vez más exigente, sino que se posicionarán como motores de una transición justa y necesaria.
+            </p>
+          </section>
+
+          {/* SECCIÓN 04: REFERENCIAS */}
+          <section id="seccion-4" class="space-y-4 scroll-mt-28 border-t border-gray-100 pt-8 pb-12">
+            <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900">
+              Referencias
+            </h2>
+            <p class="text-sm font-medium text-gray-500 mb-4">
+              Fuentes citadas en el artículo y material de consulta.
+            </p>
+            <ol class="space-y-3 text-xs md:text-sm text-gray-600 font-medium italic list-decimal list-inside leading-relaxed">
+              {references.map((ref) => (
+                <li>{ref}</li>
+              ))}
+            </ol>
+          </section>
+
+        </main>
+      </div>
+    </div>
+  </div>
+</Layout>
+<OurTeam />

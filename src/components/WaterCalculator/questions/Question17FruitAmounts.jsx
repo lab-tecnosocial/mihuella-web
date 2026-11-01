@@ -3,13 +3,13 @@ import { Plus, Minus } from "lucide-react";
 import { WaterQuestionLayout } from "../WaterQuestionLayout";
 
 const FRUIT_METADATA = {
-  platano: { label: "Plátano", image: "/img/yellow-banana.webp" },
-  manzana: { label: "Manzana", image: "/img/apple.webp" },
-  naranja: { label: "Naranja", image: "/img/orangee.webp" },
-  uvas: { label: "Uvas", image: "/img/grapes.webp" },
-  frutilla: { label: "Frutilla", image: "/img/strawberry.webp" },
-  papaya: { label: "Papaya", image: "/img/papaya.webp" },
-  otro: { label: "Otro", image: "/img/three_dots.webp" },
+  platano: { label: "Plátano", image: "/img/yellow-banana.webp", unit: "unid" },
+  manzana: { label: "Manzana", image: "/img/apple.webp", unit: "kg" },
+  naranja: { label: "Naranja", image: "/img/orangee.webp", unit: "unid" },
+  uvas: { label: "Uvas", image: "/img/grapes.webp", unit: "kg" },
+  frutilla: { label: "Frutilla", image: "/img/strawberry.webp", unit: "kg" },
+  papaya: { label: "Papaya", image: "/img/papaya.webp", unit: "kg" },
+  otro: { label: "Otro", image: "/img/three_dots.webp", unit: "" },
 };
 
 export function Question17FruitAmounts({
@@ -56,7 +56,7 @@ export function Question17FruitAmounts({
     <WaterQuestionLayout
       currentCategoryIndex={3} // Categoría: Dieta
       currentQuestionIndex={5}
-      totalQuestionsInCategory={5}
+      totalQuestionsInCategory={8}
       icon="/img/dieta-icon.webp"
       onBack={onBack}
       onExit={onExit}
@@ -77,7 +77,7 @@ export function Question17FruitAmounts({
           {activeFruits.map((id) => {
             const meta = FRUIT_METADATA[id] || {
               label: id,
-              image: "/img/otro.webp",
+              image: "/img/three_dots.webp",
             };
             const value = amounts[id] !== undefined ? amounts[id] : 0;
 
@@ -116,10 +116,10 @@ export function Question17FruitAmounts({
                       min="0"
                       value={value}
                       onChange={(e) => handleInputChange(id, e.target.value)}
-                      className="w-10 text-center font-bold text-gray-700 text-sm focus:outline-none font-quicksand"
+                      className="w-10 text-center font-bold text-gray-700 text-sm focus:outline-none font-quicksand [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                     />
                     <span className="text-xs text-gray-400 font-medium font-quicksand">
-                      kg
+                      {meta.unit}
                     </span>
                   </div>
 

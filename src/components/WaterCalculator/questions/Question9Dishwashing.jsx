@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { WaterQuestionLayout } from '../WaterQuestionLayout';
 
 const DISHWASHING_OPTIONS = [
@@ -18,7 +18,7 @@ export function Question9Dishwashing({ onNext, onBack, onExit, initialValue = ''
     <WaterQuestionLayout
       currentCategoryIndex={2} // Limpieza
       currentQuestionIndex={1}
-      totalQuestionsInCategory={2}
+      totalQuestionsInCategory={4}
       icon="/img/lavar-platos.webp"
       onBack={onBack}
       onExit={onExit}

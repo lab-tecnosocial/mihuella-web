@@ -1,0 +1,10 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { WaterResult } from '../../components/WaterCalculator/WaterResult.jsx';
+---
+
+<Layout title="Resultado de Huella Hídrica">
+  <main class="w-full min-h-screen">
+    <WaterResult client:load />
+  </main>
+</Layout>
