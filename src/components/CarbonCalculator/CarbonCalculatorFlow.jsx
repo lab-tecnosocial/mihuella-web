@@ -11,400 +11,232 @@ import { Question8MilkConsumption } from './Question8MilkConsumption';
 import { Question9CheeseConsumption } from './Question9CheeseConsumption';
 import { Question10YogurtConsumption } from './Question10YogurtConsumption';
 import { Question11FruitsConsumption } from './Question11FruitsConsumption';
-import { Question12ElectricityCost } from './Question12ElectricityCost';
-import { Question13GasType } from './Question13GasType';
-import { Question13aGasDomicilioCost } from './Question13aGasDomicilioCost';
-import { Question13bGarrafaQuantity } from './Question13bGarrafaQuantity';
-import { Question14TransportMode } from './Question14TransportMode';
-import { Question15TransportDays } from './Question15TransportDays';
-import { Question16TransportDistance } from './Question16TransportDistance';
-import { Question17CarOccupants } from './Question17CarOccupants';
-import { Question18AirplaneTrips } from './Question18AirplaneTrips';
-import { Question19FlightDuration } from './Question19FlightDuration';
-import { Question20WasteSeparation } from './Question20WasteSeparation';
-import { Question21WasteTypes } from './Question21WasteTypes';
-import { Question22WasteQuantities } from './Question22WasteQuantities';
+import { Question12ElectricEnergyCost } from './Question12ElectricEnergyCost';
+import { Question13GasConsumption } from './Question13GasConsumption';
+import { Question14GasPayment } from './Question14GasPayment';
+import { Question15TypeTransport } from './Question15TypeTransport';
+import { Question16TransportDays } from './Question16TransportDays';
+import { Question17DailyDistance } from './Question17DailyDistance';
+import { Question18CarOccupancy } from './Question18CarOccupancy';
+import { Question19FlightsPerYear } from './Question19FlightsPerYear';
+import { Question20FlightDuration } from './Question20FlightDuration';
+import { Question21SeparateWaste } from './Question21SeparateWaste';
+import { Question22WasteTypes } from './Question22WasteTypes';
+import { Question23WasteQuantify } from './Question23WasteQuantify';
+import { CarbonQuestionLayout } from './CarbonQuestionLayout';
+
+/**
+ * Valores iniciales de todas las respuestas.
+ * También se usan para limpiar las respuestas de pasos que quedan ocultos.
+ */
+const DEFAULTS = {
+  // General
+  peopleCount: 0,
+  department: '',
+  // Alimentos
+  meatKg: 0,
+  chickenKg: 0,
+  porkKg: 0,
+  fishKg: 0,
+  lambKg: 0,
+  milkLt: 0,
+  cheeseConsumptionKg: 0,
+  yogurtConsumptionLt: 0,
+  fruitsAndVegetablesKg: 0,
+  // Energía
+  electricityCostBs: 0,
+  gasType: null, // 'domicilio' | 'garrafa'
+  gasPaymentBs: 0, // P14 si gasType === 'domicilio'
+  gasCylindersPerMonth: 0, // P14 si gasType === 'garrafa'
+  // Transporte
+  transportType: null, // 'foot' | 'car' | 'taxi' | 'taxi_trufi' | 'trufi_grande'
+  //                      | 'coaster' | 'micro' | 'moto' | 'electric_car' | 'cable_car'
+  transportDaysPerWeek: 0,
+  dailyDistanceKm: 0,
+  carOccupancy: null, // 1, 2, 3, 4 o 5 (5 = más de 4)
+  flightsPerYear: 0,
+  flightMinutes: 0, // duración promedio de cada vuelo
+  // Residuos
+  separatesWaste: null, // true | false
+  wasteTypes: [], // 'common' | 'organic' | 'paper' | 'plastic'
+  wasteKg: 0, // total de kg por semana (lo que usa el cálculo)
+  wasteKgByType: {}, // { common, organic, paper, plastic } según lo elegido
+};
+
+/**
+ * Orden del flujo. Cada paso:
+ *  - Component: pantalla
+ *  - key: clave de formData donde se guarda la respuesta si la pantalla
+ *         devuelve un valor suelto (número, texto o lista). Si devuelve un
+ *         objeto, se mezcla tal cual y la key solo sirve para el initialValue.
+ *  - category: 0 General, 1 Alimentos, 2 Energía, 3 Transporte, 4 Residuos
+ *  - showIf (opcional): si devuelve false, el paso se salta (al avanzar y al volver).
+ */
+const STEPS = [
+  // General
+  { id: 'people', Component: Question1People, key: 'peopleCount', category: 0 },
+  { id: 'department', Component: Question2Department, key: 'department', category: 0 },
+
+  // Alimentos
+  { id: 'meat', Component: Question3MealConsumption, key: 'meatKg', category: 1 },
+  { id: 'chicken', Component: Question4ChickenConsumption, key: 'chickenKg', category: 1 },
+  { id: 'pork', Component: Question5PorkConsumption, key: 'porkKg', category: 1 },
+  { id: 'fish', Component: Question6FishConsumption, key: 'fishKg', category: 1 },
+  { id: 'lamb', Component: Question7LambConsumption, key: 'lambKg', category: 1 },
+  { id: 'milk', Component: Question8MilkConsumption, key: 'milkLt', category: 1 },
+  { id: 'cheese', Component: Question9CheeseConsumption, key: 'cheeseConsumptionKg', category: 1 },
+  { id: 'yogurt', Component: Question10YogurtConsumption, key: 'yogurtConsumptionLt', category: 1 },
+  { id: 'fruits', Component: Question11FruitsConsumption, key: 'fruitsAndVegetablesKg', category: 1 },
+
+  // Energía
+  { id: 'electricCost', Component: Question12ElectricEnergyCost, key: 'electricityCostBs', category: 2 },
+  { id: 'gasType', Component: Question13GasConsumption, key: 'gasType', category: 2 },
+  // P14: muestra Bs (domicilio) o garrafas (garrafa) según gasType
+  { id: 'gasPayment', Component: Question14GasPayment, key: 'gasPaymentBs', category: 2 },
+
+  // Transporte
+  { id: 'transportType', Component: Question15TypeTransport, key: 'transportType', category: 3 },
+  { id: 'transportDays', Component: Question16TransportDays, key: 'transportDaysPerWeek', category: 3 },
+  {
+    id: 'dailyDistance',
+    Component: Question17DailyDistance,
+    key: 'dailyDistanceKm',
+    category: 3,
+    showIf: (d) => d.transportType !== 'foot',
+  },
+  {
+    id: 'carOccupancy',
+    Component: Question18CarOccupancy,
+    key: 'carOccupancy',
+    category: 3,
+    showIf: (d) => ['car', 'electric_car'].includes(d.transportType),
+  },
+  { id: 'flightsPerYear', Component: Question19FlightsPerYear, key: 'flightsPerYear', category: 3 },
+  {
+    id: 'flightDuration',
+    Component: Question20FlightDuration,
+    key: 'flightMinutes',
+    category: 3,
+    showIf: (d) => d.flightsPerYear > 0,
+  },
+
+  // Residuos
+  { id: 'separateWaste', Component: Question21SeparateWaste, key: 'separatesWaste', category: 4 },
+  {
+    id: 'wasteTypes',
+    Component: Question22WasteTypes,
+    key: 'wasteTypes',
+    category: 4,
+    showIf: (d) => d.separatesWaste === true,
+  },
+  { id: 'wasteQuantity', Component: Question23WasteQuantify, key: 'wasteKg', category: 4 },
+];
+
+const isVisible = (step, data) => !step.showIf || step.showIf(data);
+
+// Siguiente paso visible después de `from`; STEPS.length si no quedan.
+const findNext = (from, data) => {
+  for (let i = from + 1; i < STEPS.length; i++) {
+    if (isVisible(STEPS[i], data)) return i;
+  }
+  return STEPS.length;
+};
+
+// Paso visible anterior a `from`; -1 (onboarding) si no hay.
+const findPrev = (from, data) => {
+  for (let i = from - 1; i >= 0; i--) {
+    if (isVisible(STEPS[i], data)) return i;
+  }
+  return -1;
+};
+
+// Devuelve al valor inicial las respuestas de pasos que quedaron ocultos
+// (ej. wasteTypes si ya no separa, carOccupancy si ya no es auto).
+const cleanHidden = (data) => {
+  const out = { ...data };
+  for (const step of STEPS) {
+    if (!isVisible(step, out) && step.key in DEFAULTS) {
+      out[step.key] = DEFAULTS[step.key];
+    }
+  }
+  return out;
+};
+
+// Posición del paso dentro de su categoría, contando solo los pasos visibles.
+// Las pantallas la usan con {...progress} en CarbonQuestionLayout.
+const progressFor = (index, data) => {
+  const category = STEPS[index].category;
+  const visible = STEPS.map((step, i) => ({ step, i })).filter(
+    ({ step }) => step.category === category && isVisible(step, data)
+  );
+  return {
+    currentCategoryIndex: category,
+    currentQuestionIndex: Math.max(0, visible.findIndex((v) => v.i === index)),
+    totalQuestionsInCategory: visible.length,
+  };
+};
 
 export function CarbonCalculatorFlow() {
+  // -1 = onboarding, 0..STEPS.length-1 = preguntas, STEPS.length = fin
   const [currentStep, setCurrentStep] = useState(-1);
-
-  const [formData, setFormData] = useState({
-    peopleCount: 0,
-    department: '',
-    meatKg: 0,
-    chickenKg: 0,
-    porkKg: 0,
-    fishKg: 0,
-    lambKg: 0,
-    milkLt: 0,
-    cheeseConsumptionKg: 0,
-    yogurtConsumptionLt: 0,
-    fruitsAndVegetablesKg: 0,
-    //Campos de Energía
-    electricityCostBs: 0,
-    gasType: 'garrafa',
-    gasDomicilioCostBs: 0,
-    garrafaCount: 0,
-    // Campos de Transporte
-    transportMode: '',
-    transportDays: 0,
-    transportDistance: 0,
-    carOccupants: 1,
-    airplaneTrips: 0,
-    flightDurationMin: 0,
-    // Campos de Residuos
-    separatesWaste: true,
-    wasteTypes: [],
-    wasteQuantities: {
-      comunes: 0,
-      organicos: 0,
-      papel: 0,
-      plasticos: 0,
-    },
-  });
+  const [formData, setFormData] = useState(DEFAULTS);
 
   const handleBackToHome = () => {
     window.location.href = '/';
   };
 
-  const handleFinishCalculation = (finalData) => {
-    const updatedData = { ...formData, ...finalData };
-    console.log('Datos completos para calcular huella de carbono:', updatedData);
-    // Aquí rediriges a tus resultados o ejecutas la lógica final de cálculo
+  const handleNext = (index, step, answer) => {
+    // Objeto -> se mezcla tal cual. Valor suelto (número, texto, lista) -> bajo step.key
+    const isObject =
+      answer !== null && typeof answer === 'object' && !Array.isArray(answer);
+    const patch = isObject ? answer : { [step.key]: answer };
+
+    const merged = cleanHidden({ ...formData, ...patch });
+    setFormData(merged);
+    setCurrentStep(findNext(index, merged));
   };
+
+  const handleBack = (index) => {
+    setCurrentStep(findPrev(index, formData));
+  };
+
+  const activeStep =
+    currentStep >= 0 && currentStep < STEPS.length ? STEPS[currentStep] : null;
 
   return (
     <>
       {currentStep === -1 && (
         <CarbonCalculatorOnboarding
           onBackToHome={handleBackToHome}
-          onStartCalculation={() => setCurrentStep(1)}
+          onStartCalculation={() => setCurrentStep(findNext(-1, formData))}
         />
       )}
 
-      {currentStep === 1 && (
-        <Question1People
-          onNext={(count) => {
-            setFormData((prev) => ({ ...prev, peopleCount: count }));
-            setCurrentStep(2);
-          }}
-          onBack={() => setCurrentStep(-1)}
+      {activeStep && (
+        <activeStep.Component
+          key={activeStep.id}
+          initialValue={formData[activeStep.key]}
+          data={formData}
+          progress={progressFor(currentStep, formData)}
+          onNext={(answer) => handleNext(currentStep, activeStep, answer)}
+          onBack={() => handleBack(currentStep)}
           onExit={handleBackToHome}
         />
       )}
 
-      {currentStep === 2 && (
-        <Question2Department
-          onNext={(departmentId) => {
-            setFormData((prev) => ({ ...prev, department: departmentId }));
-            setCurrentStep(3);
-          }}
-          onBack={() => setCurrentStep(1)}
+      {/* Fin del cuestionario (aquí irá la vista de resultados) */}
+      {currentStep >= STEPS.length && (
+        <CarbonQuestionLayout
+          currentCategoryIndex={4}
+          icon="/img/semilla.webp"
+          onBack={() => setCurrentStep(findPrev(STEPS.length, formData))}
           onExit={handleBackToHome}
-        />
-      )}
-
-      {currentStep === 3 && (
-        <Question3MealConsumption
-          initialValue={formData.meatKg}
-          onNext={(kg) => {
-            setFormData((prev) => ({ ...prev, meatKg: kg }));
-            setCurrentStep(4);
-          }}
-          onBack={() => setCurrentStep(2)}
-          onExit={handleBackToHome}
-        />
-      )}
-
-      {currentStep === 4 && (
-        <Question4ChickenConsumption
-          initialValue={formData.chickenKg}
-          onNext={(kg) => {
-            setFormData((prev) => ({ ...prev, chickenKg: kg }));
-            setCurrentStep(5);
-          }}
-          onBack={() => setCurrentStep(3)}
-          onExit={handleBackToHome}
-        />
-      )}
-
-      {currentStep === 5 && (
-        <Question5PorkConsumption
-          initialValue={formData.porkKg}
-          onNext={(data) => {
-            const kg = typeof data === 'object' ? data.porkKg : data;
-            setFormData((prev) => ({ ...prev, porkKg: kg }));
-            setCurrentStep(6);
-          }}
-          onBack={() => setCurrentStep(4)}
-          onExit={handleBackToHome}
-        />
-      )}
-
-      {currentStep === 6 && (
-        <Question6FishConsumption
-          initialValue={formData.fishKg}
-          onNext={(kg) => {
-            setFormData((prev) => ({ ...prev, fishKg: kg }));
-            setCurrentStep(7);
-          }}
-          onBack={() => setCurrentStep(5)}
-          onExit={handleBackToHome}
-        />
-      )}
-
-      {currentStep === 7 && (
-        <Question7LambConsumption
-          initialValue={formData.lambKg}
-          onNext={(kg) => {
-            setFormData((prev) => ({ ...prev, lambKg: kg }));
-            setCurrentStep(8);
-          }}
-          onBack={() => setCurrentStep(6)}
-          onExit={handleBackToHome}
-        />
-      )}
-
-      {currentStep === 8 && (
-        <Question8MilkConsumption
-          initialValue={formData.milkLt}
-          onNext={(lt) => {
-            setFormData((prev) => ({ ...prev, milkLt: lt }));
-            setCurrentStep(9);
-          }}
-          onBack={() => setCurrentStep(7)}
-          onExit={handleBackToHome}
-        />
-      )}
-
-      {currentStep === 9 && (
-        <Question9CheeseConsumption
-          initialValue={formData.cheeseConsumptionKg}
-          onNext={(data) => {
-            setFormData((prev) => ({ ...prev, ...data }));
-            setCurrentStep(10);
-          }}
-          onBack={() => setCurrentStep(8)}
-          onExit={handleBackToHome}
-        />
-      )}
-
-      {currentStep === 10 && (
-        <Question10YogurtConsumption
-          initialValue={formData.yogurtConsumptionLt}
-          onNext={(data) => {
-            setFormData((prev) => ({ ...prev, ...data }));
-            setCurrentStep(11);
-          }}
-          onBack={() => setCurrentStep(9)}
-          onExit={handleBackToHome}
-        />
-      )}
-
-      {currentStep === 11 && (
-        <Question11FruitsConsumption
-          initialValue={formData.fruitsAndVegetablesKg}
-          onNext={(data) => {
-            setFormData((prev) => ({ ...prev, ...data }));
-            setCurrentStep(12);
-          }}
-          onBack={() => setCurrentStep(10)}
-          onExit={handleBackToHome}
-        />
-      )}
-
-      {currentStep === 12 && (
-        <Question12ElectricityCost
-          initialValue={formData.electricityCostBs}
-          onNext={(data) => {
-            setFormData((prev) => ({ ...prev, ...data }));
-            setCurrentStep(13);
-          }}
-          onBack={() => setCurrentStep(11)}
-          onExit={handleBackToHome}
-        />
-      )}
-
-      {/* Pregunta 13: Tipo de Suministro de Gas */}
-      {currentStep === 13 && (
-        <Question13GasType
-          initialValue={formData.gasType}
-          onNext={(data) => {
-            setFormData((prev) => ({ ...prev, ...data }));
-            if (data.gasType === 'domicilio') {
-              setCurrentStep('13a');
-            } else {
-              setCurrentStep('13b');
-            }
-          }}
-          onBack={() => setCurrentStep(12)}
-          onExit={handleBackToHome}
-        />
-      )}
-
-      {/* Pregunta 13a: Costo Gas Domiciliario */}
-      {currentStep === '13a' && (
-        <Question13aGasDomicilioCost
-          initialValue={formData.gasDomicilioCostBs}
-          onNext={(data) => {
-            setFormData((prev) => ({ ...prev, ...data }));
-            setCurrentStep(14);
-          }}
-          onBack={() => setCurrentStep(13)}
-          onExit={handleBackToHome}
-        />
-      )}
-
-      {/* Pregunta 13b: Cantidad de Garrafas */}
-      {currentStep === '13b' && (
-        <Question13bGarrafaQuantity
-          initialValue={formData.garrafaCount}
-          onNext={(data) => {
-            setFormData((prev) => ({ ...prev, ...data }));
-            setCurrentStep(14);
-          }}
-          onBack={() => setCurrentStep(13)}
-          onExit={handleBackToHome}
-        />
-      )}
-
-      {/* Pregunta 14: Transporte */}
-      {currentStep === 14 && (
-        <Question14TransportMode
-          initialValue={formData.transportMode}
-          onNext={(data) => {
-            setFormData((prev) => ({ ...prev, ...data }));
-            setCurrentStep(15);
-          }}
-          onBack={() => {
-            if (formData.gasType === 'domicilio') {
-              setCurrentStep('13a');
-            } else {
-              setCurrentStep('13b');
-            }
-          }}
-          onExit={handleBackToHome}
-        />
-      )}
-
-      {currentStep === 15 && (
-        <Question15TransportDays
-          initialValue={formData.transportDays}
-          onNext={(data) => {
-            setFormData((prev) => ({ ...prev, ...data }));
-            setCurrentStep(16);
-          }}
-          onBack={() => setCurrentStep(14)}
-          onExit={handleBackToHome}
-        />
-      )}
-
-      {currentStep === 16 && (
-        <Question16TransportDistance
-          initialValue={formData.transportDistance}
-          onNext={(data) => {
-            setFormData((prev) => ({ ...prev, ...data }));
-            if (formData.transportMode === 'auto_propio') {
-              setCurrentStep(17);
-            } else {
-              setCurrentStep(18);
-            }
-          }}
-          onBack={() => setCurrentStep(15)}
-          onExit={handleBackToHome}
-        />
-      )}
-
-      {currentStep === 17 && (
-        <Question17CarOccupants
-          initialValue={formData.carOccupants}
-          onNext={(data) => {
-            setFormData((prev) => ({ ...prev, ...data }));
-            setCurrentStep(18);
-          }}
-          onBack={() => setCurrentStep(16)}
-          onExit={handleBackToHome}
-        />
-      )}
-
-      {currentStep === 18 && (
-        <Question18AirplaneTrips
-          initialValue={formData.airplaneTrips}
-          onNext={(data) => {
-            setFormData((prev) => ({ ...prev, ...data }));
-            setCurrentStep(19);
-          }}
-          onBack={() => {
-            if (formData.transportMode === 'auto_propio') {
-              setCurrentStep(17);
-            } else {
-              setCurrentStep(16);
-            }
-          }}
-          onExit={handleBackToHome}
-        />
-      )}
-
-      {currentStep === 19 && (
-        <Question19FlightDuration
-          initialValue={formData.flightDurationMin}
-          onNext={(data) => {
-            setFormData((prev) => ({ ...prev, ...data }));
-            setCurrentStep(20);
-          }}
-          onBack={() => setCurrentStep(18)}
-          onExit={handleBackToHome}
-        />
-      )}
-
-      {/* Pregunta 20: ¿Separas los residuos? */}
-      {currentStep === 20 && (
-        <Question20WasteSeparation
-          initialValue={formData.separatesWaste}
-          onNext={(data) => {
-            setFormData((prev) => ({ ...prev, ...data }));
-            if (data.separatesWaste) {
-              setCurrentStep(21);
-            } else {
-              setCurrentStep(22);
-            }
-          }}
-          onBack={() => setCurrentStep(19)}
-          onExit={handleBackToHome}
-        />
-      )}
-
-      {/* Pregunta 21: Selección de tipos de residuos */}
-      {currentStep === 21 && (
-        <Question21WasteTypes
-          initialValue={formData.wasteTypes}
-          onNext={(data) => {
-            setFormData((prev) => ({ ...prev, ...data }));
-            setCurrentStep(22);
-          }}
-          onBack={() => setCurrentStep(20)}
-          onExit={handleBackToHome}
-        />
-      )}
-
-      {/* Pregunta 22: Cantidades por residuo */}
-      {currentStep === 22 && (
-        <Question22WasteQuantities
-          initialValue={formData.wasteQuantities}
-          // AQUÍ: Pasamos los tipos seleccionados (o solo 'comunes' si no separa)
-          selectedWasteTypes={!formData.separatesWaste ? ['comunes'] : formData.wasteTypes}
-          onNext={(data) => {
-            handleFinishCalculation(data);
-          }}
-          onBack={() => {
-            if (formData.separatesWaste) {
-              setCurrentStep(21);
-            } else {
-              setCurrentStep(20);
-            }
-          }}
-          onExit={handleBackToHome}
-        />
+        >
+          <div className="flex flex-col items-center text-center text-gray-800">
+            <h2 className="text-xl font-bold mb-2">Próximamente</h2>
+            <p className="text-sm text-gray-600">Esta sección está en desarrollo.</p>
+          </div>
+        </CarbonQuestionLayout>
       )}
     </>
   );
