@@ -5,14 +5,16 @@ import WordHappyJump from "../assets/images/word-happy-yump.webp";
 import CellApplication from "../assets/images/cell-application-question.webp"
 ---
 
-<main class="min-h-screen w-full bg-huella-text-gray-ligth flex flex-col overflow-x-hidden py-10 lg:py-0">
-  <article class="w-full mx-auto px-4 lg:px-[5rem] flex flex-col lg:flex-row items-center gap-8 lg:gap-20 h-full">
+<section class="w-full bg-huella-text-gray-ligth flex flex-col pt-28 pb-10 lg:pt-36 lg:pb-16 overflow-hidden">
+  <article class="w-full max-w-[1440px] mx-auto px-4 lg:px-[5rem] flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
 
-    <div class="flex flex-col gap-6 items-start lg:w-[46.0625rem] lg:shrink-0 z-10 lg:mt-[5rem]">
+    <!-- Columna Izquierda: Texto y Botones -->
+    <div class="flex flex-col gap-6 items-start lg:w-[46.0625rem] lg:shrink-0 z-10">
       <h1 class="font-sans text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold animate-fade-up leading-tight text-green-text-primary max-w-[46.0625rem]">
         Calcula tu huella de carbono e hídrica de forma fácil y amigable
       </h1>
 
+      <!-- Vista móvil del personaje -->
       <div class="relative block lg:hidden w-full mx-auto mt-4 mb-2 animate-fade-up">
         <img
           src={WordHappyJump.src}
@@ -33,7 +35,6 @@ import CellApplication from "../assets/images/cell-application-question.webp"
       </p>
 
       <div class="flex flex-row flex-wrap gap-3 mt-0 w-full">
-        
         <a href="https://play.google.com/store/apps/details?id=org.labtecnosocial.mihuella"
           class="transition-transform transform hover:scale-105 duration-300 w-[45%] max-w-[13.75rem] h-[3.9375rem]"
         >
@@ -47,7 +48,7 @@ import CellApplication from "../assets/images/cell-application-question.webp"
           />
         </a>
         
-          <a href="https://apps.apple.com/us/app/mi-huella-en-el-planeta/id6748420106"
+        <a href="https://apps.apple.com/us/app/mi-huella-en-el-planeta/id6748420106"
           class="transition-transform transform hover:scale-105 duration-300 w-[45%] max-w-[11.875rem] h-[3.9375rem]"
         >
           <img
@@ -56,28 +57,29 @@ import CellApplication from "../assets/images/cell-application-question.webp"
             width={160}
             height={50}
             loading="lazy"
-            class="h-full w-full  rounded-[0.625rem] aspect-square"
+            class="h-full w-full rounded-[0.625rem] aspect-square"
           />
         </a>
       </div>
     </div>
 
-    <div class="hidden lg:flex flex-1 justify-end items-center relative top-[10.625rem] overflow-visible">
+    <!-- Columna Derecha: Imagen Desktop -->
+    <div class="hidden lg:flex flex-1 justify-end items-center relative">
       <div class="relative">
         <img
           src={WordHappyJump.src}
           alt="Personaje mundo feliz"
-          class="max-h-[40.75rem] max-w-[40.75rem] h-auto w-auto drop-shadow-2xl"
+          class="max-h-[35rem] xl:max-h-[40.75rem] w-auto h-auto drop-shadow-2xl"
           loading="lazy"
         />
         <img
           src={CellApplication.src}
           alt="Aplicación celular"
-          class="absolute top-[-10%] left-[3%] h-[40%] w-auto drop-shadow-2xl"
+          class="absolute top-[5%] left-[3%] h-[45%] w-auto drop-shadow-2xl"
           loading="lazy"
         />
       </div>
     </div>
 
   </article>
-</main>
+</section>

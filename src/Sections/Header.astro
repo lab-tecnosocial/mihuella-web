@@ -4,7 +4,8 @@ import LogoNuevoMiHuella2 from "../assets/images/mihuella_logo2.webp";
 
 <header class="fixed top-0 left-0 right-0 z-50 bg-white shadow-md font-quicksand">
   <nav class="flex items-center justify-between px-7 py-4 mx-auto max-w-[1440px]">
-
+    
+    <!-- Logo -->
     <a href="/">
       <img
         src={LogoNuevoMiHuella2.src}
@@ -15,22 +16,23 @@ import LogoNuevoMiHuella2 from "../assets/images/mihuella_logo2.webp";
       />
     </a>
 
+    <!-- Menú escritorio -->
     <ul class="hidden md:flex items-center gap-7">
       <li>
         <a href="/#calcular" class="nav-link">
-          Como calculamos?
+          ¿Cómo calculamos?
         </a>
       </li>
 
       <li>
         <a href="/#mision" class="nav-link">
-          Nuestra mision
+          Nuestra Misión
         </a>
       </li>
 
       <li>
         <a href="/#nosotros" class="nav-link">
-          Sobre nosotros
+          Sobre Nosotros
         </a>
       </li>
 
@@ -41,8 +43,10 @@ import LogoNuevoMiHuella2 from "../assets/images/mihuella_logo2.webp";
       </li>
     </ul>
 
+    <!-- Botones + menú móvil -->
     <div class="flex items-center gap-4">
 
+      <!-- Botón huella de carbono -->
       <a
         href="/feature/calculadora-huella-carbono"
         class="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-lg text-white bg-[#3ABA67] hover:opacity-90 transition-opacity text-[14px] md:text-[16px] font-bold h-[45px] md:h-[51px] shadow-[0px_5px_0px_#007558]"
@@ -50,6 +54,7 @@ import LogoNuevoMiHuella2 from "../assets/images/mihuella_logo2.webp";
         Calcular huella de carbono
       </a>
 
+      <!-- Botón huella hídrica -->
       <a
         href="/feature/calculadora-huella-hidrica-v2"
         class="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-lg text-white bg-[#439FC5] hover:opacity-90 transition-opacity text-[14px] md:text-[16px] font-bold h-[45px] md:h-[51px] shadow-[0px_5px_0px_#2178BD]"
@@ -57,6 +62,7 @@ import LogoNuevoMiHuella2 from "../assets/images/mihuella_logo2.webp";
         Calcular huella hidrica
       </a>
 
+      <!-- Botón hamburguesa -->
       <button
         id="menu-toggle"
         type="button"
@@ -81,6 +87,7 @@ import LogoNuevoMiHuella2 from "../assets/images/mihuella_logo2.webp";
     </div>
   </nav>
 
+  <!-- Menú móvil -->
   <div
     id="mobile-menu"
     class="hidden md:hidden bg-white border-t border-gray-100 px-7 py-5 shadow-lg flex-col gap-4"
@@ -101,13 +108,15 @@ import LogoNuevoMiHuella2 from "../assets/images/mihuella_logo2.webp";
       Blog
     </a>
 
-    <a
+    <!-- Botón carbono móvil -->
+    <!-- <a
       href="/feature/calculadora-huella-carbono"
       class="sm:hidden inline-flex items-center justify-center px-4 py-3 rounded-lg text-white bg-[#3ABA67] font-bold text-center mt-2 shadow-[0px_4px_0px_#007558]"
     >
       Calcular huella de carbono
-    </a>
+    </a> -->
 
+    <!-- Botón hídrica móvil -->
     <a
       href="/feature/calculadora-huella-hidrica-v2"
       class="sm:hidden inline-flex items-center justify-center px-4 py-3 rounded-lg text-white bg-[#439FC5] font-bold text-center mt-2 shadow-[0px_4px_0px_#2178BD]"
