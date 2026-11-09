@@ -1,13 +1,13 @@
 import { useState } from "react";
-import { LogOut, ArrowRight, ChevronDown } from "lucide-react";
+import { LogOut, ArrowRight, ChevronDown, Lightbulb } from "lucide-react";
 import { calculateWaterFootprint } from "./waterCalculator";
 import { WaterGauge } from "./WaterGauge";
+import { WaterTipsModal } from "./WaterTipsModal";
 
 export function WaterResults({ answers, onRestart, onExit }) {
-  // Periodo seleccionado: 'anual' (default) o 'mensual'
   const [period, setPeriod] = useState("anual");
+  const [showTips, setShowTips] = useState(false);
 
-  // Módulo de cálculo 2026
   const results = calculateWaterFootprint(answers);
 
   const isAnual = period === "anual";
@@ -19,7 +19,6 @@ export function WaterResults({ answers, onRestart, onExit }) {
 
   return (
     <div className="w-full max-w-4xl mx-auto font-quicksand px-2 sm:px-4 py-4 text-gray-800">
-      {/* 1. BARRA SUPERIOR HEADER */}
       <div className="flex items-center justify-between w-full mb-6 px-2 text-white">
         <h1 className="text-xl sm:text-2xl font-extrabold tracking-wide">
           Huella hídrica
@@ -29,14 +28,12 @@ export function WaterResults({ answers, onRestart, onExit }) {
           onClick={onExit}
           className="flex items-center gap-1.5 bg-white/20 hover:bg-white/30 backdrop-blur-md text-white font-bold text-sm px-4 py-1.5 rounded-full transition cursor-pointer"
         >
-          <a href="/">Salir</a>
+          <span>Salir</span>
           <LogOut className="w-4 h-4" />
         </button>
       </div>
 
-      {/* 2. TARJETA PRINCIPAL DE RESULTADOS */}
       <div className="relative bg-white/95 backdrop-blur-lg rounded-3xl p-5 sm:p-8 shadow-2xl border border-white/40">
-        {/* Mascotita de la gotita flotante en la parte superior central */}
         <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 bg-white rounded-full p-2 shadow-lg flex items-center justify-center border-4 border-blue-100">
           <img
             src="/img/huella-hidrica-icon.webp"
@@ -45,15 +42,12 @@ export function WaterResults({ answers, onRestart, onExit }) {
           />
         </div>
 
-        {/* CONTENIDO PRINCIPAL: GRID 2 COLUMNAS */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pt-4 items-center">
-          {/* PANEL IZQUIERDO: DIAGNÓSTICO Y MEDIDOR SEMÁFORO */}
           <div className="md:col-span-5 flex flex-col items-center text-center justify-center border-b md:border-b-0 md:border-r border-gray-100 pb-6 md:pb-0 md:pr-6">
             <h2 className="text-xl sm:text-2xl font-black text-gray-900 leading-snug mb-6 max-w-xs">
               {results.semaforo.titulo}
             </h2>
 
-            {/* Medidor Semicircular */}
             <WaterGauge
               totalValue={totalDisplayValue}
               level={results.semaforo}
@@ -61,15 +55,12 @@ export function WaterResults({ answers, onRestart, onExit }) {
             />
           </div>
 
-          {/* PANEL DERECHO: DESGLOSE POR CATEGORÍAS */}
           <div className="md:col-span-7 flex flex-col justify-between">
-            {/* Header de Categorías y Selector de Período */}
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-base sm:text-lg font-extrabold text-gray-900">
                 Por categorías
               </h3>
 
-              {/* Dropdown de período */}
               <div className="relative inline-block">
                 <select
                   value={period}
@@ -83,7 +74,6 @@ export function WaterResults({ answers, onRestart, onExit }) {
               </div>
             </div>
 
-            {/* Lista de las 6 categorías */}
             <div className="space-y-3.5 my-2">
               {results.sectores.map((sec) => {
                 const valorDisplay = isAnual ? sec.valorAnual : sec.valorMensual;
@@ -93,7 +83,6 @@ export function WaterResults({ answers, onRestart, onExit }) {
                     key={sec.id}
                     className="flex items-center gap-3 text-xs sm:text-sm font-semibold text-gray-700"
                   >
-                    {/* Icono redondeado */}
                     <div className="w-8 h-8 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0">
                       <img
                         src={sec.icon}
@@ -102,12 +91,10 @@ export function WaterResults({ answers, onRestart, onExit }) {
                       />
                     </div>
 
-                    {/* Nombre */}
                     <span className="w-20 sm:w-24 font-bold text-gray-800 truncate">
                       {sec.nombre}
                     </span>
 
-                    {/* Barra de progreso con Pill de porcentaje */}
                     <div className="flex-1 flex items-center gap-2">
                       <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
                         <div
@@ -120,7 +107,6 @@ export function WaterResults({ answers, onRestart, onExit }) {
                       </span>
                     </div>
 
-                    {/* Valor numérico en Lt */}
                     <span className="w-20 sm:w-24 text-right font-bold text-gray-900">
                       {formattedValue(valorDisplay)} Lt
                     </span>
@@ -131,7 +117,6 @@ export function WaterResults({ answers, onRestart, onExit }) {
           </div>
         </div>
 
-        {/* 3. BANNER INFERIOR PROMOCIONAL DE LA APP Y ACCIONES */}
         <div className="mt-8 bg-gradient-to-r from-[#D3E9F8] to-[#C1E2F7] border border-[#B1D8F4] rounded-2xl p-4 sm:p-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-4 text-center md:text-left">
             <img
@@ -162,6 +147,15 @@ export function WaterResults({ answers, onRestart, onExit }) {
 
             <button
               type="button"
+              onClick={() => setShowTips(true)}
+              className="w-full sm:w-auto flex items-center justify-center gap-2 bg-white hover:bg-blue-50 border-2 border-[#2178BD] text-[#2178BD] font-extrabold text-sm px-5 py-2.5 rounded-xl shadow-sm transition cursor-pointer"
+            >
+              <Lightbulb className="w-4 h-4" />
+              <span>Consejos</span>
+            </button>
+
+            <button
+              type="button"
               onClick={onRestart || onExit}
               className="flex items-center gap-1.5 text-gray-700 hover:text-gray-900 font-bold text-xs sm:text-sm px-3 py-2 cursor-pointer transition"
             >
@@ -171,6 +165,8 @@ export function WaterResults({ answers, onRestart, onExit }) {
           </div>
         </div>
       </div>
+
+      <WaterTipsModal open={showTips} onClose={() => setShowTips(false)} />
     </div>
   );
 }
