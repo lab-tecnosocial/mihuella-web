@@ -24,6 +24,7 @@ import { Question21SeparateWaste } from './Question21SeparateWaste';
 import { Question22WasteTypes } from './Question22WasteTypes';
 import { Question23WasteQuantify } from './Question23WasteQuantify';
 import { CarbonResults } from './CarbonResults';
+import { ExitConfirmModal } from './ExitConfirmModal';
 
 const DEFAULTS = {
   peopleCount: 0,
@@ -148,6 +149,7 @@ const progressFor = (index, data) => {
 export function CarbonCalculatorFlow() {
   const [currentStep, setCurrentStep] = useState(-1);
   const [formData, setFormData] = useState(DEFAULTS);
+  const [showExitConfirm, setShowExitConfirm] = useState(false);
 
   const handleBackToHome = () => {
     window.location.href = '/';
@@ -187,13 +189,19 @@ export function CarbonCalculatorFlow() {
           progress={progressFor(currentStep, formData)}
           onNext={(answer) => handleNext(currentStep, activeStep, answer)}
           onBack={() => handleBack(currentStep)}
-          onExit={handleBackToHome}
+          onExit={() => setShowExitConfirm(true)}
         />
       )}
 
       {currentStep >= STEPS.length && (
         <CarbonResults data={formData} onExit={handleBackToHome} />
       )}
+
+      <ExitConfirmModal
+        open={showExitConfirm && activeStep !== null}
+        onExit={handleBackToHome}
+        onContinue={() => setShowExitConfirm(false)}
+      />
     </>
   );
 }
