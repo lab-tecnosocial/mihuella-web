@@ -1,23 +1,17 @@
 ---
-// 1. FRONTMATTER: Variables del artículo y metadata (SEO)
+import Layout from "../layouts/Layout.astro";
+import OurTeam from "../Sections/OurTeam.astro";
+
 const title = "Huella Hídrica: El agua invisible que consumes sin darte cuenta";
 const description = "¿Sabías que una hamburguesa puede consumir más agua que una ducha de un mes? Conoce más datos sobre la huella hídrica en América Latina y cómo medirla y cómo reducirla.";
-
-// Nota: Asume que tienes un componente de Layout principal
-// import Layout from '../layouts/Layout.astro';
-// Si utilizas un Layout, envolverías el <body> con <Layout title={title} description={description}>...</Layout>
 ---
-<head>
-    <meta charset="UTF-8" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Huella Hídrica en Bolivia</title>
+<Layout title="Huella Hídrica en Bolivia">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    </head>
+
 <style>
-    /* Paleta de Colores: Blues (Agua) y Greens (Sostenibilidad) */
     :root {
         --color-primary: #1D70B7;
         --color-secondary: rgb(65,173,86);
@@ -26,27 +20,17 @@ const description = "¿Sabías que una hamburguesa puede consumir más agua que 
         --color-text: #575757;
     }
 
-    /* Estilos Globales y Tipografía */
-    /* ATENCIÓN: Se asume que el Layout de Astro ya define font-family en <body> o global */
-    /* Si no, descomenta y ajusta el body y la fuente, o usa un archivo CSS global */
-    
-    body {
+    .container {
         font-family: "poppins", "Roboto";
         font-size: 2.2vh;
         line-height: 1.8;
         color: var(--color-text);
         background-color: #f9f9f9;
-        margin: 0;
-        padding: 0;
-    }
-
-    .container {
         max-width: 1000px;
         margin: 0 auto;
         padding: 0 20px;
     }
 
-    /* Estilos CSS específicos de tu artículo */
     .contenedor-imagen-texto {
         display: flex;
         align-items: flex-start;
@@ -95,7 +79,6 @@ const description = "¿Sabías que una hamburguesa puede consumir más agua que 
         font-weight: 600;
     }
 
-    /* HEADER */
     header {
         text-align: center;
         padding: 60px 0 40px;
@@ -110,19 +93,16 @@ const description = "¿Sabías que una hamburguesa puede consumir más agua que 
         margin: 20px auto 0;
     }
 
-    /* SECCIONES */
     section {
         padding: 30px 0;
     }
 
-    /* graficos*/
     img {
         width: 95%;
         height: auto;
         align-items: center;
     }
 
-    /* Tarjetas de Impacto (Productos) */
     .impact-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -177,18 +157,15 @@ const description = "¿Sabías que una hamburguesa puede consumir más agua que 
         display: inline-block;
     }
 
-    /* Estilo para los subíndices dentro de la fórmula */
     .formula sub {
         font-size: 0.6em;
         vertical-align: sub;
     }
 
-    /* Estilos para las definiciones (HH, Ci, Fi) */
     .seccion-formula p {
         margin-bottom: 0.5em;
     }
 
-    /* Tipos de Agua */
     .water-types {
         display: flex;
         gap: 20px;
@@ -208,9 +185,9 @@ const description = "¿Sabías que una hamburguesa puede consumir más agua que 
         font-size: 1.2rem;
     }
 
-    .water-type-card:nth-child(1) { border-left-color: var(--color-secondary); } /* Verde */
-    .water-type-card:nth-child(2) { border-left-color: var(--color-primary); } /* Azul */
-    .water-type-card:nth-child(3) { border-left-color: #9ca3af; } /* Gris */
+    .water-type-card:nth-child(1) { border-left-color: var(--color-secondary); }
+    .water-type-card:nth-child(2) { border-left-color: var(--color-primary); }
+    .water-type-card:nth-child(3) { border-left-color: #9ca3af; }
 
     .grafico-container {
         max-width: 900px;
@@ -232,7 +209,6 @@ const description = "¿Sabías que una hamburguesa puede consumir más agua que 
         margin-bottom: 5px;
     }
 
-    /* Estilos base para la tabla */
     .tabla-contenedor {
         max-width: 900px;
         margin: 40px auto;
@@ -247,7 +223,6 @@ const description = "¿Sabías que una hamburguesa puede consumir más agua que 
         overflow: hidden;
     }
 
-    /* ESTILO PARA EL ENCABEZADO (THEAD) */
     thead {
         background-color: #56638C;
         color: white;
@@ -259,30 +234,25 @@ const description = "¿Sabías que una hamburguesa puede consumir más agua que 
         font-weight: bold;
     }
 
-    /* ESTILO PARA LA TABLA */
     td {
         padding: 10px 15px;
         border-bottom: 1px solid #ddd;
     }
 
-    /* ESTILO DE FILAS ALTERNAS (CEBRADO) */
     tbody tr:nth-child(even) {
         background-color: #f9f9f9;
     }
 
-    /* Quitar el borde inferior de la última fila */
     tbody tr:last-child td {
         border-bottom: none;
     }
 
-    /* Estilo para la fuente */
     .fuente {
         margin-top: 10px;
         font-size: 0.8em;
         text-align: right;
         color: #575757;
     }
-
 
     .grafico-contenedor-alimentos {
         max-width: 700px;
@@ -319,7 +289,6 @@ const description = "¿Sabías que una hamburguesa puede consumir más agua que 
         padding-left: 10px;
     }
 
-    /* Acciones (Llamada a la Acción) */
     .action-list {
         list-style: none;
         padding: 0;
@@ -343,38 +312,38 @@ const description = "¿Sabías que una hamburguesa puede consumir más agua que 
         color: var(--color-secondary);
         margin-bottom: 5px;
     }
-     .chart-section {
-            background-color: var(--color-light); 
-            padding: 30px;
-            border-radius: 15px;
-            margin-top: 30px;
-        }
 
-        .bar-container {
-            margin-bottom: 20px;
-        }
+    .chart-section {
+        background-color: var(--color-light);
+        padding: 30px;
+        border-radius: 15px;
+        margin-top: 30px;
+    }
 
-        .bar-label {
-            display: flex;
-            justify-content: space-between;
-            font-weight: bold;
-            color: var(--color-text);
-            margin-bottom: 5px;
-        }
+    .bar-container {
+        margin-bottom: 20px;
+    }
 
-        .bar {
-            height: 25px;
-            border-radius: 5px;
-            overflow: hidden;
-            background-color: #f9f9f9;
-        }
+    .bar-label {
+        display: flex;
+        justify-content: space-between;
+        font-weight: bold;
+        color: var(--color-text);
+        margin-bottom: 5px;
+    }
 
-        .bar-fill {
-            height: 100%;
-            transition: width 1s ease-out;
-        }
+    .bar {
+        height: 25px;
+        border-radius: 5px;
+        overflow: hidden;
+        background-color: #f9f9f9;
+    }
 
-    /* Footer */
+    .bar-fill {
+        height: 100%;
+        transition: width 1s ease-out;
+    }
+
     footer {
         text-align: center;
         padding: 40px 0;
@@ -400,17 +369,16 @@ const description = "¿Sabías que una hamburguesa puede consumir más agua que 
         background-color: #1D70B7;
     }
 
-
-    /* Responsive */
     @media (max-width: 768px) {
         h1 { font-size: 2rem; }
         h2 { font-size: 1.6rem; }
         h3 { font-size: 1.4rem; }
-        p { font-size: 0.85rem; } /* Ajuste de tamaño de fuente en móvil */
+        p { font-size: 0.85rem; }
         .water-types { flex-direction: column; }
     }
 </style>
 
+<div style="height: 90px;"></div>
 
 <div class="container">
 
@@ -676,57 +644,51 @@ const description = "¿Sabías que una hamburguesa puede consumir más agua que 
                 Fuente: (Adaptado de Mekonnen &amp; Hoekstra, 2012)
             </p>
         </div>
-        
+
         <script is:inline>
            document.addEventListener('DOMContentLoaded', function() {
 
-    // --- 1. DATOS DEL GRÁFICO ---
     const alimentos = ['Carne de res', 'Queso', 'Pollo', 'Legumbres', 'Cereales', 'Frutas'];
-    const huellaHidricaLitrosPorKg = [15000, 9000, 5000, 3900, 1200, 700]; 
+    const huellaHidricaLitrosPorKg = [15000, 9000, 5000, 3900, 1200, 700];
 
-    // --- 2. PALETA DE COLORES Y ASIGNACIÓN ---
     const nuevaPaletaColores = [
-        '#575757', // Gris oscuro
-        '#6AC1EE', // Azul claro
-        'rgb(0,110,79)', // Verde
-        'rgb(65,173,86)', // Verde lima
-        // Los colores se ciclarán/repetirán para las dos barras restantes.
+        '#575757',
+        '#6AC1EE',
+        'rgb(0,110,79)',
+        'rgb(65,173,86)',
     ];
-    
-    // Asignar colores a cada barra, usando el operador módulo (%) para ciclar
+
     const coloresBarra = huellaHidricaLitrosPorKg.map((index) => {
         return nuevaPaletaColores[index % nuevaPaletaColores.length];
     });
 
-    // Usamos el color Azul grisáceo oscuro para todos los bordes para dar uniformidad
-    const colorBorde = '#56638C'; 
+    const colorBorde = '#56638C';
 
-    // --- 3. CONFIGURACIÓN DEL GRÁFICO ---
     const ctx = document.getElementById('huellaHidricaAlimentosChart').getContext('2d');
 
     new Chart(ctx, {
-        type: 'bar', 
+        type: 'bar',
         data: {
             labels: alimentos,
             datasets: [{
                 label: 'Litros de agua por kg',
                 data: huellaHidricaLitrosPorKg,
-                backgroundColor: coloresBarra, // ¡CADA BARRA TIENE UN COLOR DIFERENTE!
+                backgroundColor: coloresBarra,
                 borderColor: colorBorde,
                 borderWidth: 1,
-                borderRadius: 5, 
+                borderRadius: 5,
             }]
         },
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            indexAxis: 'y', 
+            indexAxis: 'y',
             plugins: {
                 legend: {
-                    display: false, 
+                    display: false,
                 },
                 title: {
-                    display: false, 
+                    display: false,
                 },
                 tooltip: {
                     callbacks: {
@@ -761,7 +723,7 @@ const description = "¿Sabías que una hamburguesa puede consumir más agua que 
                 },
                 y: {
                     grid: {
-                        display: false, 
+                        display: false,
                         drawBorder: false
                     },
                     ticks: {
@@ -769,14 +731,13 @@ const description = "¿Sabías que una hamburguesa puede consumir más agua que 
                     }
                 }
             },
-            // --- ANIMACIÓN ---
             animation: {
-                duration: 1500, 
+                duration: 1500,
                 easing: 'easeInOutQuart',
                 delay: (context) => {
                     let delay = 0;
                     if (context.type === 'data' && context.mode === 'default') {
-                        delay = context.dataIndex * 150; 
+                        delay = context.dataIndex * 150;
                     }
                     return delay;
                 },
@@ -837,54 +798,50 @@ const description = "¿Sabías que una hamburguesa puede consumir más agua que 
 
 </div>
 
+<OurTeam />
+
 <script is:inline>
-    
+
 document.addEventListener('DOMContentLoaded', function() {
 
-    // --- 1. DATOS APROXIMADOS DEL GRÁFICO ---
-    // (Los valores están basados en una estimación visual de tu imagen)
     const paises = [
-        'Argentina', 'Bolivia', 'Brasil', 'Chile', 'Colombia', 'Costa Rica', 
-        'Cuba', 'Ecuador', 'El Salvador', 'Guatemala', 'Honduras', 
-        'México', 'Nicaragua', 'Panamá', 'Paraguay', 'Perú', 
+        'Argentina', 'Bolivia', 'Brasil', 'Chile', 'Colombia', 'Costa Rica',
+        'Cuba', 'Ecuador', 'El Salvador', 'Guatemala', 'Honduras',
+        'México', 'Nicaragua', 'Panamá', 'Paraguay', 'Perú',
         'Rep. Dominicana', 'Uruguay', 'Venezuela'
     ];
 
-    // Data por componente (Verde, Azul, Gris) en m³/año (aprox.)
-    // La suma de estas tres series debe coincidir con la altura total de la barra.
     const aguaVerde = [1400, 3400, 1800, 1000, 1000, 1300, 1500, 1600, 800, 900, 1000, 1600, 800, 1000, 1800, 750, 1400, 1500, 1400];
     const aguaAzul = [150, 50, 100, 150, 100, 200, 150, 200, 100, 50, 150, 300, 100, 200, 100, 300, 100, 250, 200];
     const aguaGris = [50, 10, 100, 100, 200, 50, 0, 200, 100, 50, 50, 100, 0, 100, 50, 10, 50, 50, 100];
-    
-    // --- 2. COLORES DE TU PALETA ---
-    const colorGris = '#575757'; // Gris/Azul oscuro para AGUA GRIS
-    const colorAzul = '#1D70B7'; // Azul claro para AGUA AZUL
-    const colorVerde = 'rgb(0,110,79)'; // Verde para AGUA VERDE
-    
-    // --- 3. CONFIGURACIÓN DEL GRÁFICO ---
+
+    const colorGris = '#575757';
+    const colorAzul = '#1D70B7';
+    const colorVerde = 'rgb(0,110,79)';
+
     const ctx = document.getElementById('huellaHidricaStackedChart').getContext('2d');
-    
+
     new Chart(ctx, {
-        type: 'bar', // Gráfico de barras
+        type: 'bar',
         data: {
             labels: paises,
             datasets: [
                 {
-                    label: 'Agua Verde (m³)', // Base de la barra (verde)
+                    label: 'Agua Verde (m³)',
                     data: aguaVerde,
                     backgroundColor: colorVerde,
                     borderColor: colorVerde,
                     borderWidth: 1,
                 },
                 {
-                    label: 'Agua Azul (m³)', // Segundo componente (azul)
+                    label: 'Agua Azul (m³)',
                     data: aguaAzul,
                     backgroundColor: colorAzul,
                     borderColor: colorAzul,
                     borderWidth: 1,
                 },
                 {
-                    label: 'Agua Gris (m³)', // Componente superior (gris)
+                    label: 'Agua Gris (m³)',
                     data: aguaGris,
                     backgroundColor: colorGris,
                     borderColor: colorGris,
@@ -895,29 +852,28 @@ document.addEventListener('DOMContentLoaded', function() {
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            // Clave para hacer el gráfico APILADO
             scales: {
                 x: {
-                    stacked: true, // Eje X apilado
+                    stacked: true,
                     title: {
                         display: false,
                     }
                 },
                 y: {
-                    stacked: true, // Eje Y apilado
+                    stacked: true,
                     beginAtZero: true,
                     title: {
                         display: true,
                         text: 'm³/año',
                         padding: 10
                     },
-                    max: 4000 // Máximo del eje Y como en el gráfico original
+                    max: 4000
                 }
             },
             plugins: {
                 legend: {
                     display: true,
-                    position: 'bottom', // Leyenda en la parte inferior
+                    position: 'bottom',
                     labels: {
                         usePointStyle: true
                     }
@@ -927,14 +883,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     intersect: false,
                     callbacks: {
                         title: function(context) {
-                            return context[0].label; // Muestra el nombre del país
+                            return context[0].label;
                         },
                         label: function(context) {
                             let label = context.dataset.label || '';
                             if (label) {
                                 label += ': ';
                             }
-                            // Formato con punto como separador de miles
                             label += new Intl.NumberFormat('es-ES').format(context.parsed.y);
                             return label;
                         }
@@ -945,6 +900,5 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-
-
 </script>
+</Layout>
