@@ -4,7 +4,6 @@ import { WaterQuestionLayout } from "./WaterQuestionLayout";
 import { Question1Origin } from "./questions/Question1Origin";
 import { Question7ToiletType } from "./questions/Question7ToiletType";
 import { Question9Dishwashing } from "./questions/Question9Dishwashing";
-import { Question11PatioCleaning } from "./questions/Question11PatioCleaning";
 import { Question12Proteins } from "./questions/Question12Proteins";
 import { Question13ProteinAmounts } from "./questions/Question13ProteinAmounts";
 import { Question14Cereals } from "./questions/Question14Cereals";
@@ -100,7 +99,7 @@ const NUMBER_QUESTIONS = {
     ariaLabel: "veces",
     currentCategoryIndex: 2,
     currentQuestionIndex: 0,
-    totalQuestionsInCategory: 4,
+    totalQuestionsInCategory: 3,
     reference: "Lo común es lavar la ropa entre 1 y 3 veces por semana.",
   },
   10: {
@@ -112,7 +111,7 @@ const NUMBER_QUESTIONS = {
     ariaLabel: "veces al día",
     currentCategoryIndex: 2,
     currentQuestionIndex: 2,
-    totalQuestionsInCategory: 4,
+    totalQuestionsInCategory: 3,
     reference:
       "Lavar platos a mano puede usar hasta 20 litros por lavado; con lavavajillas, el consumo baja considerablemente.",
   },
@@ -132,8 +131,7 @@ export function WaterCalculator() {
 
   const handleBack = () => {
     if (currentStep === 1) setCurrentStep(0);
-    else if (currentStep === 12) setCurrentStep(11);
-    else if (currentStep === 11) setCurrentStep(10);
+    else if (currentStep === 12) setCurrentStep(10);
     else if (currentStep === 10) setCurrentStep(9);
     else if (currentStep === 13) setCurrentStep(12);
     else if (currentStep === 14) {
@@ -183,8 +181,6 @@ export function WaterCalculator() {
     if (currentStep === 9) {
       setCurrentStep(10);
     } else if (currentStep === 10) {
-      setCurrentStep(11);
-    } else if (currentStep === 11) {
       setCurrentStep(12);
     } else if (currentStep === 12) {
       const selected = updatedAnswers.proteins || [];
@@ -282,15 +278,6 @@ export function WaterCalculator() {
             onBack={handleBack}
             onExit={handleBackToHome}
             initialValue={answers.dishwashingMethod || ""}
-          />
-        )}
-
-        {currentStep === 11 && (
-          <Question11PatioCleaning
-            onNext={handleNext}
-            onBack={handleBack}
-            onExit={handleBackToHome}
-            initialValue={answers.patioCleaningMethod || ""}
           />
         )}
 
