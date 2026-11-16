@@ -31,7 +31,7 @@ export const FACTORS = {
     electric_car: 0,
     cable_car: 0,
   },
-  divideCarByOccupancy: false,
+  divideCarByOccupancy: true,
   flightKmPerMinute: 11.6,
   flightKgCo2PerKm: 0.324,
   wasteKgCo2PerKg: 1.92,

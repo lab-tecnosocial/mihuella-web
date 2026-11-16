@@ -86,7 +86,7 @@ const STEPS = [
     Component: Question18CarOccupancy,
     key: 'carOccupancy',
     category: 3,
-    showIf: (d) => ['car', 'electric_car'].includes(d.transportType),
+    showIf: (d) => d.transportType === 'car',
   },
   { id: 'flightsPerYear', Component: Question19FlightsPerYear, key: 'flightsPerYear', category: 3 },
   {

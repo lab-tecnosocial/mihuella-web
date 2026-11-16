@@ -21,7 +21,6 @@ Estado en la web:
 | 8 | Cargas de ropa por semana (`clothesWashingFrequencyPerWeek`) | E29 | cargas/semana | Sí | UI (Q8) |
 | 9 | Forma de lavar platos (`dishwashingMethod`) | E30 | `mano` / `lavavajillas` | Sí | UI (Q9) |
 | 10 | Lavados de platos (`dishwashingTimesPerDay`) | E33 | veces/día | Sí | UI (Q10) |
-| 11 | Limpieza del patio (`patioCleaningMethod`) | — | opción | No (sin fórmula) | UI (Q11) |
 | 12 | Carne de res (`proteinAmounts.res`) | E37 | kg/semana | Sí | UI (Q13) |
 | 13 | Carne de pollo (`proteinAmounts.pollo`) | E38 | kg/semana | Sí | UI (Q13) |
 | 14 | Carne de cerdo (`proteinAmounts.cerdo`) | E39 | kg/semana | Sí | UI (Q13) |

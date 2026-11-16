@@ -39,7 +39,7 @@ export function Question18CarOccupancy({
         {/* Título */}
         <div className="text-center">
           <h2 className="text-3xl font-semibold text-gray-800 leading-tight font-quicksand">
-            Si usas auto propio, ¿con cuántas personas te transportas?
+            ¿Con cuántas personas te transportas en tu auto?
           </h2>
           <p className="mt-2 text-lg text-gray-500 font-quicksand">
             Selecciona una opción
