@@ -8,6 +8,7 @@ const DRINK_METADATA = {
   leche: { label: "Leche", image: "/img/milk.webp", unit: "vasos" },
   jugos: { label: "Jugos", image: "/img/orange-juice.webp", unit: "vasos" },
   gaseosa: { label: "Gaseosas", image: "/img/soda.webp", unit: "vasos" },
+  botella: { label: "Agua embotellada", image: "/img/agua_botella.webp", unit: "botellas" },
   otro: { label: "Otro", image: "/img/three_dots.webp", unit: "unid" },
 };
 
@@ -53,14 +54,14 @@ export function Question19DrinkAmounts({
   return (
     <WaterQuestionLayout
       currentCategoryIndex={3} // Categoría: Dieta
-      currentQuestionIndex={7}
-      totalQuestionsInCategory={8}
+      currentQuestionIndex={9}
+      totalQuestionsInCategory={11}
       icon="/img/drinks-icon.webp"
       onBack={onBack}
       onExit={onExit}
       onNext={() => onNext({ drinkAmounts: amounts })}
       isNextDisabled={false}
-      nextText="Calcular mi huella"
+      nextText="Continuar"
     >
       <div className="flex flex-col items-center w-full max-w-md mx-auto">
         <h2 className="text-xl sm:text-2xl font-extrabold text-gray-900 leading-snug mb-1 text-center font-quicksand">

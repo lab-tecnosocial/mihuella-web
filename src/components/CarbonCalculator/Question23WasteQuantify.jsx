@@ -5,7 +5,6 @@ import { CarbonQuestionLayout } from './CarbonQuestionLayout';
 const STEP = 0.5;
 
 const WASTE_TYPES = [
-  { value: 'common', label: 'Residuos comunes', image: '/img/trash.png' },
   { value: 'organic', label: 'Residuos orgánicos', image: '/img/residuos_organicos.png' },
   { value: 'paper', label: 'Papel y cartón', image: '/img/papel_carton.png' },
   { value: 'plastic', label: 'Plásticos', image: '/img/plastico.png' },

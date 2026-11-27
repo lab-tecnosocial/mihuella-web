@@ -21,6 +21,7 @@ export const FACTORS = {
   garrafaKgCo2PerUnit: 1.56,
   transport: {
     foot: 0,
+    bicycle: 0,
     car: 0.21,
     taxi: 0.21,
     taxi_trufi: 0.1158,

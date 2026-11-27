@@ -8,6 +8,7 @@ const DRINK_OPTIONS = [
   { id: "leche", label: "Leche", unit: "Vasos/semana", image: "/img/milk.webp" },
   { id: "jugos", label: "Jugos", unit: "Vasos/semana", image: "/img/orange-juice.webp" },
   { id: "gaseosa", label: "Gaseosa", unit: "Vasos/semana", image: "/img/soda.webp" },
+  { id: "botella", label: "Agua embotellada", unit: "Botellas/semana", image: "/img/agua_botella.webp" },
   { id: "ninguno", label: "Ninguno", unit: "", image: "/img/none.webp" },
   { id: "otro", label: "Otro", unit: "", image: "/img/three_dots.webp"},
 ];
@@ -38,8 +39,8 @@ export function Question18Drinks({
   return (
     <WaterQuestionLayout
       currentCategoryIndex={3} // Categoría: Dieta
-      currentQuestionIndex={6}
-      totalQuestionsInCategory={8}
+      currentQuestionIndex={8}
+      totalQuestionsInCategory={11}
       icon="/img/drinks-icon.webp"
       onBack={onBack}
       onExit={onExit}

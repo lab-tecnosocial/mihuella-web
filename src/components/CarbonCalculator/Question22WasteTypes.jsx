@@ -3,7 +3,6 @@ import { Check } from 'lucide-react';
 import { CarbonQuestionLayout } from './CarbonQuestionLayout';
 
 const OPTIONS = [
-  { value: 'common', label: 'Residuos comunes', image: '/img/trash.png' },
   { value: 'organic', label: 'Residuos orgánicos', image: '/img/residuos_organicos.png' },
   { value: 'paper', label: 'Papel y cartón', image: '/img/papel_carton.png' },
   { value: 'plastic', label: 'Plástico', image: '/img/plastico.png' },

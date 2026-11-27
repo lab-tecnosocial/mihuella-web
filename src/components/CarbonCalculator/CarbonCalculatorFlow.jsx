@@ -105,7 +105,13 @@ const STEPS = [
     category: 4,
     showIf: (d) => d.separatesWaste === true,
   },
-  { id: 'wasteQuantity', Component: Question23WasteQuantify, key: 'wasteKg', category: 4 },
+  {
+    id: 'wasteQuantity',
+    Component: Question23WasteQuantify,
+    key: 'wasteKg',
+    category: 4,
+    showIf: (d) => d.separatesWaste === true,
+  },
 ];
 
 const isVisible = (step, data) => !step.showIf || step.showIf(data);

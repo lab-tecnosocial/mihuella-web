@@ -3,6 +3,7 @@ import { CarbonQuestionLayout } from './CarbonQuestionLayout';
 
 const OPTIONS = [
   { value: 'foot', label: 'A pie', capacity: '(1 persona)', image: '/img/persona.png' },
+  { value: 'bicycle', label: 'Bicicleta', capacity: '(1 persona)', image: '/img/bicicleta.webp' },
   { value: 'car', label: 'Auto propio', capacity: '(4 pasajeros)', image: '/img/car_red.png' },
   { value: 'taxi', label: 'Taxi', capacity: '(1–4 pasajeros)', image: '/img/taxi.png' },
   { value: 'taxi_trufi', label: 'Taxi - Trufi', capacity: '(5–10 pasajeros)', image: '/img/taxi_big.png' },

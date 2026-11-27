@@ -17,7 +17,13 @@ export function Question21SeparateWaste({
   const [selected, setSelected] = useState(initialValue);
 
   const submit = () => {
-    if (selected !== null) onNext({ separatesWaste: selected });
+    if (selected !== null) {
+      onNext(
+        selected
+          ? { separatesWaste: true }
+          : { separatesWaste: false, wasteTypes: [], wasteKg: 0, wasteKgByType: {} }
+      );
+    }
   };
 
   return (
