@@ -6,11 +6,9 @@ const FRUIT_OPTIONS = [
   { id: "platano", label: "Plátano", unit: "Unidades/semana", image: "/img/yellow-banana.webp" },
   { id: "manzana", label: "Manzana", unit: "Kg/semana", image: "/img/apple.webp" },
   { id: "naranja", label: "Naranja", unit: "Unidades/semana", image: "/img/orangee.webp" },
-  { id: "uvas", label: "Uvas", unit: "Kg/semana", image: "/img/grapes.webp" },
-  { id: "frutilla", label: "Frutilla", unit: "Kg/semana", image: "/img/strawberry.webp" },
   { id: "papaya", label: "Papaya", unit: "Kg/semana", image: "/img/papaya.webp" },
+  { id: "pina", label: "Piña", unit: "Porciones/semana", image: "/img/pina.webp" },
   { id: "ninguno", label: "Ninguno", unit: "", image: "/img/none.webp" },
-  { id: "otro", label: "Otro", unit: "", image: "/img/three_dots.webp" },
 ];
 
 export function Question16Fruits({
@@ -40,7 +38,7 @@ export function Question16Fruits({
     <WaterQuestionLayout
       currentCategoryIndex={3} // Categoría: Dieta
       currentQuestionIndex={4}
-      totalQuestionsInCategory={8}
+      totalQuestionsInCategory={11}
       icon="/img/fruits-icon.webp"
       onBack={onBack}
       onExit={onExit}

@@ -7,9 +7,6 @@ const CEREAL_METADATA = {
   fideo: { label: "Fideo", image: "/img/pasta.webp" },
   avena: { label: "Avena", image: "/img/avena.webp" },
   quinua: { label: "Quinua", image: "/img/quinua.webp" },
-  pan: { label: "Pan", image: "/img/bread.webp" },
-  maiz: { label: "Maíz", image: "/img/corn.webp" },
-  otro: { label: "Otro", image: "/img/three_dots.webp" },
 };
 
 export function Question15CerealAmounts({
@@ -56,7 +53,7 @@ export function Question15CerealAmounts({
     <WaterQuestionLayout
       currentCategoryIndex={3} // Categoría: Dieta
       currentQuestionIndex={3}
-      totalQuestionsInCategory={8}
+      totalQuestionsInCategory={11}
       icon="/img/cereals-icon.webp"
       onBack={onBack}
       onExit={onExit}

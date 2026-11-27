@@ -66,59 +66,73 @@ export function calculateWaterFootprint(answers = {}) {
     huevosU * 196
   );
 
-  // Cereales (kg/semana, y pan en piezas/día o kg/semana)
+  // Cereales (kg/semana)
   const arrozKg = Number(cerealAmounts.arroz) || 0;
   const fideoKg = Number(cerealAmounts.fideo) || 0;
   const avenaKg = Number(cerealAmounts.avena) || 0;
   const quinuaKg = Number(cerealAmounts.quinua) || 0;
-  const maizKg = Number(cerealAmounts.maiz) || 0;
-  const panPiezasDia = Number(cerealAmounts.pan) || 0;
 
   const cerealesBaseMes = SEMANAS_MES * (
     arrozKg * 2497 +
     fideoKg * 1849 +
     avenaKg * 2497 +
-    quinuaKg * 2497 +
-    maizKg * 1222
+    quinuaKg * 2497
   );
-  // Pan: DIAS_MES * piezas * 0.075 kg/pieza * 1608 L/kg
-  const panMes = DIAS_MES * panPiezasDia * 0.075 * 1608;
+  // Pan: DIAS_MES * piezas/día * 0.075 kg/pieza * 1608 L/kg
+  const breadPiecesPerDay = Number(answers.breadPiecesPerDay) || 0;
+  const panMes = DIAS_MES * breadPiecesPerDay * 0.075 * 1608;
 
   const cerealesMes = cerealesBaseMes + panMes;
 
-  // Frutas (kg o unidades por semana)
+  // Frutas (kg, unidades o porciones por semana)
   const platanoU = Number(fruitAmounts.platano) || 0;
   const naranjaU = Number(fruitAmounts.naranja) || 0;
   const manzanaKg = Number(fruitAmounts.manzana) || 0;
-  const uvasKg = Number(fruitAmounts.uvas) || 0;
-  const frutillaKg = Number(fruitAmounts.frutilla) || 0;
   const papayaKg = Number(fruitAmounts.papaya) || 0;
+  const pinaPorciones = Number(fruitAmounts.pina) || 0;
 
   const frutasMes = SEMANAS_MES * (
     platanoU * 160 +
     naranjaU * 80 +
     manzanaKg * 820 +
-    uvasKg * 2400 +
-    frutillaKg * 300 +
-    papayaKg * 460
+    papayaKg * 460 +
+    pinaPorciones * 40
   );
 
-  // Bebidas (L/semana o tazas/vasos/semana)
+  // Verduras (unidades o porciones por semana)
+  const vegetableAmounts = answers.vegetableAmounts || {};
+  const cebollaU = Number(vegetableAmounts.cebolla) || 0;
+  const tomateU = Number(vegetableAmounts.tomate) || 0;
+  const papaU = Number(vegetableAmounts.papa) || 0;
+  const zanahoriaU = Number(vegetableAmounts.zanahoria) || 0;
+  const lechugaPorciones = Number(vegetableAmounts.lechuga) || 0;
+
+  const verdurasMes = SEMANAS_MES * (
+    cebollaU * 27 +
+    tomateU * 20 +
+    papaU * 30 +
+    zanahoriaU * 20 +
+    lechugaPorciones * 12
+  );
+
+  // Bebidas (L/semana o tazas/vasos/botellas/semana)
   const teU = Number(drinkAmounts.te) || 0;
   const cafeU = Number(drinkAmounts.cafe) || 0;
   const lecheU = Number(drinkAmounts.leche) || 0;
   const jugosU = Number(drinkAmounts.jugos) || 0;
   const gaseosaU = Number(drinkAmounts.gaseosa) || 0;
+  const botellaU = Number(drinkAmounts.botella) || 0;
 
   const bebidasMes = SEMANAS_MES * (
     teU * 56 +
     cafeU * 132 +
     lecheU * 255 +
     jugosU * 170 +
-    gaseosaU * 74
+    gaseosaU * 74 +
+    botellaU * 8
   );
 
-  const alimentosMes = proteinasMes + cerealesMes + frutasMes + bebidasMes;
+  const alimentosMes = proteinasMes + cerealesMes + frutasMes + verdurasMes + bebidasMes;
   const alimentosAnio = alimentosMes * MESES_ANIO;
 
   // --- 4. BIENES Y SERVICIOS ---

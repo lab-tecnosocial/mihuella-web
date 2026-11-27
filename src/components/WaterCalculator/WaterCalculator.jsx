@@ -10,6 +10,8 @@ import { Question14Cereals } from "./questions/Question14Cereals";
 import { Question15CerealAmounts } from "./questions/Question15CerealAmounts";
 import { Question16Fruits } from "./questions/Question16Fruits";
 import { Question17FruitAmounts } from "./questions/Question17FruitAmounts";
+import { Question18Vegetables } from "./questions/Question18Vegetables";
+import { Question19VegetableAmounts } from "./questions/Question19VegetableAmounts";
 import { Question18Drinks } from "./questions/Question18Drinks";
 import { Question19DrinkAmounts } from "./questions/Question19DrinkAmounts";
 import { Question20ShoesPerYear } from "./questions/Question20ShoesPerYear";
@@ -115,6 +117,18 @@ const NUMBER_QUESTIONS = {
     reference:
       "Lavar platos a mano puede usar hasta 20 litros por lavado; con lavavajillas, el consumo baja considerablemente.",
   },
+  22: {
+    answerKey: "breadPiecesPerDay",
+    title: "¿Cuántas piezas de pan consumes al día?",
+    icon: "/img/pan.webp",
+    unit: "piezas",
+    step: 1,
+    ariaLabel: "piezas de pan",
+    currentCategoryIndex: 3,
+    currentQuestionIndex: 10,
+    totalQuestionsInCategory: 11,
+    reference: "Una pieza de pan equivale aproximadamente a 75 gramos.",
+  },
 };
 
 export function WaterCalculator() {
@@ -159,8 +173,8 @@ export function WaterCalculator() {
       }
     } else if (currentStep === 19) setCurrentStep(18);
     else if (currentStep === 20) {
-      const selectedDrinks = answers.drinks || [];
-      if (selectedDrinks.length === 1 && selectedDrinks[0] === "ninguno") {
+      const selectedVegetables = answers.vegetables || [];
+      if (selectedVegetables.length === 1 && selectedVegetables[0] === "ninguno") {
         setCurrentStep(18);
       } else {
         setCurrentStep(19);
@@ -168,7 +182,12 @@ export function WaterCalculator() {
     } else if (currentStep === 21) {
       setCurrentStep(20);
     } else if (currentStep === 22) {
-      setCurrentStep(21);
+      const selectedDrinks = answers.drinks || [];
+      if (selectedDrinks.length === 1 && selectedDrinks[0] === "ninguno") {
+        setCurrentStep(20);
+      } else {
+        setCurrentStep(21);
+      }
     } else {
       setCurrentStep(currentStep - 1);
     }
@@ -210,8 +229,8 @@ export function WaterCalculator() {
     } else if (currentStep === 17) {
       setCurrentStep(18);
     } else if (currentStep === 18) {
-      const selectedDrinks = updatedAnswers.drinks || [];
-      if (selectedDrinks.length === 1 && selectedDrinks[0] === "ninguno") {
+      const selectedVegetables = updatedAnswers.vegetables || [];
+      if (selectedVegetables.length === 1 && selectedVegetables[0] === "ninguno") {
         setCurrentStep(20);
       } else {
         setCurrentStep(19);
@@ -219,7 +238,12 @@ export function WaterCalculator() {
     } else if (currentStep === 19) {
       setCurrentStep(20);
     } else if (currentStep === 20) {
-      setCurrentStep(21);
+      const selectedDrinks = updatedAnswers.drinks || [];
+      if (selectedDrinks.length === 1 && selectedDrinks[0] === "ninguno") {
+        setCurrentStep(22);
+      } else {
+        setCurrentStep(21);
+      }
     } else if (currentStep === 21) {
       setCurrentStep(22);
     } else {
@@ -339,6 +363,25 @@ export function WaterCalculator() {
         )}
 
         {currentStep === 18 && (
+          <Question18Vegetables
+            onNext={handleNext}
+            onBack={handleBack}
+            onExit={handleBackToHome}
+            initialValue={answers.vegetables || []}
+          />
+        )}
+
+        {currentStep === 19 && (
+          <Question19VegetableAmounts
+            onNext={handleNext}
+            onBack={handleBack}
+            onExit={handleBackToHome}
+            selectedVegetables={answers.vegetables || []}
+            initialValue={answers.vegetableAmounts || {}}
+          />
+        )}
+
+        {currentStep === 20 && (
           <Question18Drinks
             onNext={handleNext}
             onBack={handleBack}
@@ -347,7 +390,7 @@ export function WaterCalculator() {
           />
         )}
 
-        {currentStep === 19 && (
+        {currentStep === 21 && (
           <Question19DrinkAmounts
             onNext={handleNext}
             onBack={handleBack}
@@ -357,7 +400,7 @@ export function WaterCalculator() {
           />
         )}
 
-        {currentStep === 20 && (
+        {currentStep === 23 && (
           <Question20ShoesPerYear
             onNext={handleNext}
             onBack={handleBack}
@@ -366,7 +409,7 @@ export function WaterCalculator() {
           />
         )}
 
-        {currentStep === 21 && (
+        {currentStep === 24 && (
           <Question21JeansPerYear
             onNext={handleNext}
             onBack={handleBack}
@@ -375,7 +418,7 @@ export function WaterCalculator() {
           />
         )}
 
-        {currentStep === 22 && (
+        {currentStep === 25 && (
           <Question22TshirtsPerYear
             onNext={handleNext}
             onBack={handleBack}
@@ -384,7 +427,7 @@ export function WaterCalculator() {
           />
         )}
 
-        {currentStep === 23 && (
+        {currentStep === 26 && (
           <Question23SmartphonesLast5Years
             onNext={handleNext}
             onBack={handleBack}
@@ -393,7 +436,7 @@ export function WaterCalculator() {
           />
         )}
 
-        {currentStep === 24 && (
+        {currentStep === 27 && (
           <Question24RainwaterSystem
             onNext={handleNext}
             onBack={handleBack}
@@ -402,7 +445,7 @@ export function WaterCalculator() {
           />
         )}
 
-        {currentStep === 25 && (
+        {currentStep === 28 && (
           <Question25WashingMachineWaterReuse
             onNext={handleNext}
             onBack={handleBack}
@@ -411,7 +454,7 @@ export function WaterCalculator() {
           />
         )}
 
-        {currentStep === 26 && (
+        {currentStep === 29 && (
           <Question26PaperRecycledPerYear
             onNext={handleNext}
             onBack={handleBack}
@@ -420,7 +463,7 @@ export function WaterCalculator() {
           />
         )}
 
-        {currentStep === 27 && (
+        {currentStep === 30 && (
           <Question27PlasticRecycledPerYear
             onNext={handleNext}
             onBack={handleBack}
@@ -429,7 +472,7 @@ export function WaterCalculator() {
           />
         )}
 
-        {currentStep === 28 && (
+        {currentStep === 31 && (
           <Question28AiUsePerWeek
             onNext={handleNext}
             onBack={handleBack}
@@ -438,7 +481,7 @@ export function WaterCalculator() {
           />
         )}
 
-        {currentStep === 29 && (
+        {currentStep === 32 && (
           <Question29EmailCleanupPerMonth
             onNext={handleNext}
             onBack={handleBack}
@@ -448,7 +491,7 @@ export function WaterCalculator() {
         )}
 
         {/* Pantalla de resultados (Estadísticas 2026) */}
-        {currentStep > 29 && (
+        {currentStep > 32 && (
           <WaterResults
             answers={answers}
             onRestart={() => {

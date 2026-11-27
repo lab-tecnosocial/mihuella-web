@@ -6,10 +6,8 @@ const FRUIT_METADATA = {
   platano: { label: "Plátano", image: "/img/yellow-banana.webp", unit: "unid" },
   manzana: { label: "Manzana", image: "/img/apple.webp", unit: "kg" },
   naranja: { label: "Naranja", image: "/img/orangee.webp", unit: "unid" },
-  uvas: { label: "Uvas", image: "/img/grapes.webp", unit: "kg" },
-  frutilla: { label: "Frutilla", image: "/img/strawberry.webp", unit: "kg" },
   papaya: { label: "Papaya", image: "/img/papaya.webp", unit: "kg" },
-  otro: { label: "Otro", image: "/img/three_dots.webp", unit: "" },
+  pina: { label: "Piña", image: "/img/pina.webp", unit: "porción" },
 };
 
 export function Question17FruitAmounts({
@@ -56,7 +54,7 @@ export function Question17FruitAmounts({
     <WaterQuestionLayout
       currentCategoryIndex={3} // Categoría: Dieta
       currentQuestionIndex={5}
-      totalQuestionsInCategory={8}
+      totalQuestionsInCategory={11}
       icon="/img/dieta-icon.webp"
       onBack={onBack}
       onExit={onExit}

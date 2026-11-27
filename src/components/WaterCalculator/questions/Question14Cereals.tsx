@@ -7,10 +7,7 @@ const CEREAL_OPTIONS = [
   { id: "fideo", label: "Fideo", unit: "Kg/semana", image: "/img/pasta.webp" },
   { id: "avena", label: "Avena", unit: "Kg/semana", image: "/img/avena.webp" },
   { id: "quinua", label: "Quinua", unit: "Kg/semana", image: "/img/quinua.webp" },
-  { id: "pan", label: "Pan", unit: "Kg/semana", image: "/img/bread.webp" },
-  { id: "maiz", label: "Maíz", unit: "Kg/semana", image: "/img/corn.webp" },
   { id: "ninguno", label: "Ninguno", unit: "", image: "/img/none.webp" },
-  { id: "otro", label: "Otro", unit: "", image: "/img/three_dots.webp" },
 ] as const;
 
 type CerealId = (typeof CEREAL_OPTIONS)[number]["id"];
@@ -49,7 +46,7 @@ export function Question14Cereals({
     <WaterQuestionLayout
       currentCategoryIndex={3} // Categoría: Dieta
       currentQuestionIndex={2}
-      totalQuestionsInCategory={8}
+      totalQuestionsInCategory={11}
       icon="/img/cereals-icon.webp"
       onBack={onBack}
       onExit={onExit}
